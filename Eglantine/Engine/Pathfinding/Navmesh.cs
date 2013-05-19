@@ -10,8 +10,27 @@ namespace Eglantine.Engine.Pathfinding
 		List<Polygon> Polygons = new List<Polygon>();
 		List<PolygonLink> Links = new List<PolygonLink>();
 
+		public List<NavNode> Nodes = new List<NavNode>();
+		AStar aStar;
+
 		// Create a navmesh from a luatable
 		public Navmesh (LuaTable nav)
+		{
+			// Parse the table into nodes
+			ParseLuaTable(nav);
+			
+			// Now create an instance of AStar to link to the mesh
+			aStar = new AStar(this);
+
+			// Testing...
+			ReportNavmesh();
+		}
+
+
+		/// <summary>
+		/// Parses a lua table and extracts a list of polygons and connection points.
+		/// </summary>
+		public void ParseLuaTable(LuaTable nav)
 		{
 			LuaTable currentTable = (LuaTable)nav["Polygons"];
 			LuaTable currentPolygon;
@@ -72,9 +91,84 @@ namespace Eglantine.Engine.Pathfinding
 				Links.Add(tempLink);
 			}
 
-			// The points from the navmesh should now have been loaded.  
+			// The points from the navmesh should now have been loaded. 
+			return;
+		}
+
+		/// <summary>
+		/// Constructs the navmesh using the polygons and connections loaded from a LuaTable
+		/// </summary>
+		public void BuildMesh ()
+		{
+			Navmesh = new List<NavNode> ();
+
+			// Add each point from each polygon into the list of nodes.
+			foreach (Polygon polygon in Polygons)
+			{
+				foreach (Point point in polygon.Vertices)
+				{
+					Nodes.Add (new NavNode (point, polygon));
+				}
+			}
+
+			// Add each linked point to the list of nodes
+			foreach (PolygonLink link in Links)
+			{
+				foreach (Point point in link.Points)
+				{
+					// Remove any redundant points
+					List<NavNode> redundantNodes = Nodes.FindAll (x => x.Position == point);
+					if (redundantNodes.Count > 0)
+					{
+						foreach (NavNode n in redundantNodes)
+							Nodes.Remove (n);
+					}
+
+					NavNode linkedNode = Nodes.Add (new NavNode (point));
+					foreach (Polygon polygon in link.LinkedPolygons)
+						linkedNode.AddPolygon (polygon);
+				}
+			}
+
+			// Link connected nodes together
+			foreach (NavNode node in Nodes)
+			{
+				// Get a list of all nodes that share a polygon
+				List<NavNode> connectedNodes = new List<NavNode>();
+				foreach(Polygon parent in node.ParentPolygon)
+					connectedNodes.AddRange(Nodes.FindAll(x => x.ParentPolygon.Contains(parent)));
+
+				// Link all connected nodes together
+				foreach(NavNode otherNode in connectedNodes)
+					NavNode.LinkNodes(node, otherNode);
+			}
+		}
 
 
+		public Polygon ContainingPolygon (Point p)
+		{
+			foreach (Polygon polygon in Polygons)
+			{
+				if(polygon.ContainsPoint(p))
+				   return polygon;
+			}
+		}
+
+		/// <summary>
+		/// Resets all pathfinding values saved in the nodes list
+		/// </summary>
+		public void ResetPathfinding ()
+		{
+			foreach (NavNode n in Nodes)
+			{
+				n.GScore = 0;
+				n.HScore = 0;
+				n.ParentNode = null;
+			}
+		}
+
+		public void ReportNavmesh()
+		{
 			// Let's test and see!
 			Console.WriteLine ("==============");
 			Console.WriteLine ("NAVMESH REPORT");

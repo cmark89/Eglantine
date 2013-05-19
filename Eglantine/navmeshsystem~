@@ -1,0 +1,48 @@
+--The navmesh system loads the .lua file into a system of 
+Polygons and Links.
+
+--Next, the system should build a list of nodes that will be used
+by pathfinding.  
+
+NavNode
+	Point position;
+	List<NavNode> links;
+	List<Polygon> parentpolygons;
+
+	LinkToNode() -- Links this point with the given node
+	LinkToNodes() -- Links this point with all nodes provided
+	LinkToPolygon() -- Iterate over all nodes and link to each one
+		           that has given polygon as a parent
+	
+For each polygon...
+	-Create a NavNode for each vertex
+	-Ensure the NavNode "belongs" to the target polygon
+	-Create a NavNode for the center of the polygon
+	
+For each link...
+	-Add each point as a navnode that belongs to both polygons
+	-If there is already a node at this coordinate, remove it and
+	replace it with the link instead of creating redundant points
+	
+The...
+	-Iterate over each node and link it with its enclosing polygon.
+	-Do this:
+	
+	foreach NavNode in nodes
+		foreach Polygon p in parentPolygons
+			LinkToPolygon(p)
+		
+
+
+
+When clicking to move...
+	-First, find out what polygon the player clicked in.
+	-Add a new node at that position and LinkToPolygon(clickedPolygon)
+	-Add a new node at the player's position and LinkToPolygon(playerstandinginpolygon)
+	-Find a path between the two temporary points.  
+	-Once the list of waypoints has been found, remove the 
+	temporary points.
+
+
+
+

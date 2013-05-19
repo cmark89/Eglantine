@@ -61,6 +61,8 @@
     <Compile Include="Engine\Trigger.cs" />
     <Compile Include="Engine\Pathfinding\Polygon.cs" />
     <Compile Include="Engine\Pathfinding\PolygonLink.cs" />
+    <Compile Include="Engine\Pathfinding\NavNode.cs" />
+    <Compile Include="Engine\Pathfinding\AStar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
