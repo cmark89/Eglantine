@@ -10,8 +10,11 @@ namespace Eglantine.Engine.Pathfinding
 	{
 		// Core members
 		public Point Position { get; private set; }
-		public List<Polygon> ParentPolygon { get; private set; }
+		public List<Polygon> ParentPolygon { get; set; }
 		public List<NavNode> Links { get; private set; }
+
+		public bool InOpenList = false;
+		public bool InClosedList = false;
 
 		// Pathfinding members
 		public float HScore = 0;
@@ -26,6 +29,7 @@ namespace Eglantine.Engine.Pathfinding
 		{
 			Position = point;
 			ParentPolygon = new List<Polygon>();
+			Links = new List<NavNode>();
 
 			if(parent != null)
 				ParentPolygon.Add(parent);
@@ -51,7 +55,17 @@ namespace Eglantine.Engine.Pathfinding
 		// Returns the cost to move to this node from the given node
 		public float MovementCostFrom (Point fromPosition)
 		{
-			return Vector2.Distance (fromPosition, Position);
+			return (float)Math.Pow(Math.Abs(fromPosition.X - Position.X) + Math.Abs(fromPosition.Y - Position.Y), 2f);
+		}
+
+		public void ResetPathfindingData()
+		{
+			GScore = 0;
+			HScore = 0;
+			ParentNode = null;
+
+			InOpenList = false;
+			InClosedList = false;
 		}
 	}
 }

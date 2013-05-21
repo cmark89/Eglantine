@@ -11,19 +11,21 @@ namespace Eglantine.Engine.Pathfinding
 		List<PolygonLink> Links = new List<PolygonLink>();
 
 		public List<NavNode> Nodes = new List<NavNode>();
+		private List<NavNode> tempNodes = new List<NavNode>();
 		AStar aStar;
+
+
 
 		// Create a navmesh from a luatable
 		public Navmesh (LuaTable nav)
 		{
 			// Parse the table into nodes
 			ParseLuaTable(nav);
-			
+			BuildMesh();
 			// Now create an instance of AStar to link to the mesh
 			aStar = new AStar(this);
 
-			// Testing...
-			ReportNavmesh();
+			Console.WriteLine("Navmesh constructed.");
 		}
 
 
@@ -100,31 +102,31 @@ namespace Eglantine.Engine.Pathfinding
 		/// </summary>
 		public void BuildMesh ()
 		{
-			Navmesh = new List<NavNode> ();
+			Console.WriteLine("Begin constructing navmesh.");
+			Nodes = new List<NavNode> ();
 
 			// Add each point from each polygon into the list of nodes.
 			foreach (Polygon polygon in Polygons)
 			{
+				Console.WriteLine("Construct polygon...");
 				foreach (Point point in polygon.Vertices)
 				{
+					Console.WriteLine("Add vertex.");
 					Nodes.Add (new NavNode (point, polygon));
 				}
+
+				Nodes.Add(new NavNode(polygon.GetCenter(), polygon));
 			}
 
 			// Add each linked point to the list of nodes
 			foreach (PolygonLink link in Links)
 			{
+				Console.WriteLine("Link polygons...");
 				foreach (Point point in link.Points)
 				{
-					// Remove any redundant points
-					List<NavNode> redundantNodes = Nodes.FindAll (x => x.Position == point);
-					if (redundantNodes.Count > 0)
-					{
-						foreach (NavNode n in redundantNodes)
-							Nodes.Remove (n);
-					}
-
-					NavNode linkedNode = Nodes.Add (new NavNode (point));
+					Console.WriteLine("Create link.");
+					NavNode linkedNode = new NavNode(point);
+					Nodes.Add (linkedNode);
 					foreach (Polygon polygon in link.LinkedPolygons)
 						linkedNode.AddPolygon (polygon);
 				}
@@ -133,15 +135,20 @@ namespace Eglantine.Engine.Pathfinding
 			// Link connected nodes together
 			foreach (NavNode node in Nodes)
 			{
+				Console.WriteLine("Linking nodes together.");
 				// Get a list of all nodes that share a polygon
 				List<NavNode> connectedNodes = new List<NavNode>();
 				foreach(Polygon parent in node.ParentPolygon)
+				{
 					connectedNodes.AddRange(Nodes.FindAll(x => x.ParentPolygon.Contains(parent)));
+				}
 
 				// Link all connected nodes together
 				foreach(NavNode otherNode in connectedNodes)
 					NavNode.LinkNodes(node, otherNode);
 			}
+
+			Console.WriteLine("Total nodes: " + Nodes.Count);
 		}
 
 
@@ -150,21 +157,35 @@ namespace Eglantine.Engine.Pathfinding
 			foreach (Polygon polygon in Polygons)
 			{
 				if(polygon.ContainsPoint(p))
+				{
 				   return polygon;
+				}
 			}
+			Console.WriteLine("Found null polygon.");
+			return null;
 		}
 
 		/// <summary>
 		/// Resets all pathfinding values saved in the nodes list
 		/// </summary>
-		public void ResetPathfinding ()
+		public void ResetPathfindingData ()
 		{
 			foreach (NavNode n in Nodes)
 			{
-				n.GScore = 0;
-				n.HScore = 0;
-				n.ParentNode = null;
+				n.ResetPathfindingData();
 			}
+		}
+
+		public void ClearTempNodes ()
+		{
+			Console.WriteLine("TEMP NODES CONTAINS " + tempNodes.Count);
+			foreach (NavNode node in Nodes)
+			{
+				node.Links.RemoveAll(x => tempNodes.Contains(x));
+			}
+
+			Nodes.RemoveAll(x => tempNodes.Contains(x));
+			tempNodes.Clear();
 		}
 
 		public void ReportNavmesh()
@@ -214,6 +235,44 @@ namespace Eglantine.Engine.Pathfinding
 				}
 
 				Console.WriteLine("Total points: " + ptotal);
+		}
+
+		public List<NavNode> GetPath (Point start, Point end)
+		{
+			Console.WriteLine("Begin GETPATH");
+			// Add the start node and link it
+			NavNode startNode = new NavNode (start);
+			Polygon startPolygon = ContainingPolygon(start);
+			startNode.ParentPolygon.Add(startPolygon);
+			foreach (NavNode n in Nodes.FindAll(x => x.ParentPolygon.Contains(startPolygon)))
+			{
+				Console.WriteLine("Linked node to start node.");
+				NavNode.LinkNodes(n, startNode);
+				startNode.AddLink(n);
+			}
+			Nodes.Add(startNode);
+			tempNodes.Add(startNode);
+
+			// Add the end node and link it
+			NavNode endNode = new NavNode (end);
+			Polygon endPolygon = ContainingPolygon(end);
+			endNode.ParentPolygon.Add(endPolygon);
+			foreach (NavNode n in Nodes.FindAll(x => x.ParentPolygon.Contains(endPolygon)))
+			{
+				Console.WriteLine("Linked node to end node.");
+				NavNode.LinkNodes(n, endNode);
+			}
+			Nodes.Add(endNode);
+			tempNodes.Add(endNode);
+
+			// Find the path
+			List<NavNode> path = aStar.GetPath(startNode, endNode);
+
+			// Clear temp nodes
+			ClearTempNodes();
+
+			// Return the path
+			return path;
 		}
 	}
 }

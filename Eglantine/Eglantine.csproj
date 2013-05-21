@@ -36,11 +36,17 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Release\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="LuaInterface">
       <HintPath>..\..\..\repos\MonoLuaInterface\bin\LuaInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.Sdl">
+      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\Tao.Sdl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +69,7 @@
     <Compile Include="Engine\Pathfinding\PolygonLink.cs" />
     <Compile Include="Engine\Pathfinding\NavNode.cs" />
     <Compile Include="Engine\Pathfinding\AStar.cs" />
+    <Compile Include="TestPather.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -87,6 +94,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\items.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MayStickfigure.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\testroom.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

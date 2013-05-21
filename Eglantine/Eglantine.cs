@@ -1,10 +1,11 @@
 #region Using Statements
 using System;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+using System.Collections.Generic;
 using LuaInterface;
 using Eglantine.Engine.Pathfinding;
 
@@ -17,9 +18,16 @@ namespace Eglantine
 	/// </summary>
 	public class Eglantine : Game
 	{
-		Texture2D title;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		MouseState lastMouseState;
+
+
+		// Testing stuff here...
+
+		Texture2D TestRoom;
+		Navmesh testnavmesh;
+		TestPather pather = new TestPather(new Vector2(800, 600));
 
 		public Eglantine ()
 		{
@@ -33,7 +41,7 @@ namespace Eglantine
 			Lua lua = new Lua();
 			lua.DoFile("Data/rooms.lua");
 
-			new Navmesh(lua.GetTable("rooms.testroom.Navmesh"));
+			testnavmesh = new Navmesh(lua.GetTable("rooms.testroom.Navmesh"));
 
 		}
 
@@ -58,7 +66,9 @@ namespace Eglantine
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
-			title = Content.Load<Texture2D>("testTitle");
+			TestRoom = Content.Load<Texture2D>("testroom");
+			pather.LoadContent(Content);
+
 
 			//TODO: use this.Content to load your game content here 
 		}
@@ -70,12 +80,18 @@ namespace Eglantine
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update (GameTime gameTime)
 		{
-			// For Mobile devices, this logic will close the Game when the Back button is pressed
-			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
-				Exit ();
+			bool clicked = (Mouse.GetState().LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released);
+			if (clicked && testnavmesh.ContainingPolygon(new Point(Mouse.GetState().X, Mouse.GetState().Y)) != null)
+			{
+				pather.nextWaypoint = null;
+				pather.Waypoints = testnavmesh.GetPath(new Point((int)pather.Position.X, (int)pather.Position.Y), new Point(Mouse.GetState().X, Mouse.GetState().Y));
 			}
+			lastMouseState = Mouse.GetState();
+
+			pather.Update(gameTime);
 			// TODO: Add your update logic here			
 			base.Update (gameTime);
+
 		}
 
 		/// <summary>
@@ -87,7 +103,9 @@ namespace Eglantine
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
 			spriteBatch.Begin ();
-			spriteBatch.Draw (title, Vector2.Zero, Color.White);
+			spriteBatch.Draw (TestRoom, Vector2.Zero, Color.White);
+
+			pather.Draw(spriteBatch);
 			spriteBatch.End ();
 		
 			//TODO: Add your drawing code here
