@@ -1,11 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Eglantine/Engine/Pathfinding/NavNode.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Eglantine/Engine/Pathfinding/Navmesh.cs">
     <Files>
-      <File FileName="Eglantine/Data/rooms.lua" Line="11" Column="22" />
-      <File FileName="Eglantine/Engine/Pathfinding/Navmesh.cs" Line="165" Column="18" />
-      <File FileName="Eglantine/Engine/Pathfinding/AStar.cs" Line="34" Column="4" />
-      <File FileName="Eglantine/Engine/Pathfinding/NavNode.cs" Line="19" Column="22" />
+      <File FileName="Eglantine/Data/rooms.lua" Line="117" Column="5" />
+      <File FileName="Eglantine/Engine/Pathfinding/Navmesh.cs" Line="279" Column="3" />
+      <File FileName="Eglantine/Engine/Pathfinding/AStar.cs" Line="38" Column="45" />
+      <File FileName="Eglantine/Engine/Pathfinding/NavNode.cs" Line="52" Column="19" />
+      <File FileName="Eglantine/Eglantine.cs" Line="86" Column="4" />
+      <File FileName="Eglantine/TestPather.cs" Line="39" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
