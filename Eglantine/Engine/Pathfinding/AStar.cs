@@ -64,7 +64,7 @@ namespace Eglantine.Engine.Pathfinding
 					// First, check if the node is the target node.  If so, break immediately.
 					if (link == EndPoint)
 					{
-						Console.WriteLine ("DISCOVERED END POINT!!!!!!!!");
+						Console.WriteLine ("End point found.");
 						EndPoint.ParentNode = currentNode;
 						OpenList.Clear ();
 
@@ -83,20 +83,17 @@ namespace Eglantine.Engine.Pathfinding
 
 					if (link.InClosedList)
 					{
-						Console.WriteLine ("Discovered closed node");
 						continue;
 					}
 
 					if (!link.InOpenList)
 					{
-						Console.WriteLine ("Adding new node to openlist.");
 						OpenList.Add (link);
 						link.InOpenList = true;
 						link.ParentNode = currentNode;
 						CalculateValue (link);
 					} else
 					{
-						Console.WriteLine ("Reconsidering node.");
 						// Check if the new G value is less than the node's current F value
 						if (link.GScore > link.ParentNode.GScore + link.MovementCostFrom (link.ParentNode.Position))
 						{
@@ -114,13 +111,13 @@ namespace Eglantine.Engine.Pathfinding
 
 			// Return null, for no path could be found
 			Console.WriteLine ("No path found.");
-			Console.WriteLine ("Considered " + considered + " nodes.");
 			if (endNode == null)
 			{
 				Console.WriteLine("WARNING! END POINT IS NULL!");
 			}
 			else
 				Console.WriteLine("End point exists but was never found.");
+
 			return null;
 		}
 
@@ -136,12 +133,10 @@ namespace Eglantine.Engine.Pathfinding
 			node.GScore = tempG;
 
 			node.HScore = Heuristic(node.Position, EndPoint.Position);
-
-			Console.WriteLine("Value of Node " + node.Position.X + " : " + node.Position.Y + " is " + node.FScore);
 		}
 
 
-		public float Heuristic(Point start, Point end)
+		public float Heuristic(Vector2 start, Vector2 end)
 		{
 			return Math.Abs(end.X - start.X) + Math.Abs(end.Y - start.Y);
 		}

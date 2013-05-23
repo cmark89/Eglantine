@@ -9,7 +9,7 @@ namespace Eglantine.Engine.Pathfinding
 	public class NavNode
 	{
 		// Core members
-		public Point Position { get; private set; }
+		public Vector2 Position { get; private set; }
 		public List<Polygon> ParentPolygon { get; set; }
 		public List<NavNode> Links { get; private set; }
 
@@ -25,7 +25,7 @@ namespace Eglantine.Engine.Pathfinding
 		}
 		public NavNode ParentNode;		// Used to trace the path using AStar
 
-		public NavNode (Point point, Polygon parent = null)
+		public NavNode (Vector2 point, Polygon parent = null)
 		{
 			Position = point;
 			ParentPolygon = new List<Polygon>();
@@ -53,7 +53,7 @@ namespace Eglantine.Engine.Pathfinding
 		}
 
 		// Returns the cost to move to this node from the given node
-		public float MovementCostFrom (Point fromPosition)
+		public float MovementCostFrom (Vector2 fromPosition)
 		{
 			return (float)Math.Pow(Math.Abs(fromPosition.X - Position.X) + Math.Abs(fromPosition.Y - Position.Y), 2f);
 		}

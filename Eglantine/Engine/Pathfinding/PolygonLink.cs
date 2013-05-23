@@ -7,12 +7,12 @@ namespace Eglantine.Engine.Pathfinding
 	public class PolygonLink
 	{
 		public List<Polygon> LinkedPolygons { get; private set; }
-		public List<Point> Points { get; private set; }
+		public List<Vector2> Points { get; private set; }
 
 		public PolygonLink ()
 		{
 			LinkedPolygons = new List<Polygon>();
-			Points = new List<Point>();
+			Points = new List<Vector2>();
 		}
 
 		public void AddPolygon(Polygon p)
@@ -20,7 +20,7 @@ namespace Eglantine.Engine.Pathfinding
 			LinkedPolygons.Add(p);
 		}
 
-		public void AddPoint(Point p)
+		public void AddPoint(Vector2 p)
 		{
 			Points.Add(p);
 		}

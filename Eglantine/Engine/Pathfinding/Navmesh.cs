@@ -52,7 +52,7 @@ namespace Eglantine.Engine.Pathfinding
 					nestedTable = (LuaTable)currentPolygon[point];
 					tempX = (int)((double)(nestedTable["X"]));
 					tempY = (int)((double)(nestedTable["Y"]));
-					tempPolygon.AddVertex (new Point (tempX, tempY));
+					tempPolygon.AddVertex (new Vector2 (tempX, tempY));
 				}
 
 				// Now that all the points have been added to the polygon, add it to
@@ -86,7 +86,7 @@ namespace Eglantine.Engine.Pathfinding
 					nestedTable = (LuaTable)currentLink[j];
 					tempX = (int)(double)nestedTable["X"];
 					tempY = (int)(double)nestedTable["Y"];
-					tempLink.AddPoint (new Point(tempX, tempY));
+					tempLink.AddPoint (new Vector2(tempX, tempY));
 				}
 
 				// Finally add the link
@@ -109,7 +109,7 @@ namespace Eglantine.Engine.Pathfinding
 			foreach (Polygon polygon in Polygons)
 			{
 				Console.WriteLine("Construct polygon...");
-				foreach (Point point in polygon.Vertices)
+				foreach (Vector2 point in polygon.Vertices)
 				{
 					Console.WriteLine("Add vertex.");
 					Nodes.Add (new NavNode (point, polygon));
@@ -121,10 +121,8 @@ namespace Eglantine.Engine.Pathfinding
 			// Add each linked point to the list of nodes
 			foreach (PolygonLink link in Links)
 			{
-				Console.WriteLine("Link polygons...");
-				foreach (Point point in link.Points)
+				foreach (Vector2 point in link.Points)
 				{
-					Console.WriteLine("Create link.");
 					NavNode linkedNode = new NavNode(point);
 					Nodes.Add (linkedNode);
 					foreach (Polygon polygon in link.LinkedPolygons)
@@ -135,7 +133,6 @@ namespace Eglantine.Engine.Pathfinding
 			// Link connected nodes together
 			foreach (NavNode node in Nodes)
 			{
-				Console.WriteLine("Linking nodes together.");
 				// Get a list of all nodes that share a polygon
 				List<NavNode> connectedNodes = new List<NavNode>();
 				foreach(Polygon parent in node.ParentPolygon)
@@ -147,12 +144,10 @@ namespace Eglantine.Engine.Pathfinding
 				foreach(NavNode otherNode in connectedNodes)
 					NavNode.LinkNodes(node, otherNode);
 			}
-
-			Console.WriteLine("Total nodes: " + Nodes.Count);
 		}
 
 
-		public Polygon ContainingPolygon (Point p)
+		public Polygon ContainingPolygon (Vector2 p)
 		{
 			foreach (Polygon polygon in Polygons)
 			{
@@ -178,7 +173,6 @@ namespace Eglantine.Engine.Pathfinding
 
 		public void ClearTempNodes ()
 		{
-			Console.WriteLine("TEMP NODES CONTAINS " + tempNodes.Count);
 			foreach (NavNode node in Nodes)
 			{
 				node.Links.RemoveAll(x => tempNodes.Contains(x));
@@ -199,7 +193,7 @@ namespace Eglantine.Engine.Pathfinding
 			for (int i = 0; i < Polygons.Count; i++) 
 			{
 				Console.WriteLine("----------\nPolygon " + i + "\n----------");
-				foreach(Point p in Polygons[i].Vertices)
+				foreach(Vector2 p in Polygons[i].Vertices)
 				{
 					Console.WriteLine("\tX: " + p.X + "  :  " + p.Y);
 				}
@@ -211,7 +205,7 @@ namespace Eglantine.Engine.Pathfinding
 			{
 				Console.WriteLine("----------\nLink " + i + "\n----------");
 				Console.WriteLine("\tLinks " + Links[i].LinkedPolygons.Count + " Polygons.\n");
-				foreach(Point p in Links[i].Points)
+				foreach(Vector2 p in Links[i].Points)
 				{
 					Console.WriteLine("\tX: " + p.X + "  :  " + p.Y);
 				}
@@ -225,28 +219,26 @@ namespace Eglantine.Engine.Pathfinding
 				int ptotal = 0;
 				foreach(Polygon p in Polygons)
 				{
-					foreach(Point po in p.Vertices)
+					foreach(Vector2 po in p.Vertices)
 						ptotal++;
 				}
 				foreach(PolygonLink p in Links)
 				{
-					foreach(Point po in p.Points)
+					foreach(Vector2 po in p.Points)
 						ptotal++;
 				}
 
 				Console.WriteLine("Total points: " + ptotal);
 		}
 
-		public List<NavNode> GetPath (Point start, Point end)
+		public List<NavNode> GetPath (Vector2 start, Vector2 end)
 		{
-			Console.WriteLine("Begin GETPATH");
 			// Add the start node and link it
 			NavNode startNode = new NavNode (start);
 			Polygon startPolygon = ContainingPolygon(start);
 			startNode.ParentPolygon.Add(startPolygon);
 			foreach (NavNode n in Nodes.FindAll(x => x.ParentPolygon.Contains(startPolygon)))
 			{
-				Console.WriteLine("Linked node to start node.");
 				NavNode.LinkNodes(n, startNode);
 				startNode.AddLink(n);
 			}
@@ -259,7 +251,6 @@ namespace Eglantine.Engine.Pathfinding
 			endNode.ParentPolygon.Add(endPolygon);
 			foreach (NavNode n in Nodes.FindAll(x => x.ParentPolygon.Contains(endPolygon)))
 			{
-				Console.WriteLine("Linked node to end node.");
 				NavNode.LinkNodes(n, endNode);
 			}
 			Nodes.Add(endNode);

@@ -6,13 +6,13 @@ namespace Eglantine.Engine.Pathfinding
 {
 	public class Polygon
 	{
-		public List<Point> Vertices { get; private set; }
+		public List<Vector2> Vertices { get; private set; }
 		public Polygon ()
 		{
-			Vertices = new List<Point>();
+			Vertices = new List<Vector2>();
 		}
 
-		public Polygon (List<Point> vertices)
+		public Polygon (List<Vector2> vertices)
 		{
 			Vertices = vertices;
 		}
@@ -20,7 +20,7 @@ namespace Eglantine.Engine.Pathfinding
 		/// <summary>
 		/// Adds a vertex to the polyon.
 		/// </summary>
-		public void AddVertex (Point p)
+		public void AddVertex (Vector2 p)
 
 		{
 			Vertices.Add(p);
@@ -29,12 +29,12 @@ namespace Eglantine.Engine.Pathfinding
 		/// <summary>
 		/// Gets the center point of the polygon.
 		/// </summary>
-		public Point GetCenter ()
+		public Vector2 GetCenter ()
 		{
-			int x = 0;
-			int y = 0;
+			float x = 0;
+			float y = 0;
 
-			foreach (Point p in Vertices) 
+			foreach (Vector2 p in Vertices) 
 			{
 				x += p.X;
 				y += p.Y;
@@ -43,10 +43,10 @@ namespace Eglantine.Engine.Pathfinding
 			x /= Vertices.Count;
 			y /= Vertices.Count;
 
-			return new Point(x, y);
+			return new Vector2(x, y);
 		}
 
-		public bool ContainsPoint (Point startPoint)
+		public bool ContainsPoint (Vector2 startPoint)
 		{
 			bool inside = false;
 

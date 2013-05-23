@@ -81,10 +81,10 @@ namespace Eglantine
 		protected override void Update (GameTime gameTime)
 		{
 			bool clicked = (Mouse.GetState().LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released);
-			if (clicked && testnavmesh.ContainingPolygon(new Point(Mouse.GetState().X, Mouse.GetState().Y)) != null)
+			if (clicked && testnavmesh.ContainingPolygon(new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) != null)
 			{
 				pather.nextWaypoint = null;
-				pather.Waypoints = testnavmesh.GetPath(new Point((int)pather.Position.X, (int)pather.Position.Y), new Point(Mouse.GetState().X, Mouse.GetState().Y));
+				pather.Waypoints = testnavmesh.GetPath(pather.Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
 			}
 			lastMouseState = Mouse.GetState();
 
