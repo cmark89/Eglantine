@@ -4,36 +4,45 @@
 ------------
 
 --require "mainevents.lua"???
+require "Data/testevents"
 
 --Test making a navmesh
 rooms = {}
 
 rooms["testroom"] = {
 --------GRAPHICS--------
-	BackgroundTextures = "Content/somebgfile",
-	ForegroundTextures = { "Someotherfile", "Andanotherfordepth" },
+	BackgroundTextures = "testroom",
+	--ForegroundTextures = { "Someotherfile", "Andanotherfordepth" },
 	
 	
 --------OBJECTS AND EVENTS--------
 	Interactables = {
 		[1] = {
-			X = 6,
-			Y = 55,
-			Width = 17,
-			Height = 22,
+			Area = {
+					X = 200,
+					Y = 409,
+					Width = 97,
+					Height = 59
+				},
 			
-			OnInteract = someFunction
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 305,
+				Y = 593
+			},
+
+			OnInteract = pillowClick
 		}
 	},
 	
 	Triggers = {
 		[1] = {
-			X = 67,
-			Y = 550,
-			Width = 170,
-			Height = 212,
+			X = 324,
+			Y = 609,
+			Width = 41,
+			Height = 159,
 			
-			OnEnter = someOtherFunction
+			OnEnter = stepOnCrack
 		}
 	},	
 --------NAVMESH--------

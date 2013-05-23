@@ -19,8 +19,6 @@ namespace Eglantine.Engine.Pathfinding
 
 		public List<NavNode> GetPath (NavNode startNode, NavNode endNode)
 		{
-			Console.WriteLine ("Starting AStar.GetPath()");
-			Console.WriteLine ("Navmesh contains " + Navmesh.Nodes.Count + " nodes");
 			// First, make sure the OpenList and ClosedList are empty
 			OpenList.Clear ();
 			ClosedList.Clear ();
@@ -35,26 +33,13 @@ namespace Eglantine.Engine.Pathfinding
 			NavNode currentNode = startNode;
 
 			// Now add the startNode to the open list.
-			Console.WriteLine ("Start point initialized.");
 			OpenList.Add (currentNode);
 			currentNode.InOpenList = true;
 			CalculateValue (currentNode);
 
-			foreach (NavNode l in endNode.Links)
-			{
-				Console.WriteLine("END NODE LINKS TO " + l.Position.X + ":" + l.Position.Y);
-				if(l.Links.Contains(endNode))
-					Console.WriteLine(l.Position.X + ":" + l.Position.Y + " links back to endpoint.");
-				else
-					Console.WriteLine(l.Position.X + ":" + l.Position.Y + " DOES NOT LINK TO ENDPOINT.");
-			}
-
-			int considered = 0;
 			// Iterate over nodes until the path has been found
 			while (OpenList.Count > 0)
 			{
-				considered++;
-				Console.WriteLine ("Iterating over openlist.");
 				// Pick the node in the OpenList with the lowest F Score
 				currentNode = FindBestNode ();
 
@@ -64,7 +49,6 @@ namespace Eglantine.Engine.Pathfinding
 					// First, check if the node is the target node.  If so, break immediately.
 					if (link == EndPoint)
 					{
-						Console.WriteLine ("End point found.");
 						EndPoint.ParentNode = currentNode;
 						OpenList.Clear ();
 

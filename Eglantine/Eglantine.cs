@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
 using LuaInterface;
+using Eglantine.Engine;
 using Eglantine.Engine.Pathfinding;
 
 #endregion
@@ -27,7 +28,8 @@ namespace Eglantine
 
 		Texture2D TestRoom;
 		Navmesh testnavmesh;
-		TestPather pather = new TestPather(new Vector2(800, 600));
+		public static TestPather pather = new TestPather(new Vector2(800, 600));
+		Room testRoom;
 
 		public Eglantine ()
 		{
@@ -38,10 +40,8 @@ namespace Eglantine
 			graphics.PreferredBackBufferHeight = 768;
 			graphics.IsFullScreen = false;
 
-			Lua lua = new Lua();
-			lua.DoFile("Data/rooms.lua");
-
-			testnavmesh = new Navmesh(lua.GetTable("rooms.testroom.Navmesh"));
+			testRoom = new Room("testroom");
+			testnavmesh = testRoom.Navmesh;
 
 		}
 
@@ -88,7 +88,9 @@ namespace Eglantine
 			}
 			lastMouseState = Mouse.GetState();
 
+			testRoom.Update(gameTime);
 			pather.Update(gameTime);
+
 			// TODO: Add your update logic here			
 			base.Update (gameTime);
 

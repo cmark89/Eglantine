@@ -36,10 +36,10 @@ namespace Eglantine
 			{
 				nextWaypoint = Waypoints[Waypoints.Count - 1];
 				Waypoints.RemoveAt(Waypoints.Count - 1);
+					Console.WriteLine("Move towards waypoint at: " + nextWaypoint.Position.X + ":" + nextWaypoint.Position.Y);
 			}
 			if (nextWaypoint != null)
 			{
-				Console.WriteLine("Move towards waypoint at: " + nextWaypoint.Position.X + ":" + nextWaypoint.Position.Y);
 				Vector2 tempVector = new Vector2(nextWaypoint.Position.X, nextWaypoint.Position.Y);
 				Vector2 moveVector = Vector2.Normalize(tempVector - Position) * MOVEMENT_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds;
 				Position += moveVector;

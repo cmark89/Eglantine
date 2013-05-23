@@ -29,16 +29,21 @@ namespace Eglantine
 
 		public override void Initialize()
 		{
-
+			GameScreens = new List<Screen>();
+			GameScreens.Add(new AdventureScreen());
 		}
 
 		public override void Update(GameTime gameTime)
 		{
 			foreach(Screen s in GameScreens)
 			{
-				// Update each screen 
-				if(s.UpdateType == ScreenUpdateType.Always || s == GameScreens[0])
-					s.Update(gameTime);
+				// Loop through each screen and ensure that only the "top" screen can receive input
+				if(GameScreens[GameScreens.Count - 1] == s)
+					s.ReceivingInput = true;
+				else
+					s.ReceivingInput = false;
+
+				s.Update(gameTime);
 			}
 		}
 
