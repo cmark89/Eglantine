@@ -21,6 +21,7 @@ namespace Eglantine.Engine.Pathfinding
 		{
 			// Parse the table into nodes
 			ParseLuaTable(nav);
+			ReportNavmesh();
 			BuildMesh();
 			// Now create an instance of AStar to link to the mesh
 			aStar = new AStar(this);
@@ -36,32 +37,30 @@ namespace Eglantine.Engine.Pathfinding
 		{
 			LuaTable currentTable = (LuaTable)nav["Polygons"];
 			LuaTable currentPolygon;
+			LuaTable currentVertex;
 			Polygon tempPolygon;
-			int tempX, tempY;
+			float tempX, tempY;
 
 			// Iterate through each polygon in the table
-			for (int i = 1; i < currentTable.Keys.Count + 1; i++) {
+			for (int i = 1; i < currentTable.Keys.Count + 1; i++) 
+			{
 
 				currentPolygon = (LuaTable)currentTable [i];
 
 				// Add each point in the polygon to the temporary object
 				tempPolygon = new Polygon ();
-				LuaTable nestedTable;
 				for (int point = 1; point < currentPolygon.Keys.Count + 1; point++) 
 				{
-					nestedTable = (LuaTable)currentPolygon[point];
-					tempX = (int)((double)(nestedTable["X"]));
-					tempY = (int)((double)(nestedTable["Y"]));
+					currentVertex = (LuaTable)currentPolygon[point];
+					tempX = (float)((double)(currentVertex["X"]));
+					tempY = (float)((double)(currentVertex["Y"]));
 					tempPolygon.AddVertex (new Vector2 (tempX, tempY));
 				}
 
 				// Now that all the points have been added to the polygon, add it to
 				// the polygon list.
 				Polygons.Add (tempPolygon);
-				Console.WriteLine("Added polygon.");
 			}
-
-			Console.WriteLine(Polygons.Count + " added!");
 
 			// All the polygons should now have been added to the table.  
 			// Now add all the links
@@ -80,12 +79,11 @@ namespace Eglantine.Engine.Pathfinding
 				// Add the points at which those polygons are connected
 				currentLink = (LuaTable)currentTable[i];
 				currentLink = (LuaTable)currentLink["Points"];
-				LuaTable nestedTable;
 				for (int j = 1; j < currentLink.Keys.Count + 1; j++) 
 				{
-					nestedTable = (LuaTable)currentLink[j];
-					tempX = (int)(double)nestedTable["X"];
-					tempY = (int)(double)nestedTable["Y"];
+					currentVertex = (LuaTable)currentLink[j];
+					tempX = (float)((double)currentVertex["X"]);
+					tempY = (float)((double)currentVertex["Y"]);
 					tempLink.AddPoint (new Vector2(tempX, tempY));
 				}
 
@@ -108,10 +106,8 @@ namespace Eglantine.Engine.Pathfinding
 			// Add each point from each polygon into the list of nodes.
 			foreach (Polygon polygon in Polygons)
 			{
-				Console.WriteLine("Construct polygon...");
 				foreach (Vector2 point in polygon.Vertices)
 				{
-					Console.WriteLine("Add vertex.");
 					Nodes.Add (new NavNode (point, polygon));
 				}
 
