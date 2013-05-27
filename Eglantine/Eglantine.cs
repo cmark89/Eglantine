@@ -115,7 +115,8 @@ namespace Eglantine
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
 			spriteBatch.Begin ();
-			spriteBatch.Draw (TestRoom, Vector2.Zero, Color.White);
+			//spriteBatch.Draw (TestRoom, Vector2.Zero, Color.White);
+			testRoom.Draw(spriteBatch);
 
 			pather.Draw(spriteBatch);
 			spriteBatch.End ();

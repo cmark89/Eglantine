@@ -32,9 +32,23 @@ namespace Eglantine.Engine
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			CurrentRoom.Draw(spriteBatch);
+			// Draw the background layers
+			foreach(RoomLayer rl in CurrentRoom.Background)
+				rl.Draw(spriteBatch);
 
-			// Draw the player in the room.
+			// Draw all midground layers that are in front of the player
+			//foreach(RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff < Player.Y)) rl.Draw(spriteBatch);
+
+
+			// Draw the player
+			//Player.Draw(spriteBatch);
+
+			// Draw all midground layers that are behind the player
+			//foreach(RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff >= Player.Y)) rl.Draw(spriteBatch);
+
+			// Draw the foreground layers
+			foreach(RoomLayer rl in CurrentRoom.Foreground)
+				rl.Draw(spriteBatch);
 		}
 	}
 }

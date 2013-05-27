@@ -15,7 +15,7 @@ namespace Eglantine
 
 		// Stores a list of textures and positions.  Normally this will only draw one, except in the 
 		// case of scrolling backgrounds.
-		List<TextureWrapper> Textures { get; private set; }
+		public List<TextureWrapper> Textures { get; private set; }
 
 		// The color to draw the room in
 		public Color Color { get; private set; }
@@ -26,7 +26,7 @@ namespace Eglantine
 
 		// The type of layer; this is used by the parent Room for sorting after 
 		// building of all layers is completed.
-		public LayerType Type { get; private set; }
+		public RoomLayerDrawType Type { get; private set; }
 
 		//----TBA-----
 		// Texture used for lighting
@@ -42,12 +42,12 @@ namespace Eglantine
 
 		#endregion
 		// This is used with scrolling background to keep track of multiple instances of the texture
-		class TextureWrapper
+		public class TextureWrapper
 		{
 			public Texture2D Texture;
 			public Vector2 Position;
 
-			public TextureWrapper(Texture tex, Vector2 vec)
+			public TextureWrapper(Texture2D tex, Vector2 vec)
 			{
 				Texture = tex;
 				Position = vec;
@@ -57,10 +57,27 @@ namespace Eglantine
 		// Constructs a room layer from a layer described in a LuaTable
 		public RoomLayer (LuaTable layerTable)
 		{
+			Textures = new List<TextureWrapper>();
 			Name = (string)layerTable["Name"];
 			Textures.Add(new TextureWrapper(ContentLoader.Instance.Load<Texture2D>((string)layerTable["Texture"]), Vector2.Zero));
-			Color = new Color((float)(double)layerTable["Color[1]"], (float)(double)layerTable["Color[2]"], (float)(double)layerTable["Color[3]"], (float)(double)layerTable["Color[4]"]);
+			LuaTable colorTable = (LuaTable)layerTable["Color"];
+			Color = new Color((float)(double)colorTable[1], (float)(double)colorTable[2], (float)(double)colorTable[3], (float)(double)colorTable[4]);
 			Scroll = new Vector2((float)(double)layerTable["Scroll.X"], (float)(double)layerTable["Scroll.Y"]);
+
+			switch((string)layerTable["Type"])
+			{
+				case("Background"):
+					Type = RoomLayerDrawType.Background;
+					break;
+				case("Foreground"):
+					Type = RoomLayerDrawType.Foreground;
+					break;
+				case("Midground"):
+					Type = RoomLayerDrawType.Midground;
+					break;
+				default:
+					break;
+			}
 
 			if(Scroll.X > 0 || Scroll.Y > 0)
 				Scrolling = true;
@@ -70,17 +87,27 @@ namespace Eglantine
 			// More to come...
 		}
 
-		public void Update(GameTime gameTime)
+		public void Update (GameTime gameTime)
 		{
+			if (Scrolling)
+			{
+				foreach(TextureWrapper tw in Textures)
+				{
+					tw.Position += Scroll * (float)gameTime.ElapsedGameTime.TotalSeconds;
+				}
+
+				// Check to see if a new TextureWrapper is needed to cover empty space
+			}
 		}
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
-		
+			foreach(TextureWrapper tw in Textures)
+				spriteBatch.Draw(tw.Texture, tw.Position, Color);
 		}
 	}
 
-	enum LayerType
+	public enum RoomLayerDrawType
 	{
 		Background,
 		Midground,

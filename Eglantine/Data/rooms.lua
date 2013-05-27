@@ -11,7 +11,7 @@ rooms = {}
 
 rooms["testroom"] = {
 --------GRAPHICS--------
-	BackgroundLayers = 
+	Layers = 
 	{
 		[1] = {
 			Name = "BG",
@@ -20,7 +20,7 @@ rooms["testroom"] = {
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
 		}
-	}
+	},
 	--ForegroundTextures = { "Someotherfile", "Andanotherfordepth" },
 	
 	

@@ -35,6 +35,7 @@ namespace Eglantine.Engine
 			lua.DoFile ("Data/rooms.lua");
 
 			// Set up the room's textures and layers.
+			ParseLayers(lua, roomname);
 
 			// Build the room's navmesh
 			ParseNavmesh(lua, roomname);
@@ -45,6 +46,46 @@ namespace Eglantine.Engine
 		}
 
 		#region Lua Parsing Functions
+
+		public void ParseLayers (Lua lua, string roomname)
+		{
+			List<RoomLayer> layers = new List<RoomLayer> ();
+			LuaTable layersTable = lua.GetTable ("rooms." + roomname + ".Layers");
+
+			// Parse each layer into an appropriate object for the engine to handle
+			for (int i = 0; i < layersTable.Keys.Count; i++)
+			{
+				layers.Add(new RoomLayer ((LuaTable)layersTable[i+1]));
+			}
+
+			Background = new List<RoomLayer>();
+			Foreground = new List<RoomLayer>();
+			Midground = new List<RoomLayer>();
+
+			// Sort the layers into their respective lists
+			foreach (RoomLayer rl in layers)
+			{
+				switch(rl.Type)
+				{
+					case(RoomLayerDrawType.Background):
+						Background.Add(rl);
+						break;
+					case(RoomLayerDrawType.Foreground):
+						Foreground.Add(rl);
+						break;
+					case(RoomLayerDrawType.Midground):
+						Midground.Add(rl);
+						break;
+					default: 
+						break;
+				}
+			}
+
+			// Finally, sort the lists by draw priority
+			Background.Sort((x, y) => (y.Depth.CompareTo(x.Depth)));
+			Foreground.Sort((x, y) => (y.Depth.CompareTo(x.Depth)));
+			Midground.Sort((x, y) => (y.YCutoff.CompareTo(x.YCutoff)));
+		}
 
 		public void ParseNavmesh(Lua lua, string roomname)
 		{
@@ -121,15 +162,16 @@ namespace Eglantine.Engine
 			{
 				i.Update(gameTime);
 			}
+
+			// Should give the room layers an update here...
 		}
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
-			spriteBatch.Draw(Texture, Vector2.Zero, Color.White);
-
-			// Draw each layer
-
-			// Draw each item.
+			foreach (RoomLayer rl in Background)
+			{
+				rl.Draw(spriteBatch);
+			}
 		}
 	}
 }
