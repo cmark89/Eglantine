@@ -23,6 +23,10 @@ namespace Eglantine
 		SpriteBatch spriteBatch;
 		MouseState lastMouseState;
 
+		// Bad practice, but make this static for testing purposes.
+		// Probably put this into a singleton
+		public static Lua Lua;
+
 
 		// Testing stuff here...
 
@@ -36,13 +40,10 @@ namespace Eglantine
 			IsMouseVisible = true;
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	     
+			ContentLoader.Initialize(Content);
 			graphics.PreferredBackBufferWidth = 1024;
 			graphics.PreferredBackBufferHeight = 768;
 			graphics.IsFullScreen = false;
-
-			testRoom = new Room("testroom");
-			testnavmesh = testRoom.Navmesh;
-
 		}
 
 		/// <summary>
@@ -53,6 +54,15 @@ namespace Eglantine
 		/// </summary>
 		protected override void Initialize ()
 		{
+			// Temporary
+			Lua = new Lua();
+			Lua.DoFile("Data/setup.lua");
+
+			EventManager.Initialize();
+
+			testRoom = new Room("testroom");
+			testnavmesh = testRoom.Navmesh;
+
 			// TODO: Add your initialization logic here
 			base.Initialize ();
 				

@@ -14,9 +14,14 @@ items["Grandfather's Book"] = {
 
 	Name = "Grandfather's Book",
 	Texture = "Graphics/Icons/GrandfathersBook"
+	Description = "An old, dusty volume."
 	Type = "Immediate"
 	
 	OnAcquire = function()
+	end
+	
+	OnInspect = function()
+		Event:ShowMessage(Description)
 	end
 	
 	OnUse = function()

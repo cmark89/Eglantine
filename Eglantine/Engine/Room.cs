@@ -12,6 +12,15 @@ namespace Eglantine.Engine
 		// The rooms' texture.  This will later be split into multiple layers.
 		public Texture2D Texture { get; private set; }
 
+		// Background layers are always drawn behind the player.
+		public List<RoomLayer> Background { get; private set; }
+
+		// Midground layers are drawn behind or in front of the player depending on Y-axis depth
+		public List<RoomLayer> Midground { get; private set; }
+
+		// Foreground layers are drawn in front of the player
+		public List<RoomLayer> Foreground { get; private set; }
+
 		// The navmesh that guides the player's movement
 		public Navmesh Navmesh { get; set; }
 
@@ -22,7 +31,7 @@ namespace Eglantine.Engine
 		public Room (string roomname)
 		{
 			// Load the rooms datafile
-			Lua lua = new Lua ();
+			Lua lua = Eglantine.Lua;
 			lua.DoFile ("Data/rooms.lua");
 
 			// Set up the room's textures and layers.

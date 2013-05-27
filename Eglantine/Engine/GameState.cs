@@ -5,14 +5,6 @@ namespace Eglantine.Engine
 {
 	public sealed class GameState
 	{
-		// Stores the items the player has collected.
-		List<Item> PlayerItems;
-
-		// Stores the rooms as they currently exist in the game.
-		List<Room> Rooms;
-
-
-
 		// GameState is a singleton.
 		private static GameState _instance;
 		public static GameState Instance {
@@ -24,6 +16,14 @@ namespace Eglantine.Engine
 			}
 		}
 
+		// Stores the items the player has collected.
+		public List<Item> PlayerItems { get; private set; }
+
+		// Stores the rooms as they currently exist in the game.
+		public List<Room> Rooms { get; private set; }
+
+
+
 		// Load a gamestate from file in order to resume the game
 		public static void LoadState()
 		{
@@ -33,6 +33,16 @@ namespace Eglantine.Engine
 		public static void SaveState()
 		{
 		}
+
+
+		#region Instance methods
+		public void GainItem(Item newItem)
+		{
+			PlayerItems.Add(newItem);
+		}
+
+
+		#endregion
 	}
 }
 

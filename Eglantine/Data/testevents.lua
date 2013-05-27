@@ -1,11 +1,12 @@
 #!/usr/local/bin/lua
 
 function stepOnCrack()
-	print("Argh!  Me back is broken!!")
+	Event:ShowMessage("The floor is cracking!!")
 end
 
 function pillowClick()
-	print("What an awesome pillow!")
+	Event:MovePlayer(150, 175)
+	Event:ShowMessage("That's a pillow, alright.")
 end
 
 

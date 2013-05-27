@@ -1,4 +1,5 @@
 bin/*
 Eglantine/bin/*
 *.userprefs
-
+*~
+*.orig
