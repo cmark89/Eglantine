@@ -77,6 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
+    <None Include="Content\arrowicon.xnb" />
+    <None Include="Content\arrowicon2.xnb" />
+    <None Include="Content\moveicon.xnb" />
+    <None Include="Content\phGui.xnb" />
+    <None Include="Content\walkicon.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
