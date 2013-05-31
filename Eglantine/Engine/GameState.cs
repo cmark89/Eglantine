@@ -21,6 +21,7 @@ namespace Eglantine.Engine
 
 		// Stores the rooms as they currently exist in the game.
 		public List<Room> Rooms { get; private set; }
+		public Room CurrentRoom { get; private set; }
 
 
 
@@ -41,6 +42,34 @@ namespace Eglantine.Engine
 			PlayerItems.Add(newItem);
 		}
 
+		// Changes the room to the room with the given name.
+		public void SetRoom (string roomName)
+		{
+			CurrentRoom = Rooms.Find(x => x.Name == roomName);
+		}
+
+		public void ChangeRoom (string targetRoomName, string targetEntranceName)
+		{
+			Room targetRoom = Rooms.Find (x => x.Name == targetRoomName);
+
+			if (targetRoom == null)
+			{
+				Console.WriteLine ("Error!  Could not find Room: " + targetRoomName);
+				return;
+			}
+
+			Entrance targetEntrance = targetRoom.Entrances.Find (x => x.Name == targetEntranceName);
+
+			if (targetEntrance == null)
+			{
+				Console.WriteLine("Error!  Could not find Entrance: " + targetEntranceName + " in Room: " + targetRoomName);
+				return;
+			}
+
+			CurrentRoom = targetRoom;
+			Player.Instance.Position = targetEntrance.Point;
+			// Cancel all standing player orders 
+		}
 
 		#endregion
 	}

@@ -73,7 +73,6 @@ namespace Eglantine.Engine
 				// Set the waypoint to null to stop pathfinding updates.
 				nextWaypoint = null;
 			}
-
 		}
 	}
 }

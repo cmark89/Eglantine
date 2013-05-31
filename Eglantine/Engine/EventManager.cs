@@ -36,9 +36,16 @@ namespace Eglantine.Engine
 			Console.WriteLine("Move player to " + x + ":" + y);
 		}
 
+		// Gives the player the named item
 		public void GainItem(string itemName)
 		{
 			GameState.Instance.GainItem(new Item(itemName));
+		}
+
+		// Moves the player to room "roomName" and entrance "entranceName"
+		public void ChangeRoom(string roomName, string entranceName)
+		{
+			GameState.Instance.ChangeRoom(roomName, entranceName);
 		}
 	}
 }

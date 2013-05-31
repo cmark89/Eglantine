@@ -74,6 +74,7 @@
     <Compile Include="Engine\EventManager.cs" />
     <Compile Include="Engine\ContentLoader.cs" />
     <Compile Include="Engine\RoomLayer.cs" />
+    <Compile Include="Engine\Screens\Entrance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

@@ -137,15 +137,13 @@ rooms["testroom"] = {
 	},
 	
 --------ENTRANCES--------
-	Entrances = 
-	{
+	Entrances = {
 		[1] = {
-			X = 67,
-			Y = 550,
-			Width = 170,
-			Height = 212,
+		
+			Name = "Teleport",
 			
-			Destination = "testroom2"
+			X = 500,
+			Y = 850
 		}
 	}
 }

@@ -9,6 +9,8 @@ namespace Eglantine.Engine
 {
 	public class Room
 	{
+		public string Name { get; private set; }
+
 		// The rooms' texture.  This will later be split into multiple layers.
 		public Texture2D Texture { get; private set; }
 
@@ -26,13 +28,15 @@ namespace Eglantine.Engine
 
 		public List<Interactable> Interactables;
 		public List<TriggerArea> TriggerAreas;
-		public List<Point> Entrances;
+		public List<Entrance> Entrances;
 
 		public Room (string roomname)
 		{
 			// Load the rooms datafile
 			Lua lua = Eglantine.Lua;
 			lua.DoFile ("Data/rooms.lua");
+
+			Name = roomname;
 
 			// Set up the room's textures and layers.
 			ParseLayers(lua, roomname);
@@ -43,6 +47,7 @@ namespace Eglantine.Engine
 			// Set up all the objects and interactable objects 
 			ParseInteractables(lua, roomname);
 			ParseTriggerAreas(lua, roomname);
+			ParseEntrances(lua, roomname);
 		}
 
 		#region Lua Parsing Functions
@@ -145,6 +150,25 @@ namespace Eglantine.Engine
 
 				// Add the event 
 				Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
+			}
+		}
+
+		public void ParseEntrances (Lua lua, string roomname)
+		{
+			Entrances = new List<Entrance> ();
+
+			LuaTable entrances = lua.GetTable ("rooms." + roomname + ".Entrances");
+
+			LuaTable currentTable;
+
+			for (int i = 0; i < entrances.Keys.Count; i++)
+			{
+				currentTable = entrances[i + 1];
+				float x = currentTable["X"];
+				float y = currentTable["Y"];
+				string name = currentTable["Name"];
+
+				Entrances.Add(new Entrance(this, new Vector2(x, y), name));
 			}
 		}
 
