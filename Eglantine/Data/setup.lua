@@ -1,6 +1,13 @@
 --setup.lua--
---This file is used for exposing certain C# classes and instances to the other .lua files.
+--This script is used for exposing certain C# classes and instances to the other .lua files.
 --Currently exposed: GameState, EventManager
+--It also loads all other .lua files required by the game to streamline the process of loading
+
+--Load the other .lua files required by the game
+require "Data/rooms.lua"
+require "Data/testevents.lua"
+
+
 
 --Load the relevent assemblies and types
 luanet.load_assembly "Eglantine"
@@ -11,15 +18,11 @@ EVENT_MANAGER = luanet.import_type "Eglantine.Engine.EventManager"
 GameState = nil
 Event = nil
 
-
+--Functions related to .NET classes and objects
 --Sets the lua global GameState to the current GameState.Instance--
 function loadGameState()
 	GameState = GAME_STATE.Instance
 end
-
-
-
-
 
 --Sets the lua global Event to the current EventManager.Instance--
 function loadEventManager()
@@ -28,3 +31,4 @@ end
 
 --Event:ShowMessage(string)
 --Event:MovePlayer(targetX, targetY)
+--Event:ChangeRoom(roomName, roomEntranceName)

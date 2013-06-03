@@ -57,8 +57,10 @@ namespace Eglantine.Engine
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
-
+			// Temprorarily empty!
 		}
+
+		#region Pathfinding
 
 		public void NextWaypoint ()
 		{
@@ -73,6 +75,18 @@ namespace Eglantine.Engine
 				// Set the waypoint to null to stop pathfinding updates.
 				nextWaypoint = null;
 			}
+		}
+
+		public void SetPath(List<NavNode> path)
+		{
+			Path = path;
+		}
+
+		#endregion
+
+		public void SetPosition(Vector2 pos)
+		{
+			Position = pos;
 		}
 	}
 }

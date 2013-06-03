@@ -48,6 +48,10 @@ namespace Eglantine.Engine
 			ParseInteractables(lua, roomname);
 			ParseTriggerAreas(lua, roomname);
 			ParseEntrances(lua, roomname);
+
+
+			// Finally, tell the gamestate that the room exists
+			GameState.Instance.RegisterRoom(this);
 		}
 
 		#region Lua Parsing Functions
@@ -163,10 +167,10 @@ namespace Eglantine.Engine
 
 			for (int i = 0; i < entrances.Keys.Count; i++)
 			{
-				currentTable = entrances[i + 1];
-				float x = currentTable["X"];
-				float y = currentTable["Y"];
-				string name = currentTable["Name"];
+				currentTable = (LuaTable)entrances[i + 1];
+				float x = (float)(double)currentTable["X"];
+				float y = (float)(double)currentTable["Y"];
+				string name = (string)currentTable["Name"];
 
 				Entrances.Add(new Entrance(this, new Vector2(x, y), name));
 			}

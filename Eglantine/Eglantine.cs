@@ -27,6 +27,8 @@ namespace Eglantine
 		// Probably put this into a singleton
 		public static Lua Lua;
 
+		Scene currentScene;
+
 
 		// Testing stuff here...
 
@@ -54,9 +56,12 @@ namespace Eglantine
 		/// </summary>
 		protected override void Initialize ()
 		{
-			// Temporary
+			// Temporary...Make this a LuaManager class or a wrapper or something.
 			Lua = new Lua();
+
+			// Load all lua scripts here.
 			Lua.DoFile("Data/setup.lua");
+			Lua.DoFile("Data/rooms.lua");
 
 			EventManager.Initialize();
 
@@ -90,13 +95,16 @@ namespace Eglantine
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update (GameTime gameTime)
 		{
-			bool clicked = (Mouse.GetState().LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released);
-			if (clicked && testnavmesh.ContainingPolygon(new Vector2(Mouse.GetState().X, Mouse.GetState().Y)) != null)
+			// Update mouse input.
+			MouseManager.Update(gameTime);
+
+			if (MouseManager.LeftClickDown && testnavmesh.ContainingPolygon(MouseManager.Position) != null)
 			{
 				pather.nextWaypoint = null;
-				pather.Waypoints = testnavmesh.GetPath(pather.Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+				pather.Waypoints = testnavmesh.GetPath(pather.Position, new Vector2(MouseManager.Position));
 			}
-			lastMouseState = Mouse.GetState();
+
+			currentScene.Update(gameTime);
 
 			testRoom.Update(gameTime);
 			pather.Update(gameTime);
@@ -115,15 +123,23 @@ namespace Eglantine
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
 			spriteBatch.Begin ();
+
+			currentScene.Draw(spriteBatch);
 			//spriteBatch.Draw (TestRoom, Vector2.Zero, Color.White);
 			testRoom.Draw(spriteBatch);
 
 			pather.Draw(spriteBatch);
 			spriteBatch.End ();
-		
-			//TODO: Add your drawing code here
             
 			base.Draw (gameTime);
+		}
+
+		public void SetScene(Scene newScene)
+		{
+			if(currentScene != null)
+				currentScene.Unload();
+
+			currentScene = newScene;
 		}
 	}
 }

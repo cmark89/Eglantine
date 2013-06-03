@@ -75,6 +75,7 @@
     <Compile Include="Engine\ContentLoader.cs" />
     <Compile Include="Engine\RoomLayer.cs" />
     <Compile Include="Engine\Screens\Entrance.cs" />
+    <Compile Include="Engine\MouseManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -83,6 +84,7 @@
     <None Include="Content\moveicon.xnb" />
     <None Include="Content\phGui.xnb" />
     <None Include="Content\walkicon.xnb" />
+    <None Include="Data\Rooms\testroom.lua" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -91,6 +93,7 @@
     <Folder Include="Engine\Pathfinding\" />
     <Folder Include="Data\" />
     <Folder Include="Engine\Screens\" />
+    <Folder Include="Data\Rooms\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -33,7 +33,7 @@ namespace Eglantine.Engine
 		// Forces the player to move to the given point.
 		public void MovePlayer(double x, double y)
 		{
-			Console.WriteLine("Move player to " + x + ":" + y);
+			AdventureScreen.Instance.MovePlayer(new Vector2((float)x, (float)y));
 		}
 
 		// Gives the player the named item

@@ -2,6 +2,7 @@
 
 function stepOnCrack()
 	Event:ShowMessage("The floor is cracking!!")
+	Event:ChangeRoom("testroom", "Teleport")
 end
 
 function pillowClick()

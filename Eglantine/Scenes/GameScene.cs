@@ -19,11 +19,11 @@ namespace Eglantine
 		public GameState GameState { get; private set; }
 
 
-
-
-
-		public GameScene ()
+		// Create a new GameScene around a given GameState intance
+		public GameScene (GameState newGameState)
 		{
+			GameState = newGameState;
+			Initialize();
 		}
 
 
@@ -50,13 +50,18 @@ namespace Eglantine
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			// Draw all GameScreens from the bottom up.
-			for(int i = GameScreens.Count - 1; i > 0; i++)
+			for(int i = GameScreens.Count - 1; i > 0; i--)
 				GameScreens[i].Draw(spriteBatch);
 
 			// Draw the message queue
 		}
 
 		public override void Unload()
+		{
+
+		}
+
+		public static GameScene NewGameScene()
 		{
 
 		}

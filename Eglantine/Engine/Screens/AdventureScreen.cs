@@ -14,8 +14,21 @@ namespace Eglantine.Engine
 			get { return GameState.Instance.CurrentRoom; }
 		}
 
+		// This almost implements a singleton pattern in order to prevent using a static method for moving the player.
+		// The Instance accessor does not create the instance if it does not exist, however.
+		private static AdventureScreen _instance;
+		public static AdventureScreen Instance
+		{
+			get
+			{
+				if(_instance != null)
+					return _instance;
+			}
+		}
+
 		public override void Initialize()
 		{
+			_instance = this;
 			// Set up the adventure screen here.
 
 			// Initialize the player.
@@ -25,16 +38,25 @@ namespace Eglantine.Engine
 
 		public override void Update (GameTime gameTime)
 		{
+
 			if (ReceivingInput)
 			{
 				// Process all player input here
+
+				// Check where the mouse is and what mouse icon to display
+
+				// If the player's mouse is in the walkable area...
+				if(MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null)
+				{
+					MovePlayer(MouseManager.Position);
+				}
 			}
 
 			// Now the other updates go here anyways.
 			CurrentRoom.Update(gameTime);
 
 			// Update the player.
-			Player.Update();
+			Player.Update(gameTime);
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)
@@ -57,6 +79,17 @@ namespace Eglantine.Engine
 			// Draw the foreground layers
 			foreach(RoomLayer rl in CurrentRoom.Foreground)
 				rl.Draw(spriteBatch);
+		}
+
+		// This method is static to ensure that the EventManager is able to force the player to move.
+		public void MovePlayer (Vector2 targetPoint, bool uninteruptable = false)
+		{
+			Player.SetPath (CurrentRoom.Navmesh.GetPath (Player.Position, targetPoint));
+
+			if (uninteruptable)
+			{
+				// Disable the ability to give the player orders until they have reached their destination.
+			}
 		}
 	}
 }
