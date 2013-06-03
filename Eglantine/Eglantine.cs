@@ -21,21 +21,12 @@ namespace Eglantine
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		MouseState lastMouseState;
 
 		// Bad practice, but make this static for testing purposes.
 		// Probably put this into a singleton
 		public static Lua Lua;
-
 		Scene currentScene;
 
-
-		// Testing stuff here...
-
-		Texture2D TestRoom;
-		Navmesh testnavmesh;
-		public static TestPather pather = new TestPather(new Vector2(800, 600));
-		Room testRoom;
 
 		public Eglantine ()
 		{
@@ -59,16 +50,15 @@ namespace Eglantine
 			// Temporary...Make this a LuaManager class or a wrapper or something.
 			Lua = new Lua();
 
-			// Load all lua scripts here.
+			// Load lua setup here.
+			Console.WriteLine("Load setup.lua...");
 			Lua.DoFile("Data/setup.lua");
-			Lua.DoFile("Data/rooms.lua");
+			Console.WriteLine("setup.lua should have loaded.");
 
 			EventManager.Initialize();
 
-			testRoom = new Room("testroom");
-			testnavmesh = testRoom.Navmesh;
+			ChangeScene(new GameScene(GameState.NewGameState()));
 
-			// TODO: Add your initialization logic here
 			base.Initialize ();
 				
 		}
@@ -81,11 +71,6 @@ namespace Eglantine
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
-			TestRoom = Content.Load<Texture2D>("testroom");
-			pather.LoadContent(Content);
-
-
-			//TODO: use this.Content to load your game content here 
 		}
 
 		/// <summary>
@@ -95,21 +80,15 @@ namespace Eglantine
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update (GameTime gameTime)
 		{
+			// FPS check
+			//Console.Clear();
+			//Console.WriteLine(1f / (float)gameTime.ElapsedGameTime.TotalSeconds);
+
 			// Update mouse input.
 			MouseManager.Update(gameTime);
 
-			if (MouseManager.LeftClickDown && testnavmesh.ContainingPolygon(MouseManager.Position) != null)
-			{
-				pather.nextWaypoint = null;
-				pather.Waypoints = testnavmesh.GetPath(pather.Position, new Vector2(MouseManager.Position));
-			}
-
 			currentScene.Update(gameTime);
 
-			testRoom.Update(gameTime);
-			pather.Update(gameTime);
-
-			// TODO: Add your update logic here			
 			base.Update (gameTime);
 
 		}
@@ -123,18 +102,13 @@ namespace Eglantine
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
 			spriteBatch.Begin ();
-
 			currentScene.Draw(spriteBatch);
-			//spriteBatch.Draw (TestRoom, Vector2.Zero, Color.White);
-			testRoom.Draw(spriteBatch);
-
-			pather.Draw(spriteBatch);
 			spriteBatch.End ();
             
 			base.Draw (gameTime);
 		}
 
-		public void SetScene(Scene newScene)
+		public void ChangeScene(Scene newScene)
 		{
 			if(currentScene != null)
 				currentScene.Unload();

@@ -1,4 +1,5 @@
 using System;
+using LuaInterface;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
@@ -6,6 +7,7 @@ namespace Eglantine.Engine
 {
 	public sealed class GameState
 	{
+		#region Member Variables
 		// GameState is a singleton.
 		private static GameState _instance;
 		public static GameState Instance {
@@ -26,21 +28,32 @@ namespace Eglantine.Engine
 
 		// This is stored here only during serialization to load the player position.
 		public Vector2 PlayerPosition;
+		#endregion
 
-
+		#region Setup, Creation and Loading
 		public GameState ()
 		{
 			Console.WriteLine ("Creating new GameState...");
+		}
 
+
+		// Sets up the GameState for a new game.
+		public void InitializeNewGame ()
+		{
 			// Initialize lists here
 			PlayerItems = new List<Item> ();
 			Rooms = new List<Room> ();
-
+			//LuaTable tempTable;
 			// Populate the list of rooms
-			for (int i = 1; i < Eglantine.Lua.GetTable("requiredRooms").Keys.Count + 1; i++)
+			LuaTable tempTable = Eglantine.Lua.GetTable("requiredRooms");
+
+			for (int i = 0; i < tempTable.Keys.Count; i++)
 			{
-				Rooms.Add(new Room(Eglantine.Lua.GetString("requiredRooms[" + i + "]")));
+				Console.WriteLine("Add room \"" + (string)tempTable[i+1]);
+				Rooms.Add(new Room((string)tempTable[i+1]));
 			}
+
+			Console.WriteLine("All rooms added.");
 
 			// Set the current room to the first room.
 			CurrentRoom = Rooms[0];
@@ -54,7 +67,9 @@ namespace Eglantine.Engine
 
 		public static GameState NewGameState() 
 		{
+
 			_instance = new GameState();
+			GameState.Instance.InitializeNewGame();
 			return _instance;
 		}
 
@@ -62,17 +77,19 @@ namespace Eglantine.Engine
 		public static GameState LoadState()
 		{
 			// Load player's position from file
-			Player.Instance.SetPosition(PlayerPosition);
+			Player.Instance.SetPosition(Instance.PlayerPosition);
+
+			return null;	// what the hell is this?
 		}
 
 		// Save a gamestate to file
 		public static void SaveState()
 		{
 			// Prepare to save player position to file
-			PlayerPosition = Player.Instance.Position;
+			Instance.PlayerPosition = Player.Instance.Position;
 		}
 
-
+		#endregion
 		#region Instance methods
 		public void RegisterRoom(Room room)
 		{

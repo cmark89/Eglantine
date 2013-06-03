@@ -8,6 +8,9 @@ namespace Eglantine.Engine
 {
 	public class Player
 	{
+		// The world's most temporary thing:
+		public Texture2D Texture { get; private set; }
+
 		// Store the player character's position on screen.
 		public Vector2 Position { get; private set; }
 
@@ -18,7 +21,7 @@ namespace Eglantine.Engine
 		private NavNode nextWaypoint;
 
 		// The distance at which the player paths toward the next waypoint
-		const float WAYPOINT_DISTANCE = 15f;
+		const float WAYPOINT_DISTANCE = 18f;
 
 		// Movement speed per second
 		const float MOVEMENT_SPEED = 100f;
@@ -38,7 +41,7 @@ namespace Eglantine.Engine
 
 		public Player ()
 		{
-
+			Texture = ContentLoader.Instance.Load<Texture2D>("MayStickfigure");
 		}
 
 		public void Update (GameTime gameTime)
@@ -57,7 +60,8 @@ namespace Eglantine.Engine
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
-			// Temprorarily empty!
+			// Temprorary until animatiosn exist:
+			spriteBatch.Draw(Texture, new Vector2(Position.X - (Texture.Width / 2), Position.Y - (Texture.Height - 15)), Color.White);
 		}
 
 		#region Pathfinding
@@ -74,12 +78,16 @@ namespace Eglantine.Engine
 			{
 				// Set the waypoint to null to stop pathfinding updates.
 				nextWaypoint = null;
+				Console.WriteLine("Reached end of path.");
 			}
 		}
 
 		public void SetPath(List<NavNode> path)
 		{
 			Path = path;
+
+			if(path != null && nextWaypoint == null)
+				NextWaypoint();
 		}
 
 		#endregion

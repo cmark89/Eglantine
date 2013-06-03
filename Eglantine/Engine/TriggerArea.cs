@@ -16,10 +16,8 @@ namespace Eglantine.Engine
 
 		public override void Update(GameTime gameTime)
 		{
-			// This is so temporary it's not even funny.
-			Vector2 playerPos = Eglantine.pather.Position;
-
-			if(VectorInArea(playerPos))
+			// Call the event if the player is within the trigger area.
+			if(VectorInArea(Player.Instance.Position))
 				Event.Call();
 		}
 

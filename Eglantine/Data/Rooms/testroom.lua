@@ -1,3 +1,5 @@
+print("testroom added to global table 'rooms'.")
+
 rooms["testroom"] = {
 --------GRAPHICS--------
 	Layers = 
@@ -131,7 +133,7 @@ rooms["testroom"] = {
 			Name = "Teleport",
 			
 			X = 500,
-			Y = 850
+			Y = 600
 		}
 	}
 }

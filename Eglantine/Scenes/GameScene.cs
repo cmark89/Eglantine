@@ -30,7 +30,10 @@ namespace Eglantine
 		public override void Initialize()
 		{
 			GameScreens = new List<Screen>();
-			GameScreens.Add(new AdventureScreen());
+
+			AdventureScreen advScreen = new AdventureScreen();
+			advScreen.Initialize();
+			GameScreens.Add(advScreen);
 		}
 
 		public override void Update(GameTime gameTime)
@@ -50,18 +53,13 @@ namespace Eglantine
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			// Draw all GameScreens from the bottom up.
-			for(int i = GameScreens.Count - 1; i > 0; i--)
-				GameScreens[i].Draw(spriteBatch);
+			for(int i = GameScreens.Count; i > 0; i--)
+				GameScreens[i-1].Draw(spriteBatch);
 
 			// Draw the message queue
 		}
 
 		public override void Unload()
-		{
-
-		}
-
-		public static GameScene NewGameScene()
 		{
 
 		}

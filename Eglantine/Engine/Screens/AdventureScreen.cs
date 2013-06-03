@@ -23,6 +23,8 @@ namespace Eglantine.Engine
 			{
 				if(_instance != null)
 					return _instance;
+				else
+					return null;
 			}
 		}
 

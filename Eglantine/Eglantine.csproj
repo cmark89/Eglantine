@@ -84,7 +84,6 @@
     <None Include="Content\moveicon.xnb" />
     <None Include="Content\phGui.xnb" />
     <None Include="Content\walkicon.xnb" />
-    <None Include="Data\Rooms\testroom.lua" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -119,6 +118,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\setup.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Rooms\testroom.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\test.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

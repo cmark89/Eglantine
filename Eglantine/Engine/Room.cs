@@ -34,7 +34,6 @@ namespace Eglantine.Engine
 		{
 			// Load the rooms datafile
 			Lua lua = Eglantine.Lua;
-			lua.DoFile ("Data/rooms.lua");
 
 			Name = roomname;
 
