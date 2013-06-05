@@ -8,7 +8,9 @@ namespace Eglantine.Engine
 {
 	public class AdventureScreen : Screen
 	{
-		Player Player;		
+		Player Player;	
+		GUI Gui;
+
 		Room CurrentRoom
 		{ 
 			get { return GameState.Instance.CurrentRoom; }
@@ -35,6 +37,7 @@ namespace Eglantine.Engine
 
 			// Initialize the player.
 			Player = Player.Instance;
+			Gui = new GUI();
 			//Player.Setup();
 		}
 
@@ -43,15 +46,23 @@ namespace Eglantine.Engine
 
 			if (ReceivingInput)
 			{
-				// Process all player input here
-
-				// Check where the mouse is and what mouse icon to display
-
-				// If the player's mouse is in the walkable area...
-				if(MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null)
+				// Don't let the player move around if they're interacting with the GUI
+				if(!Gui.MouseInGUI)
 				{
-					MovePlayer(MouseManager.Position);
+					// Process all player input here
+
+					// Check where the mouse is and what mouse icon to display
+
+					// If the player's mouse is in the walkable area...
+					if(MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null)
+					{
+						MovePlayer(MouseManager.Position);
+					}
 				}
+
+				Gui.Update(gameTime);
+
+
 			}
 
 			// Now the other updates go here anyways.
@@ -81,6 +92,8 @@ namespace Eglantine.Engine
 			// Draw the foreground layers
 			foreach(RoomLayer rl in CurrentRoom.Foreground)
 				rl.Draw(spriteBatch);
+
+			Gui.Draw(spriteBatch);
 		}
 
 		// This method is static to ensure that the EventManager is able to force the player to move.

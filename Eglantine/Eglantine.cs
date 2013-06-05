@@ -19,6 +19,11 @@ namespace Eglantine
 	/// </summary>
 	public class Eglantine : Game
 	{
+		// Temporarily lowered for development purposes
+		public const int GAME_WIDTH = 1024;
+		public const int GAME_HEIGHT = 700;
+
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
@@ -34,8 +39,8 @@ namespace Eglantine
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	     
 			ContentLoader.Initialize(Content);
-			graphics.PreferredBackBufferWidth = 1024;
-			graphics.PreferredBackBufferHeight = 768;
+			graphics.PreferredBackBufferWidth = GAME_WIDTH;
+			graphics.PreferredBackBufferHeight = GAME_HEIGHT;
 			graphics.IsFullScreen = false;
 		}
 
