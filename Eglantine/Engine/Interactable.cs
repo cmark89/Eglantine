@@ -29,7 +29,7 @@ namespace Eglantine.Engine
 			MouseState mouse = Mouse.GetState();
 			if(mouse.X >= Area.X && mouse.X <= Area.X + Area.Width &&
 			   mouse.Y >= Area.Y && mouse.Y <= Area.Y + Area.Height &&
-			   mouse.LeftButton == ButtonState.Pressed)
+			   MouseManager.LeftClickUp)
 				OnInteract();
 		}
 

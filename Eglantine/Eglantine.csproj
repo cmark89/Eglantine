@@ -74,8 +74,10 @@
     <Compile Include="Engine\EventManager.cs" />
     <Compile Include="Engine\ContentLoader.cs" />
     <Compile Include="Engine\RoomLayer.cs" />
-    <Compile Include="Engine\Screens\Entrance.cs" />
     <Compile Include="Engine\MouseManager.cs" />
+    <Compile Include="Engine\MessageManager.cs" />
+    <Compile Include="Engine\Screens\MessageScreen.cs" />
+    <Compile Include="Engine\Entrance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -140,6 +142,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\phGui.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MessageFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\messagewindow.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

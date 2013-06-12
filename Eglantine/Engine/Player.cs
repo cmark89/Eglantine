@@ -69,7 +69,7 @@ namespace Eglantine.Engine
 		public void NextWaypoint ()
 		{
 			// The next waypoint is the last element in the path, so pop it.
-			if (Path.Count > 0)
+			if (Path != null && Path.Count > 0)
 			{
 				nextWaypoint = Path [Path.Count - 1];
 				Path.RemoveAt (Path.Count - 1);
@@ -88,6 +88,12 @@ namespace Eglantine.Engine
 
 			if(path != null && nextWaypoint == null)
 				NextWaypoint();
+		}
+
+		public void StopMoving ()
+		{
+			Path.Clear();
+			nextWaypoint = null;
 		}
 
 		#endregion

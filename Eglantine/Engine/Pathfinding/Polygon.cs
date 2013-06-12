@@ -6,6 +6,7 @@ namespace Eglantine.Engine.Pathfinding
 {
 	public class Polygon
 	{
+		// The list of vertices --must-- wind consecutively in one direction
 		public List<Vector2> Vertices { get; private set; }
 		public Polygon ()
 		{

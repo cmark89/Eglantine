@@ -122,7 +122,7 @@ namespace Eglantine.Engine.Pathfinding
 
 		public float Heuristic(Vector2 start, Vector2 end)
 		{
-			return (float)Math.Pow(Math.Abs(end.X - start.X) + Math.Abs(end.Y - start.Y), 3D);
+			return (float)Math.Pow(Math.Abs(end.X - start.X) + Math.Abs(end.Y - start.Y), 2.5D);
 		}
 
 		public NavNode FindBestNode ()

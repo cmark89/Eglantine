@@ -27,7 +27,8 @@ namespace Eglantine.Engine
 		// Queues a message into the message display manager
 		public void ShowMessage(string message)
 		{
-			Console.WriteLine(message);
+			Console.WriteLine("SHOW MESSAGE: " + message);
+			MessageManager.Instance.ShowMessage(message);
 		}
 
 		// Forces the player to move to the given point.
@@ -46,6 +47,7 @@ namespace Eglantine.Engine
 		public void ChangeRoom(string roomName, string entranceName)
 		{
 			GameState.Instance.ChangeRoom(roomName, entranceName);
+			Player.Instance.StopMoving();
 		}
 	}
 }

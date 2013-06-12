@@ -152,7 +152,7 @@ namespace Eglantine.Engine.Pathfinding
 				   return polygon;
 				}
 			}
-			Console.WriteLine("Found null polygon.");
+			Console.WriteLine("Found null polygon; no polygon contains point (" + p.X + "," + p.Y +")");
 			return null;
 		}
 

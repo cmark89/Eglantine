@@ -9,6 +9,21 @@ namespace Eglantine
 {
 	public class GameScene : Scene
 	{
+		// Semi-singleton?
+		private static GameScene _instance;
+		public static GameScene Instance
+		{
+			get
+			{
+				if(_instance != null)
+					return _instance;
+				else
+					return null;
+			}
+		}
+
+
+
 		// Stores a list of the screens that are active
 		public List<Screen> GameScreens;
 
@@ -22,6 +37,7 @@ namespace Eglantine
 		// Create a new GameScene around a given GameState intance
 		public GameScene (GameState newGameState)
 		{
+			_instance = this;
 			GameState = newGameState;
 			Initialize();
 		}
@@ -31,6 +47,7 @@ namespace Eglantine
 		{
 			GameScreens = new List<Screen>();
 
+			//MessageManager.Instance.Initialize();
 			AdventureScreen advScreen = new AdventureScreen();
 			advScreen.Initialize();
 			GameScreens.Add(advScreen);
@@ -38,23 +55,29 @@ namespace Eglantine
 
 		public override void Update(GameTime gameTime)
 		{
-			foreach(Screen s in GameScreens)
+			RemoveFinishedScreens();
+
+			for(int i = 0; i < GameScreens.Count; i++)
 			{
 				// Loop through each screen and ensure that only the "top" screen can receive input
-				if(GameScreens[GameScreens.Count - 1] == s)
-					s.ReceivingInput = true;
+				if(GameScreens[GameScreens.Count - 1] == GameScreens[i])
+					GameScreens[i].ReceivingInput = true;
 				else
-					s.ReceivingInput = false;
+					GameScreens[i].ReceivingInput = false;
 
-				s.Update(gameTime);
+				GameScreens[i].Update(gameTime);
 			}
 		}
 
-		public override void Draw(SpriteBatch spriteBatch)
+		public override void Draw (SpriteBatch spriteBatch)
 		{
 			// Draw all GameScreens from the bottom up.
-			for(int i = GameScreens.Count; i > 0; i--)
-				GameScreens[i-1].Draw(spriteBatch);
+			foreach (Screen s in GameScreens)
+			{
+				s.Draw(spriteBatch);
+			}
+			//for(int i = GameScreens.Count; i > 0; i--)
+				//GameScreens[i-1].Draw(spriteBatch);
 
 			// Draw the message queue
 		}
@@ -62,6 +85,20 @@ namespace Eglantine
 		public override void Unload()
 		{
 
+		}
+
+		// Pushes a new screen onto the list
+		public void AddScreen(Screen screen)
+		{
+			GameScreens.Add(screen);
+		}
+
+		public void RemoveFinishedScreens ()
+		{
+			foreach (Screen s in GameScreens.FindAll(x => x.FlaggedForRemoval))
+			{
+				GameScreens.Remove(s);
+			}
 		}
 	}
 }

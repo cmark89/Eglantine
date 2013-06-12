@@ -104,6 +104,7 @@ namespace Eglantine
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw (GameTime gameTime)
 		{
+			//Console.WriteLine(1 / (float)gameTime.ElapsedGameTime.TotalSeconds);
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
 
 			spriteBatch.Begin ();

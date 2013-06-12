@@ -1,13 +1,12 @@
 #!/usr/local/bin/lua
 
-function stepOnCrack()
-	Event:ShowMessage("The floor is cracking!!")
-	Event:ChangeRoom("testroom", "Teleport")
+function lookAtWindow()
+	Event:ShowMessage("I can see my house from here!")
+	Event:ShowMessage("Just kidding.  That's what you call a joke.")
 end
 
-function pillowClick()
-	Event:MovePlayer(150, 175)
-	Event:ShowMessage("That's a pillow, alright.")
+function lookAtOutlet()
+	Event:ShowMessage("What a shitty place to live...")
 end
 
 

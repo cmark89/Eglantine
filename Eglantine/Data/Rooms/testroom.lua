@@ -6,7 +6,7 @@ rooms["testroom"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "testroom",
+			Texture = "EmptyRoom",
 			Color = { 1, 1, 1, 1 },
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
@@ -18,10 +18,10 @@ rooms["testroom"] = {
 	Interactables = {
 		[1] = {
 			Area = {
-					X = 200,
-					Y = 409,
-					Width = 97,
-					Height = 59
+					X = 327,
+					Y = 73,
+					Width = 356,
+					Height = 195
 				},
 			
 			-- This is where the player will path to in order to interact with the object
@@ -30,8 +30,25 @@ rooms["testroom"] = {
 				Y = 593
 			},
 
-			OnInteract = pillowClick
-		}
+			OnInteract = lookAtWindow
+		},
+		
+		[2] = {
+			Area = {
+					X = 808,
+					Y = 310,
+					Width = 48,
+					Height = 48
+				},
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 305,
+				Y = 593
+			},
+
+			OnInteract = lookAtOutlet
+		}		
 	},
 	
 	Triggers = {
@@ -49,78 +66,27 @@ rooms["testroom"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 1, Y = 753 },
-				[2] = { X = 0, Y = 768 },
-				[3] = { X = 330, Y = 728 },
-				[4] = { X = 364, Y = 765 }
+				[1] = { X = 133, Y = 403 },
+				[2] = { X = 883, Y = 403 },
+				[3] = { X = 1045, Y = 690 },
+				[4] = { X = -15, Y = 690 }
 			},
 			
 			[2] = {
-				[1] = { X = 354, Y = 768 },
-				[2] = { X = 323, Y = 728 },
-				[3] = { X = 322, Y = 623 },
-				[4] = { X = 458, Y = 566 },
-				[5] = { X = 461, Y = 765 }
-			},
-			
-			[3] = {
-				[1] = { X = 455, Y = 765 },
-				[2] = { X = 454, Y = 572 },
-				[3] = { X = 862, Y = 543 },
-				[4] = { X = 1023, Y = 590 },
-				[5] = { X = 1021, Y = 766 }
-			},
-			
-			[4] = {
-				[1] = { X = 360, Y = 552 },
-				[2] = { X = 420, Y = 550 },
-				[3] = { X = 456, Y = 571 },
-				[4] = { X = 361, Y = 617 }
-			},
-			
-			[5] = {
-				[1] = { X = 737, Y = 530 },
-				[2] = { X = 836, Y = 521 },
-				[3] = { X = 741, Y = 555 },
-				[4] = { X = 863, Y = 549 }
-			},
-			
+				[1] = { X = 1020, Y = 652 },
+				[2] = { X = 1020, Y = 763 },
+				[3] = { X = 1, Y = 767},
+				[4] = { X = 1, Y = 644}
+			}			
 		},
 		
 		Connections = {
 			[1] = {
 				Connects = { 1, 2 },
 				Points = {
-					[1] = { X = 328, Y = 729 },
-					[2] = { X = 343, Y = 749 },
-					[3] = { X = 357, Y = 764 }
-				}
-			},
-			
-			[2] = {
-				Connects = { 2, 3 },
-				Points = {
-					[1] = { X = 457, Y = 574 },
-					[2] = { X = 457, Y = 662 },
-					[3] = { X = 458, Y = 760 }
-				}
-			},
-			
-			[3] = {
-				Connects = { 2, 4 },
-				Points = {
-					[1] = { X = 361, Y = 611 },
-					[2] = { X = 457, Y = 662 },
-					[3] = { X = 404, Y = 591 }
-				}
-			},
-			
-			[4] = {
-				Connects = { 3, 5 },
-				Points = {
-					[1] = { X = 744, Y = 553 },
-					[2] = { X = 800, Y = 549 },
-					[3] = { X = 857, Y = 546 }
+					[1] = { X = 9, Y = 657 },
+					[2] = { X = 507, Y = 660 },
+					[3] = { X = 991, Y = 661 }
 				}
 			}
 		}

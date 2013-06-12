@@ -60,8 +60,8 @@ namespace Eglantine.Engine
 					}
 				}
 
+				// Only do this if the screen is taking input!
 				Gui.Update(gameTime);
-
 
 			}
 
