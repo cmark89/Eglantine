@@ -13,7 +13,7 @@ items = {}
 items["Grandfather's Book"] = {
 
 	Name = "Grandfather's Book",
-	Texture = "Graphics/Icons/GrandfathersBook"
+	Texture = "arrowicon"
 	Description = "An old, dusty volume."
 	Type = "Immediate"
 	

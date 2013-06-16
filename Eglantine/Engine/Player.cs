@@ -84,9 +84,10 @@ namespace Eglantine.Engine
 
 		public void SetPath(List<NavNode> path)
 		{
+			nextWaypoint = null;
 			Path = path;
 
-			if(path != null && nextWaypoint == null)
+			if(path != null)
 				NextWaypoint();
 		}
 

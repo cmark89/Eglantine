@@ -13,6 +13,10 @@ namespace Eglantine.Engine
 		// How much of the GUI is visible when hidden (measured from the top)
 		private const float GUI_HIDDEN_HEIGHT = 20;
 
+		// Constants for determining where to draw the items
+		private const Vector2 ITEM_DRAW_START = new Vector2(12,39);
+		private const Vector2 ITEM_DRAW_OFFSET = new Vector2(53,0);
+
 		private GuiState State;
 		private Texture2D Texture;
 		private Vector2 Position;
@@ -57,16 +61,36 @@ namespace Eglantine.Engine
 				Position += new Vector2(0, GUI_SCROLL_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
 				ClampGuiPosition();
 			}
+
+			// Process mouse input
+			for(int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
+			{
+				if(MouseManager.MouseInRect(GetItemRect(i)))
+				{
+					// Use the item if left clicked...
+					if(MouseManager.LeftClickUp)
+						GameState.Instance.PlayerItems[i].Use();
+
+					// Or, inspect the item if right clicked...
+					else if(MouseManager.RightClickUp)
+						GameState.Instance.PlayerItems[i].Inspect();
+				}
+			}
 		}
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
 			spriteBatch.Draw (Texture, Position, Color.White);
+			Item thisItem;
 
-			// Draw items.
-			for (int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
+			// Draw items, but only do this if any of them are visible necessary.
+			if (Eglantine.GAME_HEIGHT - Position.Y > ITEM_DRAW_OFFSET.Y)
 			{
-				//i.Draw(spriteBatch);
+				for(int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
+				{
+					thisItem = GameState.Instance.PlayerItems[i];
+					spriteBatch.Draw(thisItem.Texture, Position + ITEM_DRAW_START + (ITEM_DRAW_OFFSET * i), Color.White);
+				}
 			}
 		}
 
@@ -81,6 +105,14 @@ namespace Eglantine.Engine
 				Position = new Vector2(Position.X, Eglantine.GAME_HEIGHT - GUI_HIDDEN_HEIGHT);
 				State = GuiState.Hiding;
 			}
+		}
+
+		public Rectangle GetItemRect(int i)
+		{
+			int x = Position.X + ITEM_DRAW_START.X + ITEM_DRAW_OFFSET.X;
+			int y = Position.Y + ITEM_DRAW_START.Y + ITEM_DRAW_OFFSET.Y;
+
+			return new Rectangle(x, y, 48, 48);
 		}
 	}
 

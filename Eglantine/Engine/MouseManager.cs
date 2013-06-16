@@ -59,6 +59,14 @@ namespace Eglantine
 		{
 			get { return (_thisFrameState.RightButton == ButtonState.Pressed); }
 		}
+
+		public static bool MouseInRect(Rectangle rect)
+		{
+			return(_thisFrameState.X >= rect.X && 
+			       _thisFrameState.X <= rect.X + rect.Width && 
+			       _thisFrameState.Y >= rect.Y && 
+			       _thisFrameState.Y <= rect.Y + rect.Height);
+		}
 	}
 }
 

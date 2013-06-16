@@ -151,8 +151,9 @@ namespace Eglantine.Engine
 				//if is drawn...
 				//	set the texture...
 
-				// Add the event 
-				Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
+				// Add the events
+				//Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
+				Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"]));
 			}
 		}
 

@@ -40,7 +40,9 @@ namespace Eglantine.Engine
 		// Gives the player the named item
 		public void GainItem(string itemName)
 		{
-			GameState.Instance.GainItem(new Item(itemName));
+			Item newItem = new Item(itemName);
+			GameState.Instance.GainItem(newItem);
+			newItem.OnAquire();
 		}
 
 		// Moves the player to room "roomName" and entrance "entranceName"

@@ -10,11 +10,14 @@ namespace Eglantine.Engine
 	{
 		Player Player;	
 		GUI Gui;
+		public bool InputDisabled { get; private set; }
 
 		Room CurrentRoom
 		{ 
 			get { return GameState.Instance.CurrentRoom; }
 		}
+
+
 
 		// This almost implements a singleton pattern in order to prevent using a static method for moving the player.
 		// The Instance accessor does not create the instance if it does not exist, however.
@@ -44,7 +47,7 @@ namespace Eglantine.Engine
 		public override void Update (GameTime gameTime)
 		{
 
-			if (ReceivingInput)
+			if (ReceivingInput && !InputDisabled)
 			{
 				// Don't let the player move around if they're interacting with the GUI
 				if(!Gui.MouseInGUI)
@@ -105,6 +108,16 @@ namespace Eglantine.Engine
 			{
 				// Disable the ability to give the player orders until they have reached their destination.
 			}
+		}
+
+		public void DisableInput ()
+		{
+			InputDisabled = true;
+		}
+
+		public void EnableInput()
+		{
+			InputDisabled = false;
 		}
 	}
 }

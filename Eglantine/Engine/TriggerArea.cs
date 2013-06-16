@@ -23,11 +23,8 @@ namespace Eglantine.Engine
 
 		public bool VectorInArea(Vector2 point)
 		{
-			if(point.X >= Area.X && point.X <= Area.X + Area.Width && 
-			   point.Y >= Area.Y && point.Y <= Area.Y + Area.Height)
-				return true;
-			else
-				return false;
+			return (point.X >= Area.X && point.X <= Area.X + Area.Width && 
+			        point.Y >= Area.Y && point.Y <= Area.Y + Area.Height);
 		}
 	}
 }

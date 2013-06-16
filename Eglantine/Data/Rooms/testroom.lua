@@ -30,7 +30,8 @@ rooms["testroom"] = {
 				Y = 593
 			},
 
-			OnInteract = lookAtWindow
+			OnInteract = nil,
+			OnLook = lookAtWindow
 		},
 		
 		[2] = {
@@ -47,7 +48,8 @@ rooms["testroom"] = {
 				Y = 593
 			},
 
-			OnInteract = lookAtOutlet
+			OnInteract = lookAtOutlet,
+			OnLook = nil
 		}		
 	},
 	

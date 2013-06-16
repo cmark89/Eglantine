@@ -13,24 +13,30 @@ namespace Eglantine.Engine
 		public bool IsDrawn { get; private set; }
 		public Texture2D Texture { get; private set; }
 
-		public Interactable(Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, bool drawn = false, Texture2D texture = null)
+		// Handles events for looking at objects
+		public LuaFunction LookEvent { get; private set; }
+
+		public Interactable(Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool drawn = false, Texture2D texture = null)
 		{
 			Area = area;
 			InteractPoint = interactPoint;
 			Event = gameEvent;
+			LookEvent = lookEvent;
 			IsDrawn = drawn;
 
 			if(IsDrawn)
 				Texture = texture;
 		}
 
-		public override void Update(GameTime gameTime)
+		public override void Update (GameTime gameTime)
 		{
-			MouseState mouse = Mouse.GetState();
-			if(mouse.X >= Area.X && mouse.X <= Area.X + Area.Width &&
-			   mouse.Y >= Area.Y && mouse.Y <= Area.Y + Area.Height &&
-			   MouseManager.LeftClickUp)
-				OnInteract();
+			if (AdventureScreen.Instance.ReceivingInput)
+			{
+				if(MouseManager.MouseInRect(Area) && MouseManager.LeftClickUp)
+					OnInteract();
+				else if(MouseManager.MouseInRect(Area) && MouseManager.RightClickUp)
+					OnLook();
+			}
 		}
 
 		public void Draw (SpriteBatch spriteBatch)
@@ -44,7 +50,14 @@ namespace Eglantine.Engine
 
 		public void OnInteract()
 		{
-			Event.Call();
+			if(Event != null)
+				Event.Call();
+		}
+
+		public void OnLook()
+		{
+			if(LookEvent != null)
+				LookEvent.Call();
 		}
 	}
 }
