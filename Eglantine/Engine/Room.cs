@@ -123,7 +123,7 @@ namespace Eglantine.Engine
 				Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["X"], (int)(double)currentTrigger["Y"], (int)(double)currentTrigger["Width"], (int)(double)currentTrigger["Height"]);
 
 				// Add the triggered event
-				TriggerAreas.Add(new TriggerArea(triggerRect, (LuaFunction)currentTrigger["OnEnter"]));
+				TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
 			}
 		}
 
@@ -153,7 +153,7 @@ namespace Eglantine.Engine
 
 				// Add the events
 				//Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
-				Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"]));
+				Interactables.Add(new Interactable((string)currentInteractable["Name"], clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"]));
 			}
 		}
 
@@ -181,12 +181,12 @@ namespace Eglantine.Engine
 
 		public void Update (GameTime gameTime)
 		{
-			foreach (TriggerArea ta in TriggerAreas)
+			foreach (TriggerArea ta in TriggerAreas.FindAll(x => x.Active))
 			{
 				ta.Update (gameTime);
 			}
 
-			foreach (Interactable i in Interactables)
+			foreach (Interactable i in Interactables.FindAll(x => x.Active))
 			{
 				i.Update(gameTime);
 			}

@@ -17,12 +17,15 @@ rooms["testroom"] = {
 --------OBJECTS AND EVENTS--------
 	Interactables = {
 		[1] = {
+			Name = "Window",
 			Area = {
 					X = 327,
 					Y = 73,
 					Width = 356,
 					Height = 195
 				},
+				
+			Enabled = true,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -35,12 +38,15 @@ rooms["testroom"] = {
 		},
 		
 		[2] = {
+			Name = "Outlet",
 			Area = {
 					X = 808,
 					Y = 310,
 					Width = 48,
 					Height = 48
 				},
+				
+			Enabled = true,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -48,19 +54,22 @@ rooms["testroom"] = {
 				Y = 593
 			},
 
-			OnInteract = lookAtOutlet,
-			OnLook = nil
+			OnInteract = tinkerWithOutlet,
+			OnLook = lookAtOutlet
 		}		
 	},
 	
 	Triggers = {
 		[1] = {
+			Name = "CreakyBoard",
 			X = 324,
-			Y = 609,
+			Y = 0,
 			Width = 41,
-			Height = 159,
+			Height = 999,
 			
-			OnEnter = stepOnCrack
+			Enabled = false,
+			
+			OnEnter = creakyBoard
 		}
 	},	
 --------NAVMESH--------
@@ -71,7 +80,7 @@ rooms["testroom"] = {
 				[1] = { X = 133, Y = 403 },
 				[2] = { X = 883, Y = 403 },
 				[3] = { X = 1045, Y = 690 },
-				[4] = { X = -15, Y = 690 }
+				[4] = { X = 0, Y = 690 }
 			},
 			
 			[2] = {

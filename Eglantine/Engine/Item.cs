@@ -20,13 +20,14 @@ namespace Eglantine.Engine
 
 		public Item (string name)
 		{
-			ParseItem((LuaTable)Eglantine.Lua["items."+name]);
+			LuaTable itemTable = (LuaTable)Eglantine.Lua["items."+name];
+			ParseItem(itemTable);
 		}
 
 		public void ParseItem (LuaTable itemTable)
 		{
 			Name = (string)itemTable ["Name"];
-			Description = (string)itemTable ["Description"];
+
 			Texture = ContentLoader.Instance.Load<Texture2D>((string)(itemTable["Texture"]));
 
 			string type = (string)itemTable ["Type"];
@@ -52,12 +53,14 @@ namespace Eglantine.Engine
 
 		public void Inspect ()
 		{
-			OnInspect.Call();
+			if(OnInspect != null)
+				OnInspect.Call();
 		}
 
 		public void OnAquire()
 		{
-			OnAcquire.Call();
+			if(OnAcquire != null)
+				OnAcquire.Call();
 		}
 
 		public void Use ()
@@ -65,9 +68,11 @@ namespace Eglantine.Engine
 			switch(Type)
 			{
 				case ItemType.Immediate:
+					Console.WriteLine("Use this immediate item!");
 					OnUse.Call();
 					break;
 				case ItemType.Active:
+					AdventureScreen.Instance.SetActiveItem(this);
 					// Set the game scene's loaded item to this item.
 					break;
 				default:

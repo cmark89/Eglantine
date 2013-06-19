@@ -94,6 +94,11 @@ namespace Eglantine
 
 			currentScene.Update(gameTime);
 
+			// For the love of GOD find a way to split this between screens, this is broken as it is
+			double deltaTime = gameTime.ElapsedGameTime.TotalSeconds;
+			Lua.DoString("updateCoroutines(" + deltaTime + ")");
+
+
 			base.Update (gameTime);
 
 		}

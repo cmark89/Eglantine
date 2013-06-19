@@ -34,6 +34,12 @@ namespace Eglantine.Engine
 		public GameState ()
 		{
 			Console.WriteLine ("Creating new GameState...");
+
+		}
+
+		public bool PlayerHasItem (string itemName)
+		{
+			return (PlayerItems.FindAll(x => x.Name == itemName).Count > 0);
 		}
 
 
@@ -100,6 +106,15 @@ namespace Eglantine.Engine
 		public void GainItem(Item newItem)
 		{
 			PlayerItems.Add(newItem);
+			newItem.OnAquire();
+		}
+
+		public void DestroyItem (string item)
+		{
+			if(AdventureScreen.Instance.LoadedItem.Name == item)
+				AdventureScreen.Instance.SetActiveItem(null);
+
+			PlayerItems.Remove(PlayerItems.Find(x => x.Name == item));
 		}
 
 		// Changes the room to the room with the given name.

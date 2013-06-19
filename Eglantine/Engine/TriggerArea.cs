@@ -8,10 +8,12 @@ namespace Eglantine.Engine
 	public class TriggerArea : Trigger
 	{
 
-		public TriggerArea (Rectangle area, LuaFunction gameEvent)
+		public TriggerArea (string name, Rectangle area, LuaFunction gameEvent, bool active)
 		{
+			Name = name;
 			Area = area;
 			Event = gameEvent;
+			Active = active;
 		}
 
 		public override void Update(GameTime gameTime)

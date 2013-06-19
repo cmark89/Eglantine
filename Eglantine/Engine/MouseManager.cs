@@ -1,11 +1,14 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Eglantine
 {
 	public static class MouseManager
 	{
+		public static MouseInteractMode MouseMode = MouseInteractMode.Normal;
+
 		private static MouseState _lastFrameState;
 		private static MouseState _thisFrameState;
 
@@ -67,6 +70,19 @@ namespace Eglantine
 			       _thisFrameState.Y >= rect.Y && 
 			       _thisFrameState.Y <= rect.Y + rect.Height);
 		}
+
+		public static void DrawMouse(SpriteBatch spriteBatch)
+		{
+
+		}
+	}
+
+	public enum MouseInteractMode
+	{
+		Normal,
+		Item,
+		Move,
+		ChangeScene
 	}
 }
 

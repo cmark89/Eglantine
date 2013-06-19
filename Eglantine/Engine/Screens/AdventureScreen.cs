@@ -8,17 +8,6 @@ namespace Eglantine.Engine
 {
 	public class AdventureScreen : Screen
 	{
-		Player Player;	
-		GUI Gui;
-		public bool InputDisabled { get; private set; }
-
-		Room CurrentRoom
-		{ 
-			get { return GameState.Instance.CurrentRoom; }
-		}
-
-
-
 		// This almost implements a singleton pattern in order to prevent using a static method for moving the player.
 		// The Instance accessor does not create the instance if it does not exist, however.
 		private static AdventureScreen _instance;
@@ -32,6 +21,19 @@ namespace Eglantine.Engine
 					return null;
 			}
 		}
+
+		Room CurrentRoom
+		{ 
+			get { return GameState.Instance.CurrentRoom; }
+		}
+
+		public bool InputDisabled { get; private set; }
+
+		Player Player;	
+		GUI Gui;
+		public Item LoadedItem { get; private set; }
+		public Trigger HighlightedTrigger { get; private set;}
+
 
 		public override void Initialize()
 		{
@@ -52,6 +54,17 @@ namespace Eglantine.Engine
 				// Don't let the player move around if they're interacting with the GUI
 				if(!Gui.MouseInGUI)
 				{
+					// See what object, if any, the player is hovering over.
+					for(int i = CurrentRoom.Interactables.Count; i > 0; i--)
+					{
+						Trigger thisTrigger = CurrentRoom.Interactables[i-1];
+						if(thisTrigger.Active && MouseManager.MouseInRect(thisTrigger.Area))
+						{
+							HighlightedTrigger = thisTrigger;
+							break;
+						}
+					}
+
 					// Process all player input here
 
 					// Check where the mouse is and what mouse icon to display
@@ -60,6 +73,10 @@ namespace Eglantine.Engine
 					if(MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null)
 					{
 						MovePlayer(MouseManager.Position);
+					}
+					if(MouseManager.RightClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null && LoadedItem != null)
+					{
+						SetActiveItem(null);
 					}
 				}
 
@@ -75,22 +92,27 @@ namespace Eglantine.Engine
 			Player.Update(gameTime);
 		}
 
-		public override void Draw(SpriteBatch spriteBatch)
+		public override void Draw (SpriteBatch spriteBatch)
 		{
 			// Draw the background layers
-			foreach(RoomLayer rl in CurrentRoom.Background)
-				rl.Draw(spriteBatch);
+			foreach (RoomLayer rl in CurrentRoom.Background)
+				rl.Draw (spriteBatch);
 
 			// Draw all midground layers that are behind the player
-			foreach(RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff < Player.Position.Y))
-				rl.Draw(spriteBatch);
+			foreach (RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff < Player.Position.Y))
+				rl.Draw (spriteBatch);
 
 			// Draw the player
-			Player.Draw(spriteBatch);
+			Player.Draw (spriteBatch);
 
 			// Draw all midground layers that are in front of the player
-			foreach(RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff >= Player.Position.Y))
-				rl.Draw(spriteBatch);
+			foreach (RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff >= Player.Position.Y))
+				rl.Draw (spriteBatch);
+
+			foreach (Interactable i in CurrentRoom.Interactables.FindAll(x => x.Active && x.IsDrawn))
+			{
+				i.Draw(spriteBatch);
+			}
 
 			// Draw the foreground layers
 			foreach(RoomLayer rl in CurrentRoom.Foreground)
@@ -118,6 +140,11 @@ namespace Eglantine.Engine
 		public void EnableInput()
 		{
 			InputDisabled = false;
+		}
+
+		public void SetActiveItem(Item i)
+		{
+			LoadedItem = i;
 		}
 	}
 }

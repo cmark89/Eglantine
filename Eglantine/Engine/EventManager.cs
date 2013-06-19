@@ -42,7 +42,33 @@ namespace Eglantine.Engine
 		{
 			Item newItem = new Item(itemName);
 			GameState.Instance.GainItem(newItem);
-			newItem.OnAquire();
+		}
+
+		// Destroys the named item
+		public void DestroyItem (string itemName)
+		{
+			GameState.Instance.DestroyItem(itemName);
+		}
+
+		// Enable and disable triggers / interactable objects
+		public void EnableInteractable (string objectName)
+		{
+			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Enable();
+		}
+
+		public void DisableInteractable (string objectName)
+		{
+			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Disable();
+		}
+
+		public void EnableTrigger (string objectName)
+		{
+			GameState.Instance.CurrentRoom.TriggerAreas.Find(x => x.Name == objectName).Enable();
+		}
+
+		public void DisableTrigger (string objectName)
+		{
+			GameState.Instance.CurrentRoom.TriggerAreas.Find(x => x.Name == objectName).Disable();
 		}
 
 		// Moves the player to room "roomName" and entrance "entranceName"
@@ -50,6 +76,14 @@ namespace Eglantine.Engine
 		{
 			GameState.Instance.ChangeRoom(roomName, entranceName);
 			Player.Instance.StopMoving();
+		}
+
+
+		// Returns true if the item is currently active (being clicked with)
+		public bool UsingItem(string itemName)
+		{
+			Console.WriteLine("check...");
+			return (AdventureScreen.Instance.LoadedItem.Name == itemName);
 		}
 	}
 }

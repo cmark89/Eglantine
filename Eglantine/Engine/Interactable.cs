@@ -16,21 +16,28 @@ namespace Eglantine.Engine
 		// Handles events for looking at objects
 		public LuaFunction LookEvent { get; private set; }
 
-		public Interactable(Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool drawn = false, Texture2D texture = null)
+		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, bool drawn = false, Texture2D texture = null)
 		{
+			Name = name;
 			Area = area;
 			InteractPoint = interactPoint;
 			Event = gameEvent;
 			LookEvent = lookEvent;
 			IsDrawn = drawn;
+			Active = enabled;
 
 			if(IsDrawn)
 				Texture = texture;
 		}
 
+		public bool IsHighlighted ()
+		{
+			return(AdventureScreen.Instance.HighlightedTrigger == this);
+		}
+
 		public override void Update (GameTime gameTime)
 		{
-			if (AdventureScreen.Instance.ReceivingInput)
+			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted())
 			{
 				if(MouseManager.MouseInRect(Area) && MouseManager.LeftClickUp)
 					OnInteract();

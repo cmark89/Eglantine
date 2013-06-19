@@ -45,6 +45,9 @@ namespace Eglantine
 
 		public override void Initialize()
 		{
+			// Make sure the lua side knows about this GameState
+			Eglantine.Lua.DoString("loadGameState()");
+
 			GameScreens = new List<Screen>();
 
 			//MessageManager.Instance.Initialize();
@@ -79,7 +82,7 @@ namespace Eglantine
 			//for(int i = GameScreens.Count; i > 0; i--)
 				//GameScreens[i-1].Draw(spriteBatch);
 
-			// Draw the message queue
+			MouseManager.DrawMouse(spriteBatch);
 		}
 
 		public override void Unload()

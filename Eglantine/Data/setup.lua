@@ -6,6 +6,8 @@
 --Load the other .lua files required by the game
 require "Data/testevents"
 require "Data/rooms"
+require "Data/items"
+require "Data/scheduler"
 
 --Load the relevent assemblies and types
 luanet.load_assembly "Eglantine"

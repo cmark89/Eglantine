@@ -1,16 +1,47 @@
 #!/usr/local/bin/lua
 
 function lookAtWindow()
-	Event:ShowMessage("I can see my house from here!")
-	Event:ShowMessage("Just kidding.  That's what you call a joke.")
+	if not GameState:PlayerHasItem("Screwdriver") then
+		Event:ShowMessage("I can see my house from here!")
+		Event:ShowMessage("Just kidding.  That's what you call a joke.")
+		Event:ShowMessage("Hey, a screwdriver!")
+		Event:GainItem("Screwdriver")
+	else
+		Event:ShowMessage("Now why was there a screwdriver there...?")
+	end
 end
 
 function lookAtOutlet()
 	Event:ShowMessage("What a shitty place to live...")
 end
 
+outlet_fixed = false
 
+function tinkerWithOutlet()
+	if(not outlet_fixed and Event:UsingItem("Screwdriver")) then
+		Event:ShowMessage("I be tinkerin', yessir!")
+		Event:DestroyItem("Screwdriver")
+		outlet_fixed = true
+		Event:EnableTrigger("CreakyBoard")
+	end
+end
+
+boardsteppedon = false
 function creakyBoard()
+	if(not boardsteppedon) then
+		boardsteppedon = true
+		runCoroutine(function()
+			while(true) do
+				Event:ShowMessage("Argh!  Me spine!!")
+				waitSeconds(2)
+				Event:ShowMessage("Argh!  Me spine again!!")
+				waitSeconds(3)
+				Event:ShowMessage("IT HURTS SO BAD!!")
+			end
+		end)
+	end
+end
+	
 	-- if gameTime < nextCreakTime then do
 		-- return
 	-- else do
@@ -19,4 +50,3 @@ function creakyBoard()
 		-- game:AudioManager.PlaySound("creakyboard")
 		-- nextCreakTime = game:GameTime + 3
 	--end
-end

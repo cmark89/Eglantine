@@ -102,7 +102,6 @@ namespace Eglantine.Engine
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			Console.Clear();
 			spriteBatch.Draw(MessageManager.Instance.MessageWindowTexture, anchorPoint, drawColor);
 			spriteBatch.DrawString(MessageManager.Instance.MessageFont, MessageText, new Vector2(anchorPoint.X + WINDOW_X_MARGIN, anchorPoint.Y + WINDOW_Y_MARGIN), textColor);
 		}

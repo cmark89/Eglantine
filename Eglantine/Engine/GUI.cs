@@ -14,8 +14,8 @@ namespace Eglantine.Engine
 		private const float GUI_HIDDEN_HEIGHT = 20;
 
 		// Constants for determining where to draw the items
-		private const Vector2 ITEM_DRAW_START = new Vector2(12,39);
-		private const Vector2 ITEM_DRAW_OFFSET = new Vector2(53,0);
+		private static readonly Vector2 ITEM_DRAW_START = new Vector2(12,39);
+		private static readonly Vector2 ITEM_DRAW_OFFSET = new Vector2(53,0);
 
 		private GuiState State;
 		private Texture2D Texture;
@@ -109,10 +109,10 @@ namespace Eglantine.Engine
 
 		public Rectangle GetItemRect(int i)
 		{
-			int x = Position.X + ITEM_DRAW_START.X + ITEM_DRAW_OFFSET.X;
-			int y = Position.Y + ITEM_DRAW_START.Y + ITEM_DRAW_OFFSET.Y;
+			float x = Position.X + ITEM_DRAW_START.X + (ITEM_DRAW_OFFSET.X * i);
+			float y = Position.Y + ITEM_DRAW_START.Y + (ITEM_DRAW_OFFSET.Y * i);
 
-			return new Rectangle(x, y, 48, 48);
+			return new Rectangle((int)x, (int)y, 48, 48);
 		}
 	}
 
