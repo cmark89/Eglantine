@@ -6,13 +6,26 @@ function lookAtWindow()
 		Event:ShowMessage("Just kidding.  That's what you call a joke.")
 		Event:ShowMessage("Hey, a screwdriver!")
 		Event:GainItem("Screwdriver")
+		sendSignal("Get Screwdriver")
 	else
 		Event:ShowMessage("Now why was there a screwdriver there...?")
 	end
 end
 
+lookingatoutlet = false
 function lookAtOutlet()
-	Event:ShowMessage("What a shitty place to live...")
+	if(lookingatoutlet) then
+		return nil
+	end
+		
+	lookingatoutlet = true
+	
+	runCoroutine(function()
+		Event:ShowMessage("What a shitty place to live...")
+		waitUntil("Get Screwdriver")
+		Event:ShowMessage("I bet I could tinker with that outlet somethin' fierce!")
+	end)
+	
 end
 
 outlet_fixed = false

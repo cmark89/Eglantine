@@ -85,6 +85,13 @@ namespace Eglantine.Engine
 			Console.WriteLine("check...");
 			return (AdventureScreen.Instance.LoadedItem.Name == itemName);
 		}
+
+
+		// This sends a signal to Lua, allowing coroutines to know what's happening.
+		public void SendSignal(string signal)
+		{
+			Eglantine.Lua.DoString("sendSignal(" + signal + ")");
+		}
 	}
 }
 
