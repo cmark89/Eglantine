@@ -1,0 +1,41 @@
+EVENT MANAGER
+
+
+EVENTS
+
+ShowMessage(message) 		-	Adds "message to the message queue.
+
+MovePlayer(x, y)			-	Forces the player to move to position x,y.  Depracated; use MovePlayerTo instead.
+
+MovePlayerTo(obj)		-	Forces the player to move to the interact point of the provided object
+
+GainItem(name)				-	Gives the player the item named
+
+DestroyItem(name)			-	Destroys the item named
+
+ChangeRoom(room, entrance)	-	Move the player to entrance in room
+
+SendSignal(signal)			-	Sends the named signal to the scheduler
+
+
+
+EnableInput ()				-	Enables input for the Adventure Screen
+
+DisableInput ()				-	Disables input for the Adventure Screen
+
+
+
+EnableInteractable (name)	- 	Enables interactable 'name' in the current room
+EnableTrigger (name)		- 	Enables trigger 'name' in the current room
+DisableInteractable (name)	- 	Disables interactable 'name' in the current room
+DisableTrigger (name)		- 	Disables trigger 'name' in the current room
+
+
+
+
+
+GAME PROPERTIES
+
+UsingItem(name)				-	Returns true if the named item is currently Actively loaded onto the mouse.
+
+

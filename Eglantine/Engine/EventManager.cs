@@ -34,7 +34,18 @@ namespace Eglantine.Engine
 		// Forces the player to move to the given point.
 		public void MovePlayer(double x, double y)
 		{
-			AdventureScreen.Instance.MovePlayer(new Vector2((float)x, (float)y));
+			AdventureScreen.Instance.MovePlayer(new Vector2((float)x, (float)y), true);
+		}
+
+		// Forces the player to move to the given point.
+		public void MovePlayerTo(string name)
+		{
+			if(GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == name) != null)
+			{
+				Vector2 pos = GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == name).InteractPoint;
+				AdventureScreen.Instance.MovePlayer(new Vector2(pos.X, pos.Y), true);
+			}
+
 		}
 
 		// Gives the player the named item
@@ -78,6 +89,16 @@ namespace Eglantine.Engine
 			Player.Instance.StopMoving();
 		}
 
+		public void EnableInput ()
+		{
+			AdventureScreen.Instance.EnableInput();
+		}
+
+		public void DisableInput ()
+		{
+			AdventureScreen.Instance.DisableInput();
+		}
+
 
 		// Returns true if the item is currently active (being clicked with)
 		public bool UsingItem(string itemName)
@@ -90,7 +111,8 @@ namespace Eglantine.Engine
 		// This sends a signal to Lua, allowing coroutines to know what's happening.
 		public void SendSignal(string signal)
 		{
-			Eglantine.Lua.DoString("sendSignal(" + signal + ")");
+			Console.WriteLine("Send signal: " + signal);
+			Eglantine.Lua.DoString("sendSignal(\"" + signal + "\")");
 		}
 	}
 }

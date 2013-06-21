@@ -22,7 +22,7 @@ function lookAtOutlet()
 	
 	runCoroutine(function()
 		Event:ShowMessage("What a shitty place to live...")
-		waitUntil("Get Screwdriver")
+		waitUntil("Screwdriver found")
 		Event:ShowMessage("I bet I could tinker with that outlet somethin' fierce!")
 	end)
 	
@@ -32,10 +32,14 @@ outlet_fixed = false
 
 function tinkerWithOutlet()
 	if(not outlet_fixed and Event:UsingItem("Screwdriver")) then
-		Event:ShowMessage("I be tinkerin', yessir!")
-		Event:DestroyItem("Screwdriver")
-		outlet_fixed = true
-		Event:EnableTrigger("CreakyBoard")
+		runCoroutine(function()
+			Event:MovePlayerTo("Outlet")
+			waitUntil("Player stopped")
+			Event:ShowMessage("I be tinkerin', yessir!")
+			Event:DestroyItem("Screwdriver")
+			outlet_fixed = true
+			Event:EnableTrigger("CreakyBoard")
+		end)
 	end
 end
 
@@ -50,6 +54,7 @@ function creakyBoard()
 				Event:ShowMessage("Argh!  Me spine again!!")
 				waitSeconds(3)
 				Event:ShowMessage("IT HURTS SO BAD!!")
+				waitSeconds(2)
 			end
 		end)
 	end

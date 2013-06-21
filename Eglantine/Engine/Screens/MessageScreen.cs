@@ -93,6 +93,7 @@ namespace Eglantine.Engine
 
 				if(transitionTime > FADE_OUT_TIME)
 				{
+					EventManager.Instance.SendSignal("Message closed");
 					transitionTime = 0;
 					State = MessageScreenState.None;
 					FlaggedForRemoval = true;

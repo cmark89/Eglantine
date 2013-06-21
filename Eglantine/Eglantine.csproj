@@ -96,6 +96,8 @@
     <None Include="Data\scheduler.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Data\Reference\Signal reference.txt" />
+    <None Include="Data\Reference\Event Manager reference.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -105,6 +107,7 @@
     <Folder Include="Data\" />
     <Folder Include="Engine\Screens\" />
     <Folder Include="Data\Rooms\" />
+    <Folder Include="Data\Reference\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

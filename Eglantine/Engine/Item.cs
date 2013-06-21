@@ -59,6 +59,7 @@ namespace Eglantine.Engine
 
 		public void OnAquire()
 		{
+			EventManager.Instance.SendSignal(Name + " found");
 			if(OnAcquire != null)
 				OnAcquire.Call();
 		}

@@ -20,6 +20,8 @@ namespace Eglantine.Engine
 		// The next waypoint the player is pathing to.
 		private NavNode nextWaypoint;
 
+		private bool forcedMovement = false;
+
 		// The distance at which the player paths toward the next waypoint
 		const float WAYPOINT_DISTANCE = 18f;
 
@@ -78,12 +80,18 @@ namespace Eglantine.Engine
 			{
 				// Set the waypoint to null to stop pathfinding updates.
 				nextWaypoint = null;
-				Console.WriteLine("Reached end of path.");
+				if(forcedMovement)
+				{
+					EventManager.Instance.SendSignal("Player stopped");
+					AdventureScreen.Instance.EnableInput();
+				}
 			}
 		}
 
-		public void SetPath(List<NavNode> path)
+		public void SetPath(List<NavNode> path, bool forced)
 		{
+			forcedMovement = forced;
+
 			nextWaypoint = null;
 			Path = path;
 

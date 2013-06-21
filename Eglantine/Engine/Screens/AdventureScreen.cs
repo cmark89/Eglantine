@@ -124,11 +124,11 @@ namespace Eglantine.Engine
 		// This method is static to ensure that the EventManager is able to force the player to move.
 		public void MovePlayer (Vector2 targetPoint, bool uninteruptable = false)
 		{
-			Player.SetPath (CurrentRoom.Navmesh.GetPath (Player.Position, targetPoint));
+			Player.SetPath (CurrentRoom.Navmesh.GetPath (Player.Position, targetPoint), uninteruptable);
 
 			if (uninteruptable)
 			{
-				// Disable the ability to give the player orders until they have reached their destination.
+				DisableInput();
 			}
 		}
 

@@ -1,0 +1,6 @@
+SIGNALS
+
+
+"$ found"			-	Sent when item $ is found.
+"Player stopped"	-	Sent when the player is being forced to move and reaches their destination.
+"Message closed"	-	Sent when the message window finishes closing

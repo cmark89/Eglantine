@@ -50,8 +50,8 @@ rooms["testroom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 305,
-				Y = 593
+				X = 830,
+				Y = 430
 			},
 
 			OnInteract = tinkerWithOutlet,
