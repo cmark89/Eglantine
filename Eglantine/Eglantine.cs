@@ -61,6 +61,7 @@ namespace Eglantine
 			Console.WriteLine("setup.lua should have loaded.");
 
 			EventManager.Initialize();
+			AudioManager.Instance.Initialize();
 
 			ChangeScene(new GameScene(GameState.NewGameState()));
 
@@ -110,7 +111,7 @@ namespace Eglantine
 		protected override void Draw (GameTime gameTime)
 		{
 			//Console.WriteLine(1 / (float)gameTime.ElapsedGameTime.TotalSeconds);
-			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
+			graphics.GraphicsDevice.Clear (Color.Black);
 
 			spriteBatch.Begin ();
 			currentScene.Draw(spriteBatch);

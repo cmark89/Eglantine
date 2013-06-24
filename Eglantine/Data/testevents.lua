@@ -36,6 +36,8 @@ function tinkerWithOutlet()
 			Event:MovePlayerTo("Outlet")
 			waitUntil("Player stopped")
 			Event:ShowMessage("I be tinkerin', yessir!")
+			waitUntil("Message closed")
+			Event:PlaySound("Extend")
 			Event:DestroyItem("Screwdriver")
 			outlet_fixed = true
 			Event:EnableTrigger("CreakyBoard")

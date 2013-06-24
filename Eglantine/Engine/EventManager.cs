@@ -114,6 +114,18 @@ namespace Eglantine.Engine
 			Console.WriteLine("Send signal: " + signal);
 			Eglantine.Lua.DoString("sendSignal(\"" + signal + "\")");
 		}
+
+		// Play a sound effect
+		public void PlaySound(string soundName, float volume = 1f, float pitch = 0f, float pan = 0f)
+		{
+			AudioManager.Instance.PlaySoundEffect(soundName, volume, pitch, pan);
+		}
+
+		// Begin playing a song
+		public void PlaySong(string songName, float volume = 1f, bool loop = true, float pitch = 0f, float pan = 0f)
+		{
+			AudioManager.Instance.PlaySong(songName, volume, loop, pitch, pan);
+		}
 	}
 }
 

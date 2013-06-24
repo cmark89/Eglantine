@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using LuaInterface;
 
 namespace Eglantine.Engine.Pathfinding
@@ -14,11 +15,16 @@ namespace Eglantine.Engine.Pathfinding
 		private List<NavNode> tempNodes = new List<NavNode>();
 		AStar aStar;
 
+		Texture2D vertexTexture;
+
 
 
 		// Create a navmesh from a luatable
 		public Navmesh (LuaTable nav)
 		{
+			// Testing purposes...
+			vertexTexture = ContentLoader.Instance.Load<Texture2D>("vertex");
+
 			// Parse the table into nodes
 			ParseLuaTable(nav);
 			ReportNavmesh();
@@ -260,6 +266,20 @@ namespace Eglantine.Engine.Pathfinding
 
 			// Return the path
 			return path;
+		}
+
+
+
+		// This is for debugging purposes
+		public void Draw (SpriteBatch spriteBatch)
+		{
+			foreach (Polygon p in Polygons)
+			{
+				foreach(Vector2 n in p.Vertices)
+				{
+					spriteBatch.Draw(vertexTexture, n - new Vector2(3.5f, 3.5f), Color.White);
+				}
+			}
 		}
 	}
 }

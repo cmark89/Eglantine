@@ -55,16 +55,9 @@
     <Compile Include="Eglantine.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Engine\GameState.cs" />
-    <Compile Include="Engine\Item.cs" />
-    <Compile Include="Engine\Room.cs" />
     <Compile Include="Engine\Pathfinding\Navmesh.cs" />
-    <Compile Include="Engine\GUI.cs" />
-    <Compile Include="Engine\Player.cs" />
     <Compile Include="Scenes\GameScene.cs" />
     <Compile Include="Engine\Screens\Screen.cs" />
-    <Compile Include="Engine\Interactable.cs" />
-    <Compile Include="Engine\TriggerArea.cs" />
-    <Compile Include="Engine\Trigger.cs" />
     <Compile Include="Engine\Pathfinding\Polygon.cs" />
     <Compile Include="Engine\Pathfinding\PolygonLink.cs" />
     <Compile Include="Engine\Pathfinding\NavNode.cs" />
@@ -73,11 +66,19 @@
     <Compile Include="Engine\Screens\AdventureScreen.cs" />
     <Compile Include="Engine\EventManager.cs" />
     <Compile Include="Engine\ContentLoader.cs" />
-    <Compile Include="Engine\RoomLayer.cs" />
     <Compile Include="Engine\MouseManager.cs" />
     <Compile Include="Engine\MessageManager.cs" />
     <Compile Include="Engine\Screens\MessageScreen.cs" />
-    <Compile Include="Engine\Entrance.cs" />
+    <Compile Include="Engine\AudioManager.cs" />
+    <Compile Include="Engine\GameWorld\Entrance.cs" />
+    <Compile Include="Engine\GameWorld\Interactable.cs" />
+    <Compile Include="Engine\GameWorld\TriggerArea.cs" />
+    <Compile Include="Engine\GameWorld\Trigger.cs" />
+    <Compile Include="Engine\GameWorld\RoomLayer.cs" />
+    <Compile Include="Engine\GameWorld\Room.cs" />
+    <Compile Include="Engine\GameWorld\Player.cs" />
+    <Compile Include="Engine\GameWorld\Item.cs" />
+    <Compile Include="Engine\Screens\GUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -108,6 +109,10 @@
     <Folder Include="Engine\Screens\" />
     <Folder Include="Data\Rooms\" />
     <Folder Include="Data\Reference\" />
+    <Folder Include="Content\Audio\" />
+    <Folder Include="Content\Audio\SoundEffects\" />
+    <Folder Include="Content\Audio\Music\" />
+    <Folder Include="Engine\GameWorld\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -154,6 +159,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\messagewindow.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\audio_assets.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\SoundEffects\Extend.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\vertex.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

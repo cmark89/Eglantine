@@ -34,6 +34,9 @@ namespace Eglantine.Engine
 		public Item LoadedItem { get; private set; }
 		public Trigger HighlightedTrigger { get; private set;}
 
+		// Used to force vertices to draw
+		private bool drawingVertices = true;
+
 
 		public override void Initialize()
 		{
@@ -82,7 +85,6 @@ namespace Eglantine.Engine
 
 				// Only do this if the screen is taking input!
 				Gui.Update(gameTime);
-
 			}
 
 			// Now the other updates go here anyways.
@@ -111,12 +113,17 @@ namespace Eglantine.Engine
 
 			foreach (Interactable i in CurrentRoom.Interactables.FindAll(x => x.Active && x.IsDrawn))
 			{
-				i.Draw(spriteBatch);
+				i.Draw (spriteBatch);
 			}
 
 			// Draw the foreground layers
-			foreach(RoomLayer rl in CurrentRoom.Foreground)
-				rl.Draw(spriteBatch);
+			foreach (RoomLayer rl in CurrentRoom.Foreground)
+				rl.Draw (spriteBatch);
+
+			if (drawingVertices)
+			{
+				CurrentRoom.Navmesh.Draw(spriteBatch);
+			}
 
 			Gui.Draw(spriteBatch);
 		}

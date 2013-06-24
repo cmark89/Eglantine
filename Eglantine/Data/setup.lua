@@ -4,10 +4,12 @@
 --It also loads all other .lua files required by the game to streamline the process of loading
 
 --Load the other .lua files required by the game
+require "Data/audio_assets"
+require "Data/scheduler"
+
 require "Data/testevents"
 require "Data/rooms"
 require "Data/items"
-require "Data/scheduler"
 
 --Load the relevent assemblies and types
 luanet.load_assembly "Eglantine"
