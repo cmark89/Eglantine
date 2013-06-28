@@ -47,14 +47,14 @@ namespace Eglantine.Engine.Pathfinding
 			return new Vector2(x, y);
 		}
 
-		public bool ContainsPoint (Vector2 startPoint)
+		public bool ContainsPoint (Vector2 point)
 		{
 			bool inside = false;
 
-			for (int i = 0, j = Vertices.Count - 1; i < Vertices.Count; j = i++)
+			for(int i = 0, j = Vertices.Count - 1; i < Vertices.Count; j = i++)
 			{
-				if((Vertices[i].Y > startPoint.Y) != (Vertices[j].Y > startPoint.Y) && 
-					startPoint.X < (Vertices[i].X - Vertices[j].X) * (startPoint.Y - Vertices[i].Y) / (Vertices[j].Y - Vertices[i].Y) + Vertices[i].X)
+				if((Vertices[i].Y > point.Y) != (Vertices[j].Y > point.Y) && 
+					point.X < (Vertices[j].X - Vertices[i].X) * (point.Y - Vertices[i].Y) / (Vertices[j].Y - Vertices[i].Y) + Vertices[i].X)
 				{
 					inside = !inside;
 				}

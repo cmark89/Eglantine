@@ -1,5 +1,3 @@
-#!/usr/local/bin/lua
-
 function lookAtWindow()
 	if not GameState:PlayerHasItem("Screwdriver") then
 		Event:ShowMessage("I can see my house from here!")
@@ -45,21 +43,9 @@ function tinkerWithOutlet()
 	end
 end
 
-boardsteppedon = false
+
 function creakyBoard()
-	if(not boardsteppedon) then
-		boardsteppedon = true
-		runCoroutine(function()
-			while(true) do
-				Event:ShowMessage("Argh!  Me spine!!")
-				waitSeconds(2)
-				Event:ShowMessage("Argh!  Me spine again!!")
-				waitSeconds(3)
-				Event:ShowMessage("IT HURTS SO BAD!!")
-				waitSeconds(2)
-			end
-		end)
-	end
+	Event:ChangeRoom("secretroom", "Door")
 end
 	
 	-- if gameTime < nextCreakTime then do

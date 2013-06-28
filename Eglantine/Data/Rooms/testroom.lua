@@ -6,7 +6,7 @@ rooms["testroom"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "EmptyRoom",
+			Texture = "Graphics/EmptyRoom",
 			Color = { 1, 1, 1, 1 },
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
@@ -26,6 +26,7 @@ rooms["testroom"] = {
 				},
 				
 			Enabled = true,
+			Drawn = false,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -47,6 +48,7 @@ rooms["testroom"] = {
 				},
 				
 			Enabled = true,
+			Drawn = false,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -67,7 +69,7 @@ rooms["testroom"] = {
 			Width = 41,
 			Height = 999,
 			
-			Enabled = false,
+			Enabled = true,
 			
 			OnEnter = creakyBoard
 		}

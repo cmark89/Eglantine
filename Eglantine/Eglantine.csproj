@@ -22,6 +22,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <ApplicationIcon>Content\eglantinesmall.png</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
@@ -31,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <ApplicationIcon>Content\eglantinesmall.png</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -52,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Eglantine.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="Engine\GameState.cs" />
     <Compile Include="Engine\Pathfinding\Navmesh.cs" />
@@ -65,7 +66,6 @@
     <Compile Include="TestPather.cs" />
     <Compile Include="Engine\Screens\AdventureScreen.cs" />
     <Compile Include="Engine\EventManager.cs" />
-    <Compile Include="Engine\ContentLoader.cs" />
     <Compile Include="Engine\MouseManager.cs" />
     <Compile Include="Engine\MessageManager.cs" />
     <Compile Include="Engine\Screens\MessageScreen.cs" />
@@ -79,21 +79,15 @@
     <Compile Include="Engine\GameWorld\Player.cs" />
     <Compile Include="Engine\GameWorld\Item.cs" />
     <Compile Include="Engine\Screens\GUI.cs" />
+    <Compile Include="Engine\ContentLoader.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Eglantine.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
-    <None Include="Content\arrowicon.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\arrowicon2.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\moveicon.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\walkicon.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Data\scheduler.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -113,12 +107,13 @@
     <Folder Include="Content\Audio\SoundEffects\" />
     <Folder Include="Content\Audio\Music\" />
     <Folder Include="Engine\GameWorld\" />
+    <Folder Include="Content\Graphics\" />
+    <Folder Include="Data\Events\" />
+    <Folder Include="Content\Graphics\Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Content Include="Content\testTitle.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\testTitle.xnb" />
     <Content Include="Data\rooms.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -128,12 +123,7 @@
     <Content Include="Data\items.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\MayStickfigure.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\testroom.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\MayStickfigure.xnb" />
     <Content Include="Data\testevents.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -146,28 +136,79 @@
     <Content Include="Data\test.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\EmptyRoom.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\LivingRoom02.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\phGui.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\MessageFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\messagewindow.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\LivingRoom02.xnb" />
+    <Content Include="Content\phGui.xnb" />
+    <Content Include="Content\MessageFont.xnb" />
+    <Content Include="Content\messagewindow.xnb" />
     <Content Include="Data\audio_assets.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Audio\SoundEffects\Extend.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\vertex.png">
+    <Content Include="Content\vertex.png" />
+    <Content Include="Content\Graphics\backyard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\bedroom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\chalkroom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\office.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\outside.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\secretroom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\upstairs.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Rooms\secretroom.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Events\secretroom_events.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\arrowicon.xnb" />
+    <Content Include="Content\arrowicon2.xnb" />
+    <Content Include="Content\moveicon.xnb" />
+    <Content Include="Content\walkicon.xnb" />
+    <Content Include="Content\Graphics\EmptyRoom.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\blueprints.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\crowbar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\document1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\document2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\eglantine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\key.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\pills.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\puzzlebox.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Objects\scissors.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Events\core_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

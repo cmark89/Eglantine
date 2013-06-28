@@ -42,3 +42,19 @@ items["Screwdriver"] = {
 	OnUse = nil
 }
 
+items["Puzzlebox"] = {
+
+	Name = "Puzzlebox",
+	Texture = "Graphics/Objects/puzzlebox",
+	Description = "A strange puzzlebox.  I should try to solve it!",
+	Type = "Immediate",
+	
+	OnInspect = function()
+		Event:ShowMessage("A strange puzzlebox.  I should try to solve it!")
+	end,
+	
+	OnUse = function()
+		Event:ShowMessage("THE PUZZLE SCREEN OPENS NOW!")
+	end
+}
+

@@ -150,10 +150,20 @@ namespace Eglantine.Engine
 
 				//if is drawn...
 				//	set the texture...
+				if((bool)currentInteractable["Drawn"])
+				{
+					Texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]);
+				}
 
 				// Add the events
+
+				bool draw = (bool)currentInteractable["Drawn"];
+				Texture2D texture = null;
+				if(draw) { texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]); } 
+
+
 				//Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
-				Interactables.Add(new Interactable((string)currentInteractable["Name"], clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"]));
+				Interactables.Add(new Interactable((string)currentInteractable["Name"], clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
 			}
 		}
 

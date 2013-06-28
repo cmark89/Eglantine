@@ -7,6 +7,12 @@
 require "Data/audio_assets"
 require "Data/scheduler"
 
+
+--Initialize globals to nil
+GameState = nil
+Event = nil
+
+
 require "Data/testevents"
 require "Data/rooms"
 require "Data/items"
@@ -15,10 +21,6 @@ require "Data/items"
 luanet.load_assembly "Eglantine"
 GAME_STATE = luanet.import_type "Eglantine.Engine.GameState"
 EVENT_MANAGER = luanet.import_type "Eglantine.Engine.EventManager"
-
---Initialize globals to nil
-GameState = nil
-Event = nil
 
 --Functions related to .NET classes and objects
 --Sets the lua global GameState to the current GameState.Instance--
