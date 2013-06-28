@@ -1,15 +1,15 @@
 -- Load the room's events.
-require("Data/Events/secretroom_events")
+require("Data/Events/SecretRoom_events")
 
-print("secretroom added to global table 'rooms'.")
+print("SecretRoom added to global table 'rooms'.")
 
-rooms["secretroom"] = {
+rooms["SecretRoom"] = {
 ------GRAPHICS------
 	Layers = 
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/secretroom",
+			Texture = "Graphics/Rooms/SecretRoom",
 			Color = { 1, 1, 1, 1 },
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
@@ -62,9 +62,36 @@ rooms["secretroom"] = {
 			},
 
 			OnInteract = function ()
-				door("Door", "testroom", "Teleport")
+				door("Door", "EmptyRoom", "Teleport")
 			end,
-			OnLook = nil
+			OnLook = function()
+				Event:ShowMessage("Waste of a good painting...")
+			end
+		},
+		
+		[3] = {
+			Name = "Trapdoor",
+			Polygon = {
+				[1] = { X = 801, Y = 676 },
+				[2] = { X = 1024, Y = 640 },
+				[3] = { X = 1024, Y = 678 },
+				[4] = { X = 894, Y = 765 },
+			},
+				
+			Enabled = true,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 888,
+				Y = 645
+			},
+
+			OnInteract = nil,
+			
+			OnLook = function()
+				Event:ShowMessage("That trapdoor looks sealed up tight.  If I had the key to it, though...")
+			end
 		}
 	},
 	
@@ -76,30 +103,17 @@ rooms["secretroom"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 378, Y = 522 },
-				[2] = { X = 1024, Y = 522 },
-				[3] = { X = 1024, Y = 768 },
-				[4] = { X = 378, Y = 768 }
-			},
-			
-			[2] = {
-				[1] = { X = 204, Y = 768 },
-				[2] = { X = 204, Y = 706 },
-				[3] = { X = 393, Y = 600 },
-				[4] = { X = 393, Y = 768 }
+				[1] = { X = 1024, Y = 525 },
+				[2] = { X = 381, Y = 525 },
+				[3] = { X = 381, Y = 613 },
+				[4] = { X = 198, Y = 712 },
+				[5] = { X = 198, Y = 768 },
+				[6] = { X = 0, Y = 768 },
+				[7] = { X = 1024, Y = 768 }
 			}
 		},
 		
 		Connections = {
-			[1] = {
-				Connects = { 1, 2 },
-				
-				Points = {
-					[1] = { X = 382, Y = 613 },
-					[2] = { X = 384, Y = 760 },
-					[3] = { X = 384, Y = 601 }
-				}
-			}
 		}
 	},
 	

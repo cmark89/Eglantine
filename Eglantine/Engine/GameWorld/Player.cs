@@ -23,10 +23,10 @@ namespace Eglantine.Engine
 		private bool forcedMovement = false;
 
 		// The distance at which the player paths toward the next waypoint
-		const float WAYPOINT_DISTANCE = 18f;
+		const float WAYPOINT_DISTANCE = 24f;
 
 		// Movement speed per second
-		const float MOVEMENT_SPEED = 100f;
+		const float MOVEMENT_SPEED = 150f;
 
 		// Player implements the singleton pattern.
 		private static Player _instance;

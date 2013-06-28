@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using LuaInterface;
 using Microsoft.Xna.Framework;
 
-namespace Eglantine.Engine.Pathfinding
+namespace Eglantine.Engine
 {
 	public class Polygon
 	{
@@ -18,11 +19,27 @@ namespace Eglantine.Engine.Pathfinding
 			Vertices = vertices;
 		}
 
+		// Constructs a polygon from a lua table containing a list of vertices
+		public Polygon (LuaTable table)
+		{
+			Vertices = new List<Vector2>();
+
+			LuaTable currentVertex;
+			float x, y;
+
+			for (int point = 1; point < table.Keys.Count + 1; point++) 
+			{
+				currentVertex = (LuaTable)table[point];
+				x = (float)((double)(currentVertex["X"]));
+				y = (float)((double)(currentVertex["Y"]));
+				AddVertex (new Vector2 (x, y));
+			}
+		}
+
 		/// <summary>
 		/// Adds a vertex to the polyon.
 		/// </summary>
 		public void AddVertex (Vector2 p)
-
 		{
 			Vertices.Add(p);
 		}

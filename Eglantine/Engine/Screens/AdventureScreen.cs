@@ -35,7 +35,7 @@ namespace Eglantine.Engine
 		public Trigger HighlightedTrigger { get; private set;}
 
 		// Used to force vertices to draw
-		private bool drawingVertices = true;
+		private bool drawingVertices = false;
 
 
 		public override void Initialize()
@@ -61,7 +61,7 @@ namespace Eglantine.Engine
 					for(int i = CurrentRoom.Interactables.Count; i > 0; i--)
 					{
 						Trigger thisTrigger = CurrentRoom.Interactables[i-1];
-						if(thisTrigger.Active && MouseManager.MouseInRect(thisTrigger.Area))
+						if(thisTrigger.Active && thisTrigger.VectorInArea(MouseManager.Position))
 						{
 							HighlightedTrigger = thisTrigger;
 							break;

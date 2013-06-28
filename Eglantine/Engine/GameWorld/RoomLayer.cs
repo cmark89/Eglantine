@@ -62,7 +62,7 @@ namespace Eglantine
 			Textures.Add(new TextureWrapper(ContentLoader.Instance.Load<Texture2D>((string)layerTable["Texture"]), Vector2.Zero));
 			LuaTable colorTable = (LuaTable)layerTable["Color"];
 			Color = new Color((float)(double)colorTable[1], (float)(double)colorTable[2], (float)(double)colorTable[3], (float)(double)colorTable[4]);
-			Scroll = new Vector2((float)(double)layerTable["Scroll.X"], (float)(double)layerTable["Scroll.Y"]);
+			//Scroll = new Vector2((float)(double)layerTable["Scroll.X"], (float)(double)layerTable["Scroll.Y"]);
 
 			switch((string)layerTable["Type"])
 			{

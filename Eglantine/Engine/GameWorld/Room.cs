@@ -120,10 +120,20 @@ namespace Eglantine.Engine
 				currentTrigger = (LuaTable)triggers[i + 1];
 
 				// Build the triggering rectangle
-				Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["X"], (int)(double)currentTrigger["Y"], (int)(double)currentTrigger["Width"], (int)(double)currentTrigger["Height"]);
+				if(currentTrigger["Area"] != null)
+				{
+					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["X"], (int)(double)currentTrigger["Y"], (int)(double)currentTrigger["Width"], (int)(double)currentTrigger["Height"]);
 
-				// Add the triggered event
-				TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
+					// Add the triggered event
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
+				}
+				else if(currentTrigger["Polygon"] != null)
+				{
+					Polygon poly = new Polygon((LuaTable)currentTrigger["Polygon"]);
+
+					// Add the triggered event
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
+				}				
 			}
 		}
 
@@ -139,10 +149,6 @@ namespace Eglantine.Engine
 			{
 				// Set the active object to the iterated interactable value
 				currentInteractable = (LuaTable)interactables[i + 1];
-
-				// Build the clickable area
-				currentProperty = (LuaTable)currentInteractable["Area"];
-				Rectangle clickRect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
 
 				// Build the interactable point
 				currentProperty = (LuaTable)currentInteractable["InteractPoint"];
@@ -161,9 +167,18 @@ namespace Eglantine.Engine
 				Texture2D texture = null;
 				if(draw) { texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]); } 
 
-
-				//Interactables.Add(new Interactable(clickRect, point, (LuaFunction)currentInteractable["OnInteract"]));
-				Interactables.Add(new Interactable((string)currentInteractable["Name"], clickRect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
+				// Build the clickable area
+				if((LuaTable)currentInteractable["Area"] != null)
+				{
+					currentProperty = (LuaTable)currentInteractable["Area"];
+					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
+				}
+				else if((LuaTable)currentInteractable["Polygon"] != null)
+				{
+					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
+				}
 			}
 		}
 

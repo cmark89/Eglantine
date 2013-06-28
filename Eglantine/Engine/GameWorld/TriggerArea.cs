@@ -12,6 +12,16 @@ namespace Eglantine.Engine
 		{
 			Name = name;
 			Area = area;
+			Shape = Trigger.TriggerShape.Rectangle;
+			Event = gameEvent;
+			Active = active;
+		}
+
+		public TriggerArea (string name, Polygon poly, LuaFunction gameEvent, bool active)
+		{
+			Name = name;
+			PolygonArea = poly;
+			Shape = Trigger.TriggerShape.Polygon;
 			Event = gameEvent;
 			Active = active;
 		}
@@ -21,12 +31,6 @@ namespace Eglantine.Engine
 			// Call the event if the player is within the trigger area.
 			if(VectorInArea(Player.Instance.Position))
 				Event.Call();
-		}
-
-		public bool VectorInArea(Vector2 point)
-		{
-			return (point.X >= Area.X && point.X <= Area.X + Area.Width && 
-			        point.Y >= Area.Y && point.Y <= Area.Y + Area.Height);
 		}
 	}
 }

@@ -20,6 +20,22 @@ namespace Eglantine.Engine
 		{
 			Name = name;
 			Area = area;
+			Shape = Trigger.TriggerShape.Rectangle;
+			InteractPoint = interactPoint;
+			Event = gameEvent;
+			LookEvent = lookEvent;
+			IsDrawn = drawn;
+			Active = enabled;
+
+			if(IsDrawn)
+				Texture = texture;
+		}
+
+		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, bool drawn = false, Texture2D texture = null)
+		{
+			Name = name;
+			PolygonArea = area;
+			Shape = Trigger.TriggerShape.Polygon;
 			InteractPoint = interactPoint;
 			Event = gameEvent;
 			LookEvent = lookEvent;
@@ -39,9 +55,9 @@ namespace Eglantine.Engine
 		{
 			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted())
 			{
-				if(MouseManager.MouseInRect(Area) && MouseManager.LeftClickUp)
+				if(VectorInArea(MouseManager.Position) && MouseManager.LeftClickUp)
 					OnInteract();
-				else if(MouseManager.MouseInRect(Area) && MouseManager.RightClickUp)
+				else if(VectorInArea(MouseManager.Position) && MouseManager.RightClickUp)
 					OnLook();
 			}
 		}
@@ -62,10 +78,10 @@ namespace Eglantine.Engine
 				Event.Call();
 		}
 
-		public void OnLook()
+		public void OnLook ()
 		{
-			if(LookEvent != null)
-				LookEvent.Call();
+			if (LookEvent != null)
+				LookEvent.Call ();
 		}
 	}
 }

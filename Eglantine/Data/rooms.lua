@@ -9,8 +9,8 @@ rooms = {}
 
 -- List of all rooms to be loaded 
 requiredRooms = { 
-	"testroom",
-	"secretroom"
+	"EmptyRoom",
+	"SecretRoom"
 }
 
 -- Load each required room in turn

@@ -44,28 +44,14 @@ namespace Eglantine.Engine.Pathfinding
 			LuaTable currentTable = (LuaTable)nav["Polygons"];
 			LuaTable currentPolygon;
 			LuaTable currentVertex;
-			Polygon tempPolygon;
 			float tempX, tempY;
 
 			// Iterate through each polygon in the table
 			for (int i = 1; i < currentTable.Keys.Count + 1; i++) 
 			{
-
+				// Let the polygons bury (and build) their own
 				currentPolygon = (LuaTable)currentTable [i];
-
-				// Add each point in the polygon to the temporary object
-				tempPolygon = new Polygon ();
-				for (int point = 1; point < currentPolygon.Keys.Count + 1; point++) 
-				{
-					currentVertex = (LuaTable)currentPolygon[point];
-					tempX = (float)((double)(currentVertex["X"]));
-					tempY = (float)((double)(currentVertex["Y"]));
-					tempPolygon.AddVertex (new Vector2 (tempX, tempY));
-				}
-
-				// Now that all the points have been added to the polygon, add it to
-				// the polygon list.
-				Polygons.Add (tempPolygon);
+				Polygons.Add (new Polygon(currentPolygon));
 			}
 
 			// All the polygons should now have been added to the table.  
