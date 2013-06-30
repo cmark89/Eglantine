@@ -62,7 +62,7 @@ rooms["SecretRoom"] = {
 			},
 
 			OnInteract = function ()
-				door("Door", "EmptyRoom", "Teleport")
+				door("Door", "LivingRoom", "Painting")
 			end,
 			OnLook = function()
 				Event:ShowMessage("Waste of a good painting...")

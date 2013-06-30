@@ -51,29 +51,31 @@ namespace Eglantine.Engine
 				State = GuiState.Disappearing;
 			}
 
-			if(State == GuiState.Appearing)
+			if (State == GuiState.Appearing)
 			{
-				Position -= new Vector2(0, GUI_SCROLL_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
-				ClampGuiPosition();
-			}
-			else if(State == GuiState.Disappearing)
+				Position -= new Vector2 (0, GUI_SCROLL_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
+				ClampGuiPosition ();
+			} else if (State == GuiState.Disappearing)
 			{
-				Position += new Vector2(0, GUI_SCROLL_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
-				ClampGuiPosition();
+				Position += new Vector2 (0, GUI_SCROLL_SPEED * (float)gameTime.ElapsedGameTime.TotalSeconds);
+				ClampGuiPosition ();
 			}
 
-			// Process mouse input
-			for(int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
+			if (!AdventureScreen.Instance.InputDisabled)
 			{
-				if(MouseManager.MouseInRect(GetItemRect(i)))
+				// Process mouse input
+				for(int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
 				{
-					// Use the item if left clicked...
-					if(MouseManager.LeftClickUp)
-						GameState.Instance.PlayerItems[i].Use();
+					if(MouseManager.MouseInRect(GetItemRect(i)))
+					{
+						// Use the item if left clicked...
+						if(MouseManager.LeftClickUp)
+							GameState.Instance.PlayerItems[i].Use();
 
-					// Or, inspect the item if right clicked...
-					else if(MouseManager.RightClickUp)
-						GameState.Instance.PlayerItems[i].Inspect();
+						// Or, inspect the item if right clicked...
+						else if(MouseManager.RightClickUp)
+							GameState.Instance.PlayerItems[i].Inspect();
+					}
 				}
 			}
 		}

@@ -37,7 +37,7 @@ rooms["EmptyRoom"] = {
 			},
 			
 			OnInteract = function()
-				 door("Door", "SecretRoom", "Door")
+				 door("Door", "Upstairs", "EmptyRoomDoor")
 			end,
 			
 			OnLook = nil
@@ -70,8 +70,8 @@ rooms["EmptyRoom"] = {
 		[1] = {
 			Name = "Door",
 			
-			X = 755,
-			Y = 535
+			X = 81,
+			Y = 543
 		}
 	}	
 }

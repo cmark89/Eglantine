@@ -30,6 +30,13 @@ namespace Eglantine.Engine
 		public Vector2 PlayerPosition;
 		#endregion
 
+
+		#region GameState Variables
+		public bool PaintingOpened = false;
+		public bool PhotoTaken = false;
+
+		#endregion
+
 		#region Setup, Creation and Loading
 		public GameState ()
 		{
@@ -145,6 +152,7 @@ namespace Eglantine.Engine
 			Player.Instance.SetPosition(targetEntrance.Point);
 			// Cancel all standing player orders 
 		}
+
 
 		#endregion
 	}

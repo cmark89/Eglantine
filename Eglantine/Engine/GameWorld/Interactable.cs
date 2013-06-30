@@ -11,6 +11,7 @@ namespace Eglantine.Engine
 	{
 		public Vector2 InteractPoint { get; private set; }
 		public bool IsDrawn { get; private set; }
+		public Vector2 DrawPosition { get; private set; }
 		public Texture2D Texture { get; private set; }
 
 		// Handles events for looking at objects
@@ -26,12 +27,13 @@ namespace Eglantine.Engine
 			LookEvent = lookEvent;
 			IsDrawn = drawn;
 			Active = enabled;
+			DrawPosition = new Vector2(Area.X, Area.Y);
 
 			if(IsDrawn)
 				Texture = texture;
 		}
 
-		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, bool drawn = false, Texture2D texture = null)
+		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null)
 		{
 			Name = name;
 			PolygonArea = area;
@@ -41,6 +43,7 @@ namespace Eglantine.Engine
 			LookEvent = lookEvent;
 			IsDrawn = drawn;
 			Active = enabled;
+			DrawPosition = (Vector2)drawPos;
 
 			if(IsDrawn)
 				Texture = texture;
@@ -68,7 +71,7 @@ namespace Eglantine.Engine
 			{
 				Console.WriteLine("Drawing");
 				// Update this to draw at a more accurate position
-				spriteBatch.Draw(Texture, new Vector2(Area.X, Area.Y), Color.White);
+				spriteBatch.Draw(Texture, DrawPosition, Color.White);
 			}
 		}
 

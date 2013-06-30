@@ -82,10 +82,10 @@ namespace Eglantine.Engine
 						SetActiveItem(null);
 					}
 				}
-
-				// Only do this if the screen is taking input!
-				Gui.Update(gameTime);
 			}
+
+			if(ReceivingInput)
+				Gui.Update(gameTime);
 
 			// Now the other updates go here anyways.
 			CurrentRoom.Update(gameTime);

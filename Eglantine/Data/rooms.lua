@@ -9,8 +9,15 @@ rooms = {}
 
 -- List of all rooms to be loaded 
 requiredRooms = { 
+	"FrontYard",
+	"BackYard",
+	"Foyer",
+	"Upstairs",
+	"Bedroom",
+	"Office",
 	"EmptyRoom",
-	"SecretRoom"
+	"SecretRoom",
+	"LivingRoom"
 }
 
 -- Load each required room in turn

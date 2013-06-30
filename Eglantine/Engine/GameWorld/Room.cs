@@ -176,8 +176,12 @@ namespace Eglantine.Engine
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
+					Vector2 drawPos = Vector2.Zero;
+					if(currentInteractable["DrawAt"] != null)
+						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
+
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, drawPos));
 				}
 			}
 		}

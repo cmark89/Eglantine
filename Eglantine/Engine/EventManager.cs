@@ -64,11 +64,13 @@ namespace Eglantine.Engine
 		// Enable and disable triggers / interactable objects
 		public void EnableInteractable (string objectName)
 		{
+			Console.WriteLine("Enable " + objectName);
 			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Enable();
 		}
 
 		public void DisableInteractable (string objectName)
 		{
+			Console.WriteLine("Disable " + objectName);
 			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Disable();
 		}
 
@@ -103,10 +105,11 @@ namespace Eglantine.Engine
 		// Returns true if the item is currently active (being clicked with)
 		public bool UsingItem(string itemName)
 		{
-			Console.WriteLine("check...");
-			return (AdventureScreen.Instance.LoadedItem.Name == itemName);
+			if(AdventureScreen.Instance.LoadedItem != null)
+				return (AdventureScreen.Instance.LoadedItem.Name == itemName);
+			else
+				return false;
 		}
-
 
 		// This sends a signal to Lua, allowing coroutines to know what's happening.
 		public void SendSignal(string signal)
