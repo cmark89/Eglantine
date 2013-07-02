@@ -21,6 +21,7 @@ namespace Eglantine.Engine
 
 		// Stores the items the player has collected.
 		public List<Item> PlayerItems { get; private set; }
+		public List<Document> Documents { get; private set; }
 
 		// Stores the rooms as they currently exist in the game.
 		public List<Room> Rooms { get; private set; }
@@ -122,6 +123,11 @@ namespace Eglantine.Engine
 				AdventureScreen.Instance.SetActiveItem(null);
 
 			PlayerItems.Remove(PlayerItems.Find(x => x.Name == item));
+		}
+
+		public void AddDocument (Document doc)
+		{
+			Documents.Add(doc);
 		}
 
 		// Changes the room to the room with the given name.

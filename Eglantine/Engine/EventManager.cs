@@ -61,6 +61,16 @@ namespace Eglantine.Engine
 			GameState.Instance.DestroyItem(itemName);
 		}
 
+		// Changes the document's nth page to the texture pointed to by 'newPage'
+		public void ChangeDocumentPage (string documentName, int pageNumber, string newPage)
+		{
+			Document thisDoc = GameState.Instance.Documents.Find (x => x.Name == documentName);
+			if (thisDoc != null)
+			{
+				thisDoc.ChangePage(pageNumber, newPage);
+			}
+		}
+
 		// Enable and disable triggers / interactable objects
 		public void EnableInteractable (string objectName)
 		{

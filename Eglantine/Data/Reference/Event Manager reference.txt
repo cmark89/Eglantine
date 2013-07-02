@@ -7,13 +7,16 @@ ShowMessage(message) 		-	Adds "message to the message queue.
 
 MovePlayer(x, y)			-	Forces the player to move to position x,y.  Depracated; use MovePlayerTo instead.
 
-MovePlayerTo(obj)		-	Forces the player to move to the interact point of the provided object
+MovePlayerTo(obj)			-	Forces the player to move to the interact point of the provided object
 
 GainItem(name)				-	Gives the player the item named
 
 DestroyItem(name)			-	Destroys the item named
 
 ChangeRoom(room, entrance)	-	Move the player to entrance in room
+
+ChangeDocumentPage(doc, n, 
+newPageTexture) 			-	Changes 'doc', swapping it's nth page with the newPageTexture
 
 SendSignal(signal)			-	Sends the named signal to the scheduler
 

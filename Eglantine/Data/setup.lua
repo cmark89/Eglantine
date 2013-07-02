@@ -16,6 +16,7 @@ Event = nil
 require "Data/testevents"
 require "Data/rooms"
 require "Data/items"
+require "Data/documents"
 
 --Load the relevent assemblies and types
 luanet.load_assembly "Eglantine"

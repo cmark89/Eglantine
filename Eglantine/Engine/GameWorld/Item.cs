@@ -57,9 +57,17 @@ namespace Eglantine.Engine
 				OnInspect.Call();
 		}
 
-		public void OnAquire()
+		public void OnAquire ()
 		{
-			EventManager.Instance.SendSignal(Name + " found");
+			EventManager.Instance.SendSignal (Name + " found");
+
+			// If there is a document that shares a name with this item
+			if (Eglantine.Lua.GetTable ("documents[" + Name + "]") != null)
+			{
+				GameState.Instance.AddDocument(new Document(Name));
+			}
+
+
 			if(OnAcquire != null)
 				OnAcquire.Call();
 		}
