@@ -38,17 +38,17 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="LuaInterface">
-      <HintPath>..\..\..\repos\MonoLuaInterface\bin\LuaInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="Tao.Sdl">
       <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\Tao.Sdl.dll</HintPath>
+    </Reference>
+    <Reference Include="LuaInterface">
+      <HintPath>..\..\..\repos\MonoLuaInterface\bin\LuaInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\repos\MonoGameDev\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Engine\Screens\DocumentScreen.cs" />
     <Compile Include="Engine\GameWorld\Document.cs" />
+    <Compile Include="Engine\Screens\DocumentScreenGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -96,6 +97,7 @@
     <None Include="Data\Reference\Signal reference.txt" />
     <None Include="Data\Reference\Event Manager reference.txt" />
     <None Include="Data\Rooms\_room_template.lua" />
+    <None Include="Content\Graphics\DocumentFrame.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
