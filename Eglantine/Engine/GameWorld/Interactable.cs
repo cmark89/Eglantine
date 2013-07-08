@@ -69,7 +69,6 @@ namespace Eglantine.Engine
 		{
 			if (IsDrawn)
 			{
-				Console.WriteLine("Drawing");
 				// Update this to draw at a more accurate position
 				spriteBatch.Draw(Texture, DrawPosition, Color.White);
 			}

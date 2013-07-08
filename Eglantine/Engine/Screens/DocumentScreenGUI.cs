@@ -57,7 +57,7 @@ namespace Eglantine.Engine
 		{
 			if (guiTexture == null)
 			{
-				ContentLoader.Instance.Load<Texture2D> ("Graphics/DocumentFrame");
+				guiTexture = ContentLoader.Instance.Load<Texture2D> ("Graphics/DocumentFrame");
 
 				cornerRect = new Rectangle(0,0,48,48);
 				horizontalBarRect = new Rectangle(48,0,48,48);
@@ -104,9 +104,9 @@ namespace Eglantine.Engine
 			// Next, find where all the borders should begin.
 			// They must be offset by 1/2 their height or width relative to the center
 			topBorderStart = new Vector2(backgroundRect.X, backgroundRect.Y - 24);
-			bottomBorderStart = new Vector2(backgroundRect.X, backgroundRect.Y + backgroundRect.Height + 24);
+			bottomBorderStart = new Vector2(backgroundRect.X, backgroundRect.Y + backgroundRect.Height - 24);
 			leftBorderStart = new Vector2(backgroundRect.X - 24, backgroundRect.Y);
-			rightBorderStart = new Vector2(backgroundRect.X + backgroundRect.Width + 24, backgroundRect.Y);
+			rightBorderStart = new Vector2(backgroundRect.X + backgroundRect.Width - 24, backgroundRect.Y);
 
 			// Now, determine where to put the corner graphics
 			topLeftCorner = new Vector2(backgroundRect.X - 24, backgroundRect.Y - 24);
@@ -175,14 +175,14 @@ namespace Eglantine.Engine
 			// Finally, draw the buttons if they are necessary.
 			if (drawLeftArrow)
 			{
-				spriteBatch.Draw(guiTexture, sourceRectangle: arrowRect, position: leftArrowButton, effect: SpriteEffects.FlipHorizontally, color: DocumentColor);
+				spriteBatch.Draw(guiTexture, sourceRectangle: arrowRect, position: leftArrowButton, effect: SpriteEffects.FlipHorizontally, color: leftArrowColor);
 			}
 			if (drawRightArrow)
 			{
-				spriteBatch.Draw(guiTexture, sourceRectangle: arrowRect, position: rightArrowButton, color: DocumentColor);
+				spriteBatch.Draw(guiTexture, sourceRectangle: arrowRect, position: rightArrowButton, color: rightArrowColor);
 			}
 
-			spriteBatch.Draw(guiTexture, sourceRectangle: closeRect, position: closeButton, color: DocumentColor);
+			spriteBatch.Draw(guiTexture, sourceRectangle: closeRect, position: closeButton, color: closeColor);
 		}
 
 		public void Update (GameTime gameTime)
@@ -197,14 +197,14 @@ namespace Eglantine.Engine
 				bool clicked = MouseManager.LeftClickUp;
 
 				// If player cursor is over the left arrow...
-				if (Vector2.Distance (MouseManager.Position, leftArrowButton + new Vector2 (24, 24)) < 23)
+				if (drawLeftArrow && Vector2.Distance (MouseManager.Position, leftArrowButton + new Vector2 (24, 24)) < 23)
 				{
 					leftArrowColor = DocumentColor;
 					if(clicked)
 						DocumentScreen.Instance.GoToPreviousPage();
 				}
 				// If the player cursor is over the right arrow...
-				else if (Vector2.Distance (MouseManager.Position, rightArrowButton + new Vector2 (24, 24)) < 23)
+				else if (drawRightArrow && Vector2.Distance (MouseManager.Position, rightArrowButton + new Vector2 (24, 24)) < 23)
 				{
 					rightArrowColor = DocumentColor;
 					if(clicked)

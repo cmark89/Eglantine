@@ -57,6 +57,8 @@ namespace Eglantine.Engine
 			// Initialize lists here
 			PlayerItems = new List<Item> ();
 			Rooms = new List<Room> ();
+			Documents = new List<Document>();
+
 			//LuaTable tempTable;
 			// Populate the list of rooms
 			LuaTable tempTable = Eglantine.Lua.GetTable("requiredRooms");
@@ -127,6 +129,7 @@ namespace Eglantine.Engine
 
 		public void AddDocument (Document doc)
 		{
+			Console.WriteLine("Add " + doc.Name + " to the document list.");
 			Documents.Add(doc);
 		}
 

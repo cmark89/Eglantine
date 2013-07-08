@@ -47,6 +47,9 @@ namespace Eglantine.Engine
 			Player = Player.Instance;
 			Gui = new GUI();
 			//Player.Setup();
+
+			// Testing...
+			EventManager.Instance.GainItem("Strange Notes");
 		}
 
 		public override void Update (GameTime gameTime)

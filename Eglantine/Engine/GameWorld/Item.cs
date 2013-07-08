@@ -61,12 +61,14 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.SendSignal (Name + " found");
 
-			// If there is a document that shares a name with this item
-			if (Eglantine.Lua.GetTable ("documents[" + Name + "]") != null)
+			// If there is a document that shares a name with this item...
+			LuaTable docTable = Eglantine.Lua.GetTable ("documents");
+			if ((LuaTable)docTable[Name] != null)
 			{
+				Console.WriteLine("Adding " + Name + " to document list.");
+				// ...add it to the global document list.
 				GameState.Instance.AddDocument(new Document(Name));
 			}
-
 
 			if(OnAcquire != null)
 				OnAcquire.Call();

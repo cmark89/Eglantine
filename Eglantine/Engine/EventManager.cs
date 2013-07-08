@@ -1,4 +1,5 @@
 using System;
+using LuaInterface;
 using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
@@ -138,6 +139,22 @@ namespace Eglantine.Engine
 		public void PlaySong(string songName, float volume = 1f, bool loop = true, float pitch = 0f, float pan = 0f)
 		{
 			AudioManager.Instance.PlaySong(songName, volume, loop, pitch, pan);
+		}
+
+		// Bring up a document screen
+		public void ViewDocument (string docName)
+		{
+			Document namedDoc = GameState.Instance.Documents.Find (x => x.Name == docName);
+
+			if (namedDoc != null) 
+			{
+				Console.WriteLine(namedDoc.Name + " exists!  Create document screen.");
+				GameScene.Instance.AddScreen(new DocumentScreen(namedDoc));
+			} 
+			else 
+			{
+				Console.WriteLine(docName + " not in GameState's document list.");
+			}
 		}
 	}
 }

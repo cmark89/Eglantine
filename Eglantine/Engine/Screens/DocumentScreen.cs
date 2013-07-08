@@ -26,6 +26,11 @@ namespace Eglantine
 
 		public DocumentScreen (Document doc)
 		{
+			_instance = this;
+			Console.WriteLine("DocScreen called");
+			if(doc == null)
+				Console.WriteLine("Document is null...?");
+
 			Initialize();
 			SetDocument(doc);
 		}
@@ -43,25 +48,28 @@ namespace Eglantine
 
 		private void SetupWindow()
 		{
+			// Play a sound effect?
 			window = new DocumentScreenGUI();
 			window.SetPage(thisDocument.Pages[currentPage].Texture, currentPage + 1, thisDocument.Pages.Count);
 		}
 
 		public void GoToPreviousPage()
 		{
+			// Play a sound effect
 			currentPage--;
 			window.SetPage(thisDocument.Pages[currentPage].Texture, currentPage + 1, thisDocument.Pages.Count);
 		}
 
 		public void GoToNextPage()
 		{
+			// Play a sound effect
 			currentPage++;
 			window.SetPage(thisDocument.Pages[currentPage].Texture, currentPage + 1, thisDocument.Pages.Count);
 		}
 
 		public void Close()
 		{
-			// Close the window...
+			// Close the window and play a sound effect.
 			window = null;
 			this.FlaggedForRemoval = true;
 		}

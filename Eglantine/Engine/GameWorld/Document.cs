@@ -19,11 +19,14 @@ namespace Eglantine
 
 		void BuildDocument (string docName)
 		{
+			Name = docName;
+			Console.WriteLine("Build document " + docName);
 			Pages = new List<DocumentPage> ();
 
-			LuaTable docTable = Eglantine.Lua.GetTable ("documents[" + docName + "]");
-			if (docTable != null)
+			LuaTable docTable = Eglantine.Lua.GetTable ("documents");
+			if(docTable[docName] != null)
 			{
+				docTable = (LuaTable)docTable[docName];
 				for(int i = 0; i < docTable.Keys.Count; i++)
 				{
 					AddPage((string)docTable[i+1]);

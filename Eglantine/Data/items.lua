@@ -97,7 +97,7 @@ items["Strange Notes"] = {
 	end,
 	
 	OnUse = function()
-		Event:ShowMessage("BRING UP DOCUMENT VIEW: STRANGE NOTES")
+		Event:ViewDocument("Strange Notes")
 	end
 }
 
@@ -113,7 +113,7 @@ items["Journal"] = {
 	end,
 	
 	OnUse = function()
-		Event:ShowMessage("BRING UP DOCUMENT VIEW: JOURNAL")
+		Event:ViewDocument("Journal")
 	end
 }
 
@@ -129,7 +129,7 @@ items["Blueprints"] = {
 	end,
 	
 	OnUse = function()
-		Event:ShowMessage("BRING UP DOCUMENT VIEW: BLUEPRINTS")
+		Event:ViewDocument("Blueprints")
 	end
 }
 
@@ -149,7 +149,7 @@ items["Photograph"] = {
 	end,
 	
 	OnUse = function()
-		Event:ShowMessage("BRING UP DOCUMENT VIEW: PHOTO")
+		Event:ViewDocument("Photograph")
 	end
 }
 
