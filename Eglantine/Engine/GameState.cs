@@ -35,6 +35,7 @@ namespace Eglantine.Engine
 		#region GameState Variables
 		public bool PaintingOpened = false;
 		public bool PhotoTaken = false;
+		public PuzzleboxState PuzzleboxState { get; private set; }
 
 		#endregion
 
@@ -58,6 +59,7 @@ namespace Eglantine.Engine
 			PlayerItems = new List<Item> ();
 			Rooms = new List<Room> ();
 			Documents = new List<Document>();
+			PuzzleboxState = new PuzzleboxState();
 
 			//LuaTable tempTable;
 			// Populate the list of rooms

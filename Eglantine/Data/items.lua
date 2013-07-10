@@ -81,7 +81,7 @@ items["Puzzlebox"] = {
 	end,
 	
 	OnUse = function()
-		Event:ShowMessage("THE PUZZLE SCREEN OPENS NOW!")
+		Event:OpenPuzzlebox()
 	end
 }
 

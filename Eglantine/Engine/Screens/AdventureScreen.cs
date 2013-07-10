@@ -49,7 +49,7 @@ namespace Eglantine.Engine
 			//Player.Setup();
 
 			// Testing...
-			EventManager.Instance.GainItem("Strange Notes");
+			EventManager.Instance.GainItem("Puzzlebox");
 		}
 
 		public override void Update (GameTime gameTime)

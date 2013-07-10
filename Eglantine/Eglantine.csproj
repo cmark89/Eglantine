@@ -88,6 +88,9 @@
     <Compile Include="Engine\Screens\DocumentScreen.cs" />
     <Compile Include="Engine\GameWorld\Document.cs" />
     <Compile Include="Engine\Screens\DocumentScreenGUI.cs" />
+    <Compile Include="Engine\Screens\PuzzleboxScreen.cs" />
+    <Compile Include="Engine\Screens\PuzzleboxScreenGUI.cs" />
+    <Compile Include="Engine\PuzzleboxState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -116,6 +119,7 @@
     <Folder Include="Content\Graphics\Objects\" />
     <Folder Include="Content\Graphics\Rooms\" />
     <Folder Include="Content\Graphics\Docs\" />
+    <Folder Include="Engine\Puzzlebox\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -329,6 +333,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Docs\photograph1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleBoxBG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleKey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\PuzzleRing7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\ZodiacButtons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

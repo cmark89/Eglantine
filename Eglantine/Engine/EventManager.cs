@@ -156,6 +156,12 @@ namespace Eglantine.Engine
 				Console.WriteLine(docName + " not in GameState's document list.");
 			}
 		}
+
+		public void OpenPuzzlebox()
+		{
+			Console.WriteLine("Open the puzzlebox screen!");
+			GameScene.Instance.AddScreen(new PuzzleboxScreen(GameState.Instance.PuzzleboxState));
+		}
 	}
 }
 
