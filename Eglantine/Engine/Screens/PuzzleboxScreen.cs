@@ -83,6 +83,7 @@ namespace Eglantine
 		private bool isDraggingRing;
 		int draggingRing;
 		Vector2 ringDragAnchor;
+		float ringDragAnchorAngle;
 
 		public PuzzleboxScreen (PuzzleboxState puzzleState)
 		{
@@ -262,31 +263,33 @@ namespace Eglantine
 				{
 					isDraggingRing = false;
 				}
-
-				if (MouseManager.MouseInRect (OffsetRect (AriesRect, puzzleStart)))
-					PuzzleboxState.AriesPressed = !PuzzleboxState.AriesPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (TaurusRect, puzzleStart)))
-					PuzzleboxState.TaurusPressed = !PuzzleboxState.TaurusPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (GeminiRect, puzzleStart)))
-					PuzzleboxState.GeminiPressed = !PuzzleboxState.GeminiPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (CancerRect, puzzleStart)))
-					PuzzleboxState.CancerPressed = !PuzzleboxState.CancerPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (LeoRect, puzzleStart)))
-					PuzzleboxState.LeoPressed = !PuzzleboxState.LeoPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (VirgoRect, puzzleStart)))
-					PuzzleboxState.VirgoPressed = !PuzzleboxState.VirgoPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (LibraRect, puzzleStart)))
-					PuzzleboxState.LibraPressed = !PuzzleboxState.LibraPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (ScorpioRect, puzzleStart)))
-					PuzzleboxState.ScorpioPressed = !PuzzleboxState.ScorpioPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (SagittariusRect, puzzleStart)))
-					PuzzleboxState.SagittariusPressed = !PuzzleboxState.SagittariusPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (CapricornRect, puzzleStart)))
-					PuzzleboxState.CapricornPressed = !PuzzleboxState.CapricornPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (AquariusRect, puzzleStart)))
-					PuzzleboxState.AquariusPressed = !PuzzleboxState.AquariusPressed;
-				else if (MouseManager.MouseInRect (OffsetRect (PiscesRect, puzzleStart)))
-					PuzzleboxState.PiscesPressed = !PuzzleboxState.PiscesPressed;
+				else
+				{
+					if (MouseManager.MouseInRect (OffsetRect (AriesRect, puzzleStart)))
+						PuzzleboxState.AriesPressed = !PuzzleboxState.AriesPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (TaurusRect, puzzleStart)))
+						PuzzleboxState.TaurusPressed = !PuzzleboxState.TaurusPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (GeminiRect, puzzleStart)))
+						PuzzleboxState.GeminiPressed = !PuzzleboxState.GeminiPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (CancerRect, puzzleStart)))
+						PuzzleboxState.CancerPressed = !PuzzleboxState.CancerPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (LeoRect, puzzleStart)))
+						PuzzleboxState.LeoPressed = !PuzzleboxState.LeoPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (VirgoRect, puzzleStart)))
+						PuzzleboxState.VirgoPressed = !PuzzleboxState.VirgoPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (LibraRect, puzzleStart)))
+						PuzzleboxState.LibraPressed = !PuzzleboxState.LibraPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (ScorpioRect, puzzleStart)))
+						PuzzleboxState.ScorpioPressed = !PuzzleboxState.ScorpioPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (SagittariusRect, puzzleStart)))
+						PuzzleboxState.SagittariusPressed = !PuzzleboxState.SagittariusPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (CapricornRect, puzzleStart)))
+						PuzzleboxState.CapricornPressed = !PuzzleboxState.CapricornPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (AquariusRect, puzzleStart)))
+						PuzzleboxState.AquariusPressed = !PuzzleboxState.AquariusPressed;
+					else if (MouseManager.MouseInRect (OffsetRect (PiscesRect, puzzleStart)))
+						PuzzleboxState.PiscesPressed = !PuzzleboxState.PiscesPressed;
+				}
 			}
 			else if (PuzzleboxState.RingsUnlocked && !isDraggingRing && MouseManager.LeftButtonIsDown)
 			{
@@ -337,24 +340,36 @@ namespace Eglantine
 				}
 
 				if(isDraggingRing)
+				{
 					ringDragAnchor = MouseManager.Position;
+					ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
+				}
 			}
 
 			if (isDraggingRing)
 			{
-				// Check if the angle is sufficient to snap.  Measure the change in mouse ANGLE instead of just position.
-
-				if(Vector2.Distance(MouseManager.Position, ringDragAnchor) > RING_DRAG_THRESHOLD)
+				// Check if the difference in angle is sufficient to snap.  Measure the change in mouse ANGLE instead of just position.
+				float dragAngle = GetAngleFromCenter(MouseManager.Position) - ringDragAnchorAngle;
+				if(Math.Abs(dragAngle) > PuzzleboxState.RING_DRAG_MAGNITUDE)
 				{
-					// Snap the ring to the next position
-					if(MouseManager.Position.X >= ringDragAnchor.X && MouseManager.Position.Y >= ringDragAnchor.Y)
+					// Time to snap!
+					if(dragAngle > 0)
 						PuzzleboxState.RotateRing(draggingRing, 1);
 					else
 						PuzzleboxState.RotateRing(draggingRing, -1);
 
 					ringDragAnchor = MouseManager.Position;
+					ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
 				}
 			}
+		}
+
+		public float GetAngleFromCenter (Vector2 mousePos)
+		{
+			Vector2 cent = puzzleStart + center;
+			float radians = (float)Math.Atan2(mousePos.Y - cent.Y, mousePos.X - cent.X);
+
+			return radians;
 		}
 
 		public void Close()

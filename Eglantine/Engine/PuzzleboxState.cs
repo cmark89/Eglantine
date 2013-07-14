@@ -4,7 +4,7 @@ namespace Eglantine.Engine
 {
 	public class PuzzleboxState
 	{
-		private const float RING_DRAG_MAGNITUDE = ((float)Math.PI * 2) / 36;
+		public const float RING_DRAG_MAGNITUDE = ((float)Math.PI * 2) / 36;
 
 		// Change this.
 		public bool RingsUnlocked = true;
