@@ -9,8 +9,8 @@ namespace Eglantine.Engine
 		// Change this.
 		public bool RingsUnlocked = true;
 
-		public float Ring1Rotation = 0;
-		public float Ring2Rotation = 0;
+		public float Ring1Rotation = 0f;
+		public float Ring2Rotation = 0f;
 		public float Ring3Rotation = 0f;
 		public float Ring4Rotation = 0f;
 		public float Ring5Rotation = 0f;
@@ -73,6 +73,39 @@ namespace Eglantine.Engine
 			default:
 				break;
 			}
+		}
+
+		public void CheckButtons()
+		{
+			if(ScorpioPressed && CancerPressed && PiscesPressed && LibraPressed && CapricornPressed && SagittariusPressed && VirgoPressed)
+			{
+				RingsUnlocked = true;
+			}
+			else
+			{
+				RingsUnlocked = false;
+			}
+		}
+
+		public void CheckIfSolved()
+		{
+			if(
+				Ring1Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring2Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring3Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring4Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring5Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring6Rotation < RING_DRAG_MAGNITUDE /3 &&
+				Ring7Rotation < RING_DRAG_MAGNITUDE /3
+				)
+			{
+				TriggerPuzzleSolve();
+			}
+		}
+
+		public void TriggerPuzzleSolve()
+		{
+			// Do the stuff to make the thing happen
 		}
 	}
 }
