@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
@@ -8,6 +9,7 @@ namespace Eglantine.Engine
 
 		// Change this.
 		public bool RingsUnlocked = true;
+		public bool PuzzleSolved { get; private set; }
 
 		public float Ring1Rotation = 0f;
 		public float Ring2Rotation = 0f;
@@ -87,24 +89,30 @@ namespace Eglantine.Engine
 			}
 		}
 
-		public void CheckIfSolved()
+		public void CheckIfSolved ()
 		{
-			if(
-				Ring1Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring2Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring3Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring4Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring5Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring6Rotation < RING_DRAG_MAGNITUDE /3 &&
-				Ring7Rotation < RING_DRAG_MAGNITUDE /3
+			// This is an arbitrary limit to make sure that the rings are locked "close to 0"
+			if (
+				MathHelper.WrapAngle(Ring1Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring1Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring2Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring2Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring3Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring3Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring4Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring4Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring5Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring5Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring6Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring6Rotation) > RING_DRAG_MAGNITUDE / -3 &&
+				MathHelper.WrapAngle(Ring7Rotation) < RING_DRAG_MAGNITUDE / 3 && MathHelper.WrapAngle(Ring7Rotation) > RING_DRAG_MAGNITUDE / -3
 				)
 			{
-				TriggerPuzzleSolve();
+				TriggerPuzzleSolve ();
+			}
+			else
+			{
+				PuzzleSolved = false;
 			}
 		}
 
 		public void TriggerPuzzleSolve()
 		{
+			PuzzleSolved = true;
 			// Do the stuff to make the thing happen
 		}
 	}

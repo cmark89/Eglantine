@@ -153,3 +153,37 @@ items["Photograph"] = {
 	end
 }
 
+items["Folded Note"] = {
+
+	Name = "Folded Note",
+	Texture = "Graphics/Objects/foldednote",
+	Description = "An old note that was sitting inside the puzzlebox.",
+	Type = "Immediate",
+	
+	OnAcquire = nil,
+	
+	OnInspect = function()
+		Event:ShowMessage("An old note that was sitting inside the puzzlebox.")
+	end,
+	
+	OnUse = function()
+		Event:ViewDocument("Folded Note")
+	end
+}
+
+items["Strange Coin"] = {
+
+	Name = "Strange Coin",
+	Texture = "Graphics/Objects/coin",
+	Description = "An eerie sigil is carved into this silver coin.  It feels...evil.",
+	Type = "Unusable",
+	
+	OnAcquire = nil,
+	
+	OnInspect = function()
+		Event:ShowMessage("An eerie sigil is carved into this silver coin.  It feels...evil.")
+	end,
+	
+	OnUse = nil
+}
+

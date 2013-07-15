@@ -34,6 +34,13 @@ namespace Eglantine
 		private static Texture2D Ring7Texture;
 		private static Texture2D KeyTexture;
 		private static Texture2D ButtonsTexture;
+		private static Texture2D InsideBoxTexture;
+		
+		private static Texture2D FoldedNoteTexture;
+		private static Texture2D StrangeCoinTexture;
+
+		private static Texture2D OpenButtonTexture;
+		private static Texture2D CloseButtonTexture;
 
 		private static Vector2 Ring1Pos;
 		private static Vector2 Ring2Pos;
@@ -71,6 +78,8 @@ namespace Eglantine
 		private static Rectangle CapricornSrcRect;
 		private static Rectangle AquariusSrcRect;
 		private static Rectangle PiscesSrcRect;
+
+
 		#endregion
 
 		public PuzzleboxState PuzzleboxState { get; protected set; }
@@ -79,16 +88,24 @@ namespace Eglantine
 		private Vector2 center;
 
 		private PuzzleboxScreenGUI window;
+		private PuzzleboxScreenState screenState;
 
 		private bool isDraggingRing;
 		int draggingRing;
 		Vector2 ringDragAnchor;
 		float ringDragAnchorAngle;
 
+		private Rectangle openButtonRect;
+		private Color openButtonColor;
+
+		private Rectangle noteRect;
+		private Vector2 coinCenter;
+
 		public PuzzleboxScreen (PuzzleboxState puzzleState)
 		{
 			_instance = this;
 			PuzzleboxState = puzzleState;
+			screenState = PuzzleboxScreenState.Closed;
 			Initialize();
 		}
 
@@ -108,7 +125,17 @@ namespace Eglantine
 				Ring6Texture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleRing6");
 				Ring7Texture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleRing7");
 
+				InsideBoxTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleBoxInside");
+
+				FoldedNoteTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/noteinbox");
+				StrangeCoinTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/coininbox");
+
+				OpenButtonTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleBoxOpenButton");
+				CloseButtonTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleBoxCloseButton");
+
 				ButtonsTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/ZodiacButtons");
+
+
 
 				// And the constant rectangles and draw points
 				Ring1Pos = new Vector2(100, 3);
@@ -149,15 +176,24 @@ namespace Eglantine
 			}
 
 			window = new PuzzleboxScreenGUI(PuzzleBGTexture);
+			openButtonRect = window.GetOpenButtonRect();
 			puzzleStart = window.PuzzleStartPosition();
 			center = KeyPos + new Vector2(KeyTexture.Width/2, KeyTexture.Height/2);
+
+			coinCenter = new Vector2(545, 337) + puzzleStart;
+			noteRect = OffsetRect(new Rectangle(156, 152, 177, 197), puzzleStart);
 		}
 
-		public override void Update(GameTime gameTime)
+		public override void Update (GameTime gameTime)
 		{
-			if(window != null)
+			if (window != null)
 			{
-				window.Update(gameTime);
+				window.Update (gameTime);
+			}
+
+			if (screenState == PuzzleboxScreenState.Open || PuzzleboxState.PuzzleSolved)
+			{
+				openButtonColor = Color.DimGray;
 			}
 
 			HandleInput();
@@ -168,8 +204,15 @@ namespace Eglantine
 			if (window != null)
 			{
 				window.DrawBackground (spriteBatch);
-				DrawPuzzle(spriteBatch);
+
+				if(screenState == PuzzleboxScreenState.Closed)
+					DrawPuzzle(spriteBatch);
+				else
+					DrawInsideBox(spriteBatch);
+
 				window.DrawFrame(spriteBatch);
+
+				DrawOpenButton(spriteBatch);
 			}
 		}
 
@@ -254,149 +297,208 @@ namespace Eglantine
 			spriteBatch.Draw(ButtonsTexture, position: OffsetRectPosition(PiscesRect, puzzleStart), sourceRectangle: buttonRect);
 		}
 
+
+		public void DrawOpenButton (SpriteBatch spriteBatch)
+		{
+			// Draw the button to open the box if the puzzle has been solved
+			if (screenState == PuzzleboxScreenState.Closed && PuzzleboxState.PuzzleSolved)
+			{
+				spriteBatch.Draw(OpenButtonTexture, drawRectangle: OffsetRect(openButtonRect, puzzleStart), color: openButtonColor);
+			}
+			else if (screenState == PuzzleboxScreenState.Open)
+			{
+				spriteBatch.Draw(CloseButtonTexture, drawRectangle: OffsetRect(openButtonRect, puzzleStart), color: openButtonColor);
+			}
+		}
+
+
+		public void DrawInsideBox (SpriteBatch spriteBatch)
+		{
+			spriteBatch.Draw (InsideBoxTexture, position: puzzleStart);
+
+			if (!GameState.Instance.PlayerHasItem ("Folded Note"))
+			{
+				spriteBatch.Draw (FoldedNoteTexture, position: puzzleStart + new Vector2(156, 152));
+			}
+			if (!GameState.Instance.PlayerHasItem ("Strange Coin"))
+			{
+				spriteBatch.Draw (StrangeCoinTexture, position: puzzleStart + new Vector2(464, 257));
+			}
+		}
+
+
 		public void HandleInput ()
 		{
-			// Handle button presses
-			if (MouseManager.LeftClickUp)
+			bool openButtonDrawn = false;
+			if (PuzzleboxState.PuzzleSolved || screenState == PuzzleboxScreenState.Open)
+				openButtonDrawn = true;
+
+			if (openButtonDrawn && MouseManager.MouseInRect (OffsetRect(openButtonRect, puzzleStart)))
 			{
+				openButtonColor = Color.White;
+				if(MouseManager.LeftClickUp)
+					OpenBox();
+			}
+
+			if (screenState == PuzzleboxScreenState.Closed)
+			{
+				// Handle button presses
+				if (MouseManager.LeftClickUp)
+				{
+					if (isDraggingRing)
+					{
+						isDraggingRing = false;
+						PuzzleboxState.CheckIfSolved ();
+					}
+					else
+					{
+						if (MouseManager.MouseInRect (OffsetRect (AriesRect, puzzleStart)))
+						{
+							PuzzleboxState.AriesPressed = !PuzzleboxState.AriesPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (TaurusRect, puzzleStart)))
+						{
+							PuzzleboxState.TaurusPressed = !PuzzleboxState.TaurusPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (GeminiRect, puzzleStart)))
+						{
+							PuzzleboxState.GeminiPressed = !PuzzleboxState.GeminiPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (CancerRect, puzzleStart)))
+						{
+							PuzzleboxState.CancerPressed = !PuzzleboxState.CancerPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (LeoRect, puzzleStart)))
+						{
+							PuzzleboxState.LeoPressed = !PuzzleboxState.LeoPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (VirgoRect, puzzleStart)))
+						{
+							PuzzleboxState.VirgoPressed = !PuzzleboxState.VirgoPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (LibraRect, puzzleStart)))
+						{
+							PuzzleboxState.LibraPressed = !PuzzleboxState.LibraPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (ScorpioRect, puzzleStart)))
+						{
+							PuzzleboxState.ScorpioPressed = !PuzzleboxState.ScorpioPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (SagittariusRect, puzzleStart)))
+						{
+							PuzzleboxState.SagittariusPressed = !PuzzleboxState.SagittariusPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (CapricornRect, puzzleStart)))
+						{
+							PuzzleboxState.CapricornPressed = !PuzzleboxState.CapricornPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (AquariusRect, puzzleStart)))
+						{
+							PuzzleboxState.AquariusPressed = !PuzzleboxState.AquariusPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+						else if (MouseManager.MouseInRect (OffsetRect (PiscesRect, puzzleStart)))
+						{
+							PuzzleboxState.PiscesPressed = !PuzzleboxState.PiscesPressed;
+							PuzzleboxState.CheckButtons ();
+						}
+					}
+				}
+				else if (PuzzleboxState.RingsUnlocked && !isDraggingRing && MouseManager.LeftButtonIsDown)
+				{
+					// Now handle player input on the rings.
+					float mouseDist = Vector2.Distance (MouseManager.Position, puzzleStart + center);
+
+					if (mouseDist > 22 && mouseDist <= 77)
+					{
+						// Mouse in Ring 7
+						isDraggingRing = true;
+						draggingRing = 7;
+					}
+					else if (mouseDist > 77 && mouseDist <= 127)
+					{
+						// Mouse in Ring 6
+						isDraggingRing = true;
+						draggingRing = 6;
+					}
+					else if (mouseDist > 127 && mouseDist <= 167)
+					{
+						// Mouse in Ring 5
+						isDraggingRing = true;
+						draggingRing = 5;
+					}
+					else if (mouseDist > 167 && mouseDist <= 197)
+					{
+						// Mouse in Ring 4
+						isDraggingRing = true;
+						draggingRing = 4;
+					}
+					else if (mouseDist > 197 && mouseDist <= 237)
+					{
+						// Mouse in Ring 3
+						isDraggingRing = true;
+						draggingRing = 3;
+					}
+					else if (mouseDist > 237 && mouseDist <= 267)
+					{
+						// Mouse in Ring 2
+						isDraggingRing = true;
+						draggingRing = 2;
+					}
+					else if (mouseDist > 267 && mouseDist <= 297)
+					{
+						// Mouse in Ring 1
+						isDraggingRing = true;
+						draggingRing = 1;
+					}
+
+					if(isDraggingRing)
+					{
+						ringDragAnchor = MouseManager.Position;
+						ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
+					}
+				}
+
+
 				if (isDraggingRing)
 				{
-					isDraggingRing = false;
-					PuzzleboxState.CheckIfSolved();
-				}
-				else
-				{
-					if (MouseManager.MouseInRect (OffsetRect (AriesRect, puzzleStart)))
+					// Check if the difference in angle is sufficient to snap. Measure the change in mouse ANGLE instead of just position.
+					float dragAngle = GetAngleFromCenter(MouseManager.Position) - ringDragAnchorAngle;
+					if(Math.Abs(dragAngle) > PuzzleboxState.RING_DRAG_MAGNITUDE)
 					{
-						PuzzleboxState.AriesPressed = !PuzzleboxState.AriesPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (TaurusRect, puzzleStart)))
-					{
-						PuzzleboxState.TaurusPressed = !PuzzleboxState.TaurusPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (GeminiRect, puzzleStart)))
-					{
-						PuzzleboxState.GeminiPressed = !PuzzleboxState.GeminiPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (CancerRect, puzzleStart)))
-					{
-						PuzzleboxState.CancerPressed = !PuzzleboxState.CancerPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (LeoRect, puzzleStart)))
-					{
-						PuzzleboxState.LeoPressed = !PuzzleboxState.LeoPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (VirgoRect, puzzleStart)))
-					{
-						PuzzleboxState.VirgoPressed = !PuzzleboxState.VirgoPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (LibraRect, puzzleStart)))
-					{
-						PuzzleboxState.LibraPressed = !PuzzleboxState.LibraPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (ScorpioRect, puzzleStart)))
-					{
-						PuzzleboxState.ScorpioPressed = !PuzzleboxState.ScorpioPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (SagittariusRect, puzzleStart)))
-					{
-						PuzzleboxState.SagittariusPressed = !PuzzleboxState.SagittariusPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (CapricornRect, puzzleStart)))
-					{
-						PuzzleboxState.CapricornPressed = !PuzzleboxState.CapricornPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (AquariusRect, puzzleStart)))
-					{
-						PuzzleboxState.AquariusPressed = !PuzzleboxState.AquariusPressed;
-						PuzzleboxState.CheckButtons();
-					}
-					else if (MouseManager.MouseInRect (OffsetRect (PiscesRect, puzzleStart)))
-					{
-						PuzzleboxState.PiscesPressed = !PuzzleboxState.PiscesPressed;
-						PuzzleboxState.CheckButtons();
-					}
-				}
-			}
-			else if (PuzzleboxState.RingsUnlocked && !isDraggingRing && MouseManager.LeftButtonIsDown)
-			{
-				// Now handle player input on the rings.
-				float mouseDist = Vector2.Distance (MouseManager.Position, puzzleStart + center);
-
-				if (mouseDist > 22 && mouseDist <= 77)
-				{
-					// Mouse in Ring 7
-					isDraggingRing = true;
-					draggingRing = 7;
-				}
-				else if (mouseDist > 77 && mouseDist <= 127)
-				{
-					// Mouse in Ring 6
-					isDraggingRing = true;
-					draggingRing = 6;
-				}
-				else if (mouseDist > 127 && mouseDist <= 167)
-				{
-					// Mouse in Ring 5
-					isDraggingRing = true;
-					draggingRing = 5;
-				}
-				else if (mouseDist > 167 && mouseDist <= 197)
-				{
-					// Mouse in Ring 4
-					isDraggingRing = true;
-					draggingRing = 4;
-				}
-				else if (mouseDist > 197 && mouseDist <= 237)
-				{
-					// Mouse in Ring 3
-					isDraggingRing = true;
-					draggingRing = 3;
-				}
-				else if (mouseDist > 237 && mouseDist <= 267)
-				{
-					// Mouse in Ring 2
-					isDraggingRing = true;
-					draggingRing = 2;
-				}
-				else if (mouseDist > 267 && mouseDist <= 297)
-				{
-					// Mouse in Ring 1
-					isDraggingRing = true;
-					draggingRing = 1;
-				}
-
-				if(isDraggingRing)
-				{
-					ringDragAnchor = MouseManager.Position;
-					ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
-				}
-			}
-
-			if (isDraggingRing)
-			{
-				// Check if the difference in angle is sufficient to snap.  Measure the change in mouse ANGLE instead of just position.
-				float dragAngle = GetAngleFromCenter(MouseManager.Position) - ringDragAnchorAngle;
-				if(Math.Abs(dragAngle) > PuzzleboxState.RING_DRAG_MAGNITUDE)
-				{
-					// Time to snap!
-					if(dragAngle > 0)
+						// Time to snap!
+						if(dragAngle > 0)
 						PuzzleboxState.RotateRing(draggingRing, 1);
-					else
+						else
 						PuzzleboxState.RotateRing(draggingRing, -1);
 
-					ringDragAnchor = MouseManager.Position;
-					ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
+						ringDragAnchor = MouseManager.Position;
+						ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
+					}
+				}
+			}
+			else
+			{
+				// Handle input for the --inside-- of the box
+				if(MouseManager.MouseInRect(noteRect) && MouseManager.LeftClickUp)
+				{
+					EventManager.Instance.PlaySound("Extend");
+					EventManager.Instance.GainItem("Folded Note");
+				}
+				if(Vector2.Distance(MouseManager.Position, coinCenter) < 78 && MouseManager.LeftClickUp)
+				{
+					EventManager.Instance.PlaySound("Extend");
+					EventManager.Instance.GainItem("Strange Coin");
 				}
 			}
 		}
@@ -422,6 +524,27 @@ namespace Eglantine
 		public Rectangle OffsetRect(Rectangle rect, Vector2 offset)
 		{
 			return new Rectangle((int)(rect.X + offset.X), (int)(rect.Y + offset.Y), rect.Width, rect.Height);
+		}
+
+		public void OpenBox ()
+		{
+			// Toggle the state.
+			if (screenState == PuzzleboxScreenState.Closed)
+			{
+				// Play open sound.
+				screenState = PuzzleboxScreenState.Open;
+			}
+			else
+			{
+				// Play close sound.
+				screenState = PuzzleboxScreenState.Closed;
+			}
+		}
+
+		private enum PuzzleboxScreenState
+		{
+			Closed,
+			Open
 		}
 	}
 }

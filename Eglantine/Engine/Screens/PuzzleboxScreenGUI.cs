@@ -39,7 +39,7 @@ namespace Eglantine.Engine
 		private Vector2 closeButton;
 		private Color closeColor;
 
-
+		
 		public PuzzleboxScreenGUI (Texture2D bgTexture)
 		{
 			puzzle = bgTexture;
@@ -181,6 +181,11 @@ namespace Eglantine.Engine
 		public Vector2 PuzzleStartPosition()
 		{
 			return new Vector2(puzzleRect.X, puzzleRect.Y);
+		}
+
+		public Rectangle GetOpenButtonRect()
+		{
+			return new Rectangle(backgroundRect.Width/2 - 64, backgroundRect.Height-36, 128, 72);
 		}
 	}
 }
