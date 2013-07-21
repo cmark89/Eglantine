@@ -3,7 +3,7 @@ EVENT MANAGER
 
 EVENTS
 
-ShowMessage(message) 		-	Adds "message to the message queue.
+ShowMessage(message) 		-	Adds "message" to the message queue.
 
 MovePlayer(x, y)			-	Forces the player to move to position x,y.  Depracated; use MovePlayerTo instead.
 

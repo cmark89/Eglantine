@@ -93,6 +93,8 @@ namespace Eglantine.Engine
 			forcedMovement = forced;
 
 			nextWaypoint = null;
+
+			// Here, check to make sure that the target point is outside the waypoint stopping distance.
 			Path = path;
 
 			if(path != null)

@@ -133,6 +133,23 @@ items["Blueprints"] = {
 	end
 }
 
+items["Letter"] = {
+	
+	Name = "Letter",
+	--TEMP, MAKE ITS OWN GRAPHICS
+	Texture = "Graphics/Objects/foldednote",
+	Description = "A letter from one of Weather's associates.  He didn't seem to take it well...",
+	Type = "Immediate",
+
+	OnInspect = function()
+		Event:ShowMessage("A letter from one of Weather's associates.  He didn't seem to take it well...")
+	end,
+
+	OnUse = function()
+		Event:ViewDocument("Letter")
+	end
+}
+
 items["Photograph"] = {
 
 	Name = "Photograph",

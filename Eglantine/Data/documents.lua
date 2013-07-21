@@ -31,3 +31,7 @@ documents["Journal"] = {
 documents["Folded Note"] = {
 	[1] = "Graphics/Docs/foldednote"
 }
+
+documents["Letter"] = {
+	[1] = "Graphics/Docs/letter"
+}

@@ -92,6 +92,53 @@ rooms["Bedroom"] = {
 			OnLook = function()
 				Event:ShowMessage("Good God, what the hell is that...?")
 			end
+		},
+		[4] = {
+			Name = "Trashcan",
+			Area = {
+				X = 295,
+				Y = 421,
+				Width = 183,
+				Height = 82
+			},
+			
+			Enabled = true,
+			Drawn = false,
+			
+			InteractPoint = {
+				X = 154,
+				Y = 603
+			},
+
+			OnInteract = nil,
+			OnLook = function()
+				Event:ShowMessage("What a mess...")
+			end
+		},
+		
+		[5] = {
+			Name = "Letter",
+			Area = {
+				X = 367,
+				Y = 453,
+				Width = 48,
+				Height = 48
+			},
+			
+			Enabled = true,
+			Drawn = true,
+			Texture = "Graphics/Objects/foldednote",
+			
+			InteractPoint = {
+				X = 370,
+				Y = 507
+			},
+
+			OnInteract = function()
+				pickup("Letter")
+			end,
+			
+			OnLook = nil
 		}
 	},
 	
@@ -139,7 +186,7 @@ rooms["Bedroom"] = {
 			Name = "HallDoor",
 			
 			X = 856,
-			Y = 268
+			Y = 270
 		},
 		[2] = {
 			Name = "BathroomDoor",
