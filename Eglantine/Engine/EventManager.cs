@@ -162,6 +162,12 @@ namespace Eglantine.Engine
 			Console.WriteLine("Open the puzzlebox screen!");
 			GameScene.Instance.AddScreen(new PuzzleboxScreen(GameState.Instance.PuzzleboxState));
 		}
+
+		public void OpenSafe()
+		{
+			Console.WriteLine("Open the safe screen!");
+			GameScene.Instance.AddScreen(new SafeScreen(GameState.Instance.SafeState));
+		}
 	}
 }
 

@@ -5,7 +5,6 @@ function interactWithSafe()
 		waitUntil("Player stopped")
 		
 		--Bring up the safe screen here
-		Event:ShowMessage("SAFE SCREEN APPEARS!")
-	
+		Event:OpenSafe()
 	end)	
 end

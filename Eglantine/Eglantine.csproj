@@ -91,6 +91,10 @@
     <Compile Include="Engine\Screens\PuzzleboxScreen.cs" />
     <Compile Include="Engine\Screens\PuzzleboxScreenGUI.cs" />
     <Compile Include="Engine\PuzzleboxState.cs" />
+    <Compile Include="Engine\Screens\SafeScreen.cs" />
+    <Compile Include="Engine\Screens\SafeScreenGUI.cs" />
+    <Compile Include="Engine\SafeState.cs" />
+    <Compile Include="Engine\KeyboardManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -390,6 +394,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Docs\letter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\LCDFont.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\safe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\insidesafe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\KeypadButtons.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
