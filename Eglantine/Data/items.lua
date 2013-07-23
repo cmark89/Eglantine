@@ -204,3 +204,19 @@ items["Strange Coin"] = {
 	OnUse = nil
 }
 
+
+items["Key"] = {
+
+	Name = "Key",
+	Texture = "Graphics/Objects/key",
+	Description = "This key has a weird shape to it.  There's something wholly unsavory about it.",
+	Type = "Active",
+	
+	OnAcquire = nil,
+	
+	OnInspect = function()
+		Event:ShowMessage("This key has a weird shape to it.  There's something wholly unsavory about it.")
+	end,
+	
+	OnUse = nil
+}

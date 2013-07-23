@@ -490,12 +490,12 @@ namespace Eglantine
 			else
 			{
 				// Handle input for the --inside-- of the box
-				if(MouseManager.MouseInRect(noteRect) && MouseManager.LeftClickUp)
+				if(!GameState.Instance.PlayerHasItem("Folded Note") && MouseManager.MouseInRect(noteRect) && MouseManager.LeftClickUp)
 				{
 					EventManager.Instance.PlaySound("Extend");
 					EventManager.Instance.GainItem("Folded Note");
 				}
-				if(Vector2.Distance(MouseManager.Position, coinCenter) < 78 && MouseManager.LeftClickUp)
+				if(!GameState.Instance.PlayerHasItem("Strange Coin") && Vector2.Distance(MouseManager.Position, coinCenter) < 78 && MouseManager.LeftClickUp)
 				{
 					EventManager.Instance.PlaySound("Extend");
 					EventManager.Instance.GainItem("Strange Coin");

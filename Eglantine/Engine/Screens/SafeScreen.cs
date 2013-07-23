@@ -25,6 +25,7 @@ namespace Eglantine
 		#region Textures and constant values
 		private static Texture2D SafeTexture;
 		private static Texture2D InsideSafeTexture;
+		private static Texture2D KeyTexture;
 		private static Texture2D FontTexture;
 		private static Texture2D OpenButtonTexture;
 		private static Texture2D CloseButtonTexture;
@@ -43,7 +44,7 @@ namespace Eglantine
 		private Rectangle openButtonRect;
 		private Color openButtonColor;
 
-		private Rectangle keyRect;	// For the item inside
+		private Rectangle keyRect;
 
 		private List<SafeButton> buttons;
 
@@ -63,7 +64,7 @@ namespace Eglantine
 				// Set all this stuff up, dingus
 				SafeTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/safe");
 				InsideSafeTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/insidesafe");
-				//KeyTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/keyinsafe");
+				KeyTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/keyinsafe");
 
 				OpenButtonTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleBoxOpenButton");
 				CloseButtonTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/PuzzleBoxCloseButton");
@@ -74,8 +75,7 @@ namespace Eglantine
 			window = new SafeScreenGUI(SafeTexture);
 			openButtonRect = window.GetOpenButtonRect();
 			puzzleStart = window.PuzzleStartPosition();
-
-			//keyRect = OffsetRect(new Rectangle(156, 152, 177, 197), puzzleStart);
+			keyRect = OffsetRect(new Rectangle(261, 447, 230, 54), puzzleStart);
 
 
 			// Initialize the buttons
@@ -170,7 +170,7 @@ namespace Eglantine
 
 			if (!GameState.Instance.PlayerHasItem ("Key"))
 			{
-				//spriteBatch.Draw (KeyTexture, position: puzzleStart + new Vector2(156, 152));
+				spriteBatch.Draw (KeyTexture, drawRectangle: keyRect);
 			}
 		}
 
@@ -198,7 +198,7 @@ namespace Eglantine
 			else
 			{
 				// Handle input for the --inside-- of the box
-				if(MouseManager.MouseInRect(keyRect) && MouseManager.LeftClickUp)
+				if(!GameState.Instance.PlayerHasItem("Key") && MouseManager.MouseInRect(keyRect) && MouseManager.LeftClickUp)
 				{
 					EventManager.Instance.PlaySound("Extend");
 					EventManager.Instance.GainItem("Key");
