@@ -146,6 +146,9 @@ namespace Eglantine.Engine
 
 		public void ChangeRoom (string targetRoomName, string targetEntranceName)
 		{
+			if(CurrentRoom != null)
+				CurrentRoom.OnExitRoom();
+
 			Room targetRoom = Rooms.Find (x => x.Name == targetRoomName);
 
 			if (targetRoom == null)
@@ -165,6 +168,9 @@ namespace Eglantine.Engine
 			CurrentRoom = targetRoom;
 			Player.Instance.SetPosition(targetEntrance.Point);
 			// Cancel all standing player orders 
+
+			if(CurrentRoom != null)
+				CurrentRoom.OnEnterRoom();
 		}
 
 

@@ -164,6 +164,10 @@ rooms["Underground4"] = {
 			X = 63,
 			Y = 606
 		}
-	}	
+	},
+	
+	onEnter = function()
+		Event:ShowMessage("I now be in da place!")
+	end	
 }
 

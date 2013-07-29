@@ -30,6 +30,9 @@ namespace Eglantine.Engine
 		public List<TriggerArea> TriggerAreas;
 		public List<Entrance> Entrances;
 
+		private LuaFunction enterEvent;
+		private LuaFunction exitEvent;
+
 		public Room (string roomname)
 		{
 			// Load the rooms datafile
@@ -48,6 +51,8 @@ namespace Eglantine.Engine
 			ParseTriggerAreas(lua, roomname);
 			ParseEntrances(lua, roomname);
 
+			enterEvent = (LuaFunction)lua["rooms." + roomname + ".onEnter"];
+			exitEvent = (LuaFunction)lua["rooms." + roomname + ".onExit"];
 
 			// Finally, tell the gamestate that the room exists
 			GameState.Instance.RegisterRoom(this);
@@ -239,6 +244,18 @@ namespace Eglantine.Engine
 			{
 				rl.Draw(spriteBatch);
 			}
+		}
+
+		public void OnEnterRoom()
+		{
+			if(enterEvent != null)
+				enterEvent.Call ();
+		}
+
+		public void OnExitRoom()
+		{
+			if(exitEvent != null)
+				exitEvent.Call ();
 		}
 	}
 }
