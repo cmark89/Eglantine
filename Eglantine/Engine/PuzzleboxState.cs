@@ -8,7 +8,7 @@ namespace Eglantine.Engine
 		public const float RING_DRAG_MAGNITUDE = ((float)Math.PI * 2) / 36;
 
 		// Change this.
-		public bool RingsUnlocked = true;
+		public bool RingsUnlocked = false;
 		public bool PuzzleSolved { get; private set; }
 
 		public float Ring1Rotation = 0f;

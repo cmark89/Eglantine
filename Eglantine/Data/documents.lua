@@ -7,9 +7,9 @@
 documents = {}
 
 documents["Strange Notes"] = {
-	[1] = "Graphics/Docs/notes1",
-	[2] = "Graphics/Docs/notes2",
-	[3] = "Graphics/Docs/notes3"
+	[1] = "Graphics/Docs/book2",
+	[2] = "Graphics/Docs/book4",
+	[3] = "Graphics/Docs/book5"
 }
 
 documents["Photograph"] = {
@@ -21,11 +21,17 @@ documents["Blueprints"] = {
 }
 
 documents["Journal"] = {
-	[1] = "Graphics/Docs/book1",
-	[2] = "Graphics/Docs/book2",
-	[3] = "Graphics/Docs/book3",
-	[4] = "Graphics/Docs/book4",
-	[5] = "Graphics/Docs/book5"
+	[1] = "Graphics/Docs/journal1",
+	[2] = "Graphics/Docs/journal2",
+	[3] = "Graphics/Docs/journal3",
+	[4] = "Graphics/Docs/journal4",
+	[5] = "Graphics/Docs/journal5",
+	[6] = "Graphics/Docs/journal6",
+	[7] = "Graphics/Docs/journal7",
+	[8] = "Graphics/Docs/journal8",
+	[9] = "Graphics/Docs/journal9",
+	[10] = "Graphics/Docs/journal10",
+	[11] = "Graphics/Docs/journal11"
 }
 
 documents["Folded Note"] = {
