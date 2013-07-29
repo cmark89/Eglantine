@@ -41,6 +41,33 @@ rooms["EmptyRoom"] = {
 			end,
 			
 			OnLook = nil
+		},
+		[2] = {
+			Name = "Puzzle Key",
+			
+			Area = {
+				X = 144,
+				Y = 408,
+				Height = 48,
+				Width = 48 
+			},
+			
+			Enabled = true,
+			Drawn = true,
+			Texture = "Graphics/Objects/puzzlekey",
+			
+			InteractPoint = {
+				X = 178,
+				Y = 445
+			},
+			
+			OnInteract = function()
+				 pickup("Puzzle Key")
+			end,
+			
+			OnLook = function()
+				Event:ShowMessage("Hey, what's that thing?")
+			end
 		}
 	},
 	

@@ -21,8 +21,8 @@ rooms["SecretRoom"] = {
 		[1] = {
 			Name = "Puzzlebox",
 			Area = {
-				X = 200,
-				Y = 535,
+				X = 934,
+				Y = 548,
 				Width = 48,
 				Height = 48
 			},
@@ -33,8 +33,8 @@ rooms["SecretRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 300,
-				Y = 658
+				X = 906,
+				Y = 644
 			},
 
 			OnInteract = function()
@@ -70,16 +70,40 @@ rooms["SecretRoom"] = {
 		},
 		
 		[3] = {
-			Name = "Trapdoor",
+			Name = "TrapdoorClosed",
 			Polygon = {
-				[1] = { X = 801, Y = 676 },
-				[2] = { X = 1024, Y = 640 },
-				[3] = { X = 1024, Y = 678 },
-				[4] = { X = 894, Y = 765 },
+				[1] = { X = 221, Y = 543 },
+				[2] = { X = 379, Y = 545 },
+				[3] = { X = 375, Y = 689 },
+				[4] = { X = 185, Y = 683 }
 			},
 				
 			Enabled = true,
 			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 402,
+				Y = 631
+			},
+
+			OnInteract = interactWithTrapdoor,
+			OnLook = function()
+				Event:ShowMessage("Wonder what's down there...")
+			end
+		},
+		[4] = {
+			Name = "TrapdoorOpenGraphic",
+			Area = {
+				X = 176,
+				Y = 391,
+				Width = 0,
+				Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/trapdooropen",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -88,11 +112,34 @@ rooms["SecretRoom"] = {
 			},
 
 			OnInteract = nil,
+			OnLook = nil
+		},
+		[5] = {
+			Name = "TrapdoorOpen",
+			Polygon = {
+				[1] = { X = 221, Y = 543 },
+				[2] = { X = 379, Y = 545 },
+				[3] = { X = 375, Y = 689 },
+				[4] = { X = 185, Y = 683 }
+			},
+				
+			Enabled = false,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 402,
+				Y = 631
+			},
+
+			OnInteract = function()
+				door("TrapdoorOpen", "Underground1", "Rope")
+			end,
 			
 			OnLook = function()
-				Event:ShowMessage("That trapdoor looks sealed up tight.  If I had the key to it, though...")
+				Event:ShowMessage("Looks pretty dark down there...")
 			end
-		}
+		},
 	},
 	
 	Triggers = {
@@ -103,17 +150,30 @@ rooms["SecretRoom"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 1024, Y = 525 },
-				[2] = { X = 381, Y = 525 },
-				[3] = { X = 381, Y = 613 },
-				[4] = { X = 198, Y = 712 },
-				[5] = { X = 198, Y = 768 },
-				[6] = { X = 0, Y = 768 },
-				[7] = { X = 1024, Y = 768 }
+				[1] = { X = 384, Y = 522 },
+				[2] = { X = 870, Y = 522 },
+				[3] = { X = 876, Y = 613 },
+				[4] = { X = 1020, Y = 717 },
+				[5] = { X = 1024, Y = 768 },
+				[6] = { X = 384, Y = 768 }
+			},
+			[2] = {
+				[1] = { X = 154, Y = 684 },
+				[2] = { X = 411, Y = 691 },
+				[3] = { X = 414, Y = 768 },
+				[4] = { X = 127, Y = 768 }
 			}
 		},
 		
 		Connections = {
+			[1] = {
+				Connects = { 1, 2 },
+				Points = { 
+					[1] = { X = 394, Y = 700 },
+					[2] = { X = 249, Y = 724 },
+					[3] = { X = 394, Y = 750 }
+				}
+			}
 		}
 	},
 	
@@ -129,8 +189,8 @@ rooms["SecretRoom"] = {
 		[2] = {
 			Name = "Trapdoor",
 			
-			X = 790,
-			Y = 718
+			X = 401,
+			Y = 631
 		}
 	}	
 }

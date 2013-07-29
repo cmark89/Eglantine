@@ -34,6 +34,11 @@ namespace Eglantine.Engine
 		public Item LoadedItem { get; private set; }
 		public Trigger HighlightedTrigger { get; private set;}
 
+		public bool MouseInGui 
+		{
+			get { return Gui.MouseInGUI; } 
+		}
+
 		// Used to force vertices to draw
 		private bool drawingVertices = false;
 
@@ -50,6 +55,7 @@ namespace Eglantine.Engine
 
 			// Testing...
 			EventManager.Instance.GainItem("Puzzlebox");
+			EventManager.Instance.GainItem("Puzzle Key");
 		}
 
 		public override void Update (GameTime gameTime)

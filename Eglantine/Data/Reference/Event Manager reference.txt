@@ -1,5 +1,9 @@
 EVENT MANAGER
 
+sendSignal(signal)			-	Sends the signal called 'signal' to the scheduler
+waitUntil(signal)			-	Pauses until the signal 'signal' is raised 
+waitSeconds(seconds)		-	Pauses for 'seconds' seconds
+
 
 EVENTS
 

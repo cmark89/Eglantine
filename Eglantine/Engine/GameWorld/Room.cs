@@ -215,7 +215,7 @@ namespace Eglantine.Engine
 				ta.Update (gameTime);
 			}
 
-			if (!AdventureScreen.Instance.InputDisabled)
+			if (!AdventureScreen.Instance.InputDisabled && !AdventureScreen.Instance.MouseInGui)
 			{
 				foreach (Interactable i in Interactables.FindAll(x => x.Active))
 				{

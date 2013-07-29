@@ -44,7 +44,6 @@ namespace Eglantine.Engine
 		public GameState ()
 		{
 			Console.WriteLine ("Creating new GameState...");
-
 		}
 
 		public bool PlayerHasItem (string itemName)
@@ -87,8 +86,9 @@ namespace Eglantine.Engine
 
 		public static GameState NewGameState() 
 		{
-
 			_instance = new GameState();
+			// Make sure the lua side knows about this GameState
+			Eglantine.Lua.DoString("loadGameState()");
 			GameState.Instance.InitializeNewGame();
 			return _instance;
 		}
@@ -125,10 +125,11 @@ namespace Eglantine.Engine
 
 		public void DestroyItem (string item)
 		{
-			if(AdventureScreen.Instance.LoadedItem.Name == item)
+			if(AdventureScreen.Instance.LoadedItem != null && AdventureScreen.Instance.LoadedItem.Name == item)
 				AdventureScreen.Instance.SetActiveItem(null);
 
-			PlayerItems.Remove(PlayerItems.Find(x => x.Name == item));
+			if(PlayerItems.FindAll(x => x.Name == item).Count > 0)
+				PlayerItems.Remove (PlayerItems.Find (x => x.Name == item));
 		}
 
 		public void AddDocument (Document doc)

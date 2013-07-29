@@ -46,7 +46,7 @@ namespace Eglantine
 		public override void Initialize()
 		{
 			// Make sure the lua side knows about this GameState
-			Eglantine.Lua.DoString("loadGameState()");
+			//Eglantine.Lua.DoString("loadGameState()");
 
 			GameScreens = new List<Screen>();
 

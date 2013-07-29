@@ -46,7 +46,6 @@ namespace Eglantine.Engine
 				Vector2 pos = GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == name).InteractPoint;
 				AdventureScreen.Instance.MovePlayer(new Vector2(pos.X, pos.Y), true);
 			}
-
 		}
 
 		// Gives the player the named item
@@ -59,6 +58,7 @@ namespace Eglantine.Engine
 		// Destroys the named item
 		public void DestroyItem (string itemName)
 		{
+
 			GameState.Instance.DestroyItem(itemName);
 		}
 
@@ -122,6 +122,11 @@ namespace Eglantine.Engine
 				return false;
 		}
 
+		public bool PlayerHasItem(string itemName)
+		{
+			return GameState.Instance.PlayerHasItem(itemName);
+		}
+
 		// This sends a signal to Lua, allowing coroutines to know what's happening.
 		public void SendSignal(string signal)
 		{
@@ -167,6 +172,11 @@ namespace Eglantine.Engine
 		{
 			Console.WriteLine("Open the safe screen!");
 			GameScene.Instance.AddScreen(new SafeScreen(GameState.Instance.SafeState));
+		}
+		
+		public void InsertPuzzleboxKey()
+		{
+			GameState.Instance.PuzzleboxState.KeyInserted = true;
 		}
 	}
 }

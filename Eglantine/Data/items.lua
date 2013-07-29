@@ -220,3 +220,34 @@ items["Key"] = {
 	
 	OnUse = nil
 }
+
+
+items["Puzzle Key"] = {
+
+	Name = "Puzzle Key",
+	Texture = "Graphics/Objects/puzzlekey",
+	Description = "There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.",
+	Type = "Immediate",
+	
+	OnAcquire = nil,
+	
+	OnInspect = function()
+		Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")
+	end,
+	
+	OnUse = function()
+		runCoroutine(function()
+			Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")
+			waitUntil("Message closed")
+			if Event:PlayerHasItem("Puzzle Key") then
+				Event:ShowMessage("Hey, it looks like this could fit into the center of the puzzlebox...")
+				waitUntil("Message closed")
+				--Play the sound for the thing being inserted
+				Event:InsertPuzzleboxKey()
+				Event:DestroyItem("Puzzle Key")
+			end
+		end)
+	end
+	
+	
+}

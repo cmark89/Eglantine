@@ -35,7 +35,3 @@ function loadEventManager()
 	print("EventManager loaded.")
 	Event = EVENT_MANAGER.Instance
 end
-
---Event:ShowMessage(string)
---Event:MovePlayer(targetX, targetY)
---Event:ChangeRoom(roomName, roomEntranceName)
