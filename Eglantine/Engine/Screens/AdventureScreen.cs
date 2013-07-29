@@ -113,6 +113,11 @@ namespace Eglantine.Engine
 			foreach (RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff < Player.Position.Y))
 				rl.Draw (spriteBatch);
 
+			foreach (Interactable i in CurrentRoom.Interactables.FindAll(x => x.Active && x.IsDrawn && x.YCutoff <= Player.Position.Y))
+			{
+				i.Draw (spriteBatch);
+			}
+
 			// Draw the player
 			Player.Draw (spriteBatch);
 
@@ -120,7 +125,7 @@ namespace Eglantine.Engine
 			foreach (RoomLayer rl in CurrentRoom.Midground.FindAll(x => x.YCutoff >= Player.Position.Y))
 				rl.Draw (spriteBatch);
 
-			foreach (Interactable i in CurrentRoom.Interactables.FindAll(x => x.Active && x.IsDrawn))
+			foreach (Interactable i in CurrentRoom.Interactables.FindAll(x => x.Active && x.IsDrawn && x.YCutoff > Player.Position.Y))
 			{
 				i.Draw (spriteBatch);
 			}

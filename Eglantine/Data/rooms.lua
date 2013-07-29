@@ -17,7 +17,11 @@ requiredRooms = {
 	"Office",
 	"EmptyRoom",
 	"SecretRoom",
-	"LivingRoom"
+	"LivingRoom",
+	"Underground1",
+	"Underground2",
+	"Underground3",
+	"Underground4"
 }
 
 -- Load each required room in turn

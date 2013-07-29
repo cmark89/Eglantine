@@ -112,6 +112,9 @@ namespace Eglantine.Engine
 			TriggerAreas = new List<TriggerArea> ();
 
 			LuaTable triggers = lua.GetTable ("rooms." + roomname + ".Triggers");
+			if(triggers == null)
+				return;
+
 			LuaTable currentTrigger;
 
 			for (int i = 0; i < triggers.Keys.Count; i++)
@@ -167,12 +170,16 @@ namespace Eglantine.Engine
 				Texture2D texture = null;
 				if(draw) { texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]); } 
 
+				float yCutoff = 0;
+				if(currentInteractable["YCutoff"] != null) 
+					yCutoff = (float)(double)currentInteractable["YCutoff"];
+
 				// Build the clickable area
 				if((LuaTable)currentInteractable["Area"] != null)
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, yCutoff));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -181,7 +188,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, drawPos));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, drawPos, yCutoff));
 				}
 			}
 		}
