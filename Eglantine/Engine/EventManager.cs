@@ -85,6 +85,16 @@ namespace Eglantine.Engine
 			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Disable();
 		}
 
+		public void FadeInInteractable (string objectName, float time)
+		{
+			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).LerpColor (Color.White, time);
+		}
+
+		public void FadeOutInteractable (string objectName, float time)
+		{
+			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).LerpColor (Color.Transparent, time);
+		}
+
 		public void EnableTrigger (string objectName)
 		{
 			GameState.Instance.CurrentRoom.TriggerAreas.Find(x => x.Name == objectName).Enable();

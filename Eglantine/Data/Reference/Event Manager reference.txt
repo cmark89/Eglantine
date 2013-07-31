@@ -37,6 +37,9 @@ EnableTrigger (name)		- 	Enables trigger 'name' in the current room
 DisableInteractable (name)	- 	Disables interactable 'name' in the current room
 DisableTrigger (name)		- 	Disables trigger 'name' in the current room
 
+FadeInInteractable(name, time) - Fades in the interactable named over time seconds.
+FadeOutInteractable(name, time) - Fades out the interactable named over time seconds.
+
 
 
 

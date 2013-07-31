@@ -14,6 +14,14 @@ namespace Eglantine.Engine
 		public Vector2 DrawPosition { get; private set; }
 		public Texture2D Texture { get; private set; }
 
+		private Color drawColor = Color.White;
+		private bool isLerpingColor = false;
+
+		private Color startColor;
+		private Color endColor;
+		private float colorLerpDuration;
+		private float colorLerpTime;
+
 		// The YCutoff is the Y value beyond which the player will be drawn on top of the object; a YCutoff of 0 means that 
 		// the player will always be drawn on top.  Remember to accomodate for the player origin.
 		public float YCutoff { get; private set; }
@@ -62,12 +70,21 @@ namespace Eglantine.Engine
 
 		public override void Update (GameTime gameTime)
 		{
-			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted())
+			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted ())
 			{
-				if(VectorInArea(MouseManager.Position) && MouseManager.LeftClickUp)
-					OnInteract();
-				else if(VectorInArea(MouseManager.Position) && MouseManager.RightClickUp)
-					OnLook();
+				if (VectorInArea (MouseManager.Position) && MouseManager.LeftClickUp)
+					OnInteract ();
+				else if (VectorInArea (MouseManager.Position) && MouseManager.RightClickUp)
+					OnLook ();
+			}
+
+			if (isLerpingColor)
+			{
+				colorLerpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+				drawColor = Color.Lerp (startColor, endColor, colorLerpTime/colorLerpDuration);
+
+				if(colorLerpTime > colorLerpDuration)
+					isLerpingColor = false;
 			}
 		}
 
@@ -76,7 +93,7 @@ namespace Eglantine.Engine
 			if (IsDrawn)
 			{
 				// Update this to draw at a more accurate position
-				spriteBatch.Draw(Texture, DrawPosition, Color.White);
+				spriteBatch.Draw(Texture, DrawPosition, drawColor);
 			}
 		}
 
@@ -90,6 +107,21 @@ namespace Eglantine.Engine
 		{
 			if (LookEvent != null)
 				LookEvent.Call ();
+		}
+
+		public void SetColor(Color color)
+		{
+			drawColor = color;
+		}
+
+		public void LerpColor(Color toColor, float duration)
+		{
+			startColor = drawColor;
+			endColor = toColor;
+			colorLerpDuration = duration;
+			colorLerpTime = 0f;
+
+			isLerpingColor = true;
 		}
 	}
 }
