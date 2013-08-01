@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LuaInterface;
 using Microsoft.Xna.Framework;
 
@@ -187,6 +188,33 @@ namespace Eglantine.Engine
 		public void InsertPuzzleboxKey()
 		{
 			GameState.Instance.PuzzleboxState.KeyInserted = true;
+		}
+
+		// This is changes the usage type of an item in the player's inventory.
+		public void SetItemType (string itemName, string newType)
+		{
+			ItemType type;
+			switch (newType)
+			{
+			case "Unusable":
+				type = ItemType.Unusable;
+				break;
+			case "Immediate":
+				type = ItemType.Immediate;
+				break;
+			case "Active":
+				type = ItemType.Active;
+				break;
+			default:
+				break;
+			}
+
+			List<Item> items = GameState.Instance.PlayerItems.FindAll (x => x.Name == itemName);
+			if (items.Count > 0)
+			{
+				foreach(Item i in items)
+					i.Type = type;
+			}
 		}
 	}
 }

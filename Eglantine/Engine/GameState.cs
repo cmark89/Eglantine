@@ -68,14 +68,14 @@ namespace Eglantine.Engine
 
 			for (int i = 0; i < tempTable.Keys.Count; i++)
 			{
-				Console.WriteLine("Add room \"" + (string)tempTable[i+1]);
+				Console.WriteLine("Add room \"" + (string)tempTable[i+1] +"\"");
 				Rooms.Add(new Room((string)tempTable[i+1]));
 			}
 
 			Console.WriteLine("All rooms added.");
 
 			// Set the current room to the first room.
-			CurrentRoom = Rooms[0];
+			CurrentRoom = Rooms.Find (x => x.Name == "Foyer");
 
 			// Set the player's position to the first entrance in the first room.
 			Player.Instance.SetPosition(CurrentRoom.Entrances[0].Point);

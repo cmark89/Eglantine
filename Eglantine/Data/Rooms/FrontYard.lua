@@ -67,6 +67,31 @@ rooms["FrontYard"] = {
 				door("BackYard", "BackYard", "Door")
 			end,
 			OnLook = nil
+		},
+		[3] = {
+			Name = "Eglantine",
+			Area = {
+				X = 607,
+				Y = 355,
+				Width = 48,
+				Height = 48
+			},
+				
+			--Make it drawn later so it can be disabled...
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/eglantine",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 601,
+				Y = 462
+			},
+
+			OnInteract = pickEglantine,
+			OnLook = function()
+				Event:ShowMessage("Isn't that...?  From the picture?")
+			end
 		}
 	},
 	
@@ -104,5 +129,7 @@ rooms["FrontYard"] = {
 			X = 976,
 			Y = 375
 		}
-	}	
+	},
+	
+	onEnter = checkForBloom
 }

@@ -92,6 +92,72 @@ rooms["Underground4"] = {
 				Event:ShowMessage("A gravestone... the name has been worn away.")
 			end
 		},
+		[4] = {
+			Name = "Flower1",
+			Area = {
+				X = 586,
+				Y = 517,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/eglantine",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil
+			OnLook = nil
+		},
+		[5] = {
+			Name = "Flower2",
+			Area = {
+				X = 613,
+				Y = 533,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/eglantine",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil
+			OnLook = nil
+		},
+		[6] = {
+			Name = "Flower3",
+			Area = {
+				X = 646,
+				Y = 529,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/eglantine",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil
+			OnLook = nil
+		}
 	},
 	
 	--------NAVMESH--------
@@ -166,8 +232,6 @@ rooms["Underground4"] = {
 		}
 	},
 	
-	onEnter = function()
-		Event:ShowMessage("I now be in da place!")
-	end	
+	onEnter = beginEnding
 }
 

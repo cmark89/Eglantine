@@ -250,6 +250,8 @@ namespace Eglantine.Engine
 		{
 			if(enterEvent != null)
 				enterEvent.Call ();
+			else
+				Console.WriteLine ("Enter event null");
 		}
 
 		public void OnExitRoom()

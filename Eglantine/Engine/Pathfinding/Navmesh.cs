@@ -27,12 +27,12 @@ namespace Eglantine.Engine.Pathfinding
 
 			// Parse the table into nodes
 			ParseLuaTable(nav);
-			ReportNavmesh();
+			//ReportNavmesh();
 			BuildMesh();
 			// Now create an instance of AStar to link to the mesh
 			aStar = new AStar(this);
 
-			Console.WriteLine("Navmesh constructed.");
+			//Console.WriteLine("Navmesh constructed.");
 		}
 
 

@@ -54,23 +54,21 @@ namespace Eglantine.Engine
 			//Player.Setup();
 
 			// Testing...
-			EventManager.Instance.GainItem("Puzzlebox");
-			EventManager.Instance.GainItem("Puzzle Key");
+			EventManager.Instance.GainItem("Photograph");
 		}
 
 		public override void Update (GameTime gameTime)
 		{
-
 			if (ReceivingInput && !InputDisabled)
 			{
 				// Don't let the player move around if they're interacting with the GUI
-				if(!Gui.MouseInGUI)
+				if (!Gui.MouseInGUI)
 				{
 					// See what object, if any, the player is hovering over.
-					for(int i = CurrentRoom.Interactables.Count; i > 0; i--)
+					for (int i = CurrentRoom.Interactables.Count; i > 0; i--)
 					{
-						Trigger thisTrigger = CurrentRoom.Interactables[i-1];
-						if(thisTrigger.Active && thisTrigger.VectorInArea(MouseManager.Position))
+						Trigger thisTrigger = CurrentRoom.Interactables [i - 1];
+						if (thisTrigger.Active && thisTrigger.VectorInArea (MouseManager.Position))
 						{
 							HighlightedTrigger = thisTrigger;
 							break;
@@ -82,19 +80,24 @@ namespace Eglantine.Engine
 					// Check where the mouse is and what mouse icon to display
 
 					// If the player's mouse is in the walkable area...
-					if(MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null)
+					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null)
 					{
-						MovePlayer(MouseManager.Position);
+						MovePlayer (MouseManager.Position);
 					}
-					if(MouseManager.RightClickDown && CurrentRoom.Navmesh.ContainingPolygon(MouseManager.Position) != null && LoadedItem != null)
+					if (MouseManager.RightClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && LoadedItem != null)
 					{
-						SetActiveItem(null);
+						SetActiveItem (null);
 					}
 				}
 			}
 
-			if(ReceivingInput)
-				Gui.Update(gameTime);
+			if (ReceivingInput)
+			{
+				Gui.Update (gameTime);
+
+
+				Eglantine.Lua.DoString("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			}
 
 			// Now the other updates go here anyways.
 			CurrentRoom.Update(gameTime);

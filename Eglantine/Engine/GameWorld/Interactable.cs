@@ -84,7 +84,10 @@ namespace Eglantine.Engine
 				drawColor = Color.Lerp (startColor, endColor, colorLerpTime/colorLerpDuration);
 
 				if(colorLerpTime > colorLerpDuration)
+				{
+					drawColor = endColor;
 					isLerpingColor = false;
+				}
 			}
 		}
 
@@ -116,6 +119,9 @@ namespace Eglantine.Engine
 
 		public void LerpColor(Color toColor, float duration)
 		{
+			if(!Active)
+				return;
+
 			startColor = drawColor;
 			endColor = toColor;
 			colorLerpDuration = duration;

@@ -1,4 +1,3 @@
-
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
@@ -99,7 +98,7 @@ namespace Eglantine
 
 			// For the love of GOD find a way to split this between screens, this is broken as it is
 			double deltaTime = gameTime.ElapsedGameTime.TotalSeconds;
-			Lua.DoString("updateCoroutines(" + deltaTime + ")");
+			//Lua.DoString("updateCoroutines(" + deltaTime + ")");
 
 
 			base.Update (gameTime);
