@@ -39,7 +39,7 @@ rooms["BackYard"] = {
 
 			OnInteract = function()
 				--Real temporary
-				door("Door", "FrontYard", "BackYard")
+				door("Door", "Kitchen", "BackYardDoor")
 			end,
 			OnLook = nil
 		},
@@ -91,7 +91,7 @@ rooms["BackYard"] = {
 			},
 
 			OnInteract = function()
-				pickEglantine()
+				pickBackYardEglantine()
 			end,
 			OnLook = function()
 				Event:ShowMessage("Sweet briar...never really cared for it.")	

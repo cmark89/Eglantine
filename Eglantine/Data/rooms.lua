@@ -12,6 +12,7 @@ requiredRooms = {
 	"FrontYard",
 	"BackYard",
 	"Foyer",
+	"Kitchen",
 	"Upstairs",
 	"Bedroom",
 	"Office",

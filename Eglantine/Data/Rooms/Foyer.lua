@@ -43,7 +43,7 @@ rooms["Foyer"] = {
 			OnLook = nil
 		},
 		[2] = {
-			Name = "HallDoor",
+			Name = "LivingRoomDoor",
 			Area = {
 				X = 357,
 				Y = 147,
@@ -62,7 +62,7 @@ rooms["Foyer"] = {
 			},
 
 			OnInteract = function()
-				door("HallDoor", "LivingRoom", "Door")
+				door("LivingRoomDoor", "LivingRoom", "Door")
 			end,
 			OnLook = nil
 		},
@@ -89,7 +89,31 @@ rooms["Foyer"] = {
 				door("Stairs", "Upstairs", "Stairs")
 			end,
 			OnLook = nil
-		}
+		},
+		[4] = {
+			Name = "KitchenDoor",
+			Area = {
+				X = 206,
+				Y = 204, 
+				Width = 56,
+				Height = 93
+			},
+				
+			--Make it drawn later so it can be disabled...
+			Enabled = true,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 263,
+				Y = 559
+			},
+
+			OnInteract = function()
+				door("KitchenDoor", "Kitchen", "FoyerDoor")
+			end,
+			OnLook = nil
+		},
 	},
 	
 	Triggers = {
@@ -148,7 +172,7 @@ rooms["Foyer"] = {
 			Y = 705
 		},
 		[2] = {
-			Name = "HallDoor",
+			Name = "LivingRoomDoor",
 			
 			X = 408,
 			Y = 374
@@ -158,6 +182,12 @@ rooms["Foyer"] = {
 			
 			X = 634,
 			Y = 704
+		},
+		[4] = {
+			Name = "KitchenDoor",
+			
+			X = 273,
+			Y = 549
 		}
 	}
 }

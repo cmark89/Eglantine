@@ -209,6 +209,7 @@ namespace Eglantine
 		public void Close()
 		{
 			FlaggedForRemoval = true;
+			EventManager.Instance.SendSignal("Safe closed");
 		}
 
 		public Vector2 OffsetRectPosition(Rectangle rect, Vector2 offset)
@@ -241,7 +242,6 @@ namespace Eglantine
 			int col = index % 5;
 			int row = index / 5;
 
-			Console.WriteLine("Draw " + index + " using the index at " + col +", " + row);
 			return new Rectangle(col*70, row*70, 70, 70);
 		}
 

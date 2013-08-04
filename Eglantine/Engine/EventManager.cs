@@ -193,7 +193,8 @@ namespace Eglantine.Engine
 		// This is changes the usage type of an item in the player's inventory.
 		public void SetItemType (string itemName, string newType)
 		{
-			ItemType type;
+			ItemType type = ItemType.Unusable;
+
 			switch (newType)
 			{
 			case "Unusable":
@@ -213,7 +214,7 @@ namespace Eglantine.Engine
 			if (items.Count > 0)
 			{
 				foreach(Item i in items)
-					i.Type = type;
+					i.SetType(type);
 			}
 		}
 	}

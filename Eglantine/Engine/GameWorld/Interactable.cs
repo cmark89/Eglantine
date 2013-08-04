@@ -70,7 +70,7 @@ namespace Eglantine.Engine
 
 		public override void Update (GameTime gameTime)
 		{
-			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted ())
+			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted() && !AdventureScreen.Instance.InputDisabled && !AdventureScreen.Instance.MouseInGui)
 			{
 				if (VectorInArea (MouseManager.Position) && MouseManager.LeftClickUp)
 					OnInteract ();

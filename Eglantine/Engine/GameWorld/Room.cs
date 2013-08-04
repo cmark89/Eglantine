@@ -227,12 +227,9 @@ namespace Eglantine.Engine
 				ta.Update (gameTime);
 			}
 
-			if (!AdventureScreen.Instance.InputDisabled && !AdventureScreen.Instance.MouseInGui)
+			foreach (Interactable i in Interactables.FindAll(x => x.Active))
 			{
-				foreach (Interactable i in Interactables.FindAll(x => x.Active))
-				{
-					i.Update(gameTime);
-				}
+				i.Update(gameTime);
 			}
 
 			// Should give the room layers an update here...

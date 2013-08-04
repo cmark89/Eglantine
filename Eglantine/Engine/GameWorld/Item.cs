@@ -90,6 +90,11 @@ namespace Eglantine.Engine
 					break;
 			}
 		}
+
+		public void SetType(ItemType it)
+		{
+			Type = it;
+		}
 	}
 
 	public enum ItemType

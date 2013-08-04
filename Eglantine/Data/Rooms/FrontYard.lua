@@ -88,7 +88,7 @@ rooms["FrontYard"] = {
 				Y = 462
 			},
 
-			OnInteract = pickEglantine,
+			OnInteract = pickFrontYardEglantine,
 			OnLook = function()
 				Event:ShowMessage("Isn't that...?  From the picture?")
 			end

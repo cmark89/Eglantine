@@ -13,52 +13,57 @@ end
 
 --This is the normal ending scenario
 function normalEndingScenario()
-	waitSeconds(6)
-	artifactPulse(.4)
-	waitSeconds(5)
-	artifactPulse(.4)
-	waitSeconds(4)
-	artifactPulse(.4)
-	waitSeconds(3)
-	artifactPulse(.4)
-	waitSeconds(2)
-	artifactPulse(.4)
-	waitSeconds(1)
-	artifactPulse(.4)
-	waitSeconds(1)
-	artifactPulse(.4)
-	waitSeconds(1)
-	artifactPulse(.4)
-	waitSeconds(1)
-	artifactPulse(.4)
-	waitSeconds(1)
-	Event:FadeOutInteractable("Grave", 4)
-	Event:EnableInteractable("Artifact")
-	Event:FadeInInteractable("Artifact", 4)
-	waitSeconds(4)
-	Event:DisableInteractable("Grave")
-	waitSeconds(3)
-	Event:ShowMessage("GAME OVER!")
+	--Loop the pulsing
+	strobeTime = 6
+	while strobeTime > 0 and flowersOnGrave < 3 do
+		waitSeconds(strobeTime)
+		artifactPulse(.4)
+		strobeTime = strobeTime -1
+	end
+	
+	--If the player failed to complete the puzzle
+	if flowersOnGrave < 3 then
+		waitSeconds(1)
+		Event:FadeOutInteractable("Grave", 3)
+		Event:EnableInteractable("Artifact")
+		Event:FadeInInteractable("Artifact", 3)
+		waitSeconds(3)
+		Event:DisableInteractable("Grave")
+		waitSeconds(4)
+		Event:ShowMessage("GAME OVER!")
+	end
+	
+	--If the player honored the dead
+	if flowersOnGrave == 3 then
+		waitSeconds(4)
+		fadeOutGrave(6)
+		waitSeconds(6)
+		Event:ShowMessage("You win!")
+		--What the hell happens now?
+	end
 end
 
 
 --Pulses the grave and artifact in and out over the given time (each way)
 function artifactPulse(time)
-	Event:FadeOutInteractable("Grave", time)
+	Event:PlaySound("heartbeat")
+	fadeOutGrave(time)
 	Event:EnableInteractable("Artifact")
 	Event:FadeInInteractable("Artifact", time)
 	waitSeconds(.5)
 	Event:FadeOutInteractable("Artifact", time)
-	Event:FadeInInteractable("Grave", time)
+	fadeInGrave(time)
 	waitSeconds(.5)
 	Event:DisableInteractable("Artifact")
 end
 
 function interactWithGrave()
 	if(Event:UsingItem("Eglantine")) then
-		Event:MovePlayerTo("Grave")
-		waitUntil("Player stopped")
-		placeFlowerOnGrave()
+		runCoroutine(function()
+			Event:MovePlayerTo("Grave")
+			waitUntil("Player stopped")
+			placeFlowerOnGrave()
+		end)
 	end
 end
 
@@ -66,4 +71,39 @@ function placeFlowerOnGrave()
 	Event:DestroyItem("Eglantine")
 	flowersOnGrave = flowersOnGrave + 1
 	Event:EnableInteractable("Flower"..flowersOnGrave)
+end
+
+
+--Wrapper functions to fade in and out the grave and all attached flowers
+function fadeOutGrave(time)
+	Event:FadeOutInteractable("Grave", time)
+	Event:FadeOutInteractable("Flower1", time)
+	Event:FadeOutInteractable("Flower2", time)
+	Event:FadeOutInteractable("Flower3", time)
+end
+
+function fadeInGrave(time)
+	Event:FadeInInteractable("Grave", time)
+	Event:FadeInInteractable("Flower1", time)
+	Event:FadeInInteractable("Flower2", time)
+	Event:FadeInInteractable("Flower3", time)
+end
+
+
+function readHeadstone()
+	if flowersOnGrave == 0 then
+		Event:ShowMessage("A gravestone... the name has been worn away.")
+	end
+	
+	if flowersOnGrave == 1 then
+		Event:ShowMessage("The writing is very faded, but its partially legible.  It reads: ..R. .I.S FC.A-II.C W.AIV.R.")
+	end
+	
+	if flowersOnGrave == 2 then
+		Event:ShowMessage("The text is becoming clearer.  It reads: \nHER. LICS FCLAHIIVE WCATNERS")
+	end
+	
+	if flowersOnGrave == 3 then
+		Event:ShowMessage("The headstone reads: \nHERE LIES EGLANTINE WEATHERS")
+	end
 end

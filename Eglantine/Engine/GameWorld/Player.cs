@@ -78,33 +78,41 @@ namespace Eglantine.Engine
 			}
 			else
 			{
-				// Set the waypoint to null to stop pathfinding updates.
-				nextWaypoint = null;
-				if(forcedMovement)
-				{
-					EventManager.Instance.SendSignal("Player stopped");
-					AdventureScreen.Instance.EnableInput();
-				}
+				StopMoving ();
 			}
 		}
 
-		public void SetPath(List<NavNode> path, bool forced)
+		public void SetPath (List<NavNode> path, bool forced)
 		{
 			forcedMovement = forced;
 
 			nextWaypoint = null;
 
-			// Here, check to make sure that the target point is outside the waypoint stopping distance.
+
 			Path = path;
 
-			if(path != null)
-				NextWaypoint();
+			if (path != null)
+			{
+				// Here, check to make sure that the target point is outside the waypoint stopping distance.
+				// This stops a player from nudging around if they are forced to move to their current position
+				if(Vector2.Distance (Position, path[0].Position) < WAYPOINT_DISTANCE)
+					StopMoving ();
+				else
+					NextWaypoint ();
+			}
+
+
 		}
 
 		public void StopMoving ()
 		{
 			Path.Clear();
 			nextWaypoint = null;
+			if(forcedMovement)
+			{
+				EventManager.Instance.SendSignal("Player stopped");
+				AdventureScreen.Instance.EnableInput();
+			}
 		}
 
 		#endregion

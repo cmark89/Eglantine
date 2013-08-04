@@ -54,7 +54,8 @@ namespace Eglantine.Engine
 			//Player.Setup();
 
 			// Testing...
-			EventManager.Instance.GainItem("Photograph");
+			//EventManager.Instance.GainItem("Scissors");
+			//EventManager.Instance.GainItem("Crowbar");
 		}
 
 		public override void Update (GameTime gameTime)
@@ -148,12 +149,12 @@ namespace Eglantine.Engine
 		// This method is static to ensure that the EventManager is able to force the player to move.
 		public void MovePlayer (Vector2 targetPoint, bool uninteruptable = false)
 		{
-			Player.SetPath (CurrentRoom.Navmesh.GetPath (Player.Position, targetPoint), uninteruptable);
-
 			if (uninteruptable)
 			{
 				DisableInput();
 			}
+
+			Player.SetPath (CurrentRoom.Navmesh.GetPath (Player.Position, targetPoint), uninteruptable);
 		}
 
 		public void DisableInput ()

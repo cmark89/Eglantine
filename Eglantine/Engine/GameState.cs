@@ -19,6 +19,9 @@ namespace Eglantine.Engine
 			}
 		}
 
+		// This is temporary.
+		private const string START_ROOM = "Foyer";
+
 		// Stores the items the player has collected.
 		public List<Item> PlayerItems { get; private set; }
 		public List<Document> Documents { get; private set; }
@@ -35,6 +38,7 @@ namespace Eglantine.Engine
 		#region GameState Variables
 		public bool PaintingOpened = false;
 		public bool PhotoTaken = false;
+		public bool KitchenWindowBroken = false;
 		public PuzzleboxState PuzzleboxState { get; private set; }
 		public SafeState SafeState { get; private set; }
 
@@ -75,7 +79,7 @@ namespace Eglantine.Engine
 			Console.WriteLine("All rooms added.");
 
 			// Set the current room to the first room.
-			CurrentRoom = Rooms.Find (x => x.Name == "Foyer");
+			CurrentRoom = Rooms.Find (x => x.Name == START_ROOM);
 
 			// Set the player's position to the first entrance in the first room.
 			Player.Instance.SetPosition(CurrentRoom.Entrances[0].Point);

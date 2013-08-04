@@ -19,7 +19,7 @@ rooms["Underground4"] = {
 ------OBJECTS AND EVENTS------
 	Interactables = {
 		[1] = {
-			Name = "Rope",
+			Name = "Door",
 			Area = {
 				X = 17,
 				Y = 0,
@@ -37,11 +37,9 @@ rooms["Underground4"] = {
 			},
 
 			OnInteract = function()
-				door("Rope", "Underground2", "Rope")
+				Event:ShowMessage("...")
 			end,
-			OnLook = function()
-				Event:ShowMessage("I don't even know if I could climb that...")
-			end
+			OnLook = nil
 		},
 		
 		[2] = {
@@ -88,9 +86,7 @@ rooms["Underground4"] = {
 			},
 
 			OnInteract = interactWithGrave,
-			OnLook = function()
-				Event:ShowMessage("A gravestone... the name has been worn away.")
-			end
+			OnLook = readHeadstone
 		},
 		[4] = {
 			Name = "Flower1",
@@ -111,7 +107,7 @@ rooms["Underground4"] = {
 				Y = 0
 			},
 
-			OnInteract = nil
+			OnInteract = nil,
 			OnLook = nil
 		},
 		[5] = {
@@ -133,7 +129,7 @@ rooms["Underground4"] = {
 				Y = 0
 			},
 
-			OnInteract = nil
+			OnInteract = nil,
 			OnLook = nil
 		},
 		[6] = {
@@ -155,7 +151,7 @@ rooms["Underground4"] = {
 				Y = 0
 			},
 
-			OnInteract = nil
+			OnInteract = nil,
 			OnLook = nil
 		}
 	},

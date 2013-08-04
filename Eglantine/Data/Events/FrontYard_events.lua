@@ -6,7 +6,7 @@ function checkForBloom()
 	end
 end
 
-function pickEglantine()
+function pickFrontYardEglantine()
 	if(Event:UsingItem("Scissors")) then
 		pickup("Eglantine")
 		frontYardFlowerPicked = true
