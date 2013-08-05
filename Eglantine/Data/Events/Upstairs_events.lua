@@ -7,9 +7,11 @@ function interactWithSafe()
 		--Bring up the safe screen here
 		Event:OpenSafe()
 		waitUntil("Safe closed")
-		waitSeconds(3)
 		if Event:PlayerHasItem("Key") and not GameState.KitchenWindowBroken then
+			Event:DisableSaving()
+			waitSeconds(3)
 			breakGlassInKitchen()
+			Event:EnableSaving()
 		end
 	end)	
 end

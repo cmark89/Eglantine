@@ -178,8 +178,6 @@ namespace Eglantine.Engine
 			/// We now have the table of interactables.  
 			/// Now we have to loop over each and check if its name == Name
 			/// When we find that interactable, we hook up the events from it.
-
-			Console.WriteLine (thisRoom.Name + " table loaded successfully.");
 			Event = (LuaFunction)thisInteractable["OnInteract"];
 			LookEvent = (LuaFunction)thisInteractable["OnLook"];
 		}

@@ -1,5 +1,6 @@
 --Check the state of the game and determine which ending scenario should occur
 function beginEnding()
+	Event:DisableSaving()
 	Event:SetItemType("Eglantine", "Active")
 	--Right now, only the default is available, so enable it
 	GameState.Ending = "normal"

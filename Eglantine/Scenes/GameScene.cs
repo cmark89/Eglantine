@@ -24,8 +24,6 @@ namespace Eglantine
 			}
 		}
 
-
-
 		// Stores a list of the screens that are active
 		public List<Screen> GameScreens;
 
@@ -35,8 +33,10 @@ namespace Eglantine
 		// Stores the GameState
 		public GameState GameState { get; private set; }
 
+		public bool SavingAllowed { get; private set; }
 		private bool isNewGame;
 		private bool setupComplete = false;
+
 
 		// Creates a new GameScene and creates a new GameState
 		public GameScene()
@@ -91,6 +91,7 @@ namespace Eglantine
 			advScreen.Initialize();
 			GameScreens.Add(advScreen);
 
+			SavingAllowed = true;
 			setupComplete = true;
 		}
 
@@ -151,6 +152,16 @@ namespace Eglantine
 			{
 				GameScreens.Remove(s);
 			}
+		}
+
+		public void EnableSaving()
+		{
+			SavingAllowed = true;
+		}
+
+		public void DisableSaving()
+		{
+			SavingAllowed = false;
 		}
 	}
 }

@@ -96,7 +96,7 @@ namespace Eglantine.Engine
 				}
 
 				// Big testing
-				if(KeyboardManager.ButtonPressUp(Microsoft.Xna.Framework.Input.Keys.S))
+				if(KeyboardManager.ButtonPressUp(Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
 				{
 					Console.WriteLine ("Saved state to: test.sav");
 					GameState.SaveState ("test.sav");

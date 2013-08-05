@@ -190,6 +190,16 @@ namespace Eglantine.Engine
 			GameState.Instance.PuzzleboxState.KeyInserted = true;
 		}
 
+		public void EnableSaving()
+		{
+			GameScene.Instance.EnableSaving();
+		}
+
+		public void DisableSaving()
+		{
+			GameScene.Instance.DisableSaving();
+		}
+
 		// This is changes the usage type of an item in the player's inventory.
 		public void SetItemType (string itemName, string newType)
 		{
