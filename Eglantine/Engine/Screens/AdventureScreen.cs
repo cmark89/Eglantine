@@ -90,6 +90,17 @@ namespace Eglantine.Engine
 						SetActiveItem (null);
 					}
 				}
+
+				// Big testing
+				if(KeyboardManager.ButtonPressUp(Microsoft.Xna.Framework.Input.Keys.S))
+				{
+					Console.WriteLine ("Saved state to: test.sav");
+					GameState.SaveState ("test.sav");
+				}
+				else if(KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
+				{
+					Eglantine.ChangeScene (new GameScene(GameState.LoadState ("test.sav")));
+				}
 			}
 
 			if (ReceivingInput)

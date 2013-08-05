@@ -38,17 +38,17 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="OpenTK">
-      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\OpenTK.dll</HintPath>
-    </Reference>
     <Reference Include="Tao.Sdl">
       <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\Tao.Sdl.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\repos\MonoGameDev\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="LuaInterface">
       <HintPath>..\..\..\repos\MonoLuaInterface\bin\LuaInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4">
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +95,7 @@
     <Compile Include="Engine\Screens\SafeScreenGUI.cs" />
     <Compile Include="Engine\SafeState.cs" />
     <Compile Include="Engine\KeyboardManager.cs" />
+    <Compile Include="Engine\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

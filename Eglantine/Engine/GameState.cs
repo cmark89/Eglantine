@@ -2,13 +2,17 @@ using System;
 using LuaInterface;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public sealed class GameState
 	{
 		#region Member Variables
 		// GameState is a singleton.
+
+		[NonSerialized]
 		private static GameState _instance;
 		public static GameState Instance {
 			get {
@@ -98,19 +102,29 @@ namespace Eglantine.Engine
 		}
 
 		// Load a gamestate from file in order to resume the game
-		public static GameState LoadState()
+		public static GameState LoadState (string targetFile)
 		{
-			// Load player's position from file
-			Player.Instance.SetPosition(Instance.PlayerPosition);
+			GameState loadedState = Serializer.Deserialize<GameState> (targetFile);
+			if (loadedState != null)
+			{
+				_instance = loadedState;
 
-			return null;	// what the hell is this?
+				// Load player's position from file
+				Player.Instance.SetPosition(loadedState.PlayerPosition);
+
+				// Load coroutines
+			}
+
+			return loadedState;
 		}
 
 		// Save a gamestate to file
-		public static void SaveState()
+		public static void SaveState(string targetFile)
 		{
 			// Prepare to save player position to file
 			Instance.PlayerPosition = Player.Instance.Position;
+
+			Serializer.Serialize<GameState>(targetFile, Instance);
 		}
 
 		#endregion

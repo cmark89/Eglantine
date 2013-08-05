@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public abstract class Trigger
 	{
 		public string Name { get; protected set; }

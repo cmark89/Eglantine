@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 namespace Eglantine.Engine
@@ -32,7 +33,8 @@ namespace Eglantine.Engine
 
 		public T Load<T> (string path)
 		{
-			return Content.Load<T>(path);
+			T loadedAsset = Content.Load<T> (path);
+			return loadedAsset;
 		}
 	}
 }

@@ -7,6 +7,7 @@ using Eglantine.Engine;
 
 namespace Eglantine
 {
+	[Serializable]
 	public class RoomLayer
 	{
 		#region Fields

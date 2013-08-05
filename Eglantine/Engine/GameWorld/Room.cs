@@ -7,6 +7,7 @@ using LuaInterface;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public class Room
 	{
 		public string Name { get; private set; }

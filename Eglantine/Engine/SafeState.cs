@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public class SafeState
 	{
 		// Change this.

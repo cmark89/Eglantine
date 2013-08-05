@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public class PuzzleboxState
 	{
 		public const float RING_DRAG_MAGNITUDE = ((float)Math.PI * 2) / 36;

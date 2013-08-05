@@ -30,7 +30,7 @@ namespace Eglantine
 		// Bad practice, but make this static for testing purposes.
 		// Probably put this into a singleton
 		public static Lua Lua;
-		Scene currentScene;
+		static Scene currentScene;
 
 
 		public Eglantine ()
@@ -121,7 +121,7 @@ namespace Eglantine
 			base.Draw (gameTime);
 		}
 
-		public void ChangeScene(Scene newScene)
+		public static void ChangeScene(Scene newScene)
 		{
 			if(currentScene != null)
 				currentScene.Unload();
