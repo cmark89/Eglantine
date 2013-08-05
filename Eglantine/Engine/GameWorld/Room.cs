@@ -13,7 +13,14 @@ namespace Eglantine.Engine
 		public string Name { get; private set; }
 
 		// The rooms' texture.  This will later be split into multiple layers.
-		public Texture2D Texture { get; private set; }
+		[NonSerialized]
+		private Texture2D _texture;
+		public Texture2D Texture 
+		{
+			get { return _texture; }
+			private set { _texture = value; }
+		}
+		private string _TextureName;
 
 		// Background layers are always drawn behind the player.
 		public List<RoomLayer> Background { get; private set; }
@@ -31,7 +38,9 @@ namespace Eglantine.Engine
 		public List<TriggerArea> TriggerAreas;
 		public List<Entrance> Entrances;
 
+		[NonSerialized]
 		private LuaFunction enterEvent;
+		[NonSerialized]
 		private LuaFunction exitEvent;
 
 		public Room (string roomname)
@@ -134,14 +143,14 @@ namespace Eglantine.Engine
 					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["X"], (int)(double)currentTrigger["Y"], (int)(double)currentTrigger["Width"], (int)(double)currentTrigger["Height"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this));
 				}
 				else if(currentTrigger["Polygon"] != null)
 				{
 					Polygon poly = new Polygon((LuaTable)currentTrigger["Polygon"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"]));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this));
 				}				
 			}
 		}
@@ -167,14 +176,14 @@ namespace Eglantine.Engine
 				//	set the texture...
 				if((bool)currentInteractable["Drawn"])
 				{
-					Texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]);
+					Texture = ContentLoader.Instance.LoadTexture2D((string)currentInteractable["Texture"]);
 				}
 
 				// Add the events
 
 				bool draw = (bool)currentInteractable["Drawn"];
 				Texture2D texture = null;
-				if(draw) { texture = ContentLoader.Instance.Load<Texture2D>((string)currentInteractable["Texture"]); } 
+				if(draw) { texture = ContentLoader.Instance.LoadTexture2D((string)currentInteractable["Texture"]); } 
 
 				float yCutoff = 0;
 				if(currentInteractable["YCutoff"] != null) 
@@ -185,7 +194,7 @@ namespace Eglantine.Engine
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, yCutoff));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -194,7 +203,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], draw, texture, drawPos, yCutoff));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff));
 				}
 			}
 		}
@@ -256,6 +265,55 @@ namespace Eglantine.Engine
 		{
 			if(exitEvent != null)
 				exitEvent.Call ();
+		}
+
+		public void PrepareForSerialization ()
+		{
+			if(Texture != null)
+				_TextureName = Texture.Name;
+
+			foreach (RoomLayer rl in Background)
+			{
+				rl.PrepareForSerialization();
+			}
+			foreach (RoomLayer rl in Midground)
+			{
+				rl.PrepareForSerialization();
+			}
+			foreach (RoomLayer rl in Foreground)
+			{
+				rl.PrepareForSerialization();
+			}
+			foreach (Interactable i in Interactables)
+			{
+				i.PrepareForSerialization();
+			}
+		}
+
+		public void LoadFromSerialization()
+		{
+			Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
+			Lua lua = Eglantine.Lua;
+			enterEvent = (LuaFunction)lua["rooms." + Name + ".onEnter"];
+			exitEvent = (LuaFunction)lua["rooms." + Name + ".onExit"];
+
+
+			foreach (RoomLayer rl in Background)
+			{
+				//rl.LoadFromSerialization();
+			}
+			foreach (RoomLayer rl in Midground)
+			{
+				//rl.LoadFromSerialization();
+			}
+			foreach (RoomLayer rl in Foreground)
+			{
+				//rl.LoadFromSerialization();
+			}
+			foreach (Interactable i in Interactables)
+			{
+				//i.LoadFromSerialization();
+			}
 		}
 	}
 }

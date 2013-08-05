@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public class Polygon
 	{
 		// The list of vertices --must-- wind consecutively in one direction

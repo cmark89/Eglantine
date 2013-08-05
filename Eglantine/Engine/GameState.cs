@@ -119,11 +119,28 @@ namespace Eglantine.Engine
 		}
 
 		// Save a gamestate to file
-		public static void SaveState(string targetFile)
+		public static void SaveState (string targetFile)
 		{
 			// Prepare to save player position to file
 			Instance.PlayerPosition = Player.Instance.Position;
+	
+			// Let each game component prepare to be serialized
+			foreach (Room r in Instance.Rooms)
+			{
+				r.PrepareForSerialization ();
+			}
 
+			foreach (Item i in Instance.PlayerItems)
+			{
+				i.PrepareForSerialization ();
+			}
+
+			foreach (Document d in Instance.Documents)
+			{
+				d.PrepareForSerialization();
+			}
+
+			// Now that everything's ready, save the game state.
 			Serializer.Serialize<GameState>(targetFile, Instance);
 		}
 

@@ -6,6 +6,7 @@ using Eglantine.Engine.Pathfinding;
 
 namespace Eglantine.Engine.Pathfinding
 {
+	[Serializable]
 	public class NavNode
 	{
 		// Core members

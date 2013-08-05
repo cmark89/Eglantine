@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine
 {
+	[Serializable]
 	public class Entrance
 	{
 		// The room that contains this entrance.

@@ -13,7 +13,12 @@ namespace Eglantine.Engine
 		public Rectangle Area { get; protected set; }
 		public Polygon PolygonArea { get; protected set; }
 		public TriggerShape Shape { get; protected set; }
-		public LuaFunction Event { get; protected set; }
+		[NonSerialized]
+		private LuaFunction _event;
+		public LuaFunction Event { 
+			get { return _event; }
+			protected set { _event = value; }
+		}
 
 		public abstract void Update(GameTime gameTime);
 

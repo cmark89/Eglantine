@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine.Pathfinding
 {
+	[Serializable]
 	public class PolygonLink
 	{
 		public List<Polygon> LinkedPolygons { get; private set; }

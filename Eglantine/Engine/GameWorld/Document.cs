@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Eglantine
 {
+	[Serializable]
 	public class Document
 	{
 		public string Name { get; protected set; }
@@ -59,10 +60,26 @@ namespace Eglantine
 			Pages.Remove(oldPage);
 		}
 
+		public void PrepareForSerialization ()
+		{
+			foreach (DocumentPage d in Pages)
+			{
+				d.PrepareForSerialization();
+			}
+		}
+
 		// Wrapper for the page texture and its dimensions
+		[Serializable]
 		public class DocumentPage
 		{
-			public Texture2D Texture;
+			[NonSerialized]
+			private Texture2D _texture;
+			public Texture2D Texture 
+			{
+				get { return _texture; }
+				private set { _texture = value; }
+			}
+			private string _TextureName;
 
 			public float Width
 			{
@@ -87,6 +104,11 @@ namespace Eglantine
 			public DocumentPage(Texture2D pageTexture)
 			{
 				Texture = pageTexture;
+			}
+
+			public void PrepareForSerialization()
+			{
+				_TextureName = Texture.Name;
 			}
 		}
 	}

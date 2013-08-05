@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Eglantine.Engine
+namespace Eglantine
 {
 	public static class Serializer
 	{

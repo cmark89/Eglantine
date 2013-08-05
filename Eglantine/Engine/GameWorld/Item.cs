@@ -6,16 +6,28 @@ namespace Eglantine.Engine
 {
 	public delegate void ItemEvent();
 
+	[Serializable]
 	public class Item
 	{
 		public string Name { get; private set; }
 		public string Description { get; private set; }
-		public Texture2D Texture { get; private set; }
+
+		[NonSerialized]
+		private Texture2D _texture;
+		public Texture2D Texture 
+		{
+			get { return _texture; }
+			private set { _texture = value; }
+		}
+		private string _TextureName;
 
 		public ItemType Type { get; private set; }
 
+		[NonSerialized]
 		private LuaFunction OnAcquire;
+		[NonSerialized]
 		private LuaFunction OnInspect;
+		[NonSerialized]
 		private LuaFunction OnUse;
 
 		public Item (string name)
@@ -28,7 +40,7 @@ namespace Eglantine.Engine
 		{
 			Name = (string)itemTable ["Name"];
 
-			Texture = ContentLoader.Instance.Load<Texture2D>((string)(itemTable["Texture"]));
+			Texture = ContentLoader.Instance.LoadTexture2D((string)(itemTable["Texture"]));
 
 			string type = (string)itemTable ["Type"];
 			switch (type)
@@ -94,6 +106,19 @@ namespace Eglantine.Engine
 		public void SetType(ItemType it)
 		{
 			Type = it;
+		}
+
+		public void PrepareForSerialization()
+		{
+			_TextureName = Texture.Name;
+		}
+
+		public void LoadFromSerialization()
+		{
+			LuaTable itemTable = (LuaTable)Eglantine.Lua["items."+Name];
+			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
+			OnInspect = (LuaFunction)itemTable["OnInspect"];
+			OnUse = (LuaFunction)itemTable["OnUse"];
 		}
 	}
 

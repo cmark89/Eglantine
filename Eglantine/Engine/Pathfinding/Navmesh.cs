@@ -6,6 +6,7 @@ using LuaInterface;
 
 namespace Eglantine.Engine.Pathfinding
 {
+	[Serializable]
 	public class Navmesh
 	{
 		List<Polygon> Polygons = new List<Polygon>();
@@ -15,6 +16,7 @@ namespace Eglantine.Engine.Pathfinding
 		private List<NavNode> tempNodes = new List<NavNode>();
 		AStar aStar;
 
+		[NonSerialized]
 		Texture2D vertexTexture;
 
 

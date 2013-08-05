@@ -31,7 +31,7 @@ namespace Eglantine
 
 		//----TBA-----
 		// Texture used for lighting
-		public Texture2D Lightmask { get; private set; }
+		//public Texture2D Lightmask { get; private set; }
 
 		// How deep the layer should be drawn
 		// This can be used to override the initial placement order.
@@ -43,15 +43,28 @@ namespace Eglantine
 
 		#endregion
 		// This is used with scrolling background to keep track of multiple instances of the texture
+		[Serializable]
 		public class TextureWrapper
 		{
-			public Texture2D Texture;
+			[NonSerialized]
+			private Texture2D _texture;
+			public Texture2D Texture 
+			{
+				get { return _texture; }
+				private set { _texture = value; }
+			}
+			private string _TextureName;
 			public Vector2 Position;
 
 			public TextureWrapper(Texture2D tex, Vector2 vec)
 			{
 				Texture = tex;
 				Position = vec;
+			}
+
+			public void PrepareForSerialization()
+			{
+				_TextureName = Texture.Name;
 			}
 		}
 
@@ -60,7 +73,7 @@ namespace Eglantine
 		{
 			Textures = new List<TextureWrapper>();
 			Name = (string)layerTable["Name"];
-			Textures.Add(new TextureWrapper(ContentLoader.Instance.Load<Texture2D>((string)layerTable["Texture"]), Vector2.Zero));
+			Textures.Add(new TextureWrapper(ContentLoader.Instance.LoadTexture2D((string)layerTable["Texture"]), Vector2.Zero));
 			LuaTable colorTable = (LuaTable)layerTable["Color"];
 			Color = new Color((float)(double)colorTable[1], (float)(double)colorTable[2], (float)(double)colorTable[3], (float)(double)colorTable[4]);
 			//Scroll = new Vector2((float)(double)layerTable["Scroll.X"], (float)(double)layerTable["Scroll.Y"]);
@@ -105,6 +118,14 @@ namespace Eglantine
 		{
 			foreach(TextureWrapper tw in Textures)
 				spriteBatch.Draw(tw.Texture, tw.Position, Color);
+		}
+
+		public void PrepareForSerialization()
+		{
+			foreach(TextureWrapper t in Textures)
+			{
+				t.PrepareForSerialization();
+			}
 		}
 	}
 

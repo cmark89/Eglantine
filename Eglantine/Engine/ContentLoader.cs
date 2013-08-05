@@ -33,8 +33,14 @@ namespace Eglantine.Engine
 
 		public T Load<T> (string path)
 		{
-			T loadedAsset = Content.Load<T> (path);
-			return loadedAsset;
+			return Content.Load<T> (path);
+		}
+
+		public Texture2D LoadTexture2D (string path)
+		{
+			Texture2D texture = Content.Load<Texture2D>(path);
+			texture.Name = path;
+			return texture;
 		}
 	}
 }

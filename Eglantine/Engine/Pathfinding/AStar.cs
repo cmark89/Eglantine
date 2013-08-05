@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Eglantine.Engine.Pathfinding
 {
+	[Serializable]
 	public class AStar
 	{
 		private Navmesh Navmesh;
