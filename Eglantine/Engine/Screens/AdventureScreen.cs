@@ -53,6 +53,10 @@ namespace Eglantine.Engine
 			Gui = new GUI();
 			//Player.Setup();
 
+			//Console.WriteLine("Load setup.lua...");
+			//Eglantine.Lua.DoFile("Data/setup.lua");
+			//Console.WriteLine("setup.lua should have loaded.");
+
 			// Testing...
 			//EventManager.Instance.GainItem("Scissors");
 			//EventManager.Instance.GainItem("Crowbar");
@@ -108,7 +112,7 @@ namespace Eglantine.Engine
 				Gui.Update (gameTime);
 
 
-				Eglantine.Lua.DoString("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+				GameScene.Lua.DoString("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
 			}
 
 			// Now the other updates go here anyways.
@@ -116,6 +120,9 @@ namespace Eglantine.Engine
 
 			// Update the player.
 			Player.Update(gameTime);
+
+			// Update the play time.
+			GameState.Instance.AddGameTime(gameTime.ElapsedGameTime.TotalSeconds);
 		}
 
 		public override void Draw (SpriteBatch spriteBatch)

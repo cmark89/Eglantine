@@ -1,12 +1,9 @@
---Check the state of the game and determine which ending scenario should occur
-kitchenFlowerPicked = false
-
 function checkWindow()
 	if GameState.KitchenWindowBroken then
 		Event:DisableInteractable("WindowLayer")
 		Event:EnableInteractable("BrokenWindowLayer")
 		
-		if not kitchenFlowerPicked then
+		if not GameState.KitchenFlowerPicked then
 			Event:EnableInteractable("Eglantine")
 		end
 	else
@@ -19,6 +16,6 @@ end
 function pickKitchenEglantine()
 	if(Event:UsingItem("Scissors")) then
 		pickup("Eglantine")
-		kitchenFlowerPicked = true
+		GameState.KitchenFlowerPicked = true
 	end
 end

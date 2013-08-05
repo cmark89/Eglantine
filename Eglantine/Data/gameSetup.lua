@@ -4,9 +4,7 @@
 --It also loads all other .lua files required by the game to streamline the process of loading
 
 --Load the other .lua files required by the game
-require "Data/audio_assets"
 require "Data/scheduler"
-
 
 --Initialize globals to nil
 GameState = nil

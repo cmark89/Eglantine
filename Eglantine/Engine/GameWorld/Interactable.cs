@@ -156,10 +156,32 @@ namespace Eglantine.Engine
 				_TextureName = Texture.Name;
 		}
 
-		public void LoadFromSerialization()
+		public void LoadFromSerialization ()
 		{
-			Event = (LuaFunction)Eglantine.Lua["rooms." + thisRoom.Name + ".Interactables." + Name + ".OnInteract"];
-			LookEvent = (LuaFunction)Eglantine.Lua["rooms." + thisRoom.Name + ".Interactables." + Name + ".OnLook"];
+			if (_TextureName != null)
+				Texture = ContentLoader.Instance.LoadTexture2D (_TextureName);
+			LuaTable thisRoomTable = (LuaTable)GameScene.Lua.GetTable ("rooms." + thisRoom.Name + ".Interactables");
+
+			int thisIndex = 1;
+			LuaTable tempTable;
+			while(thisIndex < thisRoomTable.Keys.Count)
+			{
+				tempTable = (LuaTable)thisRoomTable[thisIndex];
+				if((string)tempTable["Name"] == Name)
+					break;
+
+				thisIndex++;
+			}
+
+			LuaTable thisInteractable = (LuaTable)thisRoomTable[thisIndex];
+
+			/// We now have the table of interactables.  
+			/// Now we have to loop over each and check if its name == Name
+			/// When we find that interactable, we hook up the events from it.
+
+			Console.WriteLine (thisRoom.Name + " table loaded successfully.");
+			Event = (LuaFunction)thisInteractable["OnInteract"];
+			LookEvent = (LuaFunction)thisInteractable["OnLook"];
 		}
 	}
 }

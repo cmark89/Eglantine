@@ -1,6 +1,3 @@
-topDrawerFixed = false
-bottomDrawerFixed = false
-
 function openTopDrawer()
 	runCoroutine(function()
 		--Check if the player is trying to use the crowbar
@@ -14,12 +11,12 @@ function openTopDrawer()
 		waitUntil("Player stopped")
 		
 		--Now, check to see what must happen.
-		if usingCrowbar and not topDrawerFixed then
+		if usingCrowbar and not GameState.TopDrawerFixed then
 			--Animation as player pries it open...
-			topDrawerFixed = true
+			GameState.TopDrawerFixed = true
 			Event:PlaySound("Extend")
 			setTopDrawerOpen()
-		elseif topDrawerFixed then
+		elseif GameState.TopDrawerFixed then
 			setTopDrawerOpen()
 		else
 			Event:ShowMessage("It's stuck shut.  I don't have the strength to open it.")
@@ -41,12 +38,12 @@ function openBottomDrawer()
 		waitUntil("Player stopped")
 		
 		--Now, check to see what must happen.
-		if usingCrowbar and not bottomDrawerFixed then
+		if usingCrowbar and not GameState.BottomDrawerFixed then
 			--Animation as player pries it open...
-			bottomDrawerFixed = true
+			GameState.BottomDrawerFixed = true
 			Event:PlaySound("Extend")
 			setBottomDrawerOpen()
-		elseif bottomDrawerFixed then
+		elseif GameState.BottomDrawerFixed then
 			setBottomDrawerOpen()
 		else
 			Event:ShowMessage("It's completely jammed.  I wonder how long it's been since it's been opened...")

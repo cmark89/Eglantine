@@ -66,6 +66,12 @@ namespace Eglantine
 			{
 				_TextureName = Texture.Name;
 			}
+
+			public void LoadFromSerialization()
+			{
+				if(_TextureName != null)
+					Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
+			}
 		}
 
 		// Constructs a room layer from a layer described in a LuaTable
@@ -125,6 +131,14 @@ namespace Eglantine
 			foreach(TextureWrapper t in Textures)
 			{
 				t.PrepareForSerialization();
+			}
+		}
+
+		public void LoadFromSerialization()
+		{
+			foreach(TextureWrapper t in Textures)
+			{
+				t.LoadFromSerialization();
 			}
 		}
 	}

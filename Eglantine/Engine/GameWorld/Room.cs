@@ -46,7 +46,7 @@ namespace Eglantine.Engine
 		public Room (string roomname)
 		{
 			// Load the rooms datafile
-			Lua lua = Eglantine.Lua;
+			Lua lua = GameScene.Lua;
 
 			Name = roomname;
 
@@ -292,27 +292,28 @@ namespace Eglantine.Engine
 
 		public void LoadFromSerialization()
 		{
-			Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
-			Lua lua = Eglantine.Lua;
+			if(_TextureName != null)
+				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
+
+			Lua lua = GameScene.Lua;
 			enterEvent = (LuaFunction)lua["rooms." + Name + ".onEnter"];
 			exitEvent = (LuaFunction)lua["rooms." + Name + ".onExit"];
 
-
 			foreach (RoomLayer rl in Background)
 			{
-				//rl.LoadFromSerialization();
+				rl.LoadFromSerialization();
 			}
 			foreach (RoomLayer rl in Midground)
 			{
-				//rl.LoadFromSerialization();
+				rl.LoadFromSerialization();
 			}
 			foreach (RoomLayer rl in Foreground)
 			{
-				//rl.LoadFromSerialization();
+				rl.LoadFromSerialization();
 			}
 			foreach (Interactable i in Interactables)
 			{
-				//i.LoadFromSerialization();
+				i.LoadFromSerialization();
 			}
 		}
 	}

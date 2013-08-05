@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 namespace Eglantine.Engine
 {
 	// TriggerAreas are triggers that are activated by the player's position.
+	[Serializable]
 	public class TriggerArea : Trigger
 	{
 		private Room thisRoom;
@@ -38,7 +39,7 @@ namespace Eglantine.Engine
 
 		public void LoadFromSerialization()
 		{
-			Event = (LuaFunction)Eglantine.Lua["rooms." + thisRoom.Name + ".Interactables." + Name + ".OnEnter"];
+			Event = (LuaFunction)GameScene.Lua["rooms." + thisRoom.Name + ".Interactables." + Name + ".OnEnter"];
 		}
 
 	}

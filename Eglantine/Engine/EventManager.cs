@@ -23,7 +23,7 @@ namespace Eglantine.Engine
 		public static void Initialize ()
 		{
 			_instance = new EventManager();
-			Eglantine.Lua.DoString("loadEventManager()");
+			GameScene.Lua.DoString("loadEventManager()");
 		}
 
 		// Queues a message into the message display manager
@@ -142,7 +142,7 @@ namespace Eglantine.Engine
 		public void SendSignal(string signal)
 		{
 			Console.WriteLine("Send signal: " + signal);
-			Eglantine.Lua.DoString("sendSignal(\"" + signal + "\")");
+			GameScene.Lua.DoString("sendSignal(\"" + signal + "\")");
 		}
 
 		// Play a sound effect

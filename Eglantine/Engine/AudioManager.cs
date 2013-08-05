@@ -41,7 +41,7 @@ namespace Eglantine
 		public void LoadSoundEffects()
 		{
 			SoundEffects = new Dictionary<string, SoundEffect>();
-			LuaTable soundEffectsTable = Eglantine.Lua.GetTable("sound_effects_to_load");
+			LuaTable soundEffectsTable = Eglantine.MainLua.GetTable("sound_effects_to_load");
 
 			string newSoundEffectName;
 			SoundEffect newSoundEffect;
@@ -63,7 +63,7 @@ namespace Eglantine
 		public void LoadSongs ()
 		{
 			Songs = new Dictionary<string, Song>();
-			LuaTable songTable = Eglantine.Lua.GetTable ("songs_to_load");
+			LuaTable songTable = Eglantine.MainLua.GetTable ("songs_to_load");
 
 			string newSongName;
 			Song newSong;

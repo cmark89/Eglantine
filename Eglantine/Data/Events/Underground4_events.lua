@@ -1,11 +1,8 @@
-ending = ""
-flowersOnGrave = 0
-
 --Check the state of the game and determine which ending scenario should occur
 function beginEnding()
 	Event:SetItemType("Eglantine", "Active")
 	--Right now, only the default is available, so enable it
-	ending = "normal"
+	GameState.Ending = "normal"
 	Event:EnableInteractable("Grave")
 	Event:DisableInteractable("Artifact")
 	runCoroutine(normalEndingScenario)
@@ -15,14 +12,14 @@ end
 function normalEndingScenario()
 	--Loop the pulsing
 	strobeTime = 6
-	while strobeTime > 0 and flowersOnGrave < 3 do
+	while strobeTime > 0 and GameState.FlowersOnGrave < 3 do
 		waitSeconds(strobeTime)
 		artifactPulse(.4)
 		strobeTime = strobeTime -1
 	end
 	
 	--If the player failed to complete the puzzle
-	if flowersOnGrave < 3 then
+	if GameState.FlowersOnGrave < 3 then
 		waitSeconds(1)
 		Event:FadeOutInteractable("Grave", 3)
 		Event:EnableInteractable("Artifact")
@@ -34,7 +31,7 @@ function normalEndingScenario()
 	end
 	
 	--If the player honored the dead
-	if flowersOnGrave == 3 then
+	if GameState.FlowersOnGrave == 3 then
 		waitSeconds(4)
 		fadeOutGrave(6)
 		waitSeconds(6)
@@ -69,8 +66,8 @@ end
 
 function placeFlowerOnGrave()
 	Event:DestroyItem("Eglantine")
-	flowersOnGrave = flowersOnGrave + 1
-	Event:EnableInteractable("Flower"..flowersOnGrave)
+	GameState.FlowersOnGrave = GameState.FlowersOnGrave + 1
+	Event:EnableInteractable("Flower"..GameState.FlowersOnGrave)
 end
 
 
@@ -91,19 +88,19 @@ end
 
 
 function readHeadstone()
-	if flowersOnGrave == 0 then
+	if GameState.FlowersOnGrave == 0 then
 		Event:ShowMessage("A gravestone... the name has been worn away.")
 	end
 	
-	if flowersOnGrave == 1 then
+	if GameState.FlowersOnGrave == 1 then
 		Event:ShowMessage("The writing is very faded, but its partially legible.  It reads: ..R. .I.S FC.A-II.C W.AIV.R.")
 	end
 	
-	if flowersOnGrave == 2 then
+	if GameState.FlowersOnGrave == 2 then
 		Event:ShowMessage("The text is becoming clearer.  It reads: \nHER. LICS FCLAHIIVE WCATNERS")
 	end
 	
-	if flowersOnGrave == 3 then
+	if GameState.FlowersOnGrave == 3 then
 		Event:ShowMessage("The headstone reads: \nHERE LIES EGLANTINE WEATHERS")
 	end
 end

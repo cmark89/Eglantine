@@ -40,17 +40,28 @@ namespace Eglantine.Engine
 
 
 		#region GameState Variables
+		public PuzzleboxState PuzzleboxState { get; private set; }
+		public SafeState SafeState { get; private set; }
+		public double PlayTime { get; private set; }
+
 		public bool PaintingOpened = false;
 		public bool PhotoTaken = false;
 		public bool KitchenWindowBroken = false;
-		public PuzzleboxState PuzzleboxState { get; private set; }
-		public SafeState SafeState { get; private set; }
+		public bool FrontYardFlowerPicked = false;
+		public bool KitchenFlowerPicked = false;
+		public bool TopDrawerFixed = false;
+		public bool BottomDrawerFixed = false;
+		public int FlowersOnGrave = 0;
+		public string Ending = "";
+
+
 
 		#endregion
 
 		#region Setup, Creation and Loading
 		public GameState ()
 		{
+			_instance = this;
 			Console.WriteLine ("Creating new GameState...");
 		}
 
@@ -72,7 +83,7 @@ namespace Eglantine.Engine
 
 			//LuaTable tempTable;
 			// Populate the list of rooms
-			LuaTable tempTable = Eglantine.Lua.GetTable("requiredRooms");
+			LuaTable tempTable = GameScene.Lua.GetTable("requiredRooms");
 
 			for (int i = 0; i < tempTable.Keys.Count; i++)
 			{
@@ -91,16 +102,6 @@ namespace Eglantine.Engine
 			// Initialize all other progress related values here...
 		}
 
-
-		public static GameState NewGameState() 
-		{
-			_instance = new GameState();
-			// Make sure the lua side knows about this GameState
-			Eglantine.Lua.DoString("loadGameState()");
-			GameState.Instance.InitializeNewGame();
-			return _instance;
-		}
-
 		// Load a gamestate from file in order to resume the game
 		public static GameState LoadState (string targetFile)
 		{
@@ -111,11 +112,30 @@ namespace Eglantine.Engine
 
 				// Load player's position from file
 				Player.Instance.SetPosition(loadedState.PlayerPosition);
-
-				// Load coroutines
+				Player.Instance.StopMoving ();
 			}
 
 			return loadedState;
+		}
+
+		// This is split to make sure that the LuaInterface instance is reloaded properly by the GameScene
+		public void LoadObjectsFromSerialization ()
+		{
+			// Let each game component recover from being deserialized
+			foreach (Room r in Instance.Rooms)
+			{
+				r.LoadFromSerialization ();
+			}
+			
+			foreach (Item i in Instance.PlayerItems)
+			{
+				i.LoadFromSerialization ();
+			}
+			
+			foreach (Document d in Instance.Documents)
+			{
+				d.LoadFromSerialization();
+			}
 		}
 
 		// Save a gamestate to file
@@ -210,6 +230,11 @@ namespace Eglantine.Engine
 
 
 		#endregion
+
+		public void AddGameTime(double deltaTime)
+		{
+			PlayTime += deltaTime;
+		}
 	}
 }
 

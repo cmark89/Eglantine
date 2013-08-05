@@ -29,7 +29,7 @@ namespace Eglantine
 
 		// Bad practice, but make this static for testing purposes.
 		// Probably put this into a singleton
-		public static Lua Lua;
+		public static Lua MainLua;
 		static Scene currentScene;
 
 
@@ -52,18 +52,18 @@ namespace Eglantine
 		/// </summary>
 		protected override void Initialize ()
 		{
-			// Temporary...Make this a LuaManager class or a wrapper or something.
-			Lua = new Lua();
+			// Initialize the core Lua instance
+			MainLua = new Lua();
 
 			// Load lua setup here.
-			Console.WriteLine("Load setup.lua...");
-			Lua.DoFile("Data/setup.lua");
-			Console.WriteLine("setup.lua should have loaded.");
+			Console.WriteLine("Load mainSetup.lua...");
+			MainLua.DoFile("Data/mainSetup.lua");
+			Console.WriteLine("mainSetup.lua should have loaded.");
 
-			EventManager.Initialize();
+			//EventManager.Initialize();
 			AudioManager.Instance.Initialize();
 
-			ChangeScene(new GameScene(GameState.NewGameState()));
+			ChangeScene(new GameScene());
 
 			base.Initialize ();
 				

@@ -32,7 +32,7 @@ namespace Eglantine.Engine
 
 		public Item (string name)
 		{
-			LuaTable itemTable = (LuaTable)Eglantine.Lua["items."+name];
+			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+name];
 			ParseItem(itemTable);
 		}
 
@@ -74,7 +74,7 @@ namespace Eglantine.Engine
 			EventManager.Instance.SendSignal (Name + " found");
 
 			// If there is a document that shares a name with this item...
-			LuaTable docTable = Eglantine.Lua.GetTable ("documents");
+			LuaTable docTable = GameScene.Lua.GetTable ("documents");
 			if ((LuaTable)docTable[Name] != null)
 			{
 				Console.WriteLine("Adding " + Name + " to document list.");
@@ -115,7 +115,10 @@ namespace Eglantine.Engine
 
 		public void LoadFromSerialization()
 		{
-			LuaTable itemTable = (LuaTable)Eglantine.Lua["items."+Name];
+			if(_TextureName != null)
+				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
+
+			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+Name];
 			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
 			OnInspect = (LuaFunction)itemTable["OnInspect"];
 			OnUse = (LuaFunction)itemTable["OnUse"];

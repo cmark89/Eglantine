@@ -1,7 +1,5 @@
-frontYardFlowerPicked = false
-
 function checkForBloom()
-	if Event:PlayerHasItem("Photograph") and not frontYardFlowerPicked then
+	if Event:PlayerHasItem("Photograph") and not GameState.FrontYardFlowerPicked then
 		Event:EnableInteractable("Eglantine")
 	end
 end
@@ -9,6 +7,6 @@ end
 function pickFrontYardEglantine()
 	if(Event:UsingItem("Scissors")) then
 		pickup("Eglantine")
-		frontYardFlowerPicked = true
+		GameState.FrontYardFlowerPicked = true
 	end
 end

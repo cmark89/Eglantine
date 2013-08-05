@@ -24,7 +24,7 @@ namespace Eglantine
 			Console.WriteLine("Build document " + docName);
 			Pages = new List<DocumentPage> ();
 
-			LuaTable docTable = Eglantine.Lua.GetTable ("documents");
+			LuaTable docTable = GameScene.Lua.GetTable ("documents");
 			if(docTable[docName] != null)
 			{
 				docTable = (LuaTable)docTable[docName];
@@ -65,6 +65,14 @@ namespace Eglantine
 			foreach (DocumentPage d in Pages)
 			{
 				d.PrepareForSerialization();
+			}
+		}
+
+		public void LoadFromSerialization ()
+		{
+			foreach (DocumentPage d in Pages)
+			{
+				d.LoadFromSerialization();
 			}
 		}
 
@@ -109,6 +117,11 @@ namespace Eglantine
 			public void PrepareForSerialization()
 			{
 				_TextureName = Texture.Name;
+			}
+
+			public void LoadFromSerialization()
+			{
+				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
 			}
 		}
 	}
