@@ -43,7 +43,7 @@ rooms["Foyer"] = {
 			OnLook = nil
 		},
 		[2] = {
-			Name = "LivingRoomDoor",
+			Name = "KitchenDoor",
 			Area = {
 				X = 357,
 				Y = 147,
@@ -62,7 +62,7 @@ rooms["Foyer"] = {
 			},
 
 			OnInteract = function()
-				door("LivingRoomDoor", "LivingRoom", "Door")
+				door("KitchenDoor", "Kitchen", "FoyerDoor")
 			end,
 			OnLook = nil
 		},
@@ -91,12 +91,12 @@ rooms["Foyer"] = {
 			OnLook = nil
 		},
 		[4] = {
-			Name = "KitchenDoor",
-			Area = {
-				X = 206,
-				Y = 204, 
-				Width = 56,
-				Height = 93
+			Name = "LivingRoomDoor",
+			Polygon = {
+				[1] = { X = 220, Y = 46 },
+				[2] = { X = 258, Y = 73 },
+				[3] = { X = 258, Y = 530 },
+				[4] = { X = 222, Y = 600 }
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -110,7 +110,7 @@ rooms["Foyer"] = {
 			},
 
 			OnInteract = function()
-				door("KitchenDoor", "Kitchen", "FoyerDoor")
+				door("LivingRoomDoor", "LivingRoom", "Door")
 			end,
 			OnLook = nil
 		},
@@ -172,7 +172,7 @@ rooms["Foyer"] = {
 			Y = 705
 		},
 		[2] = {
-			Name = "LivingRoomDoor",
+			Name = "KitchenDoor",
 			
 			X = 408,
 			Y = 374
@@ -184,7 +184,7 @@ rooms["Foyer"] = {
 			Y = 704
 		},
 		[4] = {
-			Name = "KitchenDoor",
+			Name = "LivingRoomDoor",
 			
 			X = 273,
 			Y = 549
