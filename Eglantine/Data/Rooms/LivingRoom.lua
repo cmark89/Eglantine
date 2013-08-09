@@ -63,10 +63,174 @@ rooms["LivingRoom"] = {
 				door("Door", "Foyer", "LivingRoomDoor")
 			end,
 			OnLook = nil
+		},
+		[3] = {
+			Polygon = {
+				[1] = { X = 595, Y = 262 },
+				[2] = { X = 778, Y = 273 },
+				[3] = { X = 773, Y = 397 },
+				[4] = { X = 592, Y = 373 }
+			},
+				
+			Enabled = true,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 666,
+				Y = 473
+			},
+
+			OnInteract = interactWithTV,
+			OnLook = lookAtTV
+		},
+		[4] = {
+			Name = "Static1",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static1",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[5] = {
+			Name = "Static2",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static2",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[6] = {
+			Name = "Static3",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static3",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[7] = {
+			Name = "Static4",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static4",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[8] = {
+			Name = "Static5",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static5",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[9] = {
+			Name = "Static6",
+			Area = {
+					X = 0,
+					Y = 0,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/lr_static6",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
 		}
 	},
 	
 	Triggers = {
+		[1] = {
+			Name = "TVActivate",
+			Area = {
+				X = 452,
+				Y = 366,
+				Width = 51,
+				Height = 422
+			},
+			Enabled = true,
+		
+			OnEnter = turnOnTV
+		}
 	},
 	
 	--------NAVMESH--------
@@ -103,8 +267,6 @@ rooms["LivingRoom"] = {
 		}
 	},
 	
-	onLoad = function()
-		Event:ShowMessage("Loaded the game in the living room.")
-		--Check if the TV needs to resume flickering, and if so start that coroutine
-	end
+	onEnter = checkTV,
+	onLoad = checkTV
 }

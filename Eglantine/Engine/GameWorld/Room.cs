@@ -143,7 +143,7 @@ namespace Eglantine.Engine
 				// Build the triggering rectangle
 				if(currentTrigger["Area"] != null)
 				{
-					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["X"], (int)(double)currentTrigger["Y"], (int)(double)currentTrigger["Width"], (int)(double)currentTrigger["Height"]);
+					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["Area.X"], (int)(double)currentTrigger["Area.Y"], (int)(double)currentTrigger["Area.Width"], (int)(double)currentTrigger["Area.Height"]);
 
 					// Add the triggered event
 					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this));

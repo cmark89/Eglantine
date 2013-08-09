@@ -138,6 +138,11 @@ namespace Eglantine.Engine
 			return GameState.Instance.PlayerHasItem(itemName);
 		}
 
+		public bool PlayerInRoom(string roomName)
+		{
+			return GameState.Instance.CurrentRoom.Name == roomName;
+		}
+
 		// This sends a signal to Lua, allowing coroutines to know what's happening.
 		public void SendSignal(string signal)
 		{
@@ -183,6 +188,17 @@ namespace Eglantine.Engine
 		{
 			Console.WriteLine("Open the safe screen!");
 			GameScene.Instance.AddScreen(new SafeScreen(GameState.Instance.SafeState));
+		}
+
+		public void OpenTV()
+		{
+			Console.WriteLine("Open the TV screen!");
+			GameScene.Instance.AddScreen(new TVScreen());
+		}
+
+		public void SetTVImage (string path)
+		{
+			GameState.Instance.TVImage = ContentLoader.Instance.LoadTexture2D (path);
 		}
 		
 		public void InsertPuzzleboxKey()

@@ -2,6 +2,7 @@ using System;
 using LuaInterface;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Eglantine.Engine
@@ -46,6 +47,7 @@ namespace Eglantine.Engine
 
 		public bool PaintingOpened = false;
 		public bool PhotoTaken = false;
+		public bool TVOn = false;
 		public bool KitchenWindowBroken = false;
 		public bool FrontYardFlowerPicked = false;
 		public bool KitchenFlowerPicked = false;
@@ -54,7 +56,8 @@ namespace Eglantine.Engine
 		public int FlowersOnGrave = 0;
 		public string Ending = "";
 
-
+		public Texture2D TVImage;
+		public string TVImageName;
 
 		#endregion
 
@@ -92,6 +95,7 @@ namespace Eglantine.Engine
 			}
 
 			Console.WriteLine("All rooms added.");
+			TVImage = ContentLoader.Instance.LoadTexture2D("Graphics/TV/Background");
 
 			// Set the current room to the first room.
 			CurrentRoom = Rooms.Find (x => x.Name == START_ROOM);
@@ -115,7 +119,10 @@ namespace Eglantine.Engine
 				Player.Instance.StopMoving ();
 			}
 
+			Instance.TVImage = ContentLoader.Instance.LoadTexture2D(Instance.TVImageName);
+
 			return loadedState;
+
 		}
 
 		// This is split to make sure that the LuaInterface instance is reloaded properly by the GameScene
@@ -143,6 +150,7 @@ namespace Eglantine.Engine
 		{
 			// Prepare to save player position to file
 			Instance.PlayerPosition = Player.Instance.Position;
+			Instance.TVImageName = Instance.TVImage.Name;
 	
 			// Let each game component prepare to be serialized
 			foreach (Room r in Instance.Rooms)
