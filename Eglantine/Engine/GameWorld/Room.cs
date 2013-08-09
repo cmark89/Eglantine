@@ -42,6 +42,8 @@ namespace Eglantine.Engine
 		private LuaFunction enterEvent;
 		[NonSerialized]
 		private LuaFunction exitEvent;
+		[NonSerialized]
+		private LuaFunction loadEvent;
 
 		public Room (string roomname)
 		{
@@ -63,6 +65,7 @@ namespace Eglantine.Engine
 
 			enterEvent = (LuaFunction)lua["rooms." + roomname + ".onEnter"];
 			exitEvent = (LuaFunction)lua["rooms." + roomname + ".onExit"];
+			loadEvent = (LuaFunction)lua["rooms." + roomname + ".onLoad"];
 
 			// Finally, tell the gamestate that the room exists
 			GameState.Instance.RegisterRoom(this);
@@ -257,14 +260,19 @@ namespace Eglantine.Engine
 		{
 			if(enterEvent != null)
 				enterEvent.Call ();
-			else
-				Console.WriteLine ("Enter event null");
 		}
 
 		public void OnExitRoom()
 		{
 			if(exitEvent != null)
 				exitEvent.Call ();
+		}
+
+		// OnLoadRoom is called when the game is loaded into the room; this is used to resume certain coroutines.
+		public void OnLoadRoom ()
+		{
+			if(loadEvent != null)
+				loadEvent.Call ();
 		}
 
 		public void PrepareForSerialization ()
@@ -298,6 +306,7 @@ namespace Eglantine.Engine
 			Lua lua = GameScene.Lua;
 			enterEvent = (LuaFunction)lua["rooms." + Name + ".onEnter"];
 			exitEvent = (LuaFunction)lua["rooms." + Name + ".onExit"];
+			loadEvent = (LuaFunction)lua["rooms." + Name + ".onLoad"];
 
 			foreach (RoomLayer rl in Background)
 			{

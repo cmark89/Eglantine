@@ -101,5 +101,10 @@ rooms["LivingRoom"] = {
 			X = 316,
 			Y = 427
 		}
-	}	
+	},
+	
+	onLoad = function()
+		Event:ShowMessage("Loaded the game in the living room.")
+		--Check if the TV needs to resume flickering, and if so start that coroutine
+	end
 }

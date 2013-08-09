@@ -93,6 +93,12 @@ namespace Eglantine
 
 			SavingAllowed = true;
 			setupComplete = true;
+
+			if(!isNewGame)
+			{
+				// If the game was loaded, run OnLoad for the current room 
+				GameState.Instance.CurrentRoom.OnLoadRoom ();
+			}
 		}
 
 		public override void Update (GameTime gameTime)
