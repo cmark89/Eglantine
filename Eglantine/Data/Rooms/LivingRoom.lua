@@ -87,15 +87,15 @@ rooms["LivingRoom"] = {
 		[4] = {
 			Name = "Static1",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static1",
+			Texture = "Graphics/Objects/static1",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -109,15 +109,15 @@ rooms["LivingRoom"] = {
 		[5] = {
 			Name = "Static2",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static2",
+			Texture = "Graphics/Objects/static2",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -131,15 +131,15 @@ rooms["LivingRoom"] = {
 		[6] = {
 			Name = "Static3",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static3",
+			Texture = "Graphics/Objects/static3",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -153,15 +153,15 @@ rooms["LivingRoom"] = {
 		[7] = {
 			Name = "Static4",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static4",
+			Texture = "Graphics/Objects/static4",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -175,15 +175,15 @@ rooms["LivingRoom"] = {
 		[8] = {
 			Name = "Static5",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static5",
+			Texture = "Graphics/Objects/static5",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -197,15 +197,37 @@ rooms["LivingRoom"] = {
 		[9] = {
 			Name = "Static6",
 			Area = {
-					X = 0,
-					Y = 0,
+					X = 604,
+					Y = 239,
 					Width = 0,
 					Height = 0
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/lr_static6",
+			Texture = "Graphics/Objects/static6",
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[10] = {
+			Name = "Tear",
+			Area = {
+					X = 248,
+					Y = 99,
+					Width = 0,
+					Height = 0
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/LivingRoomTear",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {

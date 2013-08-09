@@ -56,6 +56,7 @@ namespace Eglantine.Engine
 		public int FlowersOnGrave = 0;
 		public string Ending = "";
 
+		[NonSerialized]
 		public Texture2D TVImage;
 		public string TVImageName;
 

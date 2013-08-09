@@ -19,26 +19,28 @@ function interactWithPainting()
 				--Here, the player does some cool cutting of the painting
 				Event:PlaySound("Extend")
 				GameState.PaintingOpened = true
-				--Disable the painting layer
+				Event:EnableInteractable("Tear")
 			end)
 		end
 	end
 end
 
 function interactWithTV()
-	if not GameState.TVOn then
-		Event:MovePlayerTo("TV")
-		waitUntil("Player stopped")
-		--Clicking sound effect
-		waitSeconds(1)
-		Event:ShowMessage("No good.  It won't turn on.")
-	else
-		Event:MovePlayerTo("TV")
-		waitUntil("Player stopped")
-		--Clicking sound effect
-		waitSeconds(1)
-		Event:ShowMessage("It won't turn off.  The dials don't do anything.")
-	end
+	runCoroutine(function()
+		if not GameState.TVOn then
+			Event:MovePlayerTo("TV")
+			waitUntil("Player stopped")
+			--Clicking sound effect
+			waitSeconds(1)
+			Event:ShowMessage("No good.  It won't turn on.")
+		else
+			Event:MovePlayerTo("TV")
+			waitUntil("Player stopped")
+			--Clicking sound effect
+			waitSeconds(1)
+			Event:ShowMessage("It won't turn off.  The dials don't do anything.")
+		end
+	end)
 end
 
 
@@ -52,9 +54,11 @@ end
 
 
 function turnOnTV()
-	GameState.TVOn = true
-	checkTV()
-	Event:DisableTrigger("TVActivate")
+	if Event:PlayerHasItem("Photograph") then
+		GameState.TVOn = true
+		checkTV()
+		Event:DisableTrigger("TVActivate")
+	end
 end
 
 
