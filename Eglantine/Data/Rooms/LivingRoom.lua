@@ -65,11 +65,13 @@ rooms["LivingRoom"] = {
 			OnLook = nil
 		},
 		[3] = {
+			Name = "TV",
 			Polygon = {
-				[1] = { X = 595, Y = 262 },
-				[2] = { X = 778, Y = 273 },
-				[3] = { X = 773, Y = 397 },
-				[4] = { X = 592, Y = 373 }
+				[1] = { X = 600, Y = 226 },
+				[2] = { X = 712, Y = 236 },
+				[3] = { X = 717, Y = 306 },
+				[4] = { X = 690, Y = 316 },
+				[5] = { X = 597, Y = 303 }
 			},
 				
 			Enabled = true,
@@ -77,8 +79,8 @@ rooms["LivingRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 666,
-				Y = 473
+				X = 627,
+				Y = 414
 			},
 
 			OnInteract = interactWithTV,
