@@ -23,7 +23,6 @@ namespace Eglantine.Engine
 			else
 			{
 				CurrentGuess = String.Concat(CurrentGuess, num.ToString());
-				Console.WriteLine("Current guess: " + CurrentGuess);
 			}
 		}
 
@@ -32,11 +31,13 @@ namespace Eglantine.Engine
 			if (CurrentGuess == COMBINATION)
 			{
 				// Play the happy beeping
+				EventManager.Instance.PlaySound ("safeunlock");
 				TriggerPuzzleSolve ();
 			}
 			else
 			{
 				// Play the error beeping
+				EventManager.Instance.PlaySound ("errorbeep");
 				PuzzleSolved = false;
 				ClearInput();
 			}

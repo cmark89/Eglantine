@@ -17,7 +17,7 @@ function interactWithTrapdoor()
 		if Event:UsingItem("Key") then
 			Event:MovePlayerTo("TrapdoorClosed")
 			waitUntil("Player stopped")
-			Event:PlaySound("Extend")
+			Event:PlaySound("dooropen")
 			Event:DestroyItem("Key")
 			Event:DisableInteractable("TrapdoorClosed")
 			Event:EnableInteractable("TrapdoorOpen")

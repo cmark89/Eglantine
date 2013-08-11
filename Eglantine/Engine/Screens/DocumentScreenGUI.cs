@@ -201,14 +201,20 @@ namespace Eglantine.Engine
 				{
 					leftArrowColor = DocumentColor;
 					if(clicked)
+					{
 						DocumentScreen.Instance.GoToPreviousPage();
+						EventManager.Instance.PlaySound ("pageturn");
+					}
 				}
 				// If the player cursor is over the right arrow...
 				else if (drawRightArrow && Vector2.Distance (MouseManager.Position, rightArrowButton + new Vector2 (24, 24)) < 23)
 				{
 					rightArrowColor = DocumentColor;
 					if(clicked)
+					{
 						DocumentScreen.Instance.GoToNextPage();
+						EventManager.Instance.PlaySound ("pageturn");
+					}
 				}
 				// If the player cursor is over the close button
 				else if (Vector2.Distance (MouseManager.Position, closeButton + new Vector2 (24, 24)) < 23)

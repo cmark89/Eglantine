@@ -228,11 +228,13 @@ namespace Eglantine
 			if (screenState == SafeScreenState.Closed)
 			{
 				// Play open sound.
+				EventManager.Instance.PlaySound ("safeopen");
 				screenState = SafeScreenState.Open;
 			}
 			else
 			{
 				// Play close sound.
+				EventManager.Instance.PlaySound ("safeclose");
 				screenState = SafeScreenState.Closed;
 			}
 		}
@@ -291,7 +293,10 @@ namespace Eglantine
 					{
 						Console.WriteLine("Pressed key " + value);
 						if(value < 10)
+						{
 							SafeScreen.Instance.SafeState.AddNumber (value);
+							EventManager.Instance.PlaySound ("safekeypad");
+						}
 						else if(value == 10)
 							SafeScreen.Instance.SafeState.ClearInput();
 						else if (value == 11)

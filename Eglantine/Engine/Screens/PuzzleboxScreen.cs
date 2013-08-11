@@ -352,64 +352,72 @@ namespace Eglantine
 					}
 					else
 					{
+						bool pressed = false;
+
 						if (MouseManager.MouseInRect (OffsetRect (AriesRect, puzzleStart)))
 						{
 							PuzzleboxState.AriesPressed = !PuzzleboxState.AriesPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (TaurusRect, puzzleStart)))
 						{
 							PuzzleboxState.TaurusPressed = !PuzzleboxState.TaurusPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (GeminiRect, puzzleStart)))
 						{
 							PuzzleboxState.GeminiPressed = !PuzzleboxState.GeminiPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (CancerRect, puzzleStart)))
 						{
 							PuzzleboxState.CancerPressed = !PuzzleboxState.CancerPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (LeoRect, puzzleStart)))
 						{
 							PuzzleboxState.LeoPressed = !PuzzleboxState.LeoPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (VirgoRect, puzzleStart)))
 						{
 							PuzzleboxState.VirgoPressed = !PuzzleboxState.VirgoPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (LibraRect, puzzleStart)))
 						{
 							PuzzleboxState.LibraPressed = !PuzzleboxState.LibraPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (ScorpioRect, puzzleStart)))
 						{
 							PuzzleboxState.ScorpioPressed = !PuzzleboxState.ScorpioPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (SagittariusRect, puzzleStart)))
 						{
 							PuzzleboxState.SagittariusPressed = !PuzzleboxState.SagittariusPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (CapricornRect, puzzleStart)))
 						{
 							PuzzleboxState.CapricornPressed = !PuzzleboxState.CapricornPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (AquariusRect, puzzleStart)))
 						{
 							PuzzleboxState.AquariusPressed = !PuzzleboxState.AquariusPressed;
-							PuzzleboxState.CheckButtons ();
+							pressed = true;
 						}
 						else if (MouseManager.MouseInRect (OffsetRect (PiscesRect, puzzleStart)))
 						{
 							PuzzleboxState.PiscesPressed = !PuzzleboxState.PiscesPressed;
+							pressed = true;
+						}
+
+						if(pressed)
+						{
+							EventManager.Instance.PlaySound ("switch");
 							PuzzleboxState.CheckButtons ();
 						}
 					}
@@ -478,12 +486,15 @@ namespace Eglantine
 					{
 						// Time to snap!
 						if(dragAngle > 0)
-						PuzzleboxState.RotateRing(draggingRing, 1);
+							PuzzleboxState.RotateRing(draggingRing, 1);
 						else
-						PuzzleboxState.RotateRing(draggingRing, -1);
+							PuzzleboxState.RotateRing(draggingRing, -1);
 
 						ringDragAnchor = MouseManager.Position;
 						ringDragAnchorAngle = GetAngleFromCenter(MouseManager.Position);
+
+						// Play the sound
+						EventManager.Instance.PlaySound ("boxring");
 					}
 				}
 			}
@@ -532,12 +543,17 @@ namespace Eglantine
 			if (screenState == PuzzleboxScreenState.Closed)
 			{
 				// Play open sound.
+				EventManager.Instance.PlaySound ("boxopen");
+
 				screenState = PuzzleboxScreenState.Open;
 			}
 			else
 			{
 				// Play close sound.
+				EventManager.Instance.PlaySound ("boxclose");
+
 				screenState = PuzzleboxScreenState.Closed;
+
 			}
 		}
 
