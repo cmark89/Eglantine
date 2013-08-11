@@ -67,6 +67,7 @@ function checkTV()
 		setTVImage()
 		static_index = 1
 		runCoroutine(staticLoop)
+		Event:PlaySoundLooping("static", .5, 0, 0)
 		--Begin playing static sound, but find a way to turn it off on leave
 	end
 end
@@ -100,4 +101,8 @@ function setTVImage()
 	else
 		Event:SetTVImage("Graphics/TV/tv_eglantine")
 	end	
+end
+
+function leaveLivingRoom()
+	Event:StopLoopingSoundEffects()
 end

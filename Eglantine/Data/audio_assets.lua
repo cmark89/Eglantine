@@ -16,6 +16,7 @@ sound_effects_to_load = {
 	"safekeypad",
 	"safeopen",
 	"safeunlock",
+	"static",
 	"switch",
 	"windowbreak"
 }

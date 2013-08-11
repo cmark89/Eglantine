@@ -156,6 +156,17 @@ namespace Eglantine.Engine
 			AudioManager.Instance.PlaySoundEffect(soundName, volume, pitch, pan);
 		}
 
+		// Play a looping sound effect
+		public void PlaySoundLooping(string soundName, float volume = 1f, float pitch = 0f, float pan = 0f)
+		{
+			AudioManager.Instance.PlayLoopingSoundEffect(soundName, volume, pitch, pan);
+		}
+
+		public void StopLoopingSoundEffects()
+		{
+			AudioManager.Instance.StopLoopingSoundEffects();
+		}
+
 		// Begin playing a song
 		public void PlaySong(string songName, float volume = 1f, bool loop = true, float pitch = 0f, float pan = 0f)
 		{

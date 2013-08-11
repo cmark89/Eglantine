@@ -28,12 +28,17 @@ namespace Eglantine
 		public Dictionary<string, SoundEffect> SoundEffects;
 		public Dictionary<string, Song> Songs;
 
+		public List<SoundEffectInstance> LoopingSoundEffects;
+		public List<Song> PlayingSongs;
+
 		public AudioManager ()
 		{
 		}
 
 		public void Initialize ()
 		{
+			LoopingSoundEffects = new List<SoundEffectInstance>();
+			PlayingSongs = new List<Song>();
 			LoadSoundEffects();
 			LoadSongs();
 		}
@@ -91,6 +96,34 @@ namespace Eglantine
 			{
 				Console.WriteLine("Sound effect " + soundEffectName + " not found!");
 			}
+		}
+
+		public void PlayLoopingSoundEffect (string soundEffectName, float volume, float pitch = 0f, float pan = 0f)
+		{
+			if (SoundEffects.ContainsKey (soundEffectName))
+			{
+				SoundEffectInstance sfx = new SoundEffectInstance(SoundEffects[soundEffectName]);
+				sfx.Volume = volume;
+				sfx.Pitch = pitch;
+				sfx.Pan = pan;
+				sfx.IsLooped = true;
+
+				// Add it to the list so it can be aborted later.
+				LoopingSoundEffects.Add(sfx);
+
+				sfx.Play ();
+			} else
+			{
+				Console.WriteLine("Sound effect " + soundEffectName + " not found!");
+			}
+		}
+
+		public void StopLoopingSoundEffects ()
+		{
+			foreach(SoundEffectInstance sfx in LoopingSoundEffects)
+				sfx.Stop ();
+
+			LoopingSoundEffects.Clear ();
 		}
 
 		public void PlaySong (string songName, float volume, bool looping = true, float pitch = 0f, float pan = 0f)

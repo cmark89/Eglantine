@@ -58,8 +58,7 @@ namespace Eglantine.Engine
 			//Console.WriteLine("setup.lua should have loaded.");
 
 			// Testing...
-			//EventManager.Instance.GainItem("Scissors");
-			//EventManager.Instance.GainItem("Crowbar");
+			EventManager.Instance.GainItem("Photograph");
 		}
 
 		public override void Update (GameTime gameTime)

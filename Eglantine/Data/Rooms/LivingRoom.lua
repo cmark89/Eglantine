@@ -292,5 +292,6 @@ rooms["LivingRoom"] = {
 	},
 	
 	onEnter = checkTV,
+	onExit = leaveLivingRoom,
 	onLoad = checkTV
 }

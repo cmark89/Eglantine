@@ -30,3 +30,13 @@ function interactWithTrapdoor()
 		end
 	end)
 end
+
+function checkTVStatic()
+	if GameState.TVOn then
+		Event:PlaySoundLooping("static", .15, 0, 0)
+	end
+end
+
+function leaveSecretRoom()
+	Event:StopLoopingSoundEffects()
+end
