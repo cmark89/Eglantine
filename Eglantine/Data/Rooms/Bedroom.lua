@@ -145,8 +145,8 @@ rooms["Bedroom"] = {
 		[6] = {
 			Name = "Bed",
 			Area = {
-				X = 614,
-				Y = 367,
+				X = 608,
+				Y = 374,
 				Width = 0,
 				Height = 0
 			},
@@ -154,7 +154,7 @@ rooms["Bedroom"] = {
 			Enabled = true,
 			Drawn = true,
 			Texture = "Graphics/Objects/bed",
-			YCutoff = 418,
+			YCutoff = 430,
 			
 			InteractPoint = {
 				X = 0,

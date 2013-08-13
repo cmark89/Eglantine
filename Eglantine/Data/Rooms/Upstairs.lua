@@ -20,11 +20,11 @@ rooms["Upstairs"] = {
 	Interactables = {
 		[1] = {
 			Name = "Stairs",
-			Area = {
-				X = 597,
-				Y = 134,
-				Width = 189,
-				Height = 282
+			Polygon = {
+				[1] = { X = 730, Y = 768 },
+				[2] = { X = 798, Y = 623 },
+				[3] = { X = 970, Y = 629 },
+				[4] = { X = 1024, Y = 768 }
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -33,8 +33,8 @@ rooms["Upstairs"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 692,
-				Y = 428
+				X = 751,
+				Y = 683
 			},
 
 			OnInteract = function()
@@ -44,11 +44,11 @@ rooms["Upstairs"] = {
 		},
 		[2] = {
 			Name = "BedroomDoor",
-			Area = {
-				X = 0,
-				Y = 466,
-				Width = 91,
-				Height = 151
+			Polygon = {
+				[1] = { X = 481, Y = 0 },
+				[2] = { X = 590, Y = 0 },
+				[3] = { X = 589, Y = 391 },
+				[4] = { X = 482, Y = 476 },
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -57,8 +57,8 @@ rooms["Upstairs"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 80,
-				Y = 550
+				X = 544,
+				Y = 439
 			},
 
 			OnInteract = function()
@@ -68,10 +68,11 @@ rooms["Upstairs"] = {
 		},
 		[3] = {
 			Name = "EmptyRoomDoor",
-			Polygon = {
-				[1] = { X = 1024, Y = 768 },
-				[2] = { X = 844, Y = 576 },
-				[3] = { X = 1024, Y = 568 }
+			Area = {
+				X = 678,
+				Y = 1,
+				Width = 119,
+				Height = 378
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -80,8 +81,8 @@ rooms["Upstairs"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 982,
-				Y = 620
+				X = 731,
+				Y = 368
 			},
 
 			OnInteract = function()
@@ -92,11 +93,12 @@ rooms["Upstairs"] = {
 		
 		[4] = {
 			Name = "Safe",
-			Area = {
-				X = 69,
-				Y = 234,
-				Width = 118,
-				Height = 93
+			Polygon = {
+				[1] = { X = 306, Y = 92 },
+				[2] = { X = 428, Y = 65 },
+				[3] = { X = 430, Y = 225 },
+				[4] = { X = 306, Y = 281 },
+				
 			},
 
 			--Make it drawn later so it can be disabled...
@@ -105,8 +107,8 @@ rooms["Upstairs"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 132,
-				Y = 478
+				X = 406,
+				Y = 546
 			},
 
 			OnInteract = interactWithSafe,
@@ -116,11 +118,12 @@ rooms["Upstairs"] = {
 		},
 		[5] = {
 			Name = "OfficeDoor",
-			Area = {
-				X = 237,
-				Y = 219,
-				Width = 170,
-				Height = 228
+			Polygon = {
+				[1] = { X = 0, Y = 0 },
+				[2] = { X = 210, Y = 0 },
+				[3] = { X = 210, Y = 685 },
+				[4] = { X = 109, Y = 768 },
+				[5] = { X = 0, Y = 768 }
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -129,8 +132,8 @@ rooms["Upstairs"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 327,
-				Y = 460
+				X = 169,
+				Y = 733
 			},
 
 			OnInteract = function()
@@ -148,29 +151,15 @@ rooms["Upstairs"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 0, Y = 468 },
-				[2] = { X = 591, Y = 424 },
-				[3] = { X = 1024, Y = 391 },
-				[4] = { X = 1024, Y = 561 },
-				[5] = { X = 0, Y = 615 }
-			},
-			[2] = {
-				[1] = { X = 828, Y = 558 },
-				[2] = { X = 1024, Y = 544 },
-				[3] = { X = 1024, Y = 741 }
+				[1] = { X = 111, Y = 768 },
+				[2] = { X = 626, Y = 368 },
+				[3] = { X = 796, Y = 368 },
+				[4] = { X = 798, Y = 624 },
+				[5] = { X = 730, Y = 768 }
 			}
 		},
 		
-		Connections = {
-			[1] = {
-				Connects = { 1, 2 },
-				Points = { 
-					[1] = { X = 850, Y = 561 },
-					[2] = { X = 927, Y = 558 },
-					[3] = { X = 997, Y = 552 }
-				}
-			}
-		}
+		Connections = { }
 	},
 	
 --------ENTRANCES--------
@@ -178,26 +167,26 @@ rooms["Upstairs"] = {
 		[1] = {
 			Name = "Stairs",
 			
-			X = 699,
-			Y = 523
+			X = 758,
+			Y = 682
 		},
 		[2] = {
 			Name = "BedroomDoor",
 			
-			X = 82,
-			Y = 546
+			X = 544,
+			Y = 440
 		},
 		[3] = {
 			Name = "EmptyRoomDoor",
 			
-			X = 967,
-			Y = 594
+			X = 738,
+			Y = 379
 		},
 		[4] = {
 			Name = "OfficeDoor",
 			
-			X = 322,
-			Y = 466
+			X = 169,
+			Y = 734
 		}
 	}	
 }
