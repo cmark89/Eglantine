@@ -9,7 +9,7 @@ rooms["Upstairs"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/Rooms/upstairs",
+			Texture = "Graphics/Rooms/UpstairsHall",
 			Color = { 1, 1, 1, 1 },
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
