@@ -143,6 +143,12 @@ namespace Eglantine.Engine
 			return GameState.Instance.CurrentRoom.Name == roomName;
 		}
 
+		// Returns the Active state of the named interactable
+		public bool InteractableIsActive (string objectName)
+		{
+			return GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Active;
+		}
+
 		// This sends a signal to Lua, allowing coroutines to know what's happening.
 		public void SendSignal(string signal)
 		{

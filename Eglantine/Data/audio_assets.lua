@@ -7,6 +7,8 @@ sound_effects_to_load = {
 	"boxclose",
 	"boxopen",
 	"boxring",
+	"cabinetopen",
+	"cabinetclose",
 	"dooropen",
 	"errorbeep",
 	"Extend",

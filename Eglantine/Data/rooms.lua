@@ -15,6 +15,7 @@ requiredRooms = {
 	"Kitchen",
 	"Upstairs",
 	"Bedroom",
+	"Bathroom",
 	"Office",
 	"EmptyRoom",
 	"SecretRoom",
