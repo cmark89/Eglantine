@@ -14,7 +14,7 @@ function openTopDrawer()
 		if usingCrowbar and not GameState.TopDrawerFixed then
 			--Animation as player pries it open...
 			GameState.TopDrawerFixed = true
-			Event:PlaySound("Extend")
+			Event:PlaySound("safeopen")
 			setTopDrawerOpen()
 		elseif GameState.TopDrawerFixed then
 			setTopDrawerOpen()
@@ -41,7 +41,7 @@ function openBottomDrawer()
 		if usingCrowbar and not GameState.BottomDrawerFixed then
 			--Animation as player pries it open...
 			GameState.BottomDrawerFixed = true
-			Event:PlaySound("Extend")
+			Event:PlaySound("safeopen")
 			setBottomDrawerOpen()
 		elseif GameState.BottomDrawerFixed then
 			setBottomDrawerOpen()
@@ -70,6 +70,8 @@ end
 
 
 function setTopDrawerOpen()
+	Event:PlaySound("filingcabinetopen")
+	
 	Event:DisableInteractable("TopDrawer_Closed")
 	Event:EnableInteractable("TopDrawer_Open")
 	
@@ -86,6 +88,8 @@ function setTopDrawerOpen()
 end
 
 function setBottomDrawerOpen()
+	Event:PlaySound("filingcabinetopen")
+	
 	Event:DisableInteractable("BottomDrawer_Closed")
 	Event:EnableInteractable("BottomDrawer_Open")
 	
@@ -103,6 +107,8 @@ function setBottomDrawerOpen()
 end
 
 function setTopDrawerClosed()
+	Event:PlaySound("filingcabinetclose")
+	
 	Event:DisableInteractable("TopDrawer_Open")
 	Event:EnableInteractable("TopDrawer_Closed")
 	
@@ -114,6 +120,8 @@ function setTopDrawerClosed()
 end
 
 function setBottomDrawerClosed()
+	Event:PlaySound("filingcabinetclose")
+
 	Event:DisableInteractable("BottomDrawer_Open")
 	Event:EnableInteractable("BottomDrawer_Closed")
 	

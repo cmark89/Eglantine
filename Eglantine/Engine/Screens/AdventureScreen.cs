@@ -86,7 +86,7 @@ namespace Eglantine.Engine
 					// Check where the mouse is and what mouse icon to display
 
 					// If the player's mouse is in the walkable area...
-					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable(MouseManager.Position))
+					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable (MouseManager.Position))
 					{
 						MovePlayer (MouseManager.Position);
 					}
@@ -98,14 +98,14 @@ namespace Eglantine.Engine
 
 #if DEBUG
 				// Big testing
-				if(KeyboardManager.ButtonPressUp(Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
+				if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
 				{
 					Console.WriteLine ("Saved state to: test.sav");
 					GameState.SaveState ("test.sav");
 				}
-				else if(KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
+				else if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
 				{
-					Eglantine.ChangeScene (new GameScene(GameState.LoadState ("test.sav")));
+					Eglantine.ChangeScene (new GameScene (GameState.LoadState ("test.sav")));
 				}
 #endif
 			}
@@ -115,17 +115,17 @@ namespace Eglantine.Engine
 				Gui.Update (gameTime);
 
 
-				GameScene.Lua.DoString("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+				GameScene.Lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
 			}
 
 			// Now the other updates go here anyways.
-			CurrentRoom.Update(gameTime);
+			CurrentRoom.Update (gameTime);
 
 			// Update the player.
-			Player.Update(gameTime);
+			Player.Update (gameTime);
 
 			// Update the play time.
-			GameState.Instance.AddGameTime(gameTime.ElapsedGameTime.TotalSeconds);
+			GameState.Instance.AddGameTime (gameTime.ElapsedGameTime.TotalSeconds);
 		}
 
 		public override void Draw (SpriteBatch spriteBatch)
