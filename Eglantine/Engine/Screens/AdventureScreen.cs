@@ -57,8 +57,10 @@ namespace Eglantine.Engine
 			//Eglantine.Lua.DoFile("Data/setup.lua");
 			//Console.WriteLine("setup.lua should have loaded.");
 
-			// Testing...
-			EventManager.Instance.GainItem("Photograph");
+			#if DEBUG
+			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
+			EventManager.Instance.GainItem("Crowbar");
+			#endif
 		}
 
 		public override void Update (GameTime gameTime)
@@ -84,7 +86,7 @@ namespace Eglantine.Engine
 					// Check where the mouse is and what mouse icon to display
 
 					// If the player's mouse is in the walkable area...
-					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null)
+					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable(MouseManager.Position))
 					{
 						MovePlayer (MouseManager.Position);
 					}
@@ -94,6 +96,7 @@ namespace Eglantine.Engine
 					}
 				}
 
+#if DEBUG
 				// Big testing
 				if(KeyboardManager.ButtonPressUp(Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
 				{
@@ -104,6 +107,7 @@ namespace Eglantine.Engine
 				{
 					Eglantine.ChangeScene (new GameScene(GameState.LoadState ("test.sav")));
 				}
+#endif
 			}
 
 			if (ReceivingInput)

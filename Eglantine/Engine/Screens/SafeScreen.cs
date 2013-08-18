@@ -80,6 +80,10 @@ namespace Eglantine
 
 			// Initialize the buttons
 			SetupButtons();
+
+			// Finally, play the open sound if the safe is already open
+			if(screenState == SafeScreenState.Open)
+				EventManager.Instance.PlaySound ("safeopen");
 		}
 
 		public void SetupButtons()
@@ -209,6 +213,10 @@ namespace Eglantine
 		public void Close()
 		{
 			FlaggedForRemoval = true;
+			if(screenState == SafeScreenState.Open)
+				EventManager.Instance.PlaySound ("safeclose");
+
+
 			EventManager.Instance.SendSignal("Safe closed");
 		}
 

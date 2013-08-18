@@ -13,6 +13,7 @@ namespace Eglantine.Engine
 		public Vector2 InteractPoint { get; private set; }
 		public bool IsDrawn { get; private set; }
 		public Vector2 DrawPosition { get; private set; }
+		public bool BlocksMovement { get; private set; }
 
 		[NonSerialized]
 		private Texture2D _texture;
@@ -46,7 +47,7 @@ namespace Eglantine.Engine
 		}
 
 
-		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0)
+		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0, bool blockMovement = false)
 		{
 			Name = name;
 			Area = area;
@@ -59,12 +60,13 @@ namespace Eglantine.Engine
 			DrawPosition = new Vector2(Area.X, Area.Y);
 			YCutoff = yCutoff;
 			thisRoom = parentRoom;
+			BlocksMovement = blockMovement;
 
 			if(IsDrawn)
 				Texture = texture;
 		}
 
-		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0)
+		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0, bool blockMovement = false)
 		{
 			Name = name;
 			PolygonArea = area;
@@ -77,7 +79,7 @@ namespace Eglantine.Engine
 			DrawPosition = (Vector2)drawPos;
 			YCutoff = yCutoff;
 			thisRoom = parentRoom;
-
+			BlocksMovement = blockMovement;
 
 			if(IsDrawn)
 				Texture = texture;

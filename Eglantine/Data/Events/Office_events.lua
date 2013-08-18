@@ -81,6 +81,8 @@ function setTopDrawerOpen()
 	if not GameState:PlayerHasItem("Strange Notes") then
 		Event:EnableInteractable("Strange Notes")
 	end
+	
+	checkCabinetBlocker()
 end
 
 function setBottomDrawerOpen()
@@ -96,6 +98,8 @@ function setBottomDrawerOpen()
 	if not GameState.PhotoTaken then
 		Event:EnableInteractable("Photograph")
 	end
+	
+	checkCabinetBlocker()
 end
 
 function setTopDrawerClosed()
@@ -105,6 +109,8 @@ function setTopDrawerClosed()
 	--Disable all items that haven't been taken yet...
 	Event:DisableInteractable("Strange Notes")
 	Event:DisableInteractable("Blueprints")
+	
+	checkCabinetBlocker()
 end
 
 function setBottomDrawerClosed()
@@ -114,4 +120,17 @@ function setBottomDrawerClosed()
 	--Enable all items that haven't been taken yet...
 	Event:DisableInteractable("Photograph")
 	Event:DisableInteractable("Journal")
+	
+	checkCabinetBlocker()
+end
+
+--Prevent moving into the cabinet if one of the drawers is open
+function checkCabinetBlocker()
+	if Event:InteractableIsActive("BottomDrawer_Open") or Event:InteractableIsActive("TopDrawer_Open") then
+		if not Event:InteractableIsActive("CabinetMovementBlocker") then
+			Event:EnableInteractable("CabinetMovementBlocker")
+		end
+	else
+		Event:DisableInteractable("CabinetMovementBlocker")
+	end
 end

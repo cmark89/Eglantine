@@ -192,12 +192,17 @@ namespace Eglantine.Engine
 				if(currentInteractable["YCutoff"] != null) 
 					yCutoff = (float)(double)currentInteractable["YCutoff"];
 
+
+				bool blocksMovement = false;
+				if(currentInteractable["BlocksMovement"] != null)
+					blocksMovement = (bool)currentInteractable["BlocksMovement"];
+
 				// Build the clickable area
 				if((LuaTable)currentInteractable["Area"] != null)
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -206,7 +211,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement));
 				}
 			}
 		}
@@ -254,6 +259,21 @@ namespace Eglantine.Engine
 			{
 				rl.Draw(spriteBatch);
 			}
+		}
+
+		public bool PointIsWalkable (Vector2 point)
+		{
+			bool walkable = true;
+			foreach (Interactable i in Interactables.FindAll (x => x.Active && x.BlocksMovement))
+			{
+				if(i.Shape == Trigger.TriggerShape.Rectangle && i.Area.Contains (new Point((int)point.X, (int)point.Y)) || 
+				   i.Shape == Trigger.TriggerShape.Polygon && i.PolygonArea.ContainsPoint (point))
+				{
+					walkable = false;
+				}
+			}
+
+			return walkable;
 		}
 
 		public void OnEnterRoom()

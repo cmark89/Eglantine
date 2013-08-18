@@ -9,7 +9,7 @@ rooms["Office"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/Rooms/office",
+			Texture = "Graphics/Rooms/Office",
 			Color = { 1, 1, 1, 1 },
 			Scroll = { X = 0, Y = 0 },
 			Type = "Background"
@@ -21,18 +21,18 @@ rooms["Office"] = {
 		[1] = {
 			Name = "Door",
 			Polygon = {
-				[1] = {X=0, Y=171},
-				[2] = {X=67, Y=178},
-				[3] = {X=96, Y=445},
-				[4] = {X=0, Y=529}
+				[1] = {X=0, Y=24},
+				[2] = {X=131, Y=25},
+				[3] = {X=130, Y=510},
+				[4] = {X=0, Y=638}
 			},
 			
 			Enabled = true,
 			Drawn = false,
 			
 			InteractPoint = {
-				X = 56,
-				Y = 498
+				X = 106,
+				Y = 557
 			},
 			
 			OnInteract = function()
@@ -41,152 +41,126 @@ rooms["Office"] = {
 			OnLook = nil
 		},
 		[2] = {
-			Name = "TopDrawer_Open",
+			Name = "CabinetMovementBlocker",
 			Polygon = {
-				[1] = {X=348, Y=131},
-				[2] = {X=452, Y=136},
-				[3] = {X=442, Y=190},
-				[4] = {X=412, Y=207},
-				[5] = {X=330, Y=210},
-				[6] = {X=324, Y=170}
+				[1] = { X = 266, Y = 493},
+				[2] = { X = 324, Y = 410},
+				[3] = { X = 385, Y = 411},
+				[4] = { X = 366, Y = 496 }
 			},
-			
 			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/opendrawer",
-			DrawAt = { X = 324, Y = 129},
-			
+			Drawn = false,
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 0,
+				Y = 0
 			},
-			
-			OnInteract = closeTopDrawer,
-			OnLook = nil
+			OnInteract = nil,
+			OnLook=nil,
+			BlocksMovement = true
 		},
 		[3] = {
 			Name = "BottomDrawer_Open",
 			Polygon = {
-				[1] = {X=318, Y=290},
-				[2] = {X=348, Y=252},
-				[3] = {X=448, Y=255},
-				[4] = {X=440, Y=311},
-				[5] = {X=409, Y=329},
-				[6] = {X=328, Y=331}
+				[1] = {X=335, Y=368},
+				[2] = {X=382, Y=328},
+				[3] = {X=383, Y=406},
+				[4] = {X=337, Y=465}
 			},
 			
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/opendrawer",
-			DrawAt = { X = 321, Y = 245},
+			Texture = "Graphics/Objects/OfficeBottomDrawer",
+			DrawAt = { X = 262, Y = 318},
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
 			},
 			
 			OnInteract = closeBottomDrawer,
 			OnLook = nil
 		},
 		[4] = {
+			Name = "TopDrawer_Open",
+			Polygon = {
+				[1] = {X=316, Y=246},
+				[2] = {X=363, Y=220},
+				[3] = {X=364, Y=306},
+				[4] = {X=316, Y=345}
+			},
+			
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/OfficeTopDrawer",
+			DrawAt = { X = 259, Y = 209},
+			
+			InteractPoint = {
+				X = 371,
+				Y = 496
+			},
+			
+			OnInteract = closeTopDrawer,
+			OnLook = nil
+		},
+		[5] = {
 			Name = "TopDrawer_Closed",
-			Area = {
-				X = 351,
-				Y = 131,
-				Width = 98,
-				Height = 66
+			Polygon = {
+				[1] = { X = 270, Y = 246 },
+				[2] = { X = 316, Y = 221 },
+				[3] = { X = 318, Y = 305 },
+				[4] = { X = 270, Y = 344 }
 			},
 			
 			Enabled = true,
 			Drawn = false,
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
 			},
 			
 			OnInteract = openTopDrawer,
 			OnLook = nil
 		},
-		[5] = {
-			Name = "BottomDrawer_Closed",
-			Area = {
-				X = 359,
-				Y = 249,
-				Width = 84,
-				Height = 78
-			},
-			
-			Enabled = true,
-			Drawn = false,
-			
-			InteractPoint = {
-				X = 380,
-				Y = 394
-			},
-			
-			OnInteract = openBottomDrawer,
-			OnLook = nil
-		},
-		[5] = {
-			Name = "BottomDrawer_Closed",
-			Area = {
-				X = 359,
-				Y = 249,
-				Width = 84,
-				Height = 78
-			},
-			
-			Enabled = true,
-			Drawn = false,
-			
-			InteractPoint = {
-				X = 380,
-				Y = 394
-			},
-			
-			OnInteract = openBottomDrawer,
-			OnLook = nil
-		},
 		[6] = {
-			Name = "Strange Notes",
-			Area = {
-				X = 342,
-				Y = 150,
-				Width = 48,
-				Height = 30
+			Name = "BottomDrawer_Closed",
+			Polygon = {
+				[1] = { X = 270, Y = 366},
+				[2] = { X = 317, Y = 327},
+				[3] = { X = 318, Y = 406},
+				[4] = { X = 270, Y = 464},
 			},
 			
-			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/document1cropped",
+			Enabled = true,
+			Drawn = false,
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Strange Notes")
-			end,
+			OnInteract = openBottomDrawer,
 			OnLook = nil
 		},
 		[7] = {
 			Name = "Blueprints",
-			Area = {
-				X = 401,
-				Y = 140,
-				Width = 25,
-				Height = 30
+			Polygon = {
+				[1] = { X = 282, Y = 252},
+				[2] = { X = 315, Y = 235},
+				[3] = { X = 315, Y = 241},
+				[4] = { X = 311, Y = 245},
+				[5] = { X = 310, Y = 272},
+				[6] = { X = 283, Y = 272}
 			},
 			
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/blueprintscropped",
+			Texture = "Graphics/Objects/DrawerBlueprints",
+			DrawAt = {X=276,Y=230},
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
 			},
 			
 			OnInteract = function()
@@ -195,21 +169,47 @@ rooms["Office"] = {
 			OnLook = nil
 		},
 		[8] = {
-			Name = "Photograph",
-			Area = {
-				X = 342,
-				Y = 262,
-				Width = 48,
-				Height = 30
+			Name = "Strange Notes",
+			Polygon = {
+				[1] = { X = 291, Y = 256},
+				[2] = { X = 310, Y = 246},
+				[3] = { X = 310, Y = 272},
+				[4] = { X = 293, Y = 271},
 			},
 			
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/photocropped",
+			Texture = "Graphics/Objects/DrawerNotes",
+			DrawAt = {X=282,Y=241},
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
+			},
+			
+			OnInteract = function()
+				pickup("Strange Notes")
+			end,
+			OnLook = nil
+		},
+		[9] = {
+			Name = "Photograph",
+			Polygon = {
+				[1] = { X = 281, Y = 382},
+				[2] = { X = 298, Y = 364},
+				[3] = { X = 305, Y = 366},
+				[4] = { X = 305, Y = 394},
+				[5] = { X = 281, Y = 394}
+			},
+			
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/DrawerPicture",
+			DrawAt = {X=272,Y=359},
+			
+			InteractPoint = {
+				X = 371,
+				Y = 496
 			},
 			
 			OnInteract = function()
@@ -217,22 +217,24 @@ rooms["Office"] = {
 			end,
 			OnLook = nil
 		},
-		[9] = {
+		[10] = {
 			Name = "Journal",
-			Area = {
-				X = 386,
-				Y = 262,
-				Width = 48,
-				Height = 30
+			Polygon = {
+				[1] = { X = 300, Y = 376 },
+				[2] = { X = 322, Y = 358 },
+				[3] = { X = 331, Y = 358 },
+				[4] = { X = 330, Y = 393 },
+				[5] = { X = 300, Y = 394 }
 			},
 			
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/bookcropped",
+			Texture = "Graphics/Objects/DrawerJournal",
+			DrawAt = {X=290,Y=350},
 			
 			InteractPoint = {
-				X = 380,
-				Y = 394
+				X = 371,
+				Y = 496
 			},
 			
 			OnInteract = function()
@@ -250,15 +252,48 @@ rooms["Office"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 0, Y = 534 },
-				[2] = { X = 184, Y = 369 },
-				[3] = { X = 1024, Y = 411 },
+				[1] = { X = 0, Y = 640 },
+				[2] = { X = 152, Y = 498 },
+				[3] = { X = 596, Y = 537 },
+				[4] = { X = 597, Y = 768 }
+			},
+			[2] = {
+				[1] = { X = 257, Y = 515 },
+				[2] = { X = 322, Y = 414 },
+				[3] = { X = 565, Y = 411 },
+				[4] = { X = 579, Y = 540 }
+			},
+			[3] = {
+				[1] = { X = 593, Y = 537 },
+				[2] = { X = 963, Y = 535 },
+				[3] = { X = 1024, Y = 649 },
 				[4] = { X = 1024, Y = 768 },
-				[5] = { X = 0, Y = 768 },
+				[5] = { X = 592, Y = 768 }
 			}
 		},
 		
 		Connections = {
+			[1] = {
+				Connects = { 1, 2 },
+				Points = {
+					[1] = { X = 278, Y = 512},
+					[2] = { X = 365, Y = 519},
+					[3] = { X = 444, Y = 525},
+					[4] = { X = 509, Y = 531},
+					[5] = { X = 564, Y = 536}
+				}
+			},
+			[2] = {
+				Connects = { 1, 3 },
+				Points = {
+					[1] = { X = 596, Y = 543},
+					[2] = { X = 595, Y = 573},
+					[3] = { X = 595, Y = 601},
+					[4] = { X = 595, Y = 650},
+					[5] = { X = 595, Y = 700},
+					[6] = { X = 595, Y = 750}
+				}
+			}
 		}
 	},
 	
@@ -267,8 +302,8 @@ rooms["Office"] = {
 		[1] = {
 			Name = "Door",
 			
-			X = 57,
-			Y = 486
+			X = 105,
+			Y = 556
 		}
 	}
 }

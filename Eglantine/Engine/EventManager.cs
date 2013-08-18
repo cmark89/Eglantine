@@ -113,6 +113,11 @@ namespace Eglantine.Engine
 			Player.Instance.StopMoving();
 		}
 
+		public void StopPlayer()
+		{
+			Player.Instance.StopMoving();
+		}
+
 		public void EnableInput ()
 		{
 			AdventureScreen.Instance.EnableInput();
