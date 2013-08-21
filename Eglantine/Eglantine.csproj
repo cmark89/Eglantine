@@ -79,9 +79,7 @@
     <Compile Include="Engine\GameWorld\Player.cs" />
     <Compile Include="Engine\GameWorld\Item.cs" />
     <Compile Include="Engine\Screens\GUI.cs" />
-    <Compile Include="Engine\ContentLoader.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="Engine\ContentLoader.cs" />
     <Compile Include="Eglantine.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
