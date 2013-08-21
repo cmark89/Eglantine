@@ -53,6 +53,7 @@ namespace Eglantine.Engine
 		public bool KitchenFlowerPicked = false;
 		public bool TopDrawerFixed = false;
 		public bool BottomDrawerFixed = false;
+		public bool TrapdoorUnlocked = false;
 		public int FlowersOnGrave = 0;
 		public string Ending = "";
 

@@ -59,7 +59,7 @@ namespace Eglantine.Engine
 
 			#if DEBUG
 			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
-			EventManager.Instance.GainItem("Crowbar");
+			EventManager.Instance.GainItem("Scissors");
 			#endif
 		}
 

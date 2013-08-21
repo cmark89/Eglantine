@@ -21,8 +21,8 @@ rooms["SecretRoom"] = {
 		[1] = {
 			Name = "Puzzlebox",
 			Area = {
-				X = 934,
-				Y = 548,
+				X = 433,
+				Y = 265,
 				Width = 48,
 				Height = 48
 			},
@@ -33,8 +33,8 @@ rooms["SecretRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 906,
-				Y = 644
+				X = 474,
+				Y = 407
 			},
 
 			OnInteract = function()
@@ -45,11 +45,12 @@ rooms["SecretRoom"] = {
 		
 		[2] = {
 			Name = "Door",
-			Area = {
-				X = 672,
-				Y = 172,
-				Width = 200,
-				Height = 283
+			Polygon = {
+				[1] = { X = 650, Y = 82 },
+				[2] = { X = 794, Y = 96 },
+				[3] = { X = 794, Y = 377 },
+				[4] = { X = 648, Y = 345 },
+				
 			},
 				
 			Enabled = true,
@@ -57,8 +58,8 @@ rooms["SecretRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 756,
-				Y = 536
+				X = 698,
+				Y = 437
 			},
 
 			OnInteract = function ()
@@ -72,10 +73,10 @@ rooms["SecretRoom"] = {
 		[3] = {
 			Name = "TrapdoorClosed",
 			Polygon = {
-				[1] = { X = 221, Y = 543 },
-				[2] = { X = 379, Y = 545 },
-				[3] = { X = 375, Y = 689 },
-				[4] = { X = 185, Y = 683 }
+				[1] = { X = 44, Y = 568 },
+				[2] = { X = 279, Y = 525 },
+				[3] = { X = 470, Y = 600 },
+				[4] = { X = 227, Y = 657 }
 			},
 				
 			Enabled = true,
@@ -83,8 +84,8 @@ rooms["SecretRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 402,
-				Y = 631
+				X = 363,
+				Y = 645
 			},
 
 			OnInteract = interactWithTrapdoor,
@@ -95,11 +96,12 @@ rooms["SecretRoom"] = {
 		[4] = {
 			Name = "TrapdoorOpenGraphic",
 			Area = {
-				X = 176,
-				Y = 391,
+				X = 0,
+				Y = 311,
 				Width = 0,
 				Height = 0
 			},
+			YCutoff = 568,
 				
 			Enabled = false,
 			Drawn = true,
@@ -107,7 +109,7 @@ rooms["SecretRoom"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 888,
+				X = 363,
 				Y = 645
 			},
 
@@ -117,19 +119,19 @@ rooms["SecretRoom"] = {
 		[5] = {
 			Name = "TrapdoorOpen",
 			Polygon = {
-				[1] = { X = 221, Y = 543 },
-				[2] = { X = 379, Y = 545 },
-				[3] = { X = 375, Y = 689 },
-				[4] = { X = 185, Y = 683 }
+				[1] = { X = 44, Y = 568 },
+				[2] = { X = 279, Y = 525 },
+				[3] = { X = 470, Y = 600 },
+				[4] = { X = 227, Y = 657 }
 			},
-				
+			
 			Enabled = false,
 			Drawn = false,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 402,
-				Y = 631
+				X = 363,
+				Y = 645
 			},
 
 			OnInteract = function()
@@ -138,8 +140,34 @@ rooms["SecretRoom"] = {
 			
 			OnLook = function()
 				Event:ShowMessage("Looks pretty dark down there...")
-			end
+			end,
+			
+			BlocksMovement = true
 		},
+		[6] = {
+			Name = "TrapdoorHatch_Open",
+			Polygon = {
+				[1] = { X = 0, Y = 348 },
+				[2] = { X = 193, Y = 325 },
+				[3] = { X = 278, Y = 526 },
+				[4] = { X = 46, Y = 570 },
+				[5] = { X = 0, Y = 487 }
+			},
+			
+			Enabled = false,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 363,
+				Y = 645
+			},
+
+			OnInteract = closeTrapdoor,
+			OnLook = nil,
+			
+			BlocksMovement = true
+		}
 	},
 	
 	Triggers = {
@@ -149,29 +177,98 @@ rooms["SecretRoom"] = {
 	Navmesh = {
 
 		Polygons = {
+			--Top left
 			[1] = {
-				[1] = { X = 384, Y = 522 },
-				[2] = { X = 870, Y = 522 },
-				[3] = { X = 876, Y = 613 },
-				[4] = { X = 1020, Y = 717 },
-				[5] = { X = 1024, Y = 768 },
-				[6] = { X = 384, Y = 768 }
+				[1] = { X = 0, Y = 414 },
+				[2] = { X = 270, Y = 383 },
+				[3] = { X = 564, Y = 474 },
+				[4] = { X = 0, Y = 578 },
 			},
+			--Right side
 			[2] = {
-				[1] = { X = 154, Y = 684 },
-				[2] = { X = 411, Y = 691 },
-				[3] = { X = 414, Y = 768 },
-				[4] = { X = 127, Y = 768 }
+				[1] = { X = 355, Y = 418 },
+				[2] = { X = 553, Y = 389 },
+				[3] = { X = 1024, Y = 501 },
+				[4] = { X = 1024, Y = 768 },
+				[5] = { X = 864, Y = 768 },
+				[6] = { X = 253, Y = 510 },
+				[7] = { X = 506, Y = 470 }
+			},
+			--Bottom
+			[3] = {
+				[1] = { X = 0, Y = 713 },
+				[2] = { X = 486, Y = 596 },
+				[3] = { X = 904, Y = 768 },
+				[4] = { X = 0, Y = 768},
+			},
+			--Left
+			[4] = {
+				[1] = { X = 0, Y = 560 },
+				[2] = { X = 28, Y = 561 },
+				[3] = { X = 244, Y = 666 },
+				[4] = { X = 0, Y = 724},
 			}
+			
 		},
 		
 		Connections = {
 			[1] = {
 				Connects = { 1, 2 },
 				Points = { 
-					[1] = { X = 394, Y = 700 },
-					[2] = { X = 249, Y = 724 },
-					[3] = { X = 394, Y = 750 }
+					[1] = { X = 292, Y = 420 },
+					[2] = { X = 312, Y = 509 },
+					[3] = { X = 339, Y = 505 },
+					[4] = { X = 371, Y = 501 },
+					[5] = { X = 412, Y = 492 },
+					[6] = { X = 439, Y = 487 },
+					[7] = { X = 478, Y = 481 },
+					[8] = { X = 506, Y = 476 },
+					[9] = { X = 511, Y = 462 },
+					[10] = { X = 477, Y = 451 },
+					[11] = { X = 453, Y = 442 },
+					[12] = { X = 424, Y = 434 },
+					[13] = { X = 402, Y = 429 },
+					[13] = { X = 376, Y = 421 }
+				}
+			},
+			[2] = {
+				Connects = { 1, 4 },
+				Points = { 
+					[1] = { X = 3, Y = 570 },
+					[2] = { X = 15, Y = 568 },
+					[3] = { X = 26, Y = 567 }
+				}
+			},
+			[3] = {
+				Connects = { 3, 4 },
+				Points = { 
+					[1] = { X = 6, Y = 716 },
+					[2] = { X = 25, Y = 714 },
+					[3] = { X = 54, Y = 706 },
+					[4] = { X = 88, Y = 698 },
+					[5] = { X = 128, Y = 689 },
+					[6] = { X = 158, Y = 680 },
+					[7] = { X = 200, Y = 671 },
+					[8] = { X = 225, Y = 664 }
+				}
+			},
+			[4] = {
+				Connects = { 2, 3 },
+				Points = { 
+					[1] = { X = 486, Y = 600 },
+					[2] = { X = 507, Y = 610 },
+					[3] = { X = 530, Y = 619 },
+					[4] = { X = 547, Y = 627 },
+					[5] = { X = 567, Y = 636 },
+					[6] = { X = 593, Y = 646 },
+					[7] = { X = 622, Y = 657 },
+					[8] = { X = 647, Y = 668 },
+					[9] = { X = 686, Y = 684 },
+					[10] = { X = 718, Y = 696 },
+					[11] = { X = 753, Y = 710 },
+					[12] = { X = 787, Y = 725 },
+					[13] = { X = 829, Y = 740 },
+					[14] = { X = 864, Y = 755 }
 				}
 			}
 		}
@@ -182,15 +279,15 @@ rooms["SecretRoom"] = {
 		[1] = {
 			Name = "Door",
 			
-			X = 755,
-			Y = 535
+			X = 689,
+			Y = 444
 		},
 		
 		[2] = {
 			Name = "Trapdoor",
 			
-			X = 401,
-			Y = 631
+			X = 362,
+			Y = 648
 		}
 	},
 	
