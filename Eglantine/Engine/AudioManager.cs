@@ -92,7 +92,8 @@ namespace Eglantine
 			if (SoundEffects.ContainsKey (soundEffectName))
 			{
 				SoundEffects[soundEffectName].Play(volume * sfxVolume, pitch, pan);
-			} else
+			} 
+			else
 			{
 				Console.WriteLine("Sound effect " + soundEffectName + " not found!");
 			}
