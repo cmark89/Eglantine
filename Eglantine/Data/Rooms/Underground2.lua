@@ -19,12 +19,15 @@ rooms["Underground2"] = {
 ------OBJECTS AND EVENTS------
 	Interactables = {
 		[1] = {
-			Name = "Rope",
-			Area = {
-				X = 57,
-				Y = 599,
-				Width = 166,
-				Height = 114
+			Name = "RopeDown",
+			Polygon = {
+				[1] = { X = 416, Y = 582 },
+				[2] = { X = 497, Y = 607 },
+				[3] = { X = 535, Y = 661 },
+				[4] = { X = 489, Y = 689 },
+				[5] = { X = 478, Y = 713 },
+				[6] = { X = 473, Y = 768 },
+				[7] = { X = 403, Y = 768 },
 			},
 				
 			Enabled = true,
@@ -32,24 +35,24 @@ rooms["Underground2"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 234,
-				Y = 648
+				X = 510,
+				Y = 603
 			},
 
 			OnInteract = function()
-				door("Rope", "Underground3", "Rope")
+				door("RopeDown", "Underground3", "Rope")
 			end,
 			OnLook = function()
 				Event:ShowMessage("How deep does this go?")
 			end
 		},
 		[2] = {
-			Name = "Door",
+			Name = "RopeUp",
 			Area = {
-				X = 802,
-				Y = 10,
-				Width = 199,
-				Height = 201
+				X = 862,
+				Y = 2,
+				Width = 137,
+				Height = 455
 			},
 				
 			Enabled = true,
@@ -57,12 +60,12 @@ rooms["Underground2"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 891,
-				Y = 226
+				X = 935,
+				Y = 453
 			},
 
 			OnInteract = function()
-				door("Door", "Underground1", "Door")
+				door("RopeUp", "Underground1", "Door")
 			end,
 			OnLook = function()
 				Event:ShowMessage("I don't think I could leave if I wanted to.")
@@ -75,25 +78,21 @@ rooms["Underground2"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 812, Y = 202 },
-				[2] = { X = 1001, Y = 191 },
-				[3] = { X = 981, Y = 388 },
-				[4] = { X = 927, Y = 534 },
-				[5] = { X = 715, Y = 462 }
+				[1] = { X = 864, Y = 440 },
+				[2] = { X = 1024, Y = 455 },
+				[3] = { X = 1024, Y = 652 },
+				[4] = { X = 910, Y = 702 },
+				[5] = { X = 853, Y = 731 },
+				[6] = { X = 536, Y = 649 },
+				[7] = { X = 417, Y = 583 },
+				[8] = { X = 541, Y = 517 }
 			},
 			[2] = {
-				[1] = { X = 722, Y = 455 },
-				[2] = { X = 931, Y = 521 },
-				[3] = { X = 811, Y = 667 },
-				[4] = { X = 727, Y = 703 },
-				[5] = { X = 600, Y = 554 }
-			},
-			[3] = {
-				[1] = { X = 204, Y = 559 },
-				[2] = { X = 606, Y = 548 },
-				[3] = { X = 749, Y = 691 },
-				[4] = { X = 588, Y = 734 },
-				[5] = { X = 205, Y = 716 }
+				[1] = { X = 568, Y = 644 },
+				[2] = { X = 851, Y = 718 },
+				[3] = { X = 853, Y = 768 },
+				[4] = { X = 605, Y = 768 },
+				[5] = { X = 481, Y = 701 }
 			}
 		},
 		
@@ -102,18 +101,12 @@ rooms["Underground2"] = {
 				Connects = { 1, 2 },
 				
 				Points = {
-					[1] = { X = 722, Y = 458 },
-					[2] = { X = 804, Y = 484 },
-					[3] = { X = 913, Y = 519 }
-				}
-			},
-			[2] = {
-				Connects = { 2, 3 },
-				
-				Points = {
-					[1] = { X = 607, Y = 556 },
-					[2] = { X = 663, Y = 614 },
-					[3] = { X = 724, Y = 682 }
+					[1] = { X = 577, Y = 650 },
+					[2] = { X = 631, Y = 666 },
+					[3] = { X = 678, Y = 678 },
+					[4] = { X = 770, Y = 703 },
+					[5] = { X = 803, Y = 711 },
+					[6] = { X = 844, Y = 712 }
 				}
 			}
 		}
@@ -122,16 +115,16 @@ rooms["Underground2"] = {
 --------ENTRANCES--------
 	Entrances = {
 		[1] = {
-			Name = "Door",
+			Name = "RopeUp",
 			
-			X = 900,
-			Y = 212
+			X = 935,
+			Y = 452
 		},
 		[2] = {
-			Name = "Rope",
+			Name = "RopeDown",
 			
-			X = 235,
-			Y = 646
+			X = 510,
+			Y = 602
 		}
 	}	
 }

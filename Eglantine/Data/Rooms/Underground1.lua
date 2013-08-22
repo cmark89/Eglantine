@@ -62,7 +62,7 @@ rooms["Underground1"] = {
 			},
 
 			OnInteract = function()
-				door("Door", "Underground2", "Door")
+				door("Door", "Underground2", "RopeUp")
 			end,
 			OnLook = function()
 				Event:ShowMessage("I have a bad feeling about this place...")

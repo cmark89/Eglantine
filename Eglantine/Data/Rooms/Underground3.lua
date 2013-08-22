@@ -37,7 +37,7 @@ rooms["Underground3"] = {
 			},
 
 			OnInteract = function()
-				door("Rope", "Underground2", "Rope")
+				door("Rope", "Underground2", "RopeDown")
 			end,
 			OnLook = function()
 				Event:ShowMessage("I don't even know if I could climb that...")
