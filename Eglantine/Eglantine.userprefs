@@ -1,28 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/TriggerArea.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Eglantine.cs">
     <Files>
       <File FileName="Data/Rooms/SecretRoom.lua" Line="296" Column="2" />
       <File FileName="Data/Events/SecretRoom_events.lua" Line="68" Column="33" />
       <File FileName="Data/Rooms/LivingRoom.lua" Line="295" Column="9" />
       <File FileName="Data/Events/LivingRoom_events.lua" Line="107" Column="2" />
       <File FileName="Engine/Screens/AdventureScreen.cs" Line="64" Column="46" />
-      <File FileName="Engine/GameWorld/TriggerArea.cs" Line="37" Column="1" />
+      <File FileName="Engine/GameWorld/TriggerArea.cs" Line="46" Column="2" />
+      <File FileName="Engine/AudioManager.cs" Line="95" Column="6" />
+      <File FileName="Eglantine.cs" Line="68" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Eglantine" expanded="True">
-            <Node name="References" expanded="True" selected="True" />
-            <Node name="Data" expanded="True">
-              <Node name="Events" expanded="True" />
-              <Node name="Rooms" expanded="True" />
-            </Node>
-            <Node name="Engine" expanded="True">
-              <Node name="GameWorld" expanded="True" />
-              <Node name="Puzzlebox" expanded="True" />
-              <Node name="Screens" expanded="True" />
-            </Node>
+            <Node name="References" expanded="True" />
             <Node name="Scenes" expanded="True" />
           </Node>
         </State>
