@@ -1,18 +1,28 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Linux" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scenes/Scene.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Rooms/SecretRoom.lua">
     <Files>
-      <File FileName="TestPather.cs" Line="34" Column="4" />
-      <File FileName="Engine/AudioManager.cs" Line="105" Column="31" />
-      <File FileName="Engine/ContentLoader.cs" Line="11" Column="3" />
-      <File FileName="Eglantine.cs" Line="28" Column="27" />
-      <File FileName="Scenes/Scene.cs" Line="15" Column="2" />
+      <File FileName="Data/Rooms/SecretRoom.lua" Line="296" Column="2" />
+      <File FileName="Data/Events/SecretRoom_events.lua" Line="68" Column="33" />
+      <File FileName="Data/Rooms/LivingRoom.lua" Line="295" Column="9" />
+      <File FileName="Data/Events/LivingRoom_events.lua" Line="107" Column="2" />
+      <File FileName="Engine/Screens/AdventureScreen.cs" Line="64" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Eglantine" expanded="True">
-            <Node name="References" expanded="True" selected="True" />
+            <Node name="References" expanded="True" />
+            <Node name="Data" expanded="True">
+              <Node name="Events" expanded="True" />
+              <Node name="Rooms" expanded="True">
+                <Node name="SecretRoom.lua" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Engine" expanded="True">
+              <Node name="Puzzlebox" expanded="True" />
+              <Node name="Screens" expanded="True" />
+            </Node>
             <Node name="Scenes" expanded="True" />
           </Node>
         </State>

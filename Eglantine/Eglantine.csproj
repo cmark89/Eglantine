@@ -86,15 +86,15 @@
     <Compile Include="Engine\Screens\DocumentScreen.cs" />
     <Compile Include="Engine\GameWorld\Document.cs" />
     <Compile Include="Engine\Screens\DocumentScreenGUI.cs" />
-    <Compile Include="Engine\Screens\PuzzleboxScreen.cs" />
-    <Compile Include="Engine\Screens\PuzzleboxScreenGUI.cs" />
-    <Compile Include="Engine\PuzzleboxState.cs" />
     <Compile Include="Engine\Screens\SafeScreen.cs" />
     <Compile Include="Engine\Screens\SafeScreenGUI.cs" />
     <Compile Include="Engine\SafeState.cs" />
     <Compile Include="Engine\KeyboardManager.cs" />
     <Compile Include="Engine\Serializer.cs" />
     <Compile Include="Engine\Screens\TVScreen.cs" />
+    <Compile Include="Engine\Puzzlebox\PuzzleboxScreen.cs" />
+    <Compile Include="Engine\Puzzlebox\PuzzleboxState.cs" />
+    <Compile Include="Engine\Puzzlebox\PuzzleboxScreenGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

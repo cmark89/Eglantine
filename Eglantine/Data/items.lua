@@ -239,7 +239,7 @@ items["Puzzle Key"] = {
 		runCoroutine(function()
 			Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")
 			waitUntil("Message closed")
-			if Event:PlayerHasItem("Puzzle Key") then
+			if Event:PlayerHasItem("Puzzlebox") then
 				Event:ShowMessage("Hey, it looks like this could fit into the center of the puzzlebox...")
 				waitUntil("Message closed")
 				--Play the sound for the thing being inserted

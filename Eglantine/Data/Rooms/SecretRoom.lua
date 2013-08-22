@@ -292,5 +292,5 @@ rooms["SecretRoom"] = {
 	},
 	
 	onEnter = checkTVStatic,
-	onLeave = leaveSecretRoom	
+	onExit = leaveSecretRoom
 }

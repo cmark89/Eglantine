@@ -44,14 +44,16 @@ end
 
 
 function closeTrapdoor()
-	Event:MovePlayerTo("TrapdoorClosed")
-	waitUntil("Player stopped")
-	
-	Event:PlaySound("safeclose")
-	Event:EnableInteractable("TrapdoorClosed")
-	Event:DisableInteractable("TrapdoorOpen")
-	Event:DisableInteractable("TrapdoorOpenGraphic")
-	Event:DisableInteractable("TrapdoorHatch_Open")
+	runCoroutine(function()
+		Event:MovePlayerTo("TrapdoorClosed")
+		waitUntil("Player stopped")
+		
+		Event:PlaySound("safeclose")
+		Event:EnableInteractable("TrapdoorClosed")
+		Event:DisableInteractable("TrapdoorOpen")
+		Event:DisableInteractable("TrapdoorOpenGraphic")
+		Event:DisableInteractable("TrapdoorHatch_Open")
+	end)
 end
 
 
@@ -63,4 +65,5 @@ end
 
 function leaveSecretRoom()
 	Event:StopLoopingSoundEffects()
+	Event:ShowMessage("I am cool.")
 end
