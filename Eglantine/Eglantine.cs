@@ -66,7 +66,7 @@ namespace Eglantine
 
 #if DEBUG
 			// TEST!!
-			SoundEffect testsound = Content.Load<SoundEffect>("Audio/SoundEffects/boxclose");		
+			SoundEffect testsound = Content.Load<SoundEffect>("Audio/SoundEffects/boxclose");
 			testsound.Play();
 #endif
 
