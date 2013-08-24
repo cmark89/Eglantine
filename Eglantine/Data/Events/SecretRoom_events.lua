@@ -65,5 +65,4 @@ end
 
 function leaveSecretRoom()
 	Event:StopLoopingSoundEffects()
-	Event:ShowMessage("I am cool.")
 end

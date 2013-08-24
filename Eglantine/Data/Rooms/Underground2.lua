@@ -40,7 +40,7 @@ rooms["Underground2"] = {
 			},
 
 			OnInteract = function()
-				door("RopeDown", "Underground3", "Rope")
+				door("RopeDown", "Underground3", "RopeUp")
 			end,
 			OnLook = function()
 				Event:ShowMessage("How deep does this go?")
@@ -65,7 +65,7 @@ rooms["Underground2"] = {
 			},
 
 			OnInteract = function()
-				door("RopeUp", "Underground1", "Door")
+				door("RopeUp", "Underground1", "DownRope")
 			end,
 			OnLook = function()
 				Event:ShowMessage("I don't think I could leave if I wanted to.")

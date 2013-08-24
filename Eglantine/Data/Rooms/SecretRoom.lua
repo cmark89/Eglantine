@@ -135,7 +135,7 @@ rooms["SecretRoom"] = {
 			},
 
 			OnInteract = function()
-				door("TrapdoorOpen", "Underground1", "Rope")
+				door("TrapdoorOpen", "Underground1", "UpRope")
 			end,
 			
 			OnLook = function()

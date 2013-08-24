@@ -10,7 +10,7 @@ rooms["Underground3"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/Rooms/underground3",
+			Texture = "Graphics/Rooms/Underground3",
 			Color = { 1, 1, 1, 1 },
 			Type = "Background" --Midground, Foreground
 		}
@@ -19,12 +19,12 @@ rooms["Underground3"] = {
 ------OBJECTS AND EVENTS------
 	Interactables = {
 		[1] = {
-			Name = "Rope",
-			Area = {
-				X = 17,
-				Y = 0,
-				Width = 84,
-				Height = 515
+			Name = "RopeUp",
+			Polygon = {
+				[1] = { X = 45, Y = 0 },
+				[2] = { X = 217, Y = 0 },
+				[3] = { X = 231, Y = 459 },
+				[4] = { X = 101, Y = 478 },
 			},
 				
 			Enabled = true,
@@ -32,12 +32,12 @@ rooms["Underground3"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 118,
-				Y = 518
+				X = 171,
+				Y = 479
 			},
 
 			OnInteract = function()
-				door("Rope", "Underground2", "RopeDown")
+				door("RopeUp", "Underground2", "RopeDown")
 			end,
 			OnLook = function()
 				Event:ShowMessage("I don't even know if I could climb that...")
@@ -46,10 +46,10 @@ rooms["Underground3"] = {
 		[2] = {
 			Name = "Door",
 			Polygon = {
-				[1] = { X = 935, Y = 280 },
-				[2] = { X = 1014, Y = 282 },
-				[3] = { X = 1003, Y = 576 },
-				[4] = { X = 913, Y = 462 }
+				[1] = { X = 751, Y = 77 },
+				[2] = { X = 1014, Y = 74 },
+				[3] = { X = 1024, Y = 597 },
+				[4] = { X = 749, Y = 562 }
 			},
 				
 			Enabled = true,
@@ -57,8 +57,8 @@ rooms["Underground3"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 932,
-				Y = 517
+				X = 877,
+				Y = 607
 			},
 
 			OnInteract = function()
@@ -75,36 +75,62 @@ rooms["Underground3"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 98, Y = 477 },
-				[2] = { X = 273, Y = 434 },
-				[3] = { X = 469, Y = 426 },
-				[4] = { X = 890, Y = 426 },
-				[5] = { X = 998, Y = 581 },
-				[6] = { X = 982, Y = 644 },
-				[7] = { X = 847, Y = 663 },
-				[8] = { X = 51, Y = 652 },
-				[9] = { X = 19, Y = 617 },
-				[10] = { X = 38, Y = 520 },
-			}
+				[1] = { X = 107, Y = 485 },
+				[2] = { X = 362, Y = 459 },
+				[3] = { X = 382, Y = 757 },
+				[4] = { X = 101, Y = 761 }
+			},
+			[2] = {
+				[1] = { X = 351, Y = 463 },
+				[2] = { X = 453, Y = 491 },
+				[3] = { X = 501, Y = 592 },
+				[4] = { X = 365, Y = 599 }
+			},
+			[3] = {
+				[1] = { X = 446, Y = 485 },
+				[2] = { X = 1024, Y = 600 },
+				[3] = { X = 1024, Y = 768 },
+				[4] = { X = 834, Y = 761 },
+				[5] = { X = 496, Y = 600 }
+			},
 		},
 		
 		Connections = {
+			[1] = {
+				Connects = { 1, 2 },
+				Points = {
+					[1] = { X = 359, Y = 481},
+					[2] = { X = 361, Y = 518},
+					[3] = { X = 364, Y = 552},
+					[4] = { X = 367, Y = 588}
+				}
+			},
+			[2] = {
+				Connects = { 2, 3 },
+				Points = {
+					[1] = { X = 454, Y = 497},
+					[2] = { X = 462, Y = 521},
+					[3] = { X = 474, Y = 543},
+					[4] = { X = 485, Y = 565},
+					[5] = { X = 492, Y = 583}
+				}
+			}
 		}
 	},
 	
 --------ENTRANCES--------
 	Entrances = {
 		[1] = {
-			Name = "Door",
+			Name = "RopeUp",
 			
-			X = 932,
-			Y = 515
+			X = 171,
+			Y = 479
 		},
 		[2] = {
-			Name = "Rope",
+			Name = "Door",
 			
-			X = 114,
-			Y = 520
+			X = 866,
+			Y = 614
 		}
 	}	
 }

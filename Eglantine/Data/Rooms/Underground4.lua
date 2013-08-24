@@ -10,7 +10,7 @@ rooms["Underground4"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/Rooms/Underground4",
+			Texture = "Graphics/Rooms/underground4",
 			Color = { 1, 1, 1, 1 },
 			Type = "Background" --Midground, Foreground
 		}
