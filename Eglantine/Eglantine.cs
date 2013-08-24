@@ -36,7 +36,7 @@ namespace Eglantine
 
 		public Eglantine ()
 		{
-			IsMouseVisible = true;
+			IsMouseVisible = false;
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	     
 			ContentLoader.Initialize(Content);
@@ -63,6 +63,7 @@ namespace Eglantine
 
 			//EventManager.Initialize();
 			AudioManager.Instance.Initialize();
+			MouseManager.Initialize ();
 
 #if DEBUG
 			// TEST!!

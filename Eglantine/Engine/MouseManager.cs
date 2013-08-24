@@ -1,4 +1,5 @@
 using System;
+using Eglantine.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,8 +13,33 @@ namespace Eglantine
 		private static MouseState _lastFrameState;
 		private static MouseState _thisFrameState;
 
+		private static Texture2D drawTexture;
+
+
+		// Textures to be drawn for the mouse
+		private static Texture2D normalTexture;
+		private static Texture2D hotTexture;
+		private static Texture2D grabTexture;	
+		private static Texture2D leaveTexture;
+
+		public static void Initialize ()
+		{
+			// Setup textures if they have not been loaded
+			if (normalTexture == null)
+			{
+				normalTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Mouse/PlainPointer");
+				hotTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Mouse/HotPointer");
+				grabTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Mouse/GrabPointer");
+				leaveTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Mouse/LeavePointer");
+			}
+		}
+
+
 		public static void Update(GameTime gameTime)
 		{
+			// Reset this before the game has a chance to change it
+			MouseMode = MouseInteractMode.Normal;
+
 			_lastFrameState = _thisFrameState;
 			_thisFrameState = Mouse.GetState();
 		}
@@ -71,18 +97,36 @@ namespace Eglantine
 			       _thisFrameState.Y <= rect.Y + rect.Height);
 		}
 
-		public static void DrawMouse(SpriteBatch spriteBatch)
+		public static void DrawMouse (SpriteBatch spriteBatch)
 		{
+			switch (MouseMode)
+			{
+			case (MouseInteractMode.Normal):
+				drawTexture = normalTexture;
+				break;
+			case (MouseInteractMode.Hot):
+				drawTexture = hotTexture;
+				break;
+			case (MouseInteractMode.Grab):
+				drawTexture = grabTexture;
+				break;
+			case (MouseInteractMode.Leave):
+				drawTexture = leaveTexture;
+				break;
+			default:
+				break;
+			}
 
+			spriteBatch.Draw (drawTexture, position: MouseManager.Position, color: Color.White);
 		}
 	}
 
 	public enum MouseInteractMode
 	{
 		Normal,
-		Item,
-		Move,
-		ChangeScene
+		Hot,
+		Grab,
+		Leave
 	}
 }
 
