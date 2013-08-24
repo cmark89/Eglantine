@@ -32,6 +32,8 @@ namespace Eglantine.Engine
 		private float colorLerpDuration;
 		private float colorLerpTime;
 
+		MouseInteractMode mouseMode;
+
 		// The YCutoff is the Y value beyond which the player will be drawn on top of the object; a YCutoff of 0 means that 
 		// the player will always be drawn on top.  Remember to accomodate for the player origin.
 		public float YCutoff { get; private set; }
@@ -47,7 +49,7 @@ namespace Eglantine.Engine
 		}
 
 
-		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0, bool blockMovement = false)
+		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal")
 		{
 			Name = name;
 			Area = area;
@@ -62,11 +64,13 @@ namespace Eglantine.Engine
 			thisRoom = parentRoom;
 			BlocksMovement = blockMovement;
 
+			SetMouseMode(mouse);
+
 			if(IsDrawn)
 				Texture = texture;
 		}
 
-		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0, bool blockMovement = false)
+		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal")
 		{
 			Name = name;
 			PolygonArea = area;
@@ -81,8 +85,30 @@ namespace Eglantine.Engine
 			thisRoom = parentRoom;
 			BlocksMovement = blockMovement;
 
+			SetMouseMode(mouse);
+
 			if(IsDrawn)
 				Texture = texture;
+		}
+
+		public void SetMouseMode (string mouseType)
+		{
+			switch (mouseType)
+			{
+			case ("Normal"):
+			case("Plain"):
+				mouseMode = MouseInteractMode.Normal;
+				break;
+			case("Grab"):
+				mouseMode = MouseInteractMode.Grab;
+				break;
+			case("Leave"):
+				mouseMode = MouseInteractMode.Leave;
+				break;
+			case("Hot"):
+				mouseMode = MouseInteractMode.Hot;
+				break;
+			}
 		}
 
 		public bool IsHighlighted ()
@@ -94,6 +120,9 @@ namespace Eglantine.Engine
 		{
 			if (AdventureScreen.Instance.ReceivingInput && IsHighlighted() && !AdventureScreen.Instance.InputDisabled && !AdventureScreen.Instance.MouseInGui)
 			{
+				// Set the mouse manager's mouse mode to match this item's
+				MouseManager.MouseMode = mouseMode;
+
 				if (VectorInArea (MouseManager.Position) && MouseManager.LeftClickUp)
 					OnInteract ();
 				else if (VectorInArea (MouseManager.Position) && MouseManager.RightClickUp)

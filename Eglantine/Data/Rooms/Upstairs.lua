@@ -40,7 +40,8 @@ rooms["Upstairs"] = {
 			OnInteract = function()
 				door("Stairs", "Foyer", "Stairs")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "BedroomDoor",
@@ -64,7 +65,8 @@ rooms["Upstairs"] = {
 			OnInteract = function()
 				door("BedroomDoor", "Bedroom", "HallDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[3] = {
 			Name = "EmptyRoomDoor",
@@ -88,7 +90,8 @@ rooms["Upstairs"] = {
 			OnInteract = function()
 				door("EmptyRoomDoor", "EmptyRoom", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		
 		[4] = {
@@ -114,7 +117,8 @@ rooms["Upstairs"] = {
 			OnInteract = interactWithSafe,
 			OnLook = function()
 				Event:ShowMessage("That safe looks pretty sturdy.")
-			end
+			end,
+			Mouse = "Hot"
 		},
 		[5] = {
 			Name = "OfficeDoor",
@@ -139,7 +143,8 @@ rooms["Upstairs"] = {
 			OnInteract = function()
 				door("OfficeDoor", "Office", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		}
 	},
 	

@@ -67,6 +67,8 @@ namespace Eglantine.Engine
 
 		public override void Update (GameTime gameTime)
 		{
+			HighlightedTrigger = null;
+
 			if (ReceivingInput && !InputDisabled)
 			{
 				// Don't let the player move around if they're interacting with the GUI
@@ -89,7 +91,7 @@ namespace Eglantine.Engine
 					// Check where the mouse is and what mouse icon to display
 
 					// If the player's mouse is in the walkable area...
-					if(LoadedItem == null)
+					if (LoadedItem == null)
 					{
 						if (MouseManager.LeftClickUp && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable (MouseManager.Position))
 						{
@@ -127,18 +129,28 @@ namespace Eglantine.Engine
 
 			if (!ReceivingInput && LoadedItem != null)
 			{
-				// Clear the loaded item.
+				// Clear the loaded item if this screen loses focus
 				LoadedItem = null;
 			}
 
-			// Now the other updates go here anyways.
+			// Update the current room
 			CurrentRoom.Update (gameTime);
+
+			// If nothing is being hovered over, set the mouse to its normal graphic
+			if (HighlightedTrigger == null && !MouseInGui)
+			{
+				MouseManager.MouseMode = MouseInteractMode.Normal;
+			}
 
 			// Update the player.
 			Player.Update (gameTime);
 
 			// Update the play time.
 			GameState.Instance.AddGameTime (gameTime.ElapsedGameTime.TotalSeconds);
+
+			// Finally, clear the current item if a left click was registered and the mouse is not in the GUI
+			if(MouseManager.LeftClickUp && !MouseInGui)
+				LoadedItem = null;
 		}
 
 		public override void Draw (SpriteBatch spriteBatch)
@@ -180,10 +192,10 @@ namespace Eglantine.Engine
 			Gui.Draw (spriteBatch);
 
 
-			// Draw the mouse current used item if it exists
+			// Draw the current used item if it exists
 			if (LoadedItem != null)
 			{
-				spriteBatch.Draw (LoadedItem.Texture, position: MouseManager.Position, color: Color.White);
+				spriteBatch.Draw (LoadedItem.Texture, position: MouseManager.Position, color: Color.Gold);
 			}
 		}
 

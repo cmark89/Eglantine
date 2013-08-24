@@ -42,7 +42,8 @@ rooms["FrontYard"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("What a creepy looking place...")
-			end
+			end,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "BackYard",
@@ -66,7 +67,8 @@ rooms["FrontYard"] = {
 			OnInteract = function()
 				door("BackYard", "BackYard", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[3] = {
 			Name = "Eglantine",
@@ -91,7 +93,8 @@ rooms["FrontYard"] = {
 			OnInteract = pickFrontYardEglantine,
 			OnLook = function()
 				Event:ShowMessage("Isn't that...?  From the picture?")
-			end
+			end,
+			Mouse = "Hot"
 		}
 	},
 	

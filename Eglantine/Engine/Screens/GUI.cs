@@ -63,11 +63,14 @@ namespace Eglantine.Engine
 
 			if (!AdventureScreen.Instance.InputDisabled)
 			{
+				bool itemHighlighted = false;
 				// Process mouse input
 				for(int i = 0; i < GameState.Instance.PlayerItems.Count; i++)
 				{
 					if(MouseManager.MouseInRect(GetItemRect(i)))
 					{
+						itemHighlighted = true;
+
 						// Use the item if left clicked...
 						if(MouseManager.LeftClickUp)
 							GameState.Instance.PlayerItems[i].Use();
@@ -77,6 +80,9 @@ namespace Eglantine.Engine
 							GameState.Instance.PlayerItems[i].Inspect();
 					}
 				}
+
+				if(itemHighlighted)
+					MouseManager.MouseMode = MouseInteractMode.Hot;
 			}
 		}
 

@@ -41,7 +41,8 @@ rooms["Underground1"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("Maybe I should get out of here...")
-			end
+			end,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "DownRope",
@@ -69,7 +70,8 @@ rooms["Underground1"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("I have a bad feeling about this place...")
-			end
+			end,
+			Mouse = "Leave"
 		}
 	},
 	

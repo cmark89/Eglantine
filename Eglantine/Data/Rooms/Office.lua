@@ -38,7 +38,8 @@ rooms["Office"] = {
 			OnInteract = function()
 				door("Door", "Upstairs", "OfficeDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "CabinetMovementBlocker",
@@ -78,7 +79,8 @@ rooms["Office"] = {
 			},
 			
 			OnInteract = closeBottomDrawer,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[4] = {
 			Name = "TopDrawer_Open",
@@ -100,7 +102,8 @@ rooms["Office"] = {
 			},
 			
 			OnInteract = closeTopDrawer,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[5] = {
 			Name = "TopDrawer_Closed",
@@ -120,7 +123,8 @@ rooms["Office"] = {
 			},
 			
 			OnInteract = openTopDrawer,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[6] = {
 			Name = "BottomDrawer_Closed",
@@ -140,7 +144,8 @@ rooms["Office"] = {
 			},
 			
 			OnInteract = openBottomDrawer,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[7] = {
 			Name = "Blueprints",
@@ -166,7 +171,8 @@ rooms["Office"] = {
 			OnInteract = function()
 				pickup("Blueprints")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Grab"
 		},
 		[8] = {
 			Name = "Strange Notes",
@@ -190,7 +196,8 @@ rooms["Office"] = {
 			OnInteract = function()
 				pickup("Strange Notes")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Grab"
 		},
 		[9] = {
 			Name = "Photograph",
@@ -215,7 +222,8 @@ rooms["Office"] = {
 			OnInteract = function()
 				pickup("Photograph")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Grab"
 		},
 		[10] = {
 			Name = "Journal",
@@ -240,7 +248,8 @@ rooms["Office"] = {
 			OnInteract = function()
 				pickup("Journal")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Grab"
 		}
 	},
 	

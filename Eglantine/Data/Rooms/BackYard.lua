@@ -41,7 +41,9 @@ rooms["BackYard"] = {
 				--Real temporary
 				door("Door", "Kitchen", "BackYardDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "Crowbar",
@@ -68,7 +70,9 @@ rooms["BackYard"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("That looks like it may be useful.")	
-			end
+			end,
+			
+			Mouse = "Grab"
 		},
 		[3] = {
 			Name = "Eglantine",
@@ -95,7 +99,9 @@ rooms["BackYard"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("Sweet briar...never really cared for it.")	
-			end
+			end,
+			
+			Mouse = "Hot"
 		}
 	},
 	

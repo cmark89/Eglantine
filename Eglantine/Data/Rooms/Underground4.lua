@@ -39,7 +39,8 @@ rooms["Underground4"] = {
 			OnInteract = function()
 				Event:ShowMessage("...")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		
 		[2] = {
@@ -86,7 +87,8 @@ rooms["Underground4"] = {
 			},
 
 			OnInteract = interactWithGrave,
-			OnLook = readHeadstone
+			OnLook = readHeadstone,
+			Mouse = "Hot"
 		},
 		[4] = {
 			Name = "Flower1",

@@ -197,12 +197,16 @@ namespace Eglantine.Engine
 				if(currentInteractable["BlocksMovement"] != null)
 					blocksMovement = (bool)currentInteractable["BlocksMovement"];
 
+				string mouseType = "Normal";
+				if(currentInteractable["Mouse"] != null)
+					mouseType = (string)currentInteractable["Mouse"];
+
 				// Build the clickable area
 				if((LuaTable)currentInteractable["Area"] != null)
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement, mouseType));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -211,7 +215,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement, mouseType));
 				}
 			}
 		}

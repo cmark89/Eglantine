@@ -38,10 +38,36 @@ rooms["LivingRoom"] = {
 			},
 
 			OnInteract = interactWithPainting,
-			OnLook = lookAtPainting
+			OnLook = lookAtPainting,
+			Mouse = "Hot"
+		},
+		[2] = {
+			Name = "PaintingDoor",
+			Polygon = {
+				[1] = { X = 230, Y = 99 },
+				[2] = { X = 369, Y = 83 },
+				[3] = { X = 375, Y = 345 },
+				[4] = { X = 231, Y = 372 },
+			},
+				
+			--Make it drawn later so it can be disabled...
+			Enabled = false,
+			Drawn = false,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 324,
+				Y = 424
+			},
+
+			OnInteract = function()
+				door("PaintingDoor", "SecretRoom", "Door")
+			end,
+			OnLook = lookAtPainting,
+			Mouse = "Leave"
 		},
 		
-		[2] = {
+		[3] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 825, Y = 69 },
@@ -62,9 +88,10 @@ rooms["LivingRoom"] = {
 			OnInteract = function ()
 				door("Door", "Foyer", "LivingRoomDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
-		[3] = {
+		[4] = {
 			Name = "TV",
 			Polygon = {
 				[1] = { X = 600, Y = 226 },
@@ -84,9 +111,10 @@ rooms["LivingRoom"] = {
 			},
 
 			OnInteract = interactWithTV,
-			OnLook = lookAtTV
+			OnLook = lookAtTV,
+			Mouse = "Hot"
 		},
-		[4] = {
+		[5] = {
 			Name = "Static1",
 			Area = {
 					X = 604,
@@ -108,7 +136,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[5] = {
+		[6] = {
 			Name = "Static2",
 			Area = {
 					X = 604,
@@ -130,7 +158,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[6] = {
+		[7] = {
 			Name = "Static3",
 			Area = {
 					X = 604,
@@ -152,7 +180,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[7] = {
+		[8] = {
 			Name = "Static4",
 			Area = {
 					X = 604,
@@ -174,7 +202,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[8] = {
+		[9] = {
 			Name = "Static5",
 			Area = {
 					X = 604,
@@ -196,7 +224,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[9] = {
+		[10] = {
 			Name = "Static6",
 			Area = {
 					X = 604,
@@ -218,7 +246,7 @@ rooms["LivingRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[10] = {
+		[11] = {
 			Name = "Tear",
 			Area = {
 					X = 248,
@@ -238,7 +266,8 @@ rooms["LivingRoom"] = {
 			},
 
 			OnInteract = nil,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		}
 	},
 	

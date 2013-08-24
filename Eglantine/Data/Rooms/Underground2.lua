@@ -44,7 +44,8 @@ rooms["Underground2"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("How deep does this go?")
-			end
+			end,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "RopeUp",
@@ -69,7 +70,8 @@ rooms["Underground2"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("I don't think I could leave if I wanted to.")
-			end
+			end,
+			Mouse = "Leave"
 		}
 	},
 	

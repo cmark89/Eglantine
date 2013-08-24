@@ -9,19 +9,17 @@ function lookAtPainting()
 end
 
 function interactWithPainting()
-	if GameState.PaintingOpened then
-		door("Painting", "SecretRoom", "Door")
-	else
-		if Event:UsingItem("Scissors") then
-			runCoroutine(function()
-				Event:MovePlayerTo("Painting")
-				waitUntil("Player stopped")
-				--Here, the player does some cool cutting of the painting
-				Event:PlaySound("Extend")
-				GameState.PaintingOpened = true
-				Event:EnableInteractable("Tear")
-			end)
-		end
+	if Event:UsingItem("Scissors") then
+		runCoroutine(function()
+			Event:MovePlayerTo("Painting")
+			waitUntil("Player stopped")
+			--Here, the player does some cool cutting of the painting
+			Event:PlaySound("Extend")
+			GameState.PaintingOpened = true
+			Event:EnableInteractable("Tear")
+			Event:EnableInteractable("PaintingDoor")
+			Event:DisableInteractable("Painting")
+		end)
 	end
 end
 

@@ -41,7 +41,8 @@ rooms["Bedroom"] = {
 			OnInteract = function()
 				door("HallDoor", "Upstairs", "BedroomDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "BathroomDoor",
@@ -65,7 +66,8 @@ rooms["Bedroom"] = {
 			OnInteract = function()
 				door("BathroomDoor", "Bathroom", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[3] = {
 			Name = "Scissors",
@@ -92,7 +94,8 @@ rooms["Bedroom"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("Good God, what the hell is that...?")
-			end
+			end,
+			Mouse = "Grab"
 		},
 		[4] = {
 			Name = "Trashcan",
@@ -114,7 +117,8 @@ rooms["Bedroom"] = {
 			OnInteract = nil,
 			OnLook = function()
 				Event:ShowMessage("What a mess...")
-			end
+			end,
+			Mouse = "Hot"
 		},
 		
 		[5] = {
@@ -139,7 +143,8 @@ rooms["Bedroom"] = {
 				pickup("Letter")
 			end,
 			
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Grab"
 		},
 		
 		[6] = {

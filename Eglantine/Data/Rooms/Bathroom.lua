@@ -39,7 +39,8 @@ rooms["Bathroom"] = {
 			OnInteract = function()
 				 door("Door", "Bedroom", "BathroomDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "CabinetClosed",
@@ -60,7 +61,8 @@ rooms["Bathroom"] = {
 			},
 
 			OnInteract = openCabinet,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[3] = {
 			Name = "CabinetOpen",
@@ -83,7 +85,8 @@ rooms["Bathroom"] = {
 			},
 
 			OnInteract = closeCabinet,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Hot"
 		},
 		[4] = {
 			Name = "DollHead",
@@ -106,7 +109,8 @@ rooms["Bathroom"] = {
 			OnInteract = interactWithDollHead,
 			OnLook = function()
 				Event:ShowMessage("What the hell is with this place...?")
-			end
+			end,
+			Mouse = "Grab"
 		},
 	},
 	

@@ -40,7 +40,8 @@ rooms["SecretRoom"] = {
 			OnInteract = function()
 				 pickup("Puzzlebox")
 			end,
-			OnLook = lookAtPuzzlebox
+			OnLook = lookAtPuzzlebox,
+			Mouse = "Grab"
 		},
 		
 		[2] = {
@@ -67,7 +68,8 @@ rooms["SecretRoom"] = {
 			end,
 			OnLook = function()
 				Event:ShowMessage("Waste of a good painting...")
-			end
+			end,
+			Mouse = "Leave"
 		},
 		
 		[3] = {
@@ -91,7 +93,8 @@ rooms["SecretRoom"] = {
 			OnInteract = interactWithTrapdoor,
 			OnLook = function()
 				Event:ShowMessage("Wonder what's down there...")
-			end
+			end,
+			Mouse = "Hot"
 		},
 		[4] = {
 			Name = "TrapdoorOpenGraphic",
@@ -142,7 +145,8 @@ rooms["SecretRoom"] = {
 				Event:ShowMessage("Looks pretty dark down there...")
 			end,
 			
-			BlocksMovement = true
+			BlocksMovement = true,
+			Mouse = "Leave"
 		},
 		[6] = {
 			Name = "TrapdoorHatch_Open",
@@ -166,7 +170,8 @@ rooms["SecretRoom"] = {
 			OnInteract = closeTrapdoor,
 			OnLook = nil,
 			
-			BlocksMovement = true
+			BlocksMovement = true,
+			Mouse = "Hot"
 		}
 	},
 	

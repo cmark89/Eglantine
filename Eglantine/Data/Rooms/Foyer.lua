@@ -40,7 +40,8 @@ rooms["Foyer"] = {
 			OnInteract = function()
 				door("FrontDoor", "FrontYard", "FrontDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "KitchenDoor",
@@ -64,7 +65,8 @@ rooms["Foyer"] = {
 			OnInteract = function()
 				door("KitchenDoor", "Kitchen", "FoyerDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[3] = {
 			Name = "Stairs",
@@ -88,7 +90,8 @@ rooms["Foyer"] = {
 			OnInteract = function()
 				door("Stairs", "Upstairs", "Stairs")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[4] = {
 			Name = "LivingRoomDoor",
@@ -112,7 +115,8 @@ rooms["Foyer"] = {
 			OnInteract = function()
 				door("LivingRoomDoor", "LivingRoom", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 	},
 	

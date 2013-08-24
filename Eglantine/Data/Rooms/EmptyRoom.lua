@@ -40,7 +40,8 @@ rooms["EmptyRoom"] = {
 				 door("Door", "Upstairs", "EmptyRoomDoor")
 			end,
 			
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[2] = {
 			Name = "Puzzle Key",
@@ -67,7 +68,8 @@ rooms["EmptyRoom"] = {
 			
 			OnLook = function()
 				Event:ShowMessage("Hey, what's that thing?")
-			end
+			end,
+			Mouse = "Grab"
 		}
 	},
 	

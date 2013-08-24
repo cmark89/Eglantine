@@ -85,7 +85,8 @@ rooms["Kitchen"] = {
 			OnInteract = function()
 				door("BackYardDoor", "BackYard", "Door")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[4] = {
 			Name = "FoyerDoor",
@@ -108,7 +109,8 @@ rooms["Kitchen"] = {
 			OnInteract = function()
 				door("FoyerDoor", "Foyer", "KitchenDoor")
 			end,
-			OnLook = nil
+			OnLook = nil,
+			Mouse = "Leave"
 		},
 		[5] = {
 			Name = "Eglantine",
@@ -132,7 +134,8 @@ rooms["Kitchen"] = {
 			OnInteract = pickKitchenEglantine,
 			OnLook = function()
 				Event:ShowMessage("Okay, this is getting pretty weird...")
-			end
+			end,
+			Mouse = "Hot"
 		}
 	},
 	
