@@ -78,6 +78,7 @@ namespace Eglantine.Engine
 						Trigger thisTrigger = CurrentRoom.Interactables [i - 1];
 						if (thisTrigger.Active && thisTrigger.VectorInArea (MouseManager.Position))
 						{
+							// Set the mouse to be cool
 							HighlightedTrigger = thisTrigger;
 							break;
 						}
@@ -88,11 +89,16 @@ namespace Eglantine.Engine
 					// Check where the mouse is and what mouse icon to display
 
 					// If the player's mouse is in the walkable area...
-					if (MouseManager.LeftClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable (MouseManager.Position))
+					if(LoadedItem == null)
 					{
-						MovePlayer (MouseManager.Position);
+						if (MouseManager.LeftClickUp && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && CurrentRoom.PointIsWalkable (MouseManager.Position))
+						{
+							MovePlayer (MouseManager.Position);
+						}
 					}
-					if (MouseManager.RightClickDown && CurrentRoom.Navmesh.ContainingPolygon (MouseManager.Position) != null && LoadedItem != null)
+
+					
+					if (MouseManager.RightClickUp && LoadedItem != null)
 					{
 						SetActiveItem (null);
 					}
@@ -116,8 +122,13 @@ namespace Eglantine.Engine
 			{
 				Gui.Update (gameTime);
 
-
 				GameScene.Lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			}
+
+			if (!ReceivingInput && LoadedItem != null)
+			{
+				// Clear the loaded item.
+				LoadedItem = null;
 			}
 
 			// Now the other updates go here anyways.
@@ -163,10 +174,17 @@ namespace Eglantine.Engine
 
 			if (drawingVertices)
 			{
-				CurrentRoom.Navmesh.Draw(spriteBatch);
+				CurrentRoom.Navmesh.Draw (spriteBatch);
 			}
 
-			Gui.Draw(spriteBatch);
+			Gui.Draw (spriteBatch);
+
+
+			// Draw the mouse current used item if it exists
+			if (LoadedItem != null)
+			{
+				spriteBatch.Draw (LoadedItem.Texture, position: MouseManager.Position, color: Color.White);
+			}
 		}
 
 		// This method is static to ensure that the EventManager is able to force the player to move.
