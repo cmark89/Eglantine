@@ -202,10 +202,14 @@ namespace Eglantine
 			else
 			{
 				// Handle input for the --inside-- of the box
-				if(!GameState.Instance.PlayerHasItem("Key") && MouseManager.MouseInRect(keyRect) && MouseManager.LeftClickUp)
+				if(!GameState.Instance.PlayerHasItem("Key") && MouseManager.MouseInRect(keyRect))
 				{
-					EventManager.Instance.PlaySound("Extend");
-					EventManager.Instance.GainItem("Key");
+					MouseManager.MouseMode = MouseInteractMode.Grab;
+					if(MouseManager.LeftClickUp)
+					{
+						EventManager.Instance.PlaySound("Extend");
+						EventManager.Instance.GainItem("Key");
+					}
 				}
 			}
 		}
