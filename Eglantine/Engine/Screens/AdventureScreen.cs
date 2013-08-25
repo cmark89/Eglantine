@@ -1,5 +1,6 @@
 using System;
 using Eglantine.Engine;
+using LuaInterface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -61,7 +62,9 @@ namespace Eglantine.Engine
 			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
 			EventManager.Instance.GainItem("Scissors");
 			EventManager.Instance.GainItem("Key");
-			EventManager.Instance.GainItem("Photograph");
+			EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Eglantine");
 			#endif
 		}
 

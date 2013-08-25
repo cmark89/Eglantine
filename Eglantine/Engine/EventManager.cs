@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using LuaInterface;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Eglantine.Engine
 {
@@ -158,7 +159,9 @@ namespace Eglantine.Engine
 		public void SendSignal(string signal)
 		{
 			Console.WriteLine("Send signal: " + signal);
-			GameScene.Lua.DoString("sendSignal(\"" + signal + "\")");
+
+			if(GameScene.Instance != null)
+				GameScene.Lua.DoString("sendSignal(\"" + signal + "\")");
 		}
 
 		// Play a sound effect
@@ -171,6 +174,11 @@ namespace Eglantine.Engine
 		public void PlaySoundLooping(string soundName, float volume = 1f, float pitch = 0f, float pan = 0f)
 		{
 			AudioManager.Instance.PlayLoopingSoundEffect(soundName, volume, pitch, pan);
+		}
+
+		public void FadeMusic (float targetVolume, float duration)
+		{
+			AudioManager.Instance.FadeMusic (targetVolume, duration);
 		}
 
 		public void StopLoopingSoundEffects()
@@ -265,6 +273,35 @@ namespace Eglantine.Engine
 					i.SetType(type);
 			}
 		}
+
+		#region StoryScene events
+
+		public void SetStoryImage(string imagePath, float r = 0, float g = 0, float b = 0, float a = 0)
+		{
+			Console.WriteLine ("Set the story image!");
+			Color newColor = new Color(r,g,b,a);
+
+			Texture2D image = ContentLoader.Instance.LoadTexture2D(imagePath);
+			StoryScene.Instance.SetImage (image, newColor);
+		}
+
+		public void LerpStoryColor(float r, float g, float b, float a, float duration)
+		{
+			StoryScene.Instance.LerpColor (new Color(r,g,b,a), duration);
+		}
+
+		public void ShowStoryMessage(string message, float speed = .07f)
+		{
+			Console.WriteLine ("EVENT: SHOW STORY MESSAGE.");
+			StoryScene.Instance.ShowMessage(message, speed);
+		}
+
+		public void PlayStorySequence(string scriptName)
+		{
+			Eglantine.ChangeScene (new StoryScene(scriptName));
+		}
+
+		#endregion
 	}
 }
 

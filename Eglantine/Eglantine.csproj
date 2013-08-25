@@ -125,6 +125,7 @@
     <Folder Include="Engine\Puzzlebox\" />
     <Folder Include="Content\Graphics\TV\" />
     <Folder Include="Content\Graphics\Mouse\" />
+    <Folder Include="Content\Graphics\Fonts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

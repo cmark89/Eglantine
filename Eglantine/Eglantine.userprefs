@@ -1,30 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/Screens/AdventureScreen.cs">
-    <Files>
-      <File FileName="Eglantine.cs" Line="66" Column="4" />
-      <File FileName="Data/Rooms/Underground4.lua" Line="25" Column="11" />
-      <File FileName="Engine/Screens/AdventureScreen.cs" Line="173" Column="20" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Eglantine" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Content" expanded="True" />
-            <Node name="Data" expanded="True">
-              <Node name="Rooms" expanded="True">
-                <Node name="Office.lua" selected="True" />
-              </Node>
-            </Node>
-            <Node name="Engine" expanded="True">
-              <Node name="Screens" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -101,6 +101,7 @@ namespace Eglantine
 			// Update mouse input.
 			MouseManager.Update(gameTime);
 			KeyboardManager.Update(gameTime);
+			AudioManager.Instance.Update (gameTime);
 
 			currentScene.Update(gameTime);
 

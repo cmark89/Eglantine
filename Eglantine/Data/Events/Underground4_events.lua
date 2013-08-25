@@ -28,7 +28,7 @@ function normalEndingScenario()
 		waitSeconds(3)
 		Event:DisableInteractable("Grave")
 		waitSeconds(4)
-		Event:ShowMessage("GAME OVER!")
+		Event:PlayStorySequence("badEnding");
 	end
 	
 	--If the player honored the dead
@@ -36,8 +36,7 @@ function normalEndingScenario()
 		waitSeconds(4)
 		fadeOutGrave(6)
 		waitSeconds(6)
-		Event:ShowMessage("You win!")
-		--What the hell happens now?
+		Event:PlayStorySequence("goodEnding");
 	end
 end
 

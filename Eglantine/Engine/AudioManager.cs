@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using LuaInterface;
@@ -31,6 +32,13 @@ namespace Eglantine
 		public List<SoundEffectInstance> LoopingSoundEffects;
 		public List<Song> PlayingSongs;
 
+		// For lerping music
+		bool lerpingMusic;
+		float musicLerpTime;
+		float musicLerpDuration;
+		float startVolume;
+		float endVolume;
+
 		public AudioManager ()
 		{
 		}
@@ -42,6 +50,22 @@ namespace Eglantine
 			LoadSoundEffects();
 			LoadSongs();
 		}
+
+		public void Update (GameTime gameTime)
+		{
+			if (lerpingMusic)
+			{
+				musicLerpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+				MediaPlayer.Volume = startVolume - (startVolume - endVolume) * musicLerpTime / musicLerpDuration;
+
+				if(musicLerpTime >= musicLerpDuration)
+				{
+					lerpingMusic = false;
+					MediaPlayer.Volume = endVolume;
+				}
+			}
+		}
+
 
 		public void LoadSoundEffects()
 		{
@@ -77,7 +101,7 @@ namespace Eglantine
 				try
 				{
 					newSongName = (string)songTable[i+1];
-					newSong = ContentLoader.Instance.Load<Song>("Audio/Music/" + newSongName);
+					newSong = ContentLoader.Instance.Load<Song>("Audio/Music/" + newSongName + ".wav");
 					Songs.Add(newSongName, newSong);
 				}
 				catch(Exception e)
@@ -132,13 +156,28 @@ namespace Eglantine
 			if (Songs.ContainsKey (songName))
 			{
 				MediaPlayer.Volume = volume * musicVolume;
-				MediaPlayer.IsRepeating = true;
+				MediaPlayer.IsRepeating = looping;
 				MediaPlayer.Play(Songs[songName]);
-				SoundEffects[songName].Play(volume * sfxVolume, pitch, pan);
+
 			} else
 			{
 				Console.WriteLine("Song " + songName + " not found!");
 			}
+		}
+
+		public void StopMusic()
+		{
+			MediaPlayer.Stop ();
+		}
+
+		public void FadeMusic(float targetVolume, float duration)
+		{
+			startVolume = MediaPlayer.Volume;
+			endVolume = targetVolume;
+			musicLerpDuration = duration;
+			musicLerpTime = 0f;
+
+			lerpingMusic = true;
 		}
 	}
 }
