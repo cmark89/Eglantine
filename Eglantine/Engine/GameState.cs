@@ -61,6 +61,9 @@ namespace Eglantine.Engine
 		public Texture2D TVImage;
 		public string TVImageName;
 
+		// This is used for save journaling
+		private int gameID;
+
 		#endregion
 
 		#region Setup, Creation and Loading
@@ -105,7 +108,9 @@ namespace Eglantine.Engine
 			// Set the player's position to the first entrance in the first room.
 			Player.Instance.SetPosition(CurrentRoom.Entrances[0].Point);
 
-			// Initialize all other progress related values here...
+			// Generate a (hopefully) unique game ID for save journaling
+			gameID = new Random().Next (int.MaxValue);
+
 		}
 
 		// Load a gamestate from file in order to resume the game
@@ -172,6 +177,43 @@ namespace Eglantine.Engine
 
 			// Now that everything's ready, save the game state.
 			Serializer.Serialize<GameState>(targetFile, Instance);
+
+			// Finally, update the save journal
+			SaveJournal.AddSaveEntry (gameID, PlayTime, GetItemMask(), CurrentRoom.Name);
+		}
+
+		// I did it!  I found a way to use a bitmask in the game!
+		public int GetItemMask ()
+		{
+			int mask = 0;
+
+			// Tools
+			if (PlayerHasItem ("Scissors")) mask = mask | ItemID.Scissors;
+			if (PlayerHasItem ("Crowbar")) mask = mask | ItemID.Crowbar;
+
+			// Documents
+			if (PlayerHasItem ("Journal")) mask = mask | ItemID.Journal;
+			if (PlayerHasItem ("Strange Notes")) mask = mask |  ItemID.Notes;
+			if (PlayerHasItem ("Blueprints")) mask = mask | ItemID.Blueprints;
+			if (PlayerHasItem ("Letter")) mask = mask | ItemID.Letter;
+			if (PlayerHasItem ("Photograph")) mask = mask |  ItemID.Photograph;
+			if (PlayerHasItem ("Folded Note")) mask = mask | ItemID.FoldedNote;
+
+			// Key items
+			if (PlayerHasItem ("Puzzlebox"))mask = mask |  ItemID.Puzzlebox;
+			if (PlayerHasItem ("Strange Coin"))mask = mask | ItemID.Coin;
+			if (PlayerHasItem ("Puzzle Key") || PuzzleboxState.KeyInserted)
+				mask += (1 << ItemID.Puzzlekey);
+			if (PlayerHasItem ("Key") || TrapdoorUnlocked)
+				mask += (1 << ItemID.Key);
+
+			// Flowers
+			for (int i = 0; i < PlayerItems.FindAll(x => x.Name == "Eglantine").Count; i++)
+			{
+				mask = mask | (ItemID.Eglantine << i);
+			}
+
+			return mask;
 		}
 
 		#endregion

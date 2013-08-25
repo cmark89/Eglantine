@@ -131,5 +131,26 @@ namespace Eglantine.Engine
 		Immediate,	// Instant use, usable on itself
 		Unusable	// Has no obvious use
 	}
+
+	public enum ItemID
+	{
+		Scissors = 1,
+		Crowbar = 2,
+
+		Journal = 4,
+		Notes = 8,
+		Blueprints = 16,
+		Letter = 32,
+		Photograph = 64,
+		FoldedNote = 128,
+
+		Puzzlebox = 256,
+		Puzzlekey = 512,
+		Coin = 1024,
+		Key = 2048,
+
+		Eglantine = 4092
+
+	}
 }
 
