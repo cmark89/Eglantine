@@ -13,18 +13,26 @@ namespace Eglantine
 	[Serializable]
 	public class SaveJournal
 	{
-		private const string SAVE_PATH = "Save/";
-		private const string JOURNAL_FILE_PATH = "savedata.sj";
+		public const string SAVE_PATH = "Save/";
+		public const string JOURNAL_FILE_PATH = "savelog.bin";
 		private static SaveJournal _instance;
 		private static int SaveFiles = 0;
-		public Dictionary<string, SaveEntry> SaveData = new Dictionary<string, SaveEntry>();
+		public Dictionary<int, SaveEntry> SaveData = new Dictionary<int, SaveEntry>();
 
+		public static void CreateNewJournal()
+		{
+			_instance = new SaveJournal();
+			_instance.SaveData = new Dictionary<int, SaveEntry>();
+			SerializeJournal();
+		}
 
-		public static void DeserializeJournal()
+		public static SaveJournal DeserializeJournal()
 		{
 			// Deserialize the save journal file.
 			_instance = Serializer.Deserialize<SaveJournal> (SAVE_PATH + JOURNAL_FILE_PATH);
 			SaveFiles = _instance.SaveData.Keys.Count;
+
+			return _instance;
 		}
 
 		public static void SerializeJournal()
@@ -37,7 +45,7 @@ namespace Eglantine
 		{
 			// First, check to see if the game ID exists in the dictionary
 			SaveEntry thisEntry = null;
-			foreach (KeyValuePair<string, SaveEntry> k in SaveData)
+			foreach (KeyValuePair<int, SaveEntry> k in _instance.SaveData)
 			{
 				if (k.Value.ID == id)
 				{
@@ -55,14 +63,14 @@ namespace Eglantine
 			// The ID does not exist, so create a new entry
 			else
 			{
-				SaveFiles++;
-				string fileName = String.Concat (SAVE_PATH, "save_", SaveFiles);
-				SaveData.Add (fileName, new SaveEntry(fileName, gameTime, itemMask, currentRoom));
+				string fileName = String.Concat (SAVE_PATH, "save", SaveFiles);
+				_instance.SaveData.Add (SaveFiles, new SaveEntry(fileName, id, gameTime, itemMask, currentRoom));
 				SerializeJournal ();
+				SaveFiles++;
 			}
 		}
 
-		public static Dictionary<string, SaveEntry> GetSaveData()
+		public static Dictionary<int, SaveEntry> GetSaveData()
 		{
 			return _instance.SaveData;
 		}

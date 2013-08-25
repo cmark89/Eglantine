@@ -179,7 +179,7 @@ namespace Eglantine.Engine
 			Serializer.Serialize<GameState>(targetFile, Instance);
 
 			// Finally, update the save journal
-			SaveJournal.AddSaveEntry (gameID, PlayTime, GetItemMask(), CurrentRoom.Name);
+			SaveJournal.AddSaveEntry (Instance.gameID, (float)Instance.PlayTime, Instance.GetItemMask(), Instance.CurrentRoom.Name);
 		}
 
 		// I did it!  I found a way to use a bitmask in the game!
@@ -188,29 +188,29 @@ namespace Eglantine.Engine
 			int mask = 0;
 
 			// Tools
-			if (PlayerHasItem ("Scissors")) mask = mask | ItemID.Scissors;
-			if (PlayerHasItem ("Crowbar")) mask = mask | ItemID.Crowbar;
+			if (PlayerHasItem ("Scissors")) mask = mask | (int)ItemID.Scissors;
+			if (PlayerHasItem ("Crowbar")) mask = mask | (int)ItemID.Crowbar;
 
 			// Documents
-			if (PlayerHasItem ("Journal")) mask = mask | ItemID.Journal;
-			if (PlayerHasItem ("Strange Notes")) mask = mask |  ItemID.Notes;
-			if (PlayerHasItem ("Blueprints")) mask = mask | ItemID.Blueprints;
-			if (PlayerHasItem ("Letter")) mask = mask | ItemID.Letter;
-			if (PlayerHasItem ("Photograph")) mask = mask |  ItemID.Photograph;
-			if (PlayerHasItem ("Folded Note")) mask = mask | ItemID.FoldedNote;
+			if (PlayerHasItem ("Journal")) mask = mask | (int)ItemID.Journal;
+			if (PlayerHasItem ("Strange Notes")) mask = mask |  (int)ItemID.Notes;
+			if (PlayerHasItem ("Blueprints")) mask = mask | (int)ItemID.Blueprints;
+			if (PlayerHasItem ("Letter")) mask = mask | (int)ItemID.Letter;
+			if (PlayerHasItem ("Photograph")) mask = mask |  (int)ItemID.Photograph;
+			if (PlayerHasItem ("Folded Note")) mask = mask | (int)ItemID.FoldedNote;
 
 			// Key items
-			if (PlayerHasItem ("Puzzlebox"))mask = mask |  ItemID.Puzzlebox;
-			if (PlayerHasItem ("Strange Coin"))mask = mask | ItemID.Coin;
+			if (PlayerHasItem ("Puzzlebox"))mask = mask |  (int)ItemID.Puzzlebox;
+			if (PlayerHasItem ("Strange Coin"))mask = mask | (int)ItemID.Coin;
 			if (PlayerHasItem ("Puzzle Key") || PuzzleboxState.KeyInserted)
-				mask += (1 << ItemID.Puzzlekey);
+				mask += (1 << (int)ItemID.Puzzlekey);
 			if (PlayerHasItem ("Key") || TrapdoorUnlocked)
-				mask += (1 << ItemID.Key);
+				mask += (1 << (int)ItemID.Key);
 
 			// Flowers
 			for (int i = 0; i < PlayerItems.FindAll(x => x.Name == "Eglantine").Count; i++)
 			{
-				mask = mask | (ItemID.Eglantine << i);
+				mask = mask | ((int)ItemID.Eglantine << i);
 			}
 
 			return mask;

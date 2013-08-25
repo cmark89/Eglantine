@@ -96,6 +96,7 @@
     <Compile Include="Engine\SaveJournal.cs" />
     <Compile Include="Engine\SaveEntry.cs" />
     <Compile Include="Engine\SaveManager.cs" />
+    <Compile Include="Scenes\StoryScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
