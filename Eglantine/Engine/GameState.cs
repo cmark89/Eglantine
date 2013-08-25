@@ -111,6 +111,15 @@ namespace Eglantine.Engine
 			// Generate a (hopefully) unique game ID for save journaling
 			gameID = new Random().Next (int.MaxValue);
 
+#if DEBUG
+			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
+			//EventManager.Instance.GainItem("Scissors");
+			//EventManager.Instance.GainItem("Key");
+			//EventManager.Instance.GainItem("Eglantine");
+			//EventManager.Instance.GainItem("Eglantine");
+			//EventManager.Instance.GainItem("Eglantine");
+#endif
+
 		}
 
 		// Load a gamestate from file in order to resume the game
@@ -153,7 +162,7 @@ namespace Eglantine.Engine
 		}
 
 		// Save a gamestate to file
-		public static void SaveState (string targetFile)
+		public static void SaveState ()
 		{
 			// Prepare to save player position to file
 			Instance.PlayerPosition = Player.Instance.Position;
@@ -175,11 +184,11 @@ namespace Eglantine.Engine
 				d.PrepareForSerialization();
 			}
 
+			// Update the save journal
+			string targetFile = SaveJournal.AddSaveEntry (Instance.gameID, (float)Instance.PlayTime, Instance.GetItemMask(), Instance.CurrentRoom.Name);
+
 			// Now that everything's ready, save the game state.
 			Serializer.Serialize<GameState>(targetFile, Instance);
-
-			// Finally, update the save journal
-			SaveJournal.AddSaveEntry (Instance.gameID, (float)Instance.PlayTime, Instance.GetItemMask(), Instance.CurrentRoom.Name);
 		}
 
 		// I did it!  I found a way to use a bitmask in the game!
@@ -203,9 +212,9 @@ namespace Eglantine.Engine
 			if (PlayerHasItem ("Puzzlebox"))mask = mask |  (int)ItemID.Puzzlebox;
 			if (PlayerHasItem ("Strange Coin"))mask = mask | (int)ItemID.Coin;
 			if (PlayerHasItem ("Puzzle Key") || PuzzleboxState.KeyInserted)
-				mask += (1 << (int)ItemID.Puzzlekey);
+				mask = mask | (int)ItemID.Puzzlekey;
 			if (PlayerHasItem ("Key") || TrapdoorUnlocked)
-				mask += (1 << (int)ItemID.Key);
+				mask = mask | (int)ItemID.Key;
 
 			// Flowers
 			for (int i = 0; i < PlayerItems.FindAll(x => x.Name == "Eglantine").Count; i++)

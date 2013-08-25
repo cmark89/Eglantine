@@ -57,15 +57,6 @@ namespace Eglantine.Engine
 			//Console.WriteLine("Load setup.lua...");
 			//Eglantine.Lua.DoFile("Data/setup.lua");
 			//Console.WriteLine("setup.lua should have loaded.");
-
-			#if DEBUG
-			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
-			EventManager.Instance.GainItem("Scissors");
-			EventManager.Instance.GainItem("Key");
-			EventManager.Instance.GainItem("Eglantine");
-			EventManager.Instance.GainItem("Eglantine");
-			EventManager.Instance.GainItem("Eglantine");
-			#endif
 		}
 
 		public override void Update (GameTime gameTime)
@@ -114,11 +105,12 @@ namespace Eglantine.Engine
 				if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
 				{
 					Console.WriteLine ("Saved state to: test.sav");
-					GameState.SaveState ("test.sav");
+					GameState.SaveState ();
 				}
 				else if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
 				{
-					Eglantine.ChangeScene (new GameScene (GameState.LoadState ("test.sav")));
+					//Eglantine.ChangeScene (new GameScene (GameState.LoadState ("test.sav")));
+					SaveManager.Shown = !SaveManager.Shown;
 				}
 #endif
 			}

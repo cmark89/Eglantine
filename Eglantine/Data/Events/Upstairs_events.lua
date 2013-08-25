@@ -8,6 +8,7 @@ function interactWithSafe()
 		Event:OpenSafe()
 		waitUntil("Safe closed")
 		if Event:PlayerHasItem("Key") and not GameState.KitchenWindowBroken then
+			GameState.KitchenWindowBroken = true
 			Event:DisableSaving()
 			waitSeconds(3)
 			breakGlassInKitchen()
@@ -18,5 +19,4 @@ end
 
 function breakGlassInKitchen()
 	Event:PlaySound("windowbreak")
-	GameState.KitchenWindowBroken = true
 end

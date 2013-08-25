@@ -63,6 +63,7 @@ namespace Eglantine
 
 			//EventManager.Initialize();
 			AudioManager.Instance.Initialize();
+			SaveManager.Initialize ();
 			MouseManager.Initialize ();
 
 #if DEBUG
@@ -103,6 +104,11 @@ namespace Eglantine
 			KeyboardManager.Update(gameTime);
 			AudioManager.Instance.Update (gameTime);
 
+#if DEBUG
+			if(SaveManager.Shown)
+				SaveManager.Update (gameTime);
+#endif
+
 			currentScene.Update(gameTime);
 
 			// For the love of GOD find a way to split this between screens, this is broken as it is
@@ -125,6 +131,14 @@ namespace Eglantine
 
 			spriteBatch.Begin ();
 			currentScene.Draw(spriteBatch);
+
+#if DEBUG
+			if(SaveManager.Shown)
+				SaveManager.Draw (spriteBatch);
+#endif
+
+			MouseManager.DrawMouse(spriteBatch);
+
 			spriteBatch.End ();
             
 			base.Draw (gameTime);

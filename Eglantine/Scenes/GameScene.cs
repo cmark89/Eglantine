@@ -138,8 +138,6 @@ namespace Eglantine
 			}
 			//for(int i = GameScreens.Count; i > 0; i--)
 				//GameScreens[i-1].Draw(spriteBatch);
-
-			MouseManager.DrawMouse(spriteBatch);
 		}
 
 		public override void Unload()

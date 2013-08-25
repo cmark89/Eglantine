@@ -84,7 +84,7 @@ end
 
 function badEnding()
 	runCoroutine(function()
-
+		Event:PlaySong("Bloom, Discord")
 		waitSeconds(2)
 		Event:ShowStoryMessage("That was when I came face to face with it.")
 		waitUntil("Messages read")
@@ -124,7 +124,7 @@ end
 
 function goodEnding()
 	runCoroutine(function()
-
+		Event:PlaySong("Bloom, Discord - Sweet Briar Version")
 		waitSeconds(2)
 		Event:ShowStoryMessage("I don't know why I did what I did.")
 		Event:ShowStoryMessage("As I put the last of the flowers on the grave -- a grave that could not have actually been there -- something happened.")

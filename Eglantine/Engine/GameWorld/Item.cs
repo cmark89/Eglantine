@@ -149,7 +149,7 @@ namespace Eglantine.Engine
 		Coin = 1024,
 		Key = 2048,
 
-		Eglantine = 4092
+		Eglantine = 4096
 
 	}
 }

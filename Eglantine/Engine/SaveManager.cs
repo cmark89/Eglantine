@@ -9,26 +9,28 @@ namespace Eglantine.Engine
 	public class SaveManager
 	{
 		private static SaveJournal journal;
+		public static bool Shown = false;
 
 		static Dictionary<string, Texture2D> stampTextures;
 		static Dictionary<string, Texture2D> itemIcons;
 		// Content used for displaying save files
 		static Texture2D saveFrameTexture;
-		static Texture2D backyardStampTexture;
-		static Texture2D bathroomStampTexture;
-		static Texture2D bedroomStampTexture;
-		static Texture2D emptyRoomStampTexture;
-		static Texture2D foyerStampTexture;
-		static Texture2D frontYardStampTexture;
 
 		static SpriteFont timeFont;
 
+		private static int startX;
 		const int Y_PADDING = 15;
 
 
 		public SaveManager ()
 		{
 
+		}
+
+		public void ToggleLoadScreen()
+		{
+			EventManager.Instance.PlaySound ("pageturn");
+			Shown = !Shown;
 		}
 
 		public static void Initialize ()
@@ -48,6 +50,9 @@ namespace Eglantine.Engine
 
 			// Now grab the save journal from file.
 			journal = SaveJournal.DeserializeJournal ();
+			LoadContent ();
+
+			startX = (Eglantine.GAME_WIDTH - saveFrameTexture.Width) / 2;
 		}
 
 		public static void LoadContent()
@@ -96,18 +101,26 @@ namespace Eglantine.Engine
 		}
 
 
-		public void Update (GameTime gameTime)
+		public static void Update (GameTime gameTime)
 		{
+			if(!Shown)
+				return;
+
 			for (int i = 0; i < journal.SaveData.Keys.Count; i++)
 			{
-				if(GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y) && MouseManager.LeftClickUp)
+				if(GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
 				{
-					Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData[i].FileName)));
+					MouseManager.MouseMode = MouseInteractMode.Hot;
+					if(MouseManager.LeftClickUp)
+					{
+						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData[i].FileName)));
+						Shown = false;
+					}
 				}
 			}
 		}
 
-		public Rectangle GetSaveRect (int i)
+		public static Rectangle GetSaveRect (int i)
 		{
 			int x = 0;
 			int y = 0 + (Y_PADDING + saveFrameTexture.Height) * i;
@@ -117,19 +130,22 @@ namespace Eglantine.Engine
 			return new Rectangle(x, y, width, height);
 		}
 
-		public void Draw (SpriteBatch spriteBatch)
+		public static void Draw (SpriteBatch spriteBatch)
 		{
+			if(!Shown)
+				return;
+
 			Vector2 drawPoint = Vector2.Zero;
 			for (int i = 0; i < journal.SaveData.Keys.Count; i++)
 			{
-				drawPoint = new Vector2(0, (saveFrameTexture.Height + Y_PADDING) * i);
+				drawPoint = new Vector2(startX, (saveFrameTexture.Height + Y_PADDING) * i);
 				SaveEntry thisEntry = journal.SaveData[i];
 
 				// Draw the background
 				spriteBatch.Draw (saveFrameTexture, position: drawPoint, color:Color.White);
 
 				// Now write the time
-				spriteBatch.DrawString (timeFont, ParseTime(thisEntry.GameTime), drawPoint + new Vector2(361,33), color: Color.DarkBlue);
+				spriteBatch.DrawString (timeFont, ParseTime(thisEntry.GameTime), drawPoint + new Vector2(361,8), color: Color.DarkBlue);
 
 				// Draw the stamp
 				spriteBatch.Draw (stampTextures[thisEntry.CurrentRoom], position: drawPoint + new Vector2(10, 10), color: Color.White);
@@ -140,71 +156,78 @@ namespace Eglantine.Engine
 
 				Texture2D thisTexture;
 
-				Vector2 thisIcon = drawPoint + new Vector2(210, 92);
-				if((mask & (int)ItemID.Scissors) > 0) thisTexture = itemIcons["Scissors"]; else thisTexture = itemIcons["Blank"];
+				Vector2 thisIcon = drawPoint + new Vector2(202, 92);
+				if((mask & (int)ItemID.Scissors) != 0) thisTexture = itemIcons["Scissors"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(210, 114);
-				if((mask & (int)ItemID.Crowbar) > 0) thisTexture = itemIcons["Crowbar"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(202, 114);
+				if((mask & (int)ItemID.Crowbar) != 0) thisTexture = itemIcons["Crowbar"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(301, 92);
-				if((mask & (int)ItemID.Journal) > 0) thisTexture = itemIcons["Journal"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(293, 92);
+				if((mask & (int)ItemID.Journal) != 0) thisTexture = itemIcons["Journal"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(301, 114);
-				if((mask & (int)ItemID.Notes) > 0) thisTexture = itemIcons["Notes"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(293, 114);
+				if((mask & (int)ItemID.Notes) != 0) thisTexture = itemIcons["Notes"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(339, 92);
-				if((mask & (int)ItemID.Blueprints) > 0) thisTexture = itemIcons["Blueprints"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(331, 92);
+				if((mask & (int)ItemID.Blueprints) != 0) thisTexture = itemIcons["Blueprints"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(339, 114);
-				if((mask & (int)ItemID.Letter) > 0) thisTexture = itemIcons["Letter"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(331, 114);
+				if((mask & (int)ItemID.Letter) != 0) thisTexture = itemIcons["Letter"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(376, 92);
-				if((mask & (int)ItemID.Photograph) > 0) thisTexture = itemIcons["Photograph"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(368, 92);
+				if((mask & (int)ItemID.Photograph) != 0) thisTexture = itemIcons["Photograph"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(376, 114);
-				if((mask & (int)ItemID.FoldedNote) > 0) thisTexture = itemIcons["FoldedNote"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(368, 114);
+				if((mask & (int)ItemID.FoldedNote) != 0) thisTexture = itemIcons["FoldedNote"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(467, 92);
-				if((mask & (int)ItemID.Puzzlebox) > 0) thisTexture = itemIcons["Puzzlebox"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(459, 92);
+				if((mask & (int)ItemID.Puzzlebox) != 0) thisTexture = itemIcons["Puzzlebox"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
-				thisIcon = drawPoint + new Vector2(467, 114);
-				if((mask & (int)ItemID.Puzzlekey) > 0) thisTexture = itemIcons["Puzzlekey"]; else thisTexture = itemIcons["Blank"];
+				thisIcon = drawPoint + new Vector2(459, 114);
+				if((mask & (int)ItemID.Puzzlekey) != 0) thisTexture = itemIcons["Puzzlekey"]; else thisTexture = itemIcons["Blank"];
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+
+				thisIcon = drawPoint + new Vector2(498, 92);
+				if((mask & (int)ItemID.Coin) != 0) thisTexture = itemIcons["Coin"]; else thisTexture = itemIcons["Blank"];
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				
+				thisIcon = drawPoint + new Vector2(498, 114);
+				if((mask & (int)ItemID.Key) != 0) thisTexture = itemIcons["Key"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
 				thisIcon = drawPoint + new Vector2(607, 86);
-				if((mask & ((int)ItemID.Eglantine << 0)) > 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
+				if((mask & ((int)ItemID.Eglantine << 0)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
 				thisIcon = drawPoint + new Vector2(607, 105);
-				if((mask & ((int)ItemID.Eglantine << 1)) > 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
+				if((mask & ((int)ItemID.Eglantine << 1)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
 				thisIcon = drawPoint + new Vector2(607, 122);
-				if((mask & ((int)ItemID.Eglantine << 2)) > 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
+				if((mask & ((int)ItemID.Eglantine << 2)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
 				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
 
 			}
 		}
 
 
-		public string ParseTime(float time)
+		public static string ParseTime(float time)
 		{
-			int hours = (int)(time / 3600);
+			int totalSeconds = (int)time;
+			int totalMinutes = (int)totalSeconds / 60;
 
-			int minutes = (int)(time - (hours * 3600) / 60);
-
-			int seconds = (int)(time - (hours * 3600) - (minutes * 60));
-
-			Console.WriteLine ("Time is " + hours + " : " + minutes + " : " + seconds);
+			int hours = (int)totalMinutes / 60;
+			int minutes = totalMinutes - (hours * 60);
+			int seconds = totalSeconds - (minutes * 60) - (hours * 3600);
 
 			return String.Format ("{0:D}:{1:D2}:{2:D2}", hours, minutes, seconds);
 		}

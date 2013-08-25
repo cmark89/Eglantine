@@ -1,6 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/SaveJournal.cs">
+    <Files>
+      <File FileName="Engine/SaveJournal.cs" Line="11" Column="20" />
+      <File FileName="Engine/SaveManager.cs" Line="204" Column="29" />
+      <File FileName="Engine/GameState.cs" Line="217" Column="35" />
+      <File FileName="Engine/GameWorld/Item.cs" Line="150" Column="14" />
+      <File FileName="Engine/Screens/AdventureScreen.cs" Line="208" Column="30" />
+      <File FileName="Data/Events/Story_events.lua" Line="127" Column="57" />
+      <File FileName="Data/audio_assets.lua" Line="31" Column="40" />
+      <File FileName="Engine/Screens/SafeScreen.cs" Line="224" Column="52" />
+      <File FileName="Data/Events/Upstairs_events.lua" Line="21" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
