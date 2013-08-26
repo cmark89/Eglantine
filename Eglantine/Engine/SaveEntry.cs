@@ -11,6 +11,12 @@ namespace Eglantine
 		public int ItemMask { get; private set; }
 		public string CurrentRoom {get; private set; }
 
+		private bool _flaggedForRemoval = false;
+		public bool FalggedForRemoval {
+			get { return _flaggedForRemoval; }
+			private set { _flaggedForRemoval = value; }
+		}
+
 		public SaveEntry (string fileName, int id, float gameTime, int itemMask, string currentRoom)
 		{
 			FileName = fileName;
@@ -25,6 +31,11 @@ namespace Eglantine
 			GameTime = gameTime;
 			ItemMask = itemMask;
 			CurrentRoom = currentRoom;
+		}
+
+		public void ClearEntry()
+		{
+			_flaggedForRemoval = true;
 		}
 	}
 }

@@ -6,6 +6,7 @@
 
 
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace Eglantine
@@ -31,6 +32,8 @@ namespace Eglantine
 			// Deserialize the save journal file.
 			_instance = Serializer.Deserialize<SaveJournal> (SAVE_PATH + JOURNAL_FILE_PATH);
 			SaveFiles = _instance.SaveData.Keys.Count;
+			VerifyIntegrity();
+			AlignIndexes ();
 
 			return _instance;
 		}
@@ -39,6 +42,10 @@ namespace Eglantine
 		{
 			// Serialize the save journal file.
 			Serializer.Serialize<SaveJournal>(SAVE_PATH + JOURNAL_FILE_PATH, _instance);
+
+			// Load the serialized file into memory and immediately perform alignment operations on it
+			//VerifyIntegrity();
+			//AlignIndexes ();
 		}
 
 		// This returns the file name assigned to the save
@@ -67,9 +74,11 @@ namespace Eglantine
 			// The ID does not exist, so create a new entry
 			else
 			{
+
 				fileName = String.Concat ("save", SaveFiles, ".sav");
 				_instance.SaveData.Add (SaveFiles, new SaveEntry(fileName, id, gameTime, itemMask, currentRoom));
 				SerializeJournal ();
+
 				SaveFiles++;
 			}
 
@@ -80,6 +89,54 @@ namespace Eglantine
 		public static Dictionary<int, SaveEntry> GetSaveData()
 		{
 			return _instance.SaveData;
+		}
+
+		// Verify that the SaveJournal is properly built and refers to existing files
+		public static void VerifyIntegrity ()
+		{
+			List<int> invalidIndexes = new List<int> ();
+			foreach (KeyValuePair<int, SaveEntry> k in _instance.SaveData)
+			{
+				if (!File.Exists (SAVE_PATH + k.Value.FileName))
+				{
+					Console.WriteLine ("Could not find " + k.Value.FileName + ".  Removing from journal.");
+
+					// If the save file no longer exists, flag it for removal
+					k.Value.ClearEntry ();
+					invalidIndexes.Add (k.Key);
+				}
+				else
+				{
+					Console.WriteLine (k.Value.FileName + " successfully read by journal.");
+				}
+			}
+
+			// Now loop over all elements and remove the ones that are no longer needed.
+			foreach (int i in invalidIndexes)
+			{
+				_instance.SaveData.Remove(i);
+			}
+
+			// Finally, update the save file count
+			SaveFiles = _instance.SaveData.Count;
+		}
+
+		// Adjusts the indexes of all save files and aligns them neatly in the journal
+		public static void AlignIndexes ()
+		{
+			Dictionary<int, SaveEntry> aligned = new Dictionary<int, SaveEntry>();
+
+			int i = 0;
+			SaveEntry temp;
+
+			foreach (KeyValuePair<int, SaveEntry> k in _instance.SaveData)
+			{
+				temp = k.Value;
+				aligned[i] = temp;
+				i++;
+			}
+
+			_instance.SaveData = aligned;
 		}
 	}
 }
