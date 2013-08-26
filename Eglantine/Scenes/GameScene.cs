@@ -148,6 +148,7 @@ namespace Eglantine
 		public void AddScreen(Screen screen)
 		{
 			GameScreens.Add(screen);
+			AdventureScreen.Instance.OneFrameInputDisable();
 		}
 
 		public void RemoveFinishedScreens ()

@@ -35,6 +35,8 @@ namespace Eglantine.Engine
 		public Item LoadedItem { get; private set; }
 		public Trigger HighlightedTrigger { get; private set;}
 
+		private bool loadingFinished = false;
+
 		public bool MouseInGui 
 		{
 			get { return Gui.MouseInGUI; } 
@@ -62,6 +64,12 @@ namespace Eglantine.Engine
 
 		public override void Update (GameTime gameTime)
 		{
+			if (!loadingFinished)
+			{
+				loadingFinished = true;
+				return;
+			}
+
 			HighlightedTrigger = null;
 
 			if (ReceivingInput && !InputDisabled)
@@ -177,11 +185,6 @@ namespace Eglantine.Engine
 			foreach (RoomLayer rl in CurrentRoom.Foreground)
 				rl.Draw (spriteBatch);
 
-			if (drawingVertices)
-			{
-				CurrentRoom.Navmesh.Draw (spriteBatch);
-			}
-
 			Gui.Draw (spriteBatch);
 
 
@@ -216,6 +219,11 @@ namespace Eglantine.Engine
 		public void SetActiveItem(Item i)
 		{
 			LoadedItem = i;
+		}
+
+		public void OneFrameInputDisable()
+		{
+			loadingFinished = false;
 		}
 	}
 }
