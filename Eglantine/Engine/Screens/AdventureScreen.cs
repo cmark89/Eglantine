@@ -42,6 +42,7 @@ namespace Eglantine.Engine
 
 		// Used to force vertices to draw
 		private bool drawingVertices = false;
+		private bool paused = false;
 
 
 		public override void Initialize()
@@ -100,18 +101,11 @@ namespace Eglantine.Engine
 					}
 				}
 
-#if DEBUG
-				// Big testing
-				if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
+				// Call the menu!
+				if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.Escape))
 				{
-					GameState.SaveState ();
+					GameScene.Instance.AddScreen (new MenuScreen ());
 				}
-				else if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
-				{
-					//Eglantine.ChangeScene (new GameScene (GameState.LoadState ("test.sav")));
-					SaveManager.ToggleLoadScreen();
-				}
-#endif
 			}
 
 			if (ReceivingInput)
@@ -136,11 +130,16 @@ namespace Eglantine.Engine
 				MouseManager.MouseMode = MouseInteractMode.Normal;
 			}
 
-			// Update the player.
-			Player.Update (gameTime);
+			if (ReceivingInput)
+			{
+				// Update the player.
+				Player.Update (gameTime);
 
-			// Update the play time.
-			GameState.Instance.AddGameTime (gameTime.ElapsedGameTime.TotalSeconds);
+				// Update the play time.
+				GameState.Instance.AddGameTime (gameTime.ElapsedGameTime.TotalSeconds);
+			}
+
+
 
 			// Finally, clear the current item if a left click was registered and the mouse is not in the GUI
 			if(MouseManager.LeftClickUp && !MouseInGui)

@@ -97,6 +97,7 @@
     <Compile Include="Engine\SaveEntry.cs" />
     <Compile Include="Engine\SaveManager.cs" />
     <Compile Include="Scenes\StoryScene.cs" />
+    <Compile Include="Engine\Screens\MenuScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -800,6 +801,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Client\CloseButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\ExitButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\ResumeButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\SaveButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\LoadButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

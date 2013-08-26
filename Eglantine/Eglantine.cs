@@ -24,7 +24,7 @@ namespace Eglantine
 		public const int GAME_WIDTH = 1024;
 		public const int GAME_HEIGHT = 700;
 
-
+		private static Eglantine _thisGame;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
@@ -36,6 +36,8 @@ namespace Eglantine
 
 		public Eglantine ()
 		{
+			_thisGame = this;
+
 			IsMouseVisible = false;
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";	     
@@ -132,10 +134,9 @@ namespace Eglantine
 			spriteBatch.Begin ();
 			currentScene.Draw(spriteBatch);
 
-#if DEBUG
+			// This is kind of hackish
 			if(SaveManager.Shown)
 				SaveManager.Draw (spriteBatch);
-#endif
 
 			MouseManager.DrawMouse(spriteBatch);
 
@@ -150,6 +151,11 @@ namespace Eglantine
 				currentScene.Unload();
 
 			currentScene = newScene;
+		}
+
+		public static void ExitGame()
+		{
+			_thisGame.Exit ();
 		}
 	}
 }

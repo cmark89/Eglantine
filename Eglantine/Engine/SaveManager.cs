@@ -23,16 +23,29 @@ namespace Eglantine.Engine
 		private static Rectangle closeRect;
 		const int Y_PADDING = 15;
 
+		public delegate void callback();
+		private static callback on_close;
+
+		private static bool loadFinished = false;
 
 		public SaveManager ()
 		{
 
 		}
 
-		public static void ToggleLoadScreen()
+		public static void ToggleLoadScreen (callback cb = null)
 		{
+			if (cb != null)
+				on_close = cb;
+
 			EventManager.Instance.PlaySound ("pageturn");
 			Shown = !Shown;
+
+			if (on_close != null && !Shown)
+			{
+				Console.WriteLine ("CALLBACK");
+				on_close ();
+			}
 		}
 
 		public static void Initialize ()
@@ -113,12 +126,18 @@ namespace Eglantine.Engine
 			if (!Shown)
 				return;
 
+			if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.Escape))
+			{
+				ToggleLoadScreen ();
+				return;
+			}
+
 			for (int i = 0; i < journal.SaveData.Keys.Count; i++)
 			{
 				if (GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
 				{
 					MouseManager.MouseMode = MouseInteractMode.Hot;
-					if (MouseManager.LeftClickUp)
+					if (MouseManager.LeftClickUp && loadFinished)
 					{
 						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData [i].FileName)));
 						Shown = false;
@@ -129,9 +148,11 @@ namespace Eglantine.Engine
 			if (closeRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
 			{
 				MouseManager.MouseMode = MouseInteractMode.Hot;
-				if(MouseManager.LeftClickUp)
+				if(MouseManager.LeftClickUp && loadFinished)
 					ToggleLoadScreen ();
 			}
+
+			if(!loadFinished) loadFinished = true;
 		}
 
 		public static Rectangle GetSaveRect (int i)
