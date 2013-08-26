@@ -42,10 +42,6 @@ namespace Eglantine
 		{
 			// Serialize the save journal file.
 			Serializer.Serialize<SaveJournal>(SAVE_PATH + JOURNAL_FILE_PATH, _instance);
-
-			// Load the serialized file into memory and immediately perform alignment operations on it
-			//VerifyIntegrity();
-			//AlignIndexes ();
 		}
 
 		// This returns the file name assigned to the save

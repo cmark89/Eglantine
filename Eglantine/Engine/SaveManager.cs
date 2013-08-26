@@ -15,10 +15,12 @@ namespace Eglantine.Engine
 		static Dictionary<string, Texture2D> itemIcons;
 		// Content used for displaying save files
 		static Texture2D saveFrameTexture;
+		static Texture2D closeTexture;
 
 		static SpriteFont timeFont;
 
 		private static int startX;
+		private static Rectangle closeRect;
 		const int Y_PADDING = 15;
 
 
@@ -27,7 +29,7 @@ namespace Eglantine.Engine
 
 		}
 
-		public void ToggleLoadScreen()
+		public static void ToggleLoadScreen()
 		{
 			EventManager.Instance.PlaySound ("pageturn");
 			Shown = !Shown;
@@ -53,6 +55,9 @@ namespace Eglantine.Engine
 			LoadContent ();
 
 			startX = (Eglantine.GAME_WIDTH - saveFrameTexture.Width) / 2;
+			closeRect = new Rectangle(
+				Eglantine.GAME_WIDTH - closeTexture.Width - 10, 10, closeTexture.Width, closeTexture.Height
+			);
 		}
 
 		public static void LoadContent()
@@ -96,6 +101,8 @@ namespace Eglantine.Engine
 				itemIcons.Add ("Puzzlekey", ContentLoader.Instance.Load<Texture2D>("Graphics/Client/Puzzlekey_icon"));
 				itemIcons.Add ("Scissors", ContentLoader.Instance.Load<Texture2D>("Graphics/Client/Scissors_icon"));
 
+				closeTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Client/CloseButton");
+
 				timeFont = ContentLoader.Instance.Load<SpriteFont>("Fonts/Dustismo20");
 			}
 		}
@@ -103,27 +110,34 @@ namespace Eglantine.Engine
 
 		public static void Update (GameTime gameTime)
 		{
-			if(!Shown)
+			if (!Shown)
 				return;
 
 			for (int i = 0; i < journal.SaveData.Keys.Count; i++)
 			{
-				if(GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
+				if (GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
 				{
 					MouseManager.MouseMode = MouseInteractMode.Hot;
-					if(MouseManager.LeftClickUp)
+					if (MouseManager.LeftClickUp)
 					{
-						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData[i].FileName)));
+						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData [i].FileName)));
 						Shown = false;
 					}
 				}
+			}
+
+			if (closeRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+			{
+				MouseManager.MouseMode = MouseInteractMode.Hot;
+				if(MouseManager.LeftClickUp)
+					ToggleLoadScreen ();
 			}
 		}
 
 		public static Rectangle GetSaveRect (int i)
 		{
-			int x = 0;
-			int y = 0 + (Y_PADDING + saveFrameTexture.Height) * i;
+			int x = startX;
+			int y = Y_PADDING + (Y_PADDING + saveFrameTexture.Height) * i;
 			int width = saveFrameTexture.Width;
 			int height = saveFrameTexture.Height;
 
@@ -135,20 +149,35 @@ namespace Eglantine.Engine
 			if(!Shown)
 				return;
 
+			Color fileColor = Color.Gray;
+			Color textColor = Color.DarkBlue;
+
 			Vector2 drawPoint = Vector2.Zero;
 			for (int i = 0; i < journal.SaveData.Keys.Count; i++)
 			{
+				// Set the color for the file
+				if (GetSaveRect (i).Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
+				{
+					fileColor = Color.White;
+					textColor = Color.DarkBlue;
+				}
+				else
+				{
+					fileColor = Color.Gray;
+					textColor = Color.Lerp (Color.Gray, Color.DarkBlue, .5f);
+				}
+
 				drawPoint = new Vector2(startX, (saveFrameTexture.Height + Y_PADDING) * i);
 				SaveEntry thisEntry = journal.SaveData[i];
 
 				// Draw the background
-				spriteBatch.Draw (saveFrameTexture, position: drawPoint, color:Color.White);
+				spriteBatch.Draw (saveFrameTexture, position: drawPoint, color: fileColor);
 
 				// Now write the time
-				spriteBatch.DrawString (timeFont, ParseTime(thisEntry.GameTime), drawPoint + new Vector2(361,8), color: Color.DarkBlue);
+				spriteBatch.DrawString (timeFont, ParseTime(thisEntry.GameTime), drawPoint + new Vector2(361,8), color: textColor);
 
 				// Draw the stamp
-				spriteBatch.Draw (stampTextures[thisEntry.CurrentRoom], position: drawPoint + new Vector2(10, 10), color: Color.White);
+				spriteBatch.Draw (stampTextures[thisEntry.CurrentRoom], position: drawPoint + new Vector2(10, 10), color: fileColor);
 
 				// Finally, draw the items that the player currently has
 				int mask = thisEntry.ItemMask;
@@ -158,65 +187,72 @@ namespace Eglantine.Engine
 
 				Vector2 thisIcon = drawPoint + new Vector2(202, 92);
 				if((mask & (int)ItemID.Scissors) != 0) thisTexture = itemIcons["Scissors"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(202, 114);
 				if((mask & (int)ItemID.Crowbar) != 0) thisTexture = itemIcons["Crowbar"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(293, 92);
 				if((mask & (int)ItemID.Journal) != 0) thisTexture = itemIcons["Journal"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(293, 114);
 				if((mask & (int)ItemID.Notes) != 0) thisTexture = itemIcons["Notes"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(331, 92);
 				if((mask & (int)ItemID.Blueprints) != 0) thisTexture = itemIcons["Blueprints"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(331, 114);
 				if((mask & (int)ItemID.Letter) != 0) thisTexture = itemIcons["Letter"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(368, 92);
 				if((mask & (int)ItemID.Photograph) != 0) thisTexture = itemIcons["Photograph"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(368, 114);
 				if((mask & (int)ItemID.FoldedNote) != 0) thisTexture = itemIcons["FoldedNote"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(459, 92);
 				if((mask & (int)ItemID.Puzzlebox) != 0) thisTexture = itemIcons["Puzzlebox"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(459, 114);
 				if((mask & (int)ItemID.Puzzlekey) != 0) thisTexture = itemIcons["Puzzlekey"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(498, 92);
 				if((mask & (int)ItemID.Coin) != 0) thisTexture = itemIcons["Coin"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 				
 				thisIcon = drawPoint + new Vector2(498, 114);
 				if((mask & (int)ItemID.Key) != 0) thisTexture = itemIcons["Key"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(607, 86);
 				if((mask & ((int)ItemID.Eglantine << 0)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(607, 105);
 				if((mask & ((int)ItemID.Eglantine << 1)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 
 				thisIcon = drawPoint + new Vector2(607, 122);
 				if((mask & ((int)ItemID.Eglantine << 2)) != 0) thisTexture = itemIcons["Eglantine"]; else thisTexture = itemIcons["Blank"];
-				spriteBatch.Draw (thisTexture, position: thisIcon, color: Color.White);
-
+				spriteBatch.Draw (thisTexture, position: thisIcon, color: fileColor);
 			}
+			
+			// Draw the close button
+			if (closeRect.Contains ((int)MouseManager.Position.X, (int)MouseManager.Position.Y))
+				fileColor = Color.White;
+			else
+				fileColor = Color.Gray;
+
+			spriteBatch.Draw (closeTexture, drawRectangle: closeRect, color: fileColor);
 		}
 
 

@@ -104,13 +104,12 @@ namespace Eglantine.Engine
 				// Big testing
 				if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.S) && GameScene.Instance.SavingAllowed)
 				{
-					Console.WriteLine ("Saved state to: test.sav");
 					GameState.SaveState ();
 				}
 				else if (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.L))
 				{
 					//Eglantine.ChangeScene (new GameScene (GameState.LoadState ("test.sav")));
-					SaveManager.Shown = !SaveManager.Shown;
+					SaveManager.ToggleLoadScreen();
 				}
 #endif
 			}
