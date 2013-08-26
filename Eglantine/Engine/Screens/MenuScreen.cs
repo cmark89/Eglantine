@@ -70,7 +70,7 @@ namespace Eglantine
 					MouseManager.MouseMode = MouseInteractMode.Hot;
 					if (MouseManager.LeftClickUp) Resume ();
 				}
-				if(saveRect.Contains((int)MouseManager.X, (int)MouseManager.Y))
+				if(saveRect.Contains((int)MouseManager.X, (int)MouseManager.Y) && GameScene.Instance.SavingAllowed)
 				{
 					MouseManager.MouseMode = MouseInteractMode.Hot;
 					if (MouseManager.LeftClickUp) Save ();
@@ -104,7 +104,7 @@ namespace Eglantine
 				
 				spriteBatch.Draw (ResumeButton, drawRectangle: resumeRect, color: drawColor);
 				
-				if(saveRect.Contains((int)MouseManager.X, (int)MouseManager.Y))
+				if(saveRect.Contains((int)MouseManager.X, (int)MouseManager.Y) && GameScene.Instance.SavingAllowed)
 					drawColor = Color.White;
 				else
 					drawColor = Color.Gray;
