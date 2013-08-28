@@ -28,5 +28,6 @@ sound_effects_to_load = {
 --Create a table holding each song to load
 songs_to_load = {
 	"Bloom, Discord",
-	"Bloom, Discord - Sweet Briar Version"
+	"Bloom, Discord - Sweet Briar Version",
+	"Toxic Night"
 }

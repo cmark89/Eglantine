@@ -71,10 +71,10 @@ function openingCutscene()
 		waitSeconds(3.5)
 		
 		Event:ShowStoryMessage("Whatever it was that I was expecting, I didn't find it.")
-		Event:StopMusic()
 		waitUntil("Messages read")
 		--Deposit player in the game
-	
+		
+		Event:NewGame()
 	end)
 end
 

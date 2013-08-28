@@ -68,7 +68,7 @@ namespace Eglantine
 			SaveManager.Initialize ();
 			MouseManager.Initialize ();
 
-			ChangeScene(new GameScene());
+			ChangeScene(new MainMenuScene());
 
 			base.Initialize ();
 				

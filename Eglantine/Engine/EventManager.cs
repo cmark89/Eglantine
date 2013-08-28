@@ -302,6 +302,45 @@ namespace Eglantine.Engine
 		}
 
 		#endregion
+
+		#region Main Menu Events
+
+		public void MainMenuFadeIn(string name, float duration)
+		{
+			MainMenuScene.Instance.FadeInElement (name, duration);
+		}
+
+		public void MainMenuFadeOut(string name, float duration)
+		{
+			MainMenuScene.Instance.FadeOutElement (name, duration);
+		}
+
+		public void NextMenuPhase()
+		{
+			MainMenuScene.Instance.NextPhase();
+		}
+
+		public void ShowMainMenu()
+		{
+			MainMenuScene.Instance.ShowMenu();
+		}
+
+		public void MainMenuHideElement(string name)
+		{
+			MainMenuScene.Instance.HideElement (name);
+		}
+
+		public void NewGame()
+		{
+			Eglantine.ChangeScene (new GameScene());
+		}
+
+		public void LockMenuInput()
+		{
+			MainMenuScene.Instance.MenuInput = false;
+		}
+
+		#endregion
 	}
 }
 

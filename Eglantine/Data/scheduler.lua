@@ -90,3 +90,11 @@ function updateCoroutines(deltaTime)
 	--Finally, remove all fired signals
 	SENT_SIGNALS = {}
 end
+
+
+--Used to remove all coroutines
+function abortAllCoroutines()
+	SENT_SIGNALS = {}
+	WAITING_FOR_SIGNAL = {}
+	WAITING_FOR_TIME = {}
+end

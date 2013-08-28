@@ -18,6 +18,20 @@ namespace Eglantine
 		Lua lua;
 		Dictionary<string, TitleElement> graphics;
 		MainMenuPhase phase;
+		bool menuShown = false;
+		int buttonWidth;
+		int buttonHeight;
+
+		Vector2 origin;
+		Rectangle newGameRect;
+		Rectangle loadRect;
+		Rectangle exitRect;
+
+		Texture2D newGameTexture;
+		Texture2D loadTexture;
+		Texture2D exitTexture;
+
+		public bool MenuInput = true;
 
 		public MainMenuScene ()
 		{
@@ -39,7 +53,13 @@ namespace Eglantine
 			// Load the graphics to be used by the menu
 			LoadContent();
 
-			phase = MainMenuPhase.SplashScreen;
+			origin = new Vector2(Eglantine.GAME_WIDTH / 2, Eglantine.GAME_HEIGHT /2);
+
+			newGameRect = new Rectangle((int)(origin.X - (buttonWidth / 2)), (int)origin.Y, buttonWidth, buttonHeight);
+			loadRect = new Rectangle((int)(int)(origin.X - (buttonWidth / 2)), (int)(origin.Y + buttonHeight + 10), buttonWidth, buttonHeight);
+			exitRect = new Rectangle((int)(origin.X - (buttonWidth / 2)), (int)(origin.Y + (buttonHeight + 10) * 2), buttonWidth, buttonHeight);
+
+			NextPhase ();
 		}
 
 		public void LoadContent ()
@@ -59,25 +79,97 @@ namespace Eglantine
 				graphics.Add ("title", new TitleElement(texture));
 
 				// Add graphics for the menu
+				newGameTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Client/NewGameButton");
+				loadTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Client/LoadButton");
+				exitTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/Client/ExitButton");
+
+				buttonWidth = newGameTexture.Width;
+				buttonHeight = newGameTexture.Height;
 			}
 		}
 
 		public override void Update (GameTime gameTime)
 		{
-			foreach (TitleElement te in graphics)
+			lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			foreach (KeyValuePair<string, TitleElement> k in graphics)
 			{
-				te.Update (gameTime);
+				k.Value.Update (gameTime);
+			}
+
+			if ((int)phase > 0 && (int)phase < 3 && (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.Enter) || (KeyboardManager.ButtonPressUp (Microsoft.Xna.Framework.Input.Keys.Escape))))
+			{
+				NextPhase ();
+			}
+
+			if (menuShown && MenuInput)
+			{
+				// Update menu
+				if(newGameRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+				{
+					MouseManager.MouseMode = MouseInteractMode.Hot;
+					if(MouseManager.LeftClickUp)
+					{
+						NewGame ();
+					}
+				}
+
+				if(loadRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+				{
+					MouseManager.MouseMode = MouseInteractMode.Hot;
+					if(MouseManager.LeftClickUp)
+					{
+						LoadGame ();
+					}
+				}
+
+				if(exitRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+				{
+					MouseManager.MouseMode = MouseInteractMode.Hot;
+					if(MouseManager.LeftClickUp)
+					{
+						Exit ();
+					}
+				}
 			}
 		}
 
 		public override void Draw (SpriteBatch spriteBatch)
 		{
-			foreach (TitleElement te in graphics)
+			foreach (KeyValuePair<string, TitleElement> k in graphics)
 			{
-				te.Draw (spriteBatch);
+				k.Value.Draw (spriteBatch);
 			}
 
 			// Draw menu and text and whatnot here
+			if (menuShown && MenuInput)
+			{
+				// Draw menu
+				Color drawColor = Color.Gray;
+
+				if (newGameRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+					drawColor = Color.White;
+				else
+					drawColor = Color.Gray;
+				spriteBatch.Draw (newGameTexture, drawRectangle: newGameRect, color: drawColor);
+
+				if (loadRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+					drawColor = Color.White;
+				else
+					drawColor = Color.Gray;
+				spriteBatch.Draw (loadTexture, drawRectangle: loadRect, color: drawColor);
+
+				if (exitRect.Contains ((int)MouseManager.X, (int)MouseManager.Y))
+					drawColor = Color.White;
+				else
+					drawColor = Color.Gray;
+				spriteBatch.Draw (exitTexture, drawRectangle: exitRect, color: drawColor);
+			}
+			else if(menuShown)
+			{
+				spriteBatch.Draw (newGameTexture, drawRectangle: newGameRect, color: graphics["background"].currentColor);
+				spriteBatch.Draw (loadTexture, drawRectangle: loadRect, color: graphics["background"].currentColor);
+				spriteBatch.Draw (exitTexture, drawRectangle: exitRect, color: graphics["background"].currentColor);
+			}
 		}
 
 		public override void Unload()
@@ -87,7 +179,7 @@ namespace Eglantine
 		public Vector2 CenterElement(Texture2D tex)
 		{
 			float X = (Eglantine.GAME_WIDTH - tex.Width) / 2;
-			float Y = (Eglantine.GAME_HEIGHT - tex.Width) / 2;
+			float Y = (Eglantine.GAME_HEIGHT - tex.Height) / 2;
 
 			return new Vector2(X, Y);
 		}
@@ -95,6 +187,11 @@ namespace Eglantine
 		public void NextPhase()
 		{
 			phase = (MainMenuPhase)((int)phase + 1);
+			lua.DoString ("abortAllCoroutines();");
+			lua.DoString ("menuPhase = " + (int)phase);
+			lua.DoString ("menuEvents[menuPhase]()");
+
+			Console.WriteLine ("Begin phase " + (int)phase);
 		}
 
 		public void FadeInElement(string name, float time)
@@ -109,11 +206,22 @@ namespace Eglantine
 				graphics[name].LerpColor (Color.Transparent, time);
 		}
 
+		public void HideElement (string name)
+		{
+			if(graphics.ContainsKey (name))
+				graphics[name].Hide ();
+		}
+
+		public void ShowMenu ()
+		{
+			menuShown = true;
+		}
+
 		public class TitleElement
 		{
 			Texture2D texture;
 			bool lerpingColor;
-			Color currentColor;
+			public Color currentColor;
 			Vector2 position;
 			Color startColor;
 			Color targetColor;
@@ -158,6 +266,12 @@ namespace Eglantine
 
 				lerpingColor = true;
 			}
+
+			public void Hide ()
+			{
+				lerpingColor = false;
+				currentColor = Color.Transparent;
+			}
 		}
 
 		private enum MainMenuPhase
@@ -166,6 +280,30 @@ namespace Eglantine
 			SplashScreen,
 			Intro,
 			Menu
+		}
+
+		private void NewGame()
+		{
+			Console.WriteLine ("NEW GAME");
+			lua.DoString ("onStartNewGame()");
+		}
+
+		private void LoadGame()
+		{
+			MenuInput = false;
+			menuShown = false;
+			SaveManager.ToggleLoadScreen(LoadWindowClose);
+		}
+
+		private void LoadWindowClose()
+		{
+			MenuInput = true;
+			menuShown = true;
+		}
+
+		private void Exit()
+		{
+			Eglantine.ExitGame ();
 		}
 	}
 }
