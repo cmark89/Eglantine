@@ -73,7 +73,7 @@ function openingCutscene()
 		Event:ShowStoryMessage("Whatever it was that I was expecting, I didn't find it.")
 		waitUntil("Messages read")
 		--Deposit player in the game
-		
+		abortAllCoroutines()
 		Event:NewGame()
 	end)
 end

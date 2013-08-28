@@ -181,9 +181,19 @@ namespace Eglantine.Engine
 			AudioManager.Instance.FadeMusic (targetVolume, duration);
 		}
 
+		public void StopMusic()
+		{
+			AudioManager.Instance.StopMusic();
+		}
+
 		public void StopLoopingSoundEffects()
 		{
 			AudioManager.Instance.StopLoopingSoundEffects();
+		}
+
+		public void StopSoundEffect (string name)
+		{
+			AudioManager.Instance.StopSoundEffect(name);
 		}
 
 		// Begin playing a song

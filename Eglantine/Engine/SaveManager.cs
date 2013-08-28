@@ -139,6 +139,9 @@ namespace Eglantine.Engine
 					MouseManager.MouseMode = MouseInteractMode.Hot;
 					if (MouseManager.LeftClickUp && loadFinished)
 					{
+						// Load the game!  Show a loading screen here!
+						EventManager.Instance.StopMusic();
+						EventManager.Instance.StopLoopingSoundEffects();
 						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData [i].FileName)));
 						Shown = false;
 					}

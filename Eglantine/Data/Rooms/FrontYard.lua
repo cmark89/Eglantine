@@ -104,5 +104,6 @@ rooms["FrontYard"] = {
 		}
 	},
 	
-	onEnter = checkForBloom
+	onEnter = enterFrontYard,
+	onExit = leaveFrontYard
 }

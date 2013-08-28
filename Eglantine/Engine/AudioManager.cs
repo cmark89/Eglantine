@@ -27,10 +27,10 @@ namespace Eglantine
 		private float musicVolume = 1f;
 
 		public Dictionary<string, SoundEffect> SoundEffects;
-		public Dictionary<string, Song> Songs;
+		public Dictionary<string, SoundEffect> Songs;
 
-		public List<SoundEffectInstance> LoopingSoundEffects;
-		public List<Song> PlayingSongs;
+		public List<SoundEffectWrapper> LoopingSoundEffects;
+		public List<SoundEffectInstance> PlayingSongs;
 
 		// For lerping music
 		bool lerpingMusic;
@@ -45,8 +45,8 @@ namespace Eglantine
 
 		public void Initialize ()
 		{
-			LoopingSoundEffects = new List<SoundEffectInstance>();
-			PlayingSongs = new List<Song>();
+			LoopingSoundEffects = new List<SoundEffectWrapper>();
+			PlayingSongs = new List<SoundEffectInstance>();
 			LoadSoundEffects();
 			LoadSongs();
 		}
@@ -56,12 +56,15 @@ namespace Eglantine
 			if (lerpingMusic)
 			{
 				musicLerpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-				MediaPlayer.Volume = startVolume - (startVolume - endVolume) * musicLerpTime / musicLerpDuration;
+				foreach(SoundEffectInstance s in PlayingSongs)
+				{
+					s.Volume = startVolume - (startVolume - endVolume) * musicLerpTime / musicLerpDuration;
+				}
 
 				if(musicLerpTime >= musicLerpDuration)
 				{
 					lerpingMusic = false;
-					MediaPlayer.Volume = endVolume;
+					//MediaPlayer.Volume = endVolume;
 				}
 			}
 		}
@@ -91,17 +94,17 @@ namespace Eglantine
 
 		public void LoadSongs ()
 		{
-			Songs = new Dictionary<string, Song>();
+			Songs = new Dictionary<string, SoundEffect>();
 			LuaTable songTable = Eglantine.MainLua.GetTable ("songs_to_load");
 
 			string newSongName;
-			Song newSong;
+			SoundEffect newSong;
 			for (int i = 0; i < songTable.Keys.Count; i++)
 			{
 				try
 				{
 					newSongName = (string)songTable[i+1];
-					newSong = ContentLoader.Instance.Load<Song>("Audio/Music/" + newSongName + ".wav");
+					newSong = ContentLoader.Instance.Load<SoundEffect>("Audio/Music/" + newSongName + ".wav");
 					Songs.Add(newSongName, newSong);
 				}
 				catch(Exception e)
@@ -116,11 +119,22 @@ namespace Eglantine
 			if (SoundEffects.ContainsKey (soundEffectName))
 			{
 				SoundEffects[soundEffectName].Play(volume * sfxVolume, pitch, pan);
-			} 
+			}
 			else
 			{
 				Console.WriteLine("Sound effect " + soundEffectName + " not found!");
 			}
+		}
+
+		public void StopSoundEffect (string soundEffectName)
+		{
+			Console.WriteLine ("Stop all sound effects named " + soundEffectName);
+			foreach(SoundEffectWrapper s in LoopingSoundEffects.FindAll (x => x.Name == soundEffectName))
+			{
+				s.Sound.Stop ();
+				LoopingSoundEffects.Remove (s);
+			}
+
 		}
 
 		public void PlayLoopingSoundEffect (string soundEffectName, float volume, float pitch = 0f, float pan = 0f)
@@ -134,7 +148,7 @@ namespace Eglantine
 				sfx.IsLooped = true;
 
 				// Add it to the list so it can be aborted later.
-				LoopingSoundEffects.Add(sfx);
+				LoopingSoundEffects.Add(new SoundEffectWrapper(soundEffectName, sfx));
 
 				sfx.Play ();
 			} else
@@ -145,8 +159,8 @@ namespace Eglantine
 
 		public void StopLoopingSoundEffects ()
 		{
-			foreach(SoundEffectInstance sfx in LoopingSoundEffects)
-				sfx.Stop ();
+			foreach(SoundEffectWrapper sfx in LoopingSoundEffects)
+				sfx.Sound.Stop ();
 
 			LoopingSoundEffects.Clear ();
 		}
@@ -155,29 +169,57 @@ namespace Eglantine
 		{
 			if (Songs.ContainsKey (songName))
 			{
-				MediaPlayer.Volume = volume * musicVolume;
-				MediaPlayer.IsRepeating = looping;
-				MediaPlayer.Play(Songs[songName]);
+				SoundEffectInstance song = new SoundEffectInstance(Songs[songName]);
+				song.Volume = volume;
+				song.Pitch = pitch;
+				song.Pan = pan;
+				song.IsLooped = true;
+				
+				// Add it to the list so it can be aborted later.
+				PlayingSongs.Add(song);
 
+				song.Play ();
 			} else
 			{
 				Console.WriteLine("Song " + songName + " not found!");
 			}
 		}
 
-		public void StopMusic()
+		public void StopMusic ()
 		{
-			MediaPlayer.Stop ();
+			foreach (SoundEffectInstance s in PlayingSongs)
+			{
+				s.Stop ();
+			}
+			PlayingSongs.Clear ();
+
+			// For Windows:
+			//MediaPlayer.Stop ();
 		}
 
-		public void FadeMusic(float targetVolume, float duration)
+		public void FadeMusic (float targetVolume, float duration)
 		{
-			startVolume = MediaPlayer.Volume;
-			endVolume = targetVolume;
-			musicLerpDuration = duration;
-			musicLerpTime = 0f;
+			if (PlayingSongs.Count > 0)
+			{
+				startVolume = PlayingSongs[0].Volume;
+				endVolume = targetVolume;
+				musicLerpDuration = duration;
+				musicLerpTime = 0f;
+				
+				lerpingMusic = true;
+			}
+		}
 
-			lerpingMusic = true;
+		public class SoundEffectWrapper
+		{
+			public SoundEffectInstance Sound;
+			public string Name;
+
+			public SoundEffectWrapper(string name, SoundEffectInstance sound)
+			{
+				Sound = sound;
+				Name = name;
+			}
 		}
 	}
 }

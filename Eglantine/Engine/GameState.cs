@@ -25,7 +25,7 @@ namespace Eglantine.Engine
 		}
 
 		// This is temporary.
-		private const string START_ROOM = "Foyer";
+		private const string START_ROOM = "FrontYard";
 
 		// Stores the items the player has collected.
 		public List<Item> PlayerItems { get; private set; }
@@ -103,7 +103,8 @@ namespace Eglantine.Engine
 			TVImage = ContentLoader.Instance.LoadTexture2D("Graphics/TV/Background");
 
 			// Set the current room to the first room.
-			CurrentRoom = Rooms.Find (x => x.Name == START_ROOM);
+			SetRoom (START_ROOM);
+			//CurrentRoom = Rooms.Find (x => x.Name == START_ROOM);
 
 			// Set the player's position to the first entrance in the first room.
 			Player.Instance.SetPosition(CurrentRoom.Entrances[0].Point);
@@ -119,7 +120,6 @@ namespace Eglantine.Engine
 			//EventManager.Instance.GainItem("Eglantine");
 			//EventManager.Instance.GainItem("Eglantine");
 #endif
-
 		}
 
 		// Load a gamestate from file in order to resume the game
@@ -257,7 +257,13 @@ namespace Eglantine.Engine
 		// Changes the room to the room with the given name.
 		public void SetRoom (string roomName)
 		{
+			if(CurrentRoom != null)
+				CurrentRoom.OnExitRoom();
+
 			CurrentRoom = Rooms.Find(x => x.Name == roomName);
+
+			if(CurrentRoom != null)
+				CurrentRoom.OnEnterRoom();
 		}
 
 		public void ChangeRoom (string targetRoomName, string targetEntranceName)

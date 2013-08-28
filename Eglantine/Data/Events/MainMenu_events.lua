@@ -52,7 +52,7 @@ end
 function onStartNewGame()
 	runCoroutine(function()
 		Event:PlaySound("windowbreak")
-		Event:FadeMusic(0,0)
+		Event:StopMusic()
 		Event:LockMenuInput()
 		waitSeconds(2.5)
 		Event:MainMenuFadeOut("background", 3)

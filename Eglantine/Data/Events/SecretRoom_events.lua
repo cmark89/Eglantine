@@ -64,5 +64,5 @@ function checkTVStatic()
 end
 
 function leaveSecretRoom()
-	Event:StopLoopingSoundEffects()
+	Event:StopSoundEffect("static")
 end

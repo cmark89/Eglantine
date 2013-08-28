@@ -165,5 +165,8 @@ rooms["BackYard"] = {
 			X = 924,
 			Y = 535
 		}
-	}
+	},
+	
+	onEnter = enterBackYard,
+	onExit = leaveBackYard
 }

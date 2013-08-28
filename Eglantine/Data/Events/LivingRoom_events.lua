@@ -102,5 +102,5 @@ function setTVImage()
 end
 
 function leaveLivingRoom()
-	Event:StopLoopingSoundEffects()
+	Event:StopSoundEffect("static")
 end

@@ -32,6 +32,8 @@ namespace Eglantine
 		float lerpTime;
 		float lerpDuration;
 
+		private bool unloaded = false;
+
 		List<StoryMessage> messageQueue;
 		private StoryMessage currentMessage 
 		{ 
@@ -73,6 +75,10 @@ namespace Eglantine
 
 		public override void Update (GameTime gameTime)
 		{
+			// This is to catch an edge case
+			if (unloaded)
+				return;
+
 			lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
 
 			// If a message is shown...
@@ -161,6 +167,10 @@ namespace Eglantine
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
+			// Edge case
+			if(unloaded)
+				return;
+
 			// Set the color to black.
 			spriteBatch.GraphicsDevice.Clear (Color.Black);
 			if(currentImage != null)
@@ -173,7 +183,7 @@ namespace Eglantine
 
 		public override void Unload()
 		{
-
+			unloaded = true;
 		}
 
 		private class StoryMessage

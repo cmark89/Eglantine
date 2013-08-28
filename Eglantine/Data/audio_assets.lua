@@ -22,7 +22,10 @@ sound_effects_to_load = {
 	"safeunlock",
 	"static",
 	"switch",
-	"windowbreak"
+	"windowbreak",
+	"naturalwind",
+	"lowwind",
+	"spookystinger"
 }
 
 --Create a table holding each song to load
