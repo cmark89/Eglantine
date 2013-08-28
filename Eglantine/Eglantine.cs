@@ -68,12 +68,6 @@ namespace Eglantine
 			SaveManager.Initialize ();
 			MouseManager.Initialize ();
 
-#if DEBUG
-			// TEST!!
-			SoundEffect testsound = Content.Load<SoundEffect>("Audio/SoundEffects/boxclose");
-			testsound.Play();
-#endif
-
 			ChangeScene(new GameScene());
 
 			base.Initialize ();

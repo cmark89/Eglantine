@@ -21,10 +21,10 @@ rooms["FrontYard"] = {
 		[1] = {
 			Name = "Door",
 			Polygon = {
-				[1] = { X = 256, Y = 187 },
-				[2] = { X = 440, Y = 157 },
-				[3] = { X = 470, Y = 465 },
-				[4] = { X = 256, Y = 500 },
+				[1] = { X = 522, Y = 82 },
+				[2] = { X = 763, Y = 85 },
+				[3] = { X = 763, Y = 529 },
+				[4] = { X = 522, Y = 541 },
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -33,8 +33,8 @@ rooms["FrontYard"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 375,
-				Y = 498
+				X = 657,
+				Y = 555
 			},
 
 			OnInteract = function()
@@ -46,37 +46,12 @@ rooms["FrontYard"] = {
 			Mouse = "Leave"
 		},
 		[2] = {
-			Name = "BackYard",
-			Area = {
-				X = 900,
-				Y = 0,
-				Width = 126,
-				Height = 355
-			},
-				
-			--Make it drawn later so it can be disabled...
-			Enabled = true,
-			Drawn = false,
-			
-			-- This is where the player will path to in order to interact with the object
-			InteractPoint = {
-				X = 976,
-				Y = 375
-			},
-
-			OnInteract = function()
-				door("BackYard", "BackYard", "Door")
-			end,
-			OnLook = nil,
-			Mouse = "Leave"
-		},
-		[3] = {
 			Name = "Eglantine",
 			Area = {
-				X = 607,
-				Y = 355,
-				Width = 48,
-				Height = 48
+				X = 365,
+				Y = 600,
+				Width = 29,
+				Height = 18
 			},
 				
 			--Make it drawn later so it can be disabled...
@@ -86,13 +61,13 @@ rooms["FrontYard"] = {
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 601,
-				Y = 462
+				X = 508,
+				Y = 682
 			},
 
 			OnInteract = pickFrontYardEglantine,
 			OnLook = function()
-				Event:ShowMessage("Isn't that...?  From the picture?")
+				Event:ShowMessage("Was that flower there before...?")
 			end,
 			Mouse = "Hot"
 		}
@@ -106,11 +81,12 @@ rooms["FrontYard"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 0, Y = 538 },
-				[2] = { X = 816, Y = 429 },
-				[3] = { X = 1024, Y = 334 },
-				[4] = { X = 1024, Y = 768 },
-				[5] = { X = 0, Y = 768 }
+				[1] = { X = 0, Y = 732 },
+				[2] = { X = 522, Y = 538 },
+				[3] = { X = 910, Y = 543 },
+				[4] = { X = 1024, Y = 576 },
+				[5] = { X = 1024, Y = 768 },
+				[6] = { X = 0, Y = 768 }
 			}
 		},
 		
@@ -123,14 +99,8 @@ rooms["FrontYard"] = {
 		[1] = {
 			Name = "FrontDoor",
 			
-			X = 360,
-			Y = 493
-		},
-		[2] = {
-			Name = "BackYard",
-			
-			X = 976,
-			Y = 375
+			X = 646,
+			Y = 562
 		}
 	},
 	
