@@ -98,6 +98,7 @@
     <Compile Include="Engine\SaveManager.cs" />
     <Compile Include="Scenes\StoryScene.cs" />
     <Compile Include="Engine\Screens\MenuScreen.cs" />
+    <Compile Include="Scenes\MainMenuScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -810,6 +811,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Client\LoadButton.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\ObjectivelyRadicalSplash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\TitleBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\Client\TitleText.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
