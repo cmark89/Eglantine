@@ -41,7 +41,7 @@ namespace Eglantine.Engine
 			// Load the content
 			MessageWindowTexture = ContentLoader.Instance.Load<Texture2D>("messagewindow");
 			//MessageFont = ContentLoader.Instance.Load<SpriteFont>("Fonts/MessageFont");
-			MessageFont = ContentLoader.Instance.Load<SpriteFont>("Fonts/MessageFont");
+			MessageFont = ContentLoader.Instance.Load<SpriteFont>("Fonts/Dustismo18");
 		}
 
 		public void ShowMessage(string message)

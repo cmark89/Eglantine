@@ -15,7 +15,7 @@ rooms["FrontYard"] = {
 			Type = "Background"
 		}
 	},
-		
+
 ------OBJECTS AND EVENTS------
 	Interactables = {
 		[1] = {

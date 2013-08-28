@@ -100,10 +100,8 @@ namespace Eglantine
 			KeyboardManager.Update(gameTime);
 			AudioManager.Instance.Update (gameTime);
 
-#if DEBUG
 			if(SaveManager.Shown)
 				SaveManager.Update (gameTime);
-#endif
 
 			currentScene.Update(gameTime);
 
