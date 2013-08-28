@@ -1,5 +1,6 @@
 function checkWindow()
 	if GameState.KitchenWindowBroken then
+		Event:PlaySoundLooping("naturalwind", .2, 0, 0)
 		Event:DisableInteractable("WindowLayer")
 		Event:EnableInteractable("BrokenWindowLayer")
 		
@@ -17,5 +18,11 @@ function pickKitchenEglantine()
 	if(Event:UsingItem("Scissors")) then
 		pickup("Eglantine")
 		GameState.KitchenFlowerPicked = true
+	end
+end
+
+function leaveKitchen()
+	if GameState.KitchenWindowBroken then
+		Event:StopSoundEffect("naturalwind")
 	end
 end

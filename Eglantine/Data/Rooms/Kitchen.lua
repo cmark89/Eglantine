@@ -191,5 +191,6 @@ rooms["Kitchen"] = {
 		}
 	},
 	
-	onEnter = checkWindow
+	onEnter = checkWindow,
+	onExit = leaveKitchen
 }

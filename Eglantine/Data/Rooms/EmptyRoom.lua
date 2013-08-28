@@ -22,18 +22,18 @@ rooms["EmptyRoom"] = {
 			Name = "Door",
 			
 			Polygon = {
-				[1] = { X = 36, Y = 294 },
-				[2] = { X = 83, Y = 250 },
-				[3] = { X = 99, Y = 467 },
-				[4] = { X = 36, Y = 547 }
+				[1] = { X = 0, Y = 67 },
+				[2] = { X = 67, Y = 45 },
+				[3] = { X = 70, Y = 523 },
+				[4] = { X = 0, Y = 657 }
 			},
 			
 			Enabled = true,
 			Drawn = false,
 			
 			InteractPoint = {
-				X = 92,
-				Y = 521
+				X = 48,
+				Y = 588
 			},
 			
 			OnInteract = function()

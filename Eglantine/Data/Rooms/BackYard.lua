@@ -49,7 +49,7 @@ rooms["BackYard"] = {
 			Name = "Crowbar",
 			Area = {
 				X = 872,
-				Y = 560,
+				Y = 454,
 				Width = 48,
 				Height = 48
 			},
