@@ -284,6 +284,7 @@ namespace Eglantine
 
 		private void NewGame()
 		{
+			menuShown = false;
 			Console.WriteLine ("NEW GAME");
 			lua.DoString ("onStartNewGame()");
 		}

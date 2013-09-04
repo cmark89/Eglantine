@@ -27,6 +27,9 @@ namespace Eglantine
 		private static Eglantine _thisGame;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		Texture2D loadingScreen;
+
+		public static bool LoadingScreenShown = false;
 
 		// Bad practice, but make this static for testing purposes.
 		// Probably put this into a singleton
@@ -62,6 +65,8 @@ namespace Eglantine
 			Console.WriteLine("Load mainSetup.lua...");
 			MainLua.DoFile("Data/mainSetup.lua");
 			Console.WriteLine("mainSetup.lua should have loaded.");
+
+			loadingScreen = ContentLoader.Instance.Load<Texture2D>("Graphics/Client/LoadingScreen");
 
 			//EventManager.Initialize();
 			AudioManager.Instance.Initialize();
@@ -124,7 +129,10 @@ namespace Eglantine
 			graphics.GraphicsDevice.Clear (Color.Black);
 
 			spriteBatch.Begin ();
-			currentScene.Draw(spriteBatch);
+			if(LoadingScreenShown)
+				spriteBatch.Draw (loadingScreen, position: Vector2.Zero, color: Color.White);
+			else
+				currentScene.Draw(spriteBatch);
 
 			// This is kind of hackish
 			if(SaveManager.Shown)

@@ -87,6 +87,12 @@ namespace Eglantine.Engine
 			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).Disable();
 		}
 
+		public void FadeInteractable (string objectName, float time, float fadeAmount)
+		{
+			Color color = new Color(fadeAmount, fadeAmount, fadeAmount, fadeAmount);
+			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).LerpColor (color, time);
+		}
+
 		public void FadeInInteractable (string objectName, float time)
 		{
 			GameState.Instance.CurrentRoom.Interactables.Find(x => x.Name == objectName).LerpColor (Color.White, time);
@@ -340,14 +346,19 @@ namespace Eglantine.Engine
 			MainMenuScene.Instance.HideElement (name);
 		}
 
-		public void NewGame()
+		public void NewGame ()
 		{
-			Eglantine.ChangeScene (new GameScene());
+			Eglantine.ChangeScene (new GameScene ());
 		}
 
 		public void LockMenuInput()
 		{
 			MainMenuScene.Instance.MenuInput = false;
+		}
+
+		public void RollCredits ()
+		{
+			// Roll the credits here
 		}
 
 		#endregion

@@ -10,7 +10,7 @@ rooms["Underground4"] = {
 	{
 		[1] = {
 			Name = "BG",
-			Texture = "Graphics/Rooms/underground4",
+			Texture = "Graphics/Rooms/Underground4",
 			Color = { 1, 1, 1, 1 },
 			Type = "Background" --Midground, Foreground
 		}
@@ -20,11 +20,14 @@ rooms["Underground4"] = {
 	Interactables = {
 		[1] = {
 			Name = "Door",
-			Area = {
-				X = 17,
-				Y = 0,
-				Width = 84,
-				Height = 515
+			Polygon = {
+				[1] = { X = 0, Y = 223 },
+				[2] = { X = 19, Y = 198 },
+				[3] = { X = 38, Y = 206 },
+				[4] = { X = 95, Y = 304 },
+				[5] = { X = 114, Y = 413 },
+				[6] = { X = 113, Y = 530 },
+				[7] = { X = 2, Y = 612 },
 			},
 				
 			Enabled = true,
@@ -46,16 +49,16 @@ rooms["Underground4"] = {
 		[2] = {
 			Name = "Artifact",
 			Area = {
-				X = 597,
-				Y = 187,
-				Width = 129,
-				Height = 381
+				X = 411,
+				Y = 201,
+				Width = 200,
+				Height = 500
 			},
 				
 			Enabled = true,
 			Drawn = true,
 			Texture = "Graphics/Objects/artifact",
-			YCutoff = 521,
+			YCutoff = 593,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -67,41 +70,41 @@ rooms["Underground4"] = {
 			OnLook = nil
 		},
 		[3] = {
-			Name = "Grave",
-			Area = {
-				X = 472,
-				Y = 416,
-				Width = 243,
-				Height = 244
-			},
-				
-			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/grave",
-			YCutoff = 521,
-			
-			-- This is where the player will path to in order to interact with the object
-			InteractPoint = {
-				X = 463,
-				Y = 639
-			},
-
-			OnInteract = interactWithGrave,
-			OnLook = readHeadstone,
-			Mouse = "Hot"
-		},
-		[4] = {
 			Name = "Flower1",
 			Area = {
-				X = 586,
-				Y = 517,
+				X = 459,
+				Y = 660,
 				Width = 48,
 				Height = 48
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/eglantine",
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		[4] = {
+			Name = "Flower2",
+			Area = {
+				X = 432,
+				Y = 666,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -113,17 +116,18 @@ rooms["Underground4"] = {
 			OnLook = nil
 		},
 		[5] = {
-			Name = "Flower2",
+			Name = "Flower3",
 			Area = {
-				X = 613,
-				Y = 533,
+				X = 475,
+				Y = 681,
 				Width = 48,
 				Height = 48
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/eglantine",
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
@@ -135,27 +139,49 @@ rooms["Underground4"] = {
 			OnLook = nil
 		},
 		[6] = {
-			Name = "Flower3",
+			Name = "GraveMovementBlocker",
+			Polygon = {
+				[1] = { X = 426, Y = 629 },
+				[2] = { X = 465, Y = 602 },
+				[3] = { X = 575, Y = 637 },
+				[4] = { X = 576, Y = 652 },
+				[5] = { X = 536, Y = 686 },
+				[6] = { X = 425, Y = 652 }
+			},
+			Enabled = true,
+			Drawn = false,
+			InteractPoint = {
+				X = 0,
+				Y = 0,
+			},
+			OnInteract = nil,
+			OnLook = nil,
+			BlocksMovement = true
+		},
+		[7] = {
+			Name = "Grave",
 			Area = {
-				X = 646,
-				Y = 529,
-				Width = 48,
-				Height = 48
+				X = 398,
+				Y = 480,
+				Width = 210,
+				Height = 220
 			},
 				
 			Enabled = false,
 			Drawn = true,
-			Texture = "Graphics/Objects/eglantine",
+			Texture = "Graphics/Objects/grave",
+			YCutoff = 612,
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {
-				X = 0,
-				Y = 0
+				X = 446,
+				Y = 692
 			},
 
-			OnInteract = nil,
-			OnLook = nil
-		}
+			OnInteract = interactWithGrave,
+			OnLook = readHeadstone,
+			Mouse = "Hot"
+		},
 	},
 	
 	--------NAVMESH--------
@@ -163,28 +189,19 @@ rooms["Underground4"] = {
 
 		Polygons = {
 			[1] = {
-				[1] = { X = 49, Y = 553 },
-				[2] = { X = 328, Y = 416 },
-				[3] = { X = 533, Y = 314 },
-				[4] = { X = 531, Y = 752 },
-				[5] = { X = 302, Y = 754 },
-				[6] = { X = 36, Y = 669 }
+				[1] = { X = 0, Y = 619 },
+				[2] = { X = 122, Y = 548 },
+				[3] = { X = 290, Y = 547 },
+				[4] = { X = 878, Y = 612 },
+				[5] = { X = 743, Y = 768 },
+				[6] = { X = 0, Y = 768 }
 			},
 			[2] = {
-				[1] = { X = 519, Y = 409 },
-				[2] = { X = 777, Y = 403 },
-				[3] = { X = 988, Y = 519 },
-				[4] = { X = 596, Y = 520 },
-				[5] = { X = 514, Y = 565 }
-			},
-			[3] = {
-				[1] = { X = 523, Y = 657 },
-				[2] = { X = 594, Y = 650 },
-				[3] = { X = 740, Y = 515 },
-				[4] = { X = 993, Y = 510 },
-				[5] = { X = 994, Y = 674 },
-				[6] = { X = 791, Y = 748 },
-				[7] = { X = 519, Y = 748 }
+				[1] = { X = 430, Y = 435 },
+				[2] = { X = 637, Y = 385 },
+				[3] = { X = 903, Y = 511 },
+				[4] = { X = 845, Y = 623 },
+				[5] = { X = 301, Y = 567 }
 			}
 		},
 		
@@ -193,28 +210,18 @@ rooms["Underground4"] = {
 				Connects = {1, 2},
 				
 				Points = {
-					[1] = { X = 525, Y = 418 },
-					[2] = { X = 524, Y = 475 },
-					[3] = { X = 521, Y = 554 }
-				}
-			},
-			[2] = {
-				Connects = {1, 3},
-				
-				Points = {
-					[1] = { X = 528, Y = 659 },
-					[2] = { X = 528, Y = 700 },
-					[3] = { X = 526, Y = 747 }
-				}
-			},
-			[3] = {
-				Connects = {2, 3},
-				
-				Points = {
-					[1] = { X = 746, Y = 516 },
-					[2] = { X = 824, Y = 516 },
-					[3] = { X = 891, Y = 516 },
-					[4] = { X = 972, Y = 516 }
+					[1] = { X = 326, Y = 561 },
+					[2] = { X = 392, Y = 567 },
+					[3] = { X = 443, Y = 573 },
+					[4] = { X = 486, Y = 578 },
+					[5] = { X = 532, Y = 582 },
+					[6] = { X = 578, Y = 587 },
+					[7] = { X = 611, Y = 592 },
+					[8] = { X = 653, Y = 596 },
+					[9] = { X = 701, Y = 600 },
+					[10] = { X = 735, Y = 604 },
+					[11] = { X = 779, Y = 607 },
+					[12] = { X = 833, Y = 614 }
 				}
 			}
 		}
@@ -225,8 +232,8 @@ rooms["Underground4"] = {
 		[1] = {
 			Name = "Door",
 			
-			X = 63,
-			Y = 606
+			X = 57,
+			Y = 602
 		}
 	},
 	

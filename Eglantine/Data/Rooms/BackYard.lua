@@ -86,7 +86,7 @@ rooms["BackYard"] = {
 			--Make it drawn later so it can be disabled...
 			Enabled = true,
 			Drawn = true,
-			Texture = "Graphics/Objects/eglantine",
+			Texture = "Graphics/Objects/BackyardFlower",
 			
 			-- This is where the player will path to in order to interact with the object
 			InteractPoint = {

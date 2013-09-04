@@ -142,8 +142,11 @@ namespace Eglantine.Engine
 						// Load the game!  Show a loading screen here!
 						EventManager.Instance.StopMusic();
 						EventManager.Instance.StopLoopingSoundEffects();
-						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData [i].FileName)));
+						// Set the loading screen on 
+						Eglantine.LoadingScreenShown = true;
 						Shown = false;
+						Eglantine.ChangeScene (new GameScene (GameState.LoadState (SaveJournal.SAVE_PATH + journal.SaveData [i].FileName)));
+
 					}
 				}
 			}

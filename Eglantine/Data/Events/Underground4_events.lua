@@ -13,10 +13,12 @@ end
 function normalEndingScenario()
 	--Loop the pulsing
 	strobeTime = 6
+	strobeFade = .15
 	while strobeTime > 0 and GameState.FlowersOnGrave < 3 do
 		waitSeconds(strobeTime)
-		artifactPulse(.4)
+		artifactPulse(.4, strobeFade)
 		strobeTime = strobeTime -1
+		strobeFade = .15 + ((6 - strobeTime) * 1.00/6)
 	end
 	
 	--If the player failed to complete the puzzle
@@ -34,7 +36,7 @@ function normalEndingScenario()
 	--If the player honored the dead
 	if GameState.FlowersOnGrave == 3 then
 		waitSeconds(4)
-		fadeOutGrave(6)
+		fadeOutGrave(6, 1)
 		waitSeconds(6)
 		Event:PlayStorySequence("goodEnding");
 	end
@@ -42,11 +44,11 @@ end
 
 
 --Pulses the grave and artifact in and out over the given time (each way)
-function artifactPulse(time)
+function artifactPulse(time, amount)
 	Event:PlaySound("heartbeat")
-	fadeOutGrave(time)
+	fadeOutGrave(time, amount)
 	Event:EnableInteractable("Artifact")
-	Event:FadeInInteractable("Artifact", time)
+	Event:FadeInteractable("Artifact", time, amount)
 	waitSeconds(.5)
 	Event:FadeOutInteractable("Artifact", time)
 	fadeInGrave(time)
@@ -72,11 +74,11 @@ end
 
 
 --Wrapper functions to fade in and out the grave and all attached flowers
-function fadeOutGrave(time)
-	Event:FadeOutInteractable("Grave", time)
-	Event:FadeOutInteractable("Flower1", time)
-	Event:FadeOutInteractable("Flower2", time)
-	Event:FadeOutInteractable("Flower3", time)
+function fadeOutGrave(time, amount)
+	Event:FadeInteractable("Grave", time, 1.0 - amount)
+	Event:FadeInteractable("Flower1", time, 1.0 - amount)
+	Event:FadeInteractable("Flower2", time, 1.0 - amount)
+	Event:FadeInteractable("Flower3", time, 1.0 - amount)
 end
 
 function fadeInGrave(time)

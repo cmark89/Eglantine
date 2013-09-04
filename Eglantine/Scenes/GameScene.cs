@@ -59,6 +59,9 @@ namespace Eglantine
 
 		public override void Initialize ()
 		{
+			// Set the loading screen on 
+			Eglantine.LoadingScreenShown = true;
+
 			// Make sure the lua side knows about this GameState
 			//Eglantine.Lua.DoString("loadGameState()");
 			Lua = new Lua ();
@@ -93,6 +96,7 @@ namespace Eglantine
 
 			SavingAllowed = true;
 			setupComplete = true;
+			Eglantine.LoadingScreenShown = false;
 
 			if(!isNewGame)
 			{

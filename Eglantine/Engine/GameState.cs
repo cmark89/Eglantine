@@ -114,11 +114,11 @@ namespace Eglantine.Engine
 
 #if DEBUG
 			Console.WriteLine("INITIATE DEBUGGING.  ENJOY YOUR ITEMS.");
-			//EventManager.Instance.GainItem("Scissors");
-			//EventManager.Instance.GainItem("Key");
-			//EventManager.Instance.GainItem("Eglantine");
-			//EventManager.Instance.GainItem("Eglantine");
-			//EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Scissors");
+			EventManager.Instance.GainItem("Key");
+			EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Eglantine");
 #endif
 		}
 
