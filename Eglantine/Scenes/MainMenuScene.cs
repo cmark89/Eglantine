@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Eglantine.Engine;
-using LuaInterface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
+#if __WINDOWS__
+using NLua;
+#else
+using LuaInterface;
+#endif
 
 namespace Eglantine
 {

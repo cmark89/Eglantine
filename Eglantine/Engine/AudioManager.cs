@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
-using LuaInterface;
 using Eglantine.Engine;
+
+#if __WINDOWS__
+using NLua;
+#else
+using LuaInterface;
+#endif
 
 namespace Eglantine
 {

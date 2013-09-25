@@ -1,8 +1,13 @@
 using System;
-using LuaInterface;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+
+#if __WINDOWS__
+using NLua;
+#else
+using LuaInterface;
+#endif
 
 namespace Eglantine.Engine
 {

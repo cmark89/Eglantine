@@ -1,7 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Eglantine.Engine;
+
+#if __WINDOWS__
+using NLua;
+#else
 using LuaInterface;
+#endif
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

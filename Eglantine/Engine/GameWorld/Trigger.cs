@@ -1,7 +1,12 @@
 using System;
-using LuaInterface;
 using Eglantine.Engine.Pathfinding;
 using Microsoft.Xna.Framework;
+
+#if __WINDOWS__
+using NLua;
+#else
+using LuaInterface;
+#endif
 
 namespace Eglantine.Engine
 {

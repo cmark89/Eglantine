@@ -7,9 +7,14 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
-using LuaInterface;
 using Eglantine.Engine;
 using Eglantine.Engine.Pathfinding;
+
+#if __WINDOWS__
+using NLua;
+#else
+using LuaInterface;
+#endif
 
 #endregion
 
