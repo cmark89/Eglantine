@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/ItemEvents.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Item.cs">
     <Files>
       <File FileName="Data/gameSetup.lua" Line="24" Column="1" />
       <File FileName="Data/items.lua" Line="150" Column="7" />
-      <File FileName="Scripts/ItemEvents.cs" Line="13" Column="3" />
+      <File FileName="Scripts/ItemEvents.cs" Line="8" Column="3" />
+      <File FileName="Engine/GameWorld/Item.cs" Line="62" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,12 +17,12 @@
               <Node name="Events" expanded="True" />
             </Node>
             <Node name="Engine" expanded="True">
-              <Node name="GameWorld" expanded="True" />
+              <Node name="GameWorld" expanded="True">
+                <Node name="Item.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="Scenes" expanded="True" />
-            <Node name="Scripts" expanded="True">
-              <Node name="ItemEvents.cs" selected="True" />
-            </Node>
+            <Node name="Scripts" expanded="True" />
           </Node>
         </State>
       </Pad>

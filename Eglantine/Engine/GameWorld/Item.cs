@@ -62,7 +62,7 @@ namespace Eglantine.Engine
 					break;
 			}
 
-			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
+			OnAcquire = (LuaFunction)itemTable.["OnAcquire"];
 			OnUse = (LuaFunction)itemTable["OnUse"];
 		}
 
