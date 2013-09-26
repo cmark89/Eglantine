@@ -21,6 +21,10 @@ luanet.load_assembly "Eglantine"
 GAME_STATE = luanet.import_type "Eglantine.Engine.GameState"
 EVENT_MANAGER = luanet.import_type "Eglantine.Engine.EventManager"
 
+ItemEvents = luanet.import_type "Eglantine.Engine.ItemEvents"
+RoomEvents = luanet.import_type "Eglantine.Engine.RoomEvents"
+ClientEvents = luanet.import_type "Eglantine.Engine.ClientEvents"
+
 --Functions related to .NET classes and objects
 --Sets the lua global GameState to the current GameState.Instance--
 function loadGameState()

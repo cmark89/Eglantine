@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -29,11 +30,9 @@ namespace Eglantine.Engine
 		public ItemType Type { get; private set; }
 
 		[NonSerialized]
-		private LuaFunction OnAcquire;
+		private Script OnAcquire;
 		[NonSerialized]
-		private LuaFunction OnInspect;
-		[NonSerialized]
-		private LuaFunction OnUse;
+		private Script OnUse;
 
 		public Item (string name)
 		{
@@ -64,14 +63,15 @@ namespace Eglantine.Engine
 			}
 
 			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
-			OnInspect = (LuaFunction)itemTable["OnInspect"];
 			OnUse = (LuaFunction)itemTable["OnUse"];
 		}
 
 		public void Inspect ()
 		{
-			if(OnInspect != null)
-				OnInspect.Call();
+			//if(OnInspect != null)
+				//OnInspect.Call();
+
+			Scheduler.Execute(delegate() { EventManager.Instance.ShowMessage(Description); });
 		}
 
 		public void OnAquire ()
@@ -88,7 +88,7 @@ namespace Eglantine.Engine
 			}
 
 			if(OnAcquire != null)
-				OnAcquire.Call();
+				Scheduler.Execute(OnAcquire);
 		}
 
 		public void Use ()
@@ -97,11 +97,11 @@ namespace Eglantine.Engine
 			{
 				case ItemType.Immediate:
 					Console.WriteLine("Use this immediate item!");
-					OnUse.Call();
+					Scheduler.Execute(OnUse);
 					break;
 				case ItemType.Active:
-					AdventureScreen.Instance.SetActiveItem(this);
 					// Set the game scene's loaded item to this item.
+					AdventureScreen.Instance.SetActiveItem(this);
 					break;
 				default:
 					break;
@@ -125,7 +125,6 @@ namespace Eglantine.Engine
 
 			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+Name];
 			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
-			OnInspect = (LuaFunction)itemTable["OnInspect"];
 			OnUse = (LuaFunction)itemTable["OnUse"];
 		}
 	}

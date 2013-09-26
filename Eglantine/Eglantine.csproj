@@ -48,6 +48,9 @@
       <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4" />
+    <Reference Include="ORG.Scheduler">
+      <HintPath>..\..\ObjectivelyRadical\Scheduler\ORG.Scheduler\ORG.Scheduler\bin\Debug\ORG.Scheduler.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Scenes\StoryScene.cs" />
     <Compile Include="Engine\Screens\MenuScreen.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Scripts\ItemEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -133,25 +137,17 @@
     <Folder Include="Content\Fonts\" />
     <Folder Include="Content\Graphics\Cutscenes\" />
     <Folder Include="Content\Graphics\Client\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Content Include="Data\rooms.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\itemeffects.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\items.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\MayStickfigure.xnb" />
-    <Content Include="Data\testevents.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\test.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\phGui.xnb" />
     <Content Include="Content\messagewindow.xnb" />
     <Content Include="Data\audio_assets.lua">

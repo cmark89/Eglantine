@@ -1,10 +1,7 @@
 ------------
 --items.lua
 ------------
-
-require "Data/itemeffects"
-
-
+ItemEvents = luanet.import_type "Eglantine.Engine.ItemEvents"
 
 --Create a new table for items
 items = {}
@@ -14,11 +11,7 @@ items["Scissors"] = {
 	Name = "Scissors",
 	Texture = "Graphics/Objects/scissors",
 	Description = "They seem pretty dull, but I bet they could still cut.",
-	Type = "Active",
-	
-	OnInspect = function()
-		Event:ShowMessage("They seem pretty dull, but I bet they could still cut.")
-	end,
+	Type = "Active"
 	
 	OnUse = nil
 }
@@ -28,11 +21,7 @@ items["Crowbar"] = {
 	Name = "Crowbar",
 	Texture = "Graphics/Objects/crowbar",
 	Description = "Rusty, but it's still metal.  Could probably pry something open with it.",
-	Type = "Active",
-	
-	OnInspect = function()
-		Event:ShowMessage("Rusty, but it's still metal.  Could probably pry something open with it.")
-	end,
+	Type = "Active"
 	
 	OnUse = nil
 }
@@ -41,13 +30,7 @@ items["Eglantine"] = {
 	Name = "Eglantine",
 	Texture = "Graphics/Objects/eglantine",
 	Descriptin = "Even if it's pretty, there's something dark about this particular flower...",
-	Type = "Unusable",
-	
-	OnInspect = function()
-		Event:ShowMessage("Even if it's pretty, there's something dark about this particular flower...")
-	end,
-	
-	OnUse = nil --For now
+	Type = "Unusable"
 }
 
 items["Puzzlebox"] = {
@@ -57,13 +40,7 @@ items["Puzzlebox"] = {
 	Description = "A strange puzzlebox.  I should try to solve it!",
 	Type = "Immediate",
 	
-	OnInspect = function()
-		Event:ShowMessage("A strange puzzlebox.  I should try to solve it!")
-	end,
-	
-	OnUse = function()
-		Event:OpenPuzzlebox()
-	end
+	OnUse = ItemEvents.usePuzzlebox;
 }
 
 items["Strange Notes"] = {
@@ -73,13 +50,7 @@ items["Strange Notes"] = {
 	Description = "A set of strange, crazed writings.",
 	Type = "Immediate",
 	
-	OnInspect = function()
-		Event:ShowMessage("A set of strange, crazed writings.")
-	end,
-	
-	OnUse = function()
-		Event:ViewDocument("Strange Notes")
-	end
+	OnUse = ItemEvents.useStrangeNotes;
 }
 
 items["Journal"] = {
@@ -93,9 +64,7 @@ items["Journal"] = {
 		Event:ShowMessage("It looks like a personal diary of old man Weathers.")
 	end,
 	
-	OnUse = function()
-		Event:ViewDocument("Journal")
-	end
+	OnUse = ItemEvents.useJournal;
 }
 
 items["Blueprints"] = {
@@ -105,13 +74,7 @@ items["Blueprints"] = {
 	Description = "These appear to be the blueprints to the building...",
 	Type = "Immediate",
 	
-	OnInspect = function()
-		Event:ShowMessage("These appear to be the blueprints to the building...")
-	end,
-	
-	OnUse = function()
-		Event:ViewDocument("Blueprints")
-	end
+	OnUse = ItemEvents.useBlueprints;
 }
 
 items["Letter"] = {
@@ -122,13 +85,7 @@ items["Letter"] = {
 	Description = "A letter from one of Weather's associates.  He didn't seem to take it well...",
 	Type = "Immediate",
 
-	OnInspect = function()
-		Event:ShowMessage("A letter from one of Weather's associates.  He didn't seem to take it well...")
-	end,
-
-	OnUse = function()
-		Event:ViewDocument("Letter")
-	end
+	OnUse = ItemEvents.useLetter;
 }
 
 items["Photograph"] = {
@@ -138,17 +95,8 @@ items["Photograph"] = {
 	Description = "This photograph...",
 	Type = "Immediate",
 	
-	OnAcquire = function()
-		GameState.PhotoTaken = true
-	end,
-	
-	OnInspect = function()
-		Event:ShowMessage("This photograph...")
-	end,
-	
-	OnUse = function()
-		Event:ViewDocument("Photograph")
-	end
+	OnAcquire = ItemEvents.acquirePhotograph;
+	OnUse = ItemEvents.usePhotograph;
 }
 
 items["Folded Note"] = {
@@ -158,15 +106,7 @@ items["Folded Note"] = {
 	Description = "An old note that was sitting inside the puzzlebox.",
 	Type = "Immediate",
 	
-	OnAcquire = nil,
-	
-	OnInspect = function()
-		Event:ShowMessage("An old note that was sitting inside the puzzlebox.")
-	end,
-	
-	OnUse = function()
-		Event:ViewDocument("Folded Note")
-	end
+	OnUse = ItemEvents.useFoldedNote;
 }
 
 items["Strange Coin"] = {
@@ -175,14 +115,6 @@ items["Strange Coin"] = {
 	Texture = "Graphics/Objects/coin",
 	Description = "An eerie sigil is carved into this silver coin.  It feels...evil.",
 	Type = "Unusable",
-	
-	OnAcquire = nil,
-	
-	OnInspect = function()
-		Event:ShowMessage("An eerie sigil is carved into this silver coin.  It feels...evil.")
-	end,
-	
-	OnUse = nil
 }
 
 
@@ -192,14 +124,6 @@ items["Key"] = {
 	Texture = "Graphics/Objects/key",
 	Description = "This key has a weird shape to it.  There's something wholly unsavory about it.",
 	Type = "Active",
-	
-	OnAcquire = nil,
-	
-	OnInspect = function()
-		Event:ShowMessage("This key has a weird shape to it.  There's something wholly unsavory about it.")
-	end,
-	
-	OnUse = nil
 }
 
 
@@ -210,12 +134,9 @@ items["Puzzle Key"] = {
 	Description = "There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.",
 	Type = "Immediate",
 	
-	OnAcquire = nil,
+	OnUse = ItemEvents.usePuzzleKey;
 	
-	OnInspect = function()
-		Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")
-	end,
-	
+	--Bottom is now unused:
 	OnUse = function()
 		runCoroutine(function()
 			Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")

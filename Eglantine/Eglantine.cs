@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
+using ObjectivelyRadical.Scheduler;
 using Eglantine.Engine;
 using Eglantine.Engine.Pathfinding;
 
@@ -77,6 +78,7 @@ namespace Eglantine
 			AudioManager.Instance.Initialize();
 			SaveManager.Initialize ();
 			MouseManager.Initialize ();
+			Scheduler.Initialize();
 
 			ChangeScene(new MainMenuScene());
 
