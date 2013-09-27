@@ -34,11 +34,7 @@ rooms["BackYard"] = {
 				Y = 652
 			},
 
-			OnInteract = function()
-				--Real temporary
-				door("Door", "Kitchen", "BackYardDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBackYardDoor,
 			
 			Mouse = "Leave"
 		},
@@ -62,12 +58,8 @@ rooms["BackYard"] = {
 				Y = 500
 			},
 
-			OnInteract = function()
-				pickup("Crowbar")
-			end,
-			OnLook = function()
-				Event:ShowMessage("That looks like it may be useful.")	
-			end,
+			OnInteract = GameEvents.pickUpCrowbar,
+			OnLook = GameEvents.lookAtCrowbar,
 			
 			Mouse = "Grab"
 		},
@@ -92,9 +84,7 @@ rooms["BackYard"] = {
 			},
 
 			OnInteract = GameEvents.pickBackYardEglantine,
-			OnLook = function()
-				Event:ShowMessage("Sweet briar...never really cared for it.")	
-			end,
+			OnLook = GameEvents.lookAtBackYardFlower,
 			
 			Mouse = "Hot"
 		}

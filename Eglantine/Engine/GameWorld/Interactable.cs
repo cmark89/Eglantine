@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -159,13 +160,13 @@ namespace Eglantine.Engine
 		public void OnInteract()
 		{
 			if(Event != null)
-				Event.Call();
+				Scheduler.Execute(Event);
 		}
 
 		public void OnLook ()
 		{
 			if (LookEvent != null)
-				LookEvent.Call ();
+				Scheduler.Execute(LookEvent);
 		}
 
 		public void SetColor(Color color)
@@ -216,6 +217,9 @@ namespace Eglantine.Engine
 			/// When we find that interactable, we hook up the events from it.
 			Event = (LuaFunction)thisInteractable["OnInteract"];
 			LookEvent = (LuaFunction)thisInteractable["OnLook"];
+
+			Event = (Script)GameScene.Lua.GetFunction(typeof(Script), "rooms." + thisRoom.Name + ".Interactables." + Name + ".OnInteract");
+			LookEvent = (Script)GameScene.Lua.GetFunction(typeof(Script), "rooms." + thisRoom.Name + ".Interactables." + Name + ".OnLook");
 		}
 	}
 }

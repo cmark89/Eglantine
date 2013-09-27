@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -15,7 +16,7 @@ namespace Eglantine.Engine
 	{
 		private Room thisRoom;
 
-		public TriggerArea (string name, Rectangle area, LuaFunction gameEvent, bool active, Room parentRoom)
+		public TriggerArea (string name, Rectangle area, Script gameEvent, bool active, Room parentRoom)
 		{
 			Name = name;
 			Area = area;
@@ -25,7 +26,7 @@ namespace Eglantine.Engine
 			thisRoom = parentRoom;
 		}
 
-		public TriggerArea (string name, Polygon poly, LuaFunction gameEvent, bool active, Room parentRoom)
+		public TriggerArea (string name, Polygon poly, Script gameEvent, bool active, Room parentRoom)
 		{
 			Name = name;
 			PolygonArea = poly;
@@ -39,12 +40,12 @@ namespace Eglantine.Engine
 		{
 			// Call the event if the player is within the trigger area.
 			if(VectorInArea(Player.Instance.Position))
-				Event.Call();
+				Scheduler.Execute(Event);
 		}
 
 		public void LoadFromSerialization()
 		{
-			Event = (LuaFunction)GameScene.Lua["rooms." + thisRoom.Name + ".Interactables." + Name + ".OnEnter"];
+			Event = (Script)GameScene.Lua.GetFunction(typeof(Script), "rooms." + thisRoom.Name + ".Interactables." + Name + ".OnEnter");
 		}
 
 	}

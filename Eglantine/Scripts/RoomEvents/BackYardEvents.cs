@@ -27,7 +27,41 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.StopLoopingSoundEffects();
 			EventManager.Instance.PlaySoundLooping("lowwind", .25f, 0, 0);
+
+			yield return null;
 		}
+
+
+// --LOOK EVENTS-- //
+
+		public static IEnumerator<ScriptPauser> lookAtCrowbar()
+		{
+			EventManager.Instance.ShowMessage("That looks like it may be useful.");
+
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> lookAtBackYardFlower()
+		{
+			EventManager.Instance.ShowMessage("Sweet briar...never really cared for it.");
+			
+			yield return null;
+		}
+
+// --PICK UP EVENTS-- //
+		public static IEnumerator<ScriptPauser> pickUpCrowbar()
+		{
+			pickup("Crowbar");
+			yield return null;
+		}
+
+// --DOORS-- //
+		public static IEnumerator<ScriptPauser> useBackYardDoor()
+		{
+			door("Door", "Kitchen", "BackYardDoor");
+			yield return null;
+		}
+
 	}
 }
 
