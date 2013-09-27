@@ -38,10 +38,7 @@ rooms["Bedroom"] = {
 				Y = 376
 			},
 
-			OnInteract = function()
-				door("HallDoor", "Upstairs", "BedroomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBedroomDoor_HallDoor,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -63,10 +60,7 @@ rooms["Bedroom"] = {
 				Y = 321
 			},
 
-			OnInteract = function()
-				door("BathroomDoor", "Bathroom", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBedroomDoor_BathroomDoor,
 			Mouse = "Leave"
 		},
 		[3] = {
@@ -89,12 +83,8 @@ rooms["Bedroom"] = {
 				Y = 665
 			},
 
-			OnInteract = function()
-				pickup("Scissors")
-			end,
-			OnLook = function()
-				Event:ShowMessage("Good God, what the hell is that...?")
-			end,
+			OnInteract = GameEvents.pickUpScissors,
+			OnLook = GameEvents.lookAtScissors,
 			Mouse = "Grab"
 		},
 		[4] = {
@@ -114,10 +104,7 @@ rooms["Bedroom"] = {
 				Y = 603
 			},
 
-			OnInteract = nil,
-			OnLook = function()
-				Event:ShowMessage("What a mess...")
-			end,
+			OnLook = GameEvents.lookAtTrashcan,
 			Mouse = "Hot"
 		},
 		
@@ -139,9 +126,7 @@ rooms["Bedroom"] = {
 				Y = 511
 			},
 
-			OnInteract = function()
-				pickup("Letter")
-			end,
+			OnInteract = GameEvents.pickUpLetter,
 			
 			OnLook = nil,
 			Mouse = "Grab"

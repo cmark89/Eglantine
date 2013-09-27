@@ -105,6 +105,8 @@
     <Compile Include="Scripts\CoreEvents.cs" />
     <Compile Include="Scripts\RoomEvents\BackYardEvents.cs" />
     <Compile Include="Scripts\RoomEvents\BathroomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BedroomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\EmptyRoomEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -208,9 +210,6 @@
     <Content Include="Data\Rooms\EmptyRoom.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\EmptyRoom_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Events\LivingRoom_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -236,9 +235,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\Upstairs.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Bedroom_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\Bedroom.lua">

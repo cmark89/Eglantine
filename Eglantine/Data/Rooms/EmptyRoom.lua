@@ -36,11 +36,7 @@ rooms["EmptyRoom"] = {
 				Y = 588
 			},
 			
-			OnInteract = function()
-				 door("Door", "Upstairs", "EmptyRoomDoor")
-			end,
-			
-			OnLook = nil,
+			OnInteract = GameEvents.useEmptyRoomDoor,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -62,13 +58,8 @@ rooms["EmptyRoom"] = {
 				Y = 445
 			},
 			
-			OnInteract = function()
-				 pickup("Puzzle Key")
-			end,
-			
-			OnLook = function()
-				Event:ShowMessage("Hey, what's that thing?")
-			end,
+			OnInteract = GameEvents.pickUpPuzzleKey,
+			OnLook = GameEvents.lookAtPuzzleKey,
 			Mouse = "Grab"
 		}
 	},
