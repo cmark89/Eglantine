@@ -123,13 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
-    <None Include="Data\scheduler.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\Reference\Signal reference.txt" />
-    <None Include="Data\Reference\Event Manager reference.txt" />
-    <None Include="Data\Rooms\_room_template.lua" />
     <None Include="Content\Audio\Music\Bloom, Discord.wav" />
+    <None Include="Data\storySceneScripts.lua" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -139,13 +134,11 @@
     <Folder Include="Data\" />
     <Folder Include="Engine\Screens\" />
     <Folder Include="Data\Rooms\" />
-    <Folder Include="Data\Reference\" />
     <Folder Include="Content\Audio\" />
     <Folder Include="Content\Audio\SoundEffects\" />
     <Folder Include="Content\Audio\Music\" />
     <Folder Include="Engine\GameWorld\" />
     <Folder Include="Content\Graphics\" />
-    <Folder Include="Data\Events\" />
     <Folder Include="Content\Graphics\Objects\" />
     <Folder Include="Content\Graphics\Rooms\" />
     <Folder Include="Content\Graphics\Docs\" />

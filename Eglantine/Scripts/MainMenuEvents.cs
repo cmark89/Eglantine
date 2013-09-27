@@ -6,7 +6,7 @@ namespace Eglantine.Engine
 {
 	public static partial class GameEvents
 	{
-		static int menuPhase = 0;
+		public static int menuPhase = 0;
 		public static Script[] menuEvents = new Script[4]
 		{
 			null,

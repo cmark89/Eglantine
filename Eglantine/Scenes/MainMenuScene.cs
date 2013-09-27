@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using Eglantine.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
-#if __WINDOWS__
-using NLua;
-#else
-using LuaInterface;
-#endif
+using ObjectivelyRadical.Scheduler;
 
 namespace Eglantine
 {
@@ -20,7 +15,6 @@ namespace Eglantine
 			get { return _instance; }
 		}
 
-		Lua lua;
 		Dictionary<string, TitleElement> graphics;
 		MainMenuPhase phase;
 		bool menuShown = false;
@@ -50,10 +44,6 @@ namespace Eglantine
 		{
 			phase = MainMenuPhase.Loading;
 			_instance = this;
-			
-			lua = new Lua();
-			lua.DoFile ("Data/scheduler.lua");
-			lua.DoFile ("Data/Events/MainMenu_events.lua");
 
 			// Load the graphics to be used by the menu
 			LoadContent();
@@ -95,7 +85,7 @@ namespace Eglantine
 
 		public override void Update (GameTime gameTime)
 		{
-			lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			Scheduler.Update(gameTime.ElapsedGameTime.TotalSeconds);
 			foreach (KeyValuePair<string, TitleElement> k in graphics)
 			{
 				k.Value.Update (gameTime);
@@ -191,10 +181,10 @@ namespace Eglantine
 
 		public void NextPhase()
 		{
+			Scheduler.AbortAllCoroutines();
 			phase = (MainMenuPhase)((int)phase + 1);
-			lua.DoString ("abortAllCoroutines();");
-			lua.DoString ("menuPhase = " + (int)phase);
-			lua.DoString ("menuEvents[menuPhase]()");
+			GameEvents.menuPhase++;
+			Scheduler.Execute(GameEvents.menuEvents[GameEvents.menuPhase]);
 
 			Console.WriteLine ("Begin phase " + (int)phase);
 		}
@@ -291,7 +281,7 @@ namespace Eglantine
 		{
 			menuShown = false;
 			Console.WriteLine ("NEW GAME");
-			lua.DoString ("onStartNewGame()");
+			Scheduler.Execute(GameEvents.onStartNewGame);
 		}
 
 		private void LoadGame()

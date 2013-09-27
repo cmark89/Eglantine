@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Eglantine.Engine;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -22,7 +23,7 @@ namespace Eglantine
 		private const int TEXT_WIDTH = 976;
 		private const int TEXT_HEIGHT = 350;
 
-		LuaFunction sceneScript;
+		Script sceneScript;
 		string sceneName;
 
 		protected static SpriteFont storyFont;
@@ -62,9 +63,8 @@ namespace Eglantine
 			_instance = this;
 
 			lua = new Lua();
-			lua.DoFile ("Data/scheduler.lua");
 			lua.DoFile ("Data/Events/Story_events.lua");
-			sceneScript = lua.GetFunction(sceneName);
+			sceneScript = (Script)lua.GetFunction(typeof(Script), "scripts." + sceneName);
 			messageQueue = new List<StoryMessage>();
 
 			if (storyFont == null)
@@ -75,7 +75,7 @@ namespace Eglantine
 			}
 
 			
-			sceneScript.Call ();
+			Scheduler.Execute(sceneScript);
 		}
 
 		public override void Update (GameTime gameTime)
