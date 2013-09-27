@@ -37,12 +37,8 @@ rooms["FrontYard"] = {
 				Y = 555
 			},
 
-			OnInteract = function()
-				door("Door", "Foyer", "FrontDoor")
-			end,
-			OnLook = function()
-				Event:ShowMessage("What a creepy looking place...")
-			end,
+			OnInteract = GameEvents.useFrontYardDoor,
+			OnLook = GameEvents.lookAtFrontDoor,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -65,10 +61,8 @@ rooms["FrontYard"] = {
 				Y = 682
 			},
 
-			OnInteract = pickFrontYardEglantine,
-			OnLook = function()
-				Event:ShowMessage("Was that flower there before...?")
-			end,
+			OnInteract = GameEvents.pickFrontYardEglantine,
+			OnLook = GameEvents.lookAtFrontYardFlower,
 			Mouse = "Hot"
 		}
 	},
@@ -104,6 +98,6 @@ rooms["FrontYard"] = {
 		}
 	},
 	
-	onEnter = enterFrontYard,
-	onExit = leaveFrontYard
+	onEnter = GameEvents.enterFrontYard,
+	onExit = GameEvents.leaveFrontYard
 }

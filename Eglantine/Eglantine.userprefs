@@ -1,13 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Interactable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/FoyerEvents.cs">
     <Files>
-      <File FileName="Scripts/CoreEvents.cs" Line="34" Column="4" />
-      <File FileName="Scripts/RoomEvents/BackYardEvents.cs" Line="26" Column="58" />
-      <File FileName="Data/Rooms/BackYard.lua" Line="68" Column="23" />
-      <File FileName="Data/Events/BackYard_events.lua" Line="13" Column="2" />
-      <File FileName="Engine/GameWorld/Trigger.cs" Line="14" Column="31" />
-      <File FileName="Engine/GameWorld/Interactable.cs" Line="16" Column="37" />
+      <File FileName="Data/Rooms/Foyer.lua" Line="30" Column="50" />
+      <File FileName="Scripts/RoomEvents/FoyerEvents.cs" Line="8" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,14 +15,11 @@
               <Node name="Events" expanded="True" />
               <Node name="Rooms" expanded="True" />
             </Node>
-            <Node name="Engine" expanded="True">
-              <Node name="GameWorld" expanded="True">
-                <Node name="Interactable.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="Scenes" expanded="True" />
+            <Node name="Engine" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="RoomEvents" expanded="True" />
+              <Node name="RoomEvents" expanded="True">
+                <Node name="FoyerEvents.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

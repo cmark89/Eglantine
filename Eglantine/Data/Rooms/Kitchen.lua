@@ -57,10 +57,7 @@ rooms["Kitchen"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[3] = {
 			Name = "BackYardDoor",
@@ -82,10 +79,7 @@ rooms["Kitchen"] = {
 				Y = 457
 			},
 
-			OnInteract = function()
-				door("BackYardDoor", "BackYard", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useKitchenDoor_BackYard,
 			Mouse = "Leave"
 		},
 		[4] = {
@@ -106,10 +100,7 @@ rooms["Kitchen"] = {
 				Y = 550
 			},
 
-			OnInteract = function()
-				door("FoyerDoor", "Foyer", "KitchenDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useKitchenDoor_Foyer,
 			Mouse = "Leave"
 		},
 		[5] = {
@@ -131,10 +122,8 @@ rooms["Kitchen"] = {
 				Y = 505
 			},
 
-			OnInteract = pickKitchenEglantine,
-			OnLook = function()
-				Event:ShowMessage("Okay, this is getting pretty weird...")
-			end,
+			OnInteract = GameEvents.pickKitchenEglantine,
+			OnLook = GameEvents.lookAtKitchenFlower,
 			Mouse = "Hot"
 		}
 	},
@@ -191,6 +180,6 @@ rooms["Kitchen"] = {
 		}
 	},
 	
-	onEnter = checkWindow,
-	onExit = leaveKitchen
+	onEnter = GameEvents.checkWindow,
+	onExit = GameEvents.leaveKitchen
 }

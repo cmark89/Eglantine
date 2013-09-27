@@ -108,6 +108,8 @@
     <Compile Include="Scripts\RoomEvents\BedroomEvents.cs" />
     <Compile Include="Scripts\RoomEvents\EmptyRoomEvents.cs" />
     <Compile Include="Scripts\RoomEvents\FoyerEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\FrontYardEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\KitchenEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -220,16 +222,10 @@
     <Content Include="Data\Rooms\FrontYard.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\FrontYard_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Graphics\Rooms\FrontYard.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\Foyer.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Foyer_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Events\Upstairs_events.lua">
@@ -443,9 +439,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\KitchenWindowBroken.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Kitchen_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\KitchenFlower.png">
