@@ -107,6 +107,7 @@
     <Compile Include="Scripts\RoomEvents\BathroomEvents.cs" />
     <Compile Include="Scripts\RoomEvents\BedroomEvents.cs" />
     <Compile Include="Scripts\RoomEvents\EmptyRoomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\FoyerEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

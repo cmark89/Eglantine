@@ -37,10 +37,7 @@ rooms["Foyer"] = {
 				Y = 700
 			},
 
-			OnInteract = function()
-				door("FrontDoor", "FrontYard", "FrontDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_FrontYard,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -62,10 +59,7 @@ rooms["Foyer"] = {
 				Y = 367
 			},
 
-			OnInteract = function()
-				door("KitchenDoor", "Kitchen", "FoyerDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_Kitchen,
 			Mouse = "Leave"
 		},
 		[3] = {
@@ -87,10 +81,7 @@ rooms["Foyer"] = {
 				Y = 711
 			},
 
-			OnInteract = function()
-				door("Stairs", "Upstairs", "Stairs")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_Upstairs,
 			Mouse = "Leave"
 		},
 		[4] = {
@@ -112,10 +103,7 @@ rooms["Foyer"] = {
 				Y = 559
 			},
 
-			OnInteract = function()
-				door("LivingRoomDoor", "LivingRoom", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_LivingRoom,
 			Mouse = "Leave"
 		},
 	},
