@@ -36,12 +36,7 @@ rooms["Underground1"] = {
 				Y = 544
 			},
 
-			OnInteract = function()
-				door("UpRope", "SecretRoom", "Trapdoor")
-			end,
-			OnLook = function()
-				Event:ShowMessage("Maybe I should get out of here...")
-			end,
+			OnInteract = GameEvents.useUnderground1Door_Up,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -65,12 +60,7 @@ rooms["Underground1"] = {
 				Y = 560
 			},
 
-			OnInteract = function()
-				door("DownRope", "Underground2", "RopeUp")
-			end,
-			OnLook = function()
-				Event:ShowMessage("I have a bad feeling about this place...")
-			end,
+			OnInteract = GameEvents.useUnderground1Door_Down,
 			Mouse = "Leave"
 		}
 	},

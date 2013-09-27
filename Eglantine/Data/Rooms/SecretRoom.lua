@@ -37,10 +37,8 @@ rooms["SecretRoom"] = {
 				Y = 407
 			},
 
-			OnInteract = function()
-				 pickup("Puzzlebox")
-			end,
-			OnLook = lookAtPuzzlebox,
+			OnInteract = GameEvents.pickUpPuzzlebox,
+			OnLook = GameEvents.lookAtPuzzlebox,
 			Mouse = "Grab"
 		},
 		
@@ -63,12 +61,8 @@ rooms["SecretRoom"] = {
 				Y = 437
 			},
 
-			OnInteract = function ()
-				door("Door", "LivingRoom", "Painting")
-			end,
-			OnLook = function()
-				Event:ShowMessage("Waste of a good painting...")
-			end,
+			OnInteract = GameEvents.useSecretRoomDoor_Painting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Leave"
 		},
 		
@@ -90,10 +84,8 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = interactWithTrapdoor,
-			OnLook = function()
-				Event:ShowMessage("Wonder what's down there...")
-			end,
+			OnInteract = GameEvents.interactWithTrapdoor,
+			OnLook = GameEvents.useSecretRoomDoor_TrapDoor,
 			Mouse = "Hot"
 		},
 		[4] = {
@@ -137,13 +129,9 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = function()
-				door("TrapdoorOpen", "Underground1", "UpRope")
-			end,
+			OnInteract = GameEvents.useSecretRoomDoor_TrapDoor
 			
-			OnLook = function()
-				Event:ShowMessage("Looks pretty dark down there...")
-			end,
+			OnLook = GameEvents.lookDownTrapdoor,
 			
 			BlocksMovement = true,
 			Mouse = "Leave"
@@ -167,7 +155,7 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = closeTrapdoor,
+			OnInteract = GameEvents.closeTrapdoor,
 			OnLook = nil,
 			
 			BlocksMovement = true,
@@ -296,6 +284,6 @@ rooms["SecretRoom"] = {
 		}
 	},
 	
-	onEnter = checkTVStatic,
-	onExit = leaveSecretRoom
+	onEnter = GameEvents.checkTVStatic,
+	onExit = GameEvents.leaveSecretRoom
 }

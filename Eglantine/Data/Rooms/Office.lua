@@ -35,9 +35,7 @@ rooms["Office"] = {
 				Y = 557
 			},
 			
-			OnInteract = function()
-				door("Door", "Upstairs", "OfficeDoor")
-			end,
+			OnInteract = GameEvents.useOfficeDoor,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
@@ -78,7 +76,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = closeBottomDrawer,
+			OnInteract = GameEvents.closeBottomDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -101,7 +99,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = closeTopDrawer,
+			OnInteract = GameEvents.closeTopDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -122,7 +120,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = openTopDrawer,
+			OnInteract = GameEvents.openTopDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -143,7 +141,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = openBottomDrawer,
+			OnInteract = GameEvents.openBottomDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -168,9 +166,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Blueprints")
-			end,
+			OnInteract = GameEvents.pickUpBlueprints,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
@@ -193,9 +189,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Strange Notes")
-			end,
+			OnInteract = GameEvents.pickUpStrangeNotes,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
@@ -219,9 +213,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Photograph")
-			end,
+			OnInteract = GameEvents.pickUpPhotograph,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
@@ -245,9 +237,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Journal")
-			end,
+			OnInteract = GameEvents.pickUpJournal,
 			OnLook = nil,
 			Mouse = "Grab"
 		}

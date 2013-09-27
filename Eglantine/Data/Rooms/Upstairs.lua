@@ -37,9 +37,7 @@ rooms["Upstairs"] = {
 				Y = 683
 			},
 
-			OnInteract = function()
-				door("Stairs", "Foyer", "Stairs")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Foyer,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
@@ -62,9 +60,7 @@ rooms["Upstairs"] = {
 				Y = 439
 			},
 
-			OnInteract = function()
-				door("BedroomDoor", "Bedroom", "HallDoor")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Bedroom,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
@@ -87,9 +83,7 @@ rooms["Upstairs"] = {
 				Y = 368
 			},
 
-			OnInteract = function()
-				door("EmptyRoomDoor", "EmptyRoom", "Door")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_EmptyRoom,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
@@ -114,10 +108,8 @@ rooms["Upstairs"] = {
 				Y = 546
 			},
 
-			OnInteract = interactWithSafe,
-			OnLook = function()
-				Event:ShowMessage("That safe looks pretty sturdy.")
-			end,
+			OnInteract = GameEvents.interactWithSafe,
+			OnLook = GameEvents.lookAtSafe,
 			Mouse = "Hot"
 		},
 		[5] = {
@@ -140,9 +132,7 @@ rooms["Upstairs"] = {
 				Y = 733
 			},
 
-			OnInteract = function()
-				door("OfficeDoor", "Office", "Door")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Office,
 			OnLook = nil,
 			Mouse = "Leave"
 		}

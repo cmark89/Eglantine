@@ -36,12 +36,7 @@ rooms["Underground3"] = {
 				Y = 479
 			},
 
-			OnInteract = function()
-				door("RopeUp", "Underground2", "RopeDown")
-			end,
-			OnLook = function()
-				Event:ShowMessage("I don't even know if I could climb that...")
-			end,
+			OnInteract = GameEvens.useUnderground3Door_Up,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -62,12 +57,7 @@ rooms["Underground3"] = {
 				Y = 607
 			},
 
-			OnInteract = function()
-				door("Door", "Underground4", "Door")
-			end,
-			OnLook = function()
-				Event:ShowMessage("...")
-			end,
+			OnInteract = GameEvents.useUnderground3Door_Down,
 			Mouse = "Leave"
 		}
 	},

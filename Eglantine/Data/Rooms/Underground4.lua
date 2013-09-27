@@ -39,9 +39,7 @@ rooms["Underground4"] = {
 				Y = 518
 			},
 
-			OnInteract = function()
-				Event:ShowMessage("...")
-			end,
+			OnInteract = GameEvents.useUnderground4Door,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -178,8 +176,8 @@ rooms["Underground4"] = {
 				Y = 692
 			},
 
-			OnInteract = interactWithGrave,
-			OnLook = readHeadstone,
+			OnInteract = GameEvents.interactWithGrave,
+			OnLook = GaveEvents.readHeadstone,
 			Mouse = "Hot"
 		},
 	},
@@ -237,6 +235,6 @@ rooms["Underground4"] = {
 		}
 	},
 	
-	onEnter = beginEnding
+	onEnter = GameEvents.beginEnding
 }
 
