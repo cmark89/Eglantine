@@ -5,7 +5,7 @@
       <File FileName="Data/gameSetup.lua" Line="24" Column="1" />
       <File FileName="Data/items.lua" Line="150" Column="7" />
       <File FileName="Scripts/ItemEvents.cs" Line="8" Column="3" />
-      <File FileName="Engine/GameWorld/Item.cs" Line="62" Column="6" />
+      <File FileName="Engine/GameWorld/Item.cs" Line="66" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

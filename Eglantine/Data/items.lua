@@ -12,8 +12,6 @@ items["Scissors"] = {
 	Texture = "Graphics/Objects/scissors",
 	Description = "They seem pretty dull, but I bet they could still cut.",
 	Type = "Active"
-	
-	OnUse = nil
 }
 
 items["Crowbar"] = {
@@ -22,8 +20,6 @@ items["Crowbar"] = {
 	Texture = "Graphics/Objects/crowbar",
 	Description = "Rusty, but it's still metal.  Could probably pry something open with it.",
 	Type = "Active"
-	
-	OnUse = nil
 }
 
 items["Eglantine"] = {
@@ -134,22 +130,5 @@ items["Puzzle Key"] = {
 	Description = "There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.",
 	Type = "Immediate",
 	
-	OnUse = ItemEvents.usePuzzleKey;
-	
-	--Bottom is now unused:
-	OnUse = function()
-		runCoroutine(function()
-			Event:ShowMessage("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.")
-			waitUntil("Message closed")
-			if Event:PlayerHasItem("Puzzlebox") then
-				Event:ShowMessage("Hey, it looks like this could fit into the center of the puzzlebox...")
-				waitUntil("Message closed")
-				--Play the sound for the thing being inserted
-				Event:InsertPuzzleboxKey()
-				Event:DestroyItem("Puzzle Key")
-			end
-		end)
-	end
-	
-	
+	OnUse = ItemEvents.usePuzzleKey;	
 }

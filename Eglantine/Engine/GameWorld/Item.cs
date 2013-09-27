@@ -29,6 +29,8 @@ namespace Eglantine.Engine
 
 		public ItemType Type { get; private set; }
 
+		private readonly string tablePath;
+
 		[NonSerialized]
 		private Script OnAcquire;
 		[NonSerialized]
@@ -36,7 +38,8 @@ namespace Eglantine.Engine
 
 		public Item (string name)
 		{
-			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+name];
+			tablePath = "items." + name;
+			LuaTable itemTable = (LuaTable)GameScene.Lua[tablePath];
 			ParseItem(itemTable);
 		}
 
@@ -44,26 +47,26 @@ namespace Eglantine.Engine
 		{
 			Name = (string)itemTable ["Name"];
 
-			Texture = ContentLoader.Instance.LoadTexture2D((string)(itemTable["Texture"]));
+			Texture = ContentLoader.Instance.LoadTexture2D ((string)(itemTable ["Texture"]));
 
 			string type = (string)itemTable ["Type"];
 			switch (type)
 			{
-				case("Immediate"):
-					Type = ItemType.Immediate;
-					break;
-				case("Active"):
-					Type = ItemType.Active;
-					break;
-				case("Unusable"):
-					Type = ItemType.Unusable;
-					break;
-				default:
-					break;
+			case("Immediate"):
+				Type = ItemType.Immediate;
+				break;
+			case("Active"):
+				Type = ItemType.Active;
+				break;
+			case("Unusable"):
+				Type = ItemType.Unusable;
+				break;
+			default:
+				break;
 			}
 
-			OnAcquire = (LuaFunction)itemTable.["OnAcquire"];
-			OnUse = (LuaFunction)itemTable["OnUse"];
+			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
+			OnUse = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 
 		public void Inspect ()
@@ -71,7 +74,7 @@ namespace Eglantine.Engine
 			//if(OnInspect != null)
 				//OnInspect.Call();
 
-			Scheduler.Execute(delegate() { EventManager.Instance.ShowMessage(Description); });
+			Scheduler.ExecuteDelegate(delegate() { EventManager.Instance.ShowMessage(Description); });
 		}
 
 		public void OnAquire ()
@@ -123,9 +126,8 @@ namespace Eglantine.Engine
 			if(_TextureName != null)
 				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
 
-			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+Name];
-			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
-			OnUse = (LuaFunction)itemTable["OnUse"];
+			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
+			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 	}
 
