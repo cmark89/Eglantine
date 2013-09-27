@@ -102,7 +102,8 @@
     <Compile Include="Engine\Screens\MenuScreen.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scripts\ItemEvents.cs" />
-    <Compile Include="Scripts\RoomEvents\CoreEvents.cs" />
+    <Compile Include="Scripts\CoreEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BackYardEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -180,9 +181,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\scissors.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\core_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\SecretRoom.lua">
