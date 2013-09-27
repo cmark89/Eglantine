@@ -36,10 +36,7 @@ rooms["Bathroom"] = {
 				Y = 648
 			},
 
-			OnInteract = function()
-				 door("Door", "Bedroom", "BathroomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBathroomDoor,
 			Mouse = "Leave"
 		},
 		[2] = {
@@ -60,8 +57,7 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = openCabinet,
-			OnLook = nil,
+			OnInteract = GameEvents.openCabinet,
 			Mouse = "Hot"
 		},
 		[3] = {
@@ -84,7 +80,7 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = closeCabinet,
+			OnInteract = GameEvents.closeCabinet,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
@@ -106,10 +102,8 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = interactWithDollHead,
-			OnLook = function()
-				Event:ShowMessage("What the hell is with this place...?")
-			end,
+			OnInteract = GameEvents.interactWithDollHead,
+			OnLook = GameEvents.lookAtDollHead,
 			Mouse = "Grab"
 		},
 	},

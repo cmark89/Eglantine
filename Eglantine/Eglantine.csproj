@@ -104,6 +104,7 @@
     <Compile Include="Scripts\ItemEvents.cs" />
     <Compile Include="Scripts\CoreEvents.cs" />
     <Compile Include="Scripts\RoomEvents\BackYardEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BathroomEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -568,9 +569,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\Bathroom.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Bathroom_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Audio\SoundEffects\cabinetclose.wav">

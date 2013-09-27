@@ -24,6 +24,6 @@ function closeCabinet()
 	end)
 end
 
-function interactWithDollHead()
+function lookAtDollHead()
 	Event:ShowMessage("Yeah, there's no way I'm touching that.  It's obviously cursed.")
 end
