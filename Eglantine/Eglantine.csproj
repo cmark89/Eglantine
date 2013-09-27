@@ -102,6 +102,7 @@
     <Compile Include="Engine\Screens\MenuScreen.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scripts\ItemEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\CoreEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -138,6 +139,7 @@
     <Folder Include="Content\Graphics\Cutscenes\" />
     <Folder Include="Content\Graphics\Client\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Scripts\RoomEvents\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Item.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Entrance.cs">
     <Files>
-      <File FileName="Data/gameSetup.lua" Line="24" Column="1" />
-      <File FileName="Data/items.lua" Line="150" Column="7" />
-      <File FileName="Scripts/ItemEvents.cs" Line="8" Column="3" />
-      <File FileName="Engine/GameWorld/Item.cs" Line="66" Column="44" />
+      <File FileName="Data/Events/core_events.lua" Line="19" Column="32" />
+      <File FileName="Scripts/RoomEvents/CoreEvents.cs" Line="14" Column="47" />
+      <File FileName="Engine/GameWorld/Entrance.cs" Line="23" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,11 +17,13 @@
             </Node>
             <Node name="Engine" expanded="True">
               <Node name="GameWorld" expanded="True">
-                <Node name="Item.cs" selected="True" />
+                <Node name="Entrance.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Scenes" expanded="True" />
-            <Node name="Scripts" expanded="True" />
+            <Node name="Scripts" expanded="True">
+              <Node name="RoomEvents" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
