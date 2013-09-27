@@ -16,7 +16,12 @@ namespace Eglantine.Engine
 			return ScriptPauser.WaitForSignal(signal);
 		}
 
-		public static IEnumerator<ScriptPauser> pickup(string itemName)
+		public static void pickup(string itemName)
+		{
+			Scheduler.ExecuteWithArgs<string>(pickupScript, itemName);
+		}
+
+		public static IEnumerator<ScriptPauser> pickupScript(string itemName)
 		{
 			EventManager.Instance.MovePlayerTo(itemName);
 			yield return waitUntil("Player stopped");
@@ -26,7 +31,12 @@ namespace Eglantine.Engine
 			EventManager.Instance.PlaySound("Extend");
 		}
 
-		public static IEnumerator<ScriptPauser> door(string doorName, string targetRoom, string targetEntrance)
+		public static void door (string doorName, string targetRoom, string targetEntrance)
+		{
+			Scheduler.ExecuteWithArgs<string, string, string>(doorScript, doorName, targetRoom, targetEntrance);
+		}
+
+		public static IEnumerator<ScriptPauser> doorScript(string doorName, string targetRoom, string targetEntrance)
 		{
 			EventManager.Instance.MovePlayerTo(doorName);
 			yield return waitUntil("Player stopped");
