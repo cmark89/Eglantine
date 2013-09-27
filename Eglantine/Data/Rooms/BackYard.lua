@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/BackYard_events")
-
 print("BackYard added to global table 'rooms'.")
 
 rooms["BackYard"] = {
@@ -94,9 +91,7 @@ rooms["BackYard"] = {
 				Y = 476
 			},
 
-			OnInteract = function()
-				pickBackYardEglantine()
-			end,
+			OnInteract = GameEvents.pickBackYardEglantine,
 			OnLook = function()
 				Event:ShowMessage("Sweet briar...never really cared for it.")	
 			end,
@@ -136,6 +131,6 @@ rooms["BackYard"] = {
 		}
 	},
 	
-	onEnter = enterBackYard,
-	onExit = leaveBackYard
+	onEnter = GameEvents.enterBackYard,
+	onExit = GameEvents.leaveBackYard
 }

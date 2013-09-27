@@ -1,10 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Entrance.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/BackYardEvents.cs">
     <Files>
-      <File FileName="Data/Events/core_events.lua" Line="19" Column="32" />
-      <File FileName="Scripts/RoomEvents/CoreEvents.cs" Line="14" Column="47" />
+      <File FileName="Data/Events/core_events.lua" Line="14" Column="6" />
       <File FileName="Engine/GameWorld/Entrance.cs" Line="23" Column="4" />
+      <File FileName="Scripts/CoreEvents.cs" Line="34" Column="4" />
+      <File FileName="Scripts/RoomEvents/BackYardEvents.cs" Line="15" Column="1" />
+      <File FileName="Data/Events/BackYard_events.lua" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,13 +18,13 @@
               <Node name="Events" expanded="True" />
             </Node>
             <Node name="Engine" expanded="True">
-              <Node name="GameWorld" expanded="True">
-                <Node name="Entrance.cs" selected="True" />
-              </Node>
+              <Node name="GameWorld" expanded="True" />
             </Node>
             <Node name="Scenes" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="RoomEvents" expanded="True" />
+              <Node name="RoomEvents" expanded="True">
+                <Node name="BackYardEvents.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

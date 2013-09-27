@@ -22,7 +22,7 @@ GAME_STATE = luanet.import_type "Eglantine.Engine.GameState"
 EVENT_MANAGER = luanet.import_type "Eglantine.Engine.EventManager"
 
 ItemEvents = luanet.import_type "Eglantine.Engine.ItemEvents"
-RoomEvents = luanet.import_type "Eglantine.Engine.RoomEvents"
+GameEvents = luanet.import_type "Eglantine.Engine.GameEvents"
 ClientEvents = luanet.import_type "Eglantine.Engine.ClientEvents"
 
 --Functions related to .NET classes and objects
