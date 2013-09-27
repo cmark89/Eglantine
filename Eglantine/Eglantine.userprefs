@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/FoyerEvents.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Events/Upstairs_events.lua">
     <Files>
-      <File FileName="Data/Rooms/Foyer.lua" Line="30" Column="50" />
-      <File FileName="Scripts/RoomEvents/FoyerEvents.cs" Line="8" Column="3" />
+      <File FileName="Data/Events/Upstairs_events.lua" Line="1" Column="1" />
+      <File FileName="Data/Events/LivingRoom_events.lua" Line="22" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,14 +12,14 @@
             <Node name="References" expanded="True" />
             <Node name="Content" expanded="True" />
             <Node name="Data" expanded="True">
-              <Node name="Events" expanded="True" />
+              <Node name="Events" expanded="True">
+                <Node name="Upstairs_events.lua" selected="True" />
+              </Node>
               <Node name="Rooms" expanded="True" />
             </Node>
             <Node name="Engine" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="RoomEvents" expanded="True">
-                <Node name="FoyerEvents.cs" selected="True" />
-              </Node>
+              <Node name="RoomEvents" expanded="True" />
             </Node>
           </Node>
         </State>

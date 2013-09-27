@@ -37,8 +37,8 @@ rooms["LivingRoom"] = {
 				Y = 424
 			},
 
-			OnInteract = interactWithPainting,
-			OnLook = lookAtPainting,
+			OnInteract = GameEvents.interactWithPainting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Hot"
 		},
 		[2] = {
@@ -60,10 +60,8 @@ rooms["LivingRoom"] = {
 				Y = 424
 			},
 
-			OnInteract = function()
-				door("PaintingDoor", "SecretRoom", "Door")
-			end,
-			OnLook = lookAtPainting,
+			OnInteract = GameEvents.useLivingRoomDoor_Painting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Leave"
 		},
 		
@@ -85,10 +83,7 @@ rooms["LivingRoom"] = {
 				Y = 408
 			},
 
-			OnInteract = function ()
-				door("Door", "Foyer", "LivingRoomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useLivingRoomDoor_Foyer,
 			Mouse = "Leave"
 		},
 		[4] = {
@@ -110,8 +105,8 @@ rooms["LivingRoom"] = {
 				Y = 414
 			},
 
-			OnInteract = interactWithTV,
-			OnLook = lookAtTV,
+			OnInteract = GameEvents.interactWithTV,
+			OnLook = GameEvents.lookAtTV,
 			Mouse = "Hot"
 		},
 		[5] = {
@@ -131,10 +126,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[6] = {
 			Name = "Static2",
@@ -153,10 +145,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[7] = {
 			Name = "Static3",
@@ -175,10 +164,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[8] = {
 			Name = "Static4",
@@ -197,10 +183,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[9] = {
 			Name = "Static5",
@@ -219,10 +202,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[10] = {
 			Name = "Static6",
@@ -241,10 +221,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
 		[11] = {
 			Name = "Tear",
@@ -263,10 +240,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil,
+			}
 			Mouse = "Leave"
 		}
 	},
@@ -282,7 +256,7 @@ rooms["LivingRoom"] = {
 			},
 			Enabled = true,
 		
-			OnEnter = turnOnTV
+			OnEnter = GameEvents.turnOnTV
 		}
 	},
 	
@@ -320,7 +294,7 @@ rooms["LivingRoom"] = {
 		}
 	},
 	
-	onEnter = checkTV,
-	onExit = leaveLivingRoom,
-	onLoad = checkTV
+	onEnter = GameEvents.checkTV,
+	onExit = GameEvents.leaveLivingRoom,
+	onLoad = GameEvents.checkTV
 }
