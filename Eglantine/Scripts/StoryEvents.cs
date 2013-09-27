@@ -116,7 +116,7 @@ namespace Eglantine.Engine
 			EventManager.Instance.ShowStoryMessage("I wasn't scared.  I felt . . . Relieved.");
 			yield return waitUntil("Messages read");
 				EventManager.Instance.LerpStoryColor(0,0,0,0,3);
-			yield return waitSeconds(1.5);
+			yield return waitSeconds(1.5f);
 			EventManager.Instance.ShowStoryMessage("Soon, the light faded away and the dark foreboding I had felt before vanished along with it.");
 			EventManager.Instance.ShowStoryMessage("Before the light had completely vanished, I was certain I heard a girl's voice whispering in my ear:");
 			EventManager.Instance.ShowStoryMessage("THANK YOU.  PLEASE REMEMBER MY NAME.");
@@ -153,10 +153,10 @@ namespace Eglantine.Engine
 			EventManager.Instance.ShowStoryMessage("I eventually decided that I had been chosen.  The girl, for some reason, wanted me alone to remember.");
 			EventManager.Instance.ShowStoryMessage("As little sense as it made to me at the time, the photo and the puzzlebox were proof of what had transpired.");
 			yield return waitUntil("Messages read");
-			EventManager.Instance.LerpStoryColor(0,0,0,0,1.5);
-			yield return waitSeconds(1.5);
+			EventManager.Instance.LerpStoryColor(0,0,0,0,1.5f);
+			yield return waitSeconds(1.5f);
 			EventManager.Instance.SetStoryImage("Graphics/Cutscenes/goodending5");
-			EventManager.Instance.LerpStoryColor(1,1,1,1,1.5);
+			EventManager.Instance.LerpStoryColor(1,1,1,1,1.5f);
 			EventManager.Instance.ShowStoryMessage("I threw the strange coin into the river, where it could not cause any more trouble.  I put the photograph in the box, and swore that I would abide by her wish.");
 			EventManager.Instance.ShowStoryMessage("I still have that box among my mementos.");
 			yield return waitSeconds(1.5f);

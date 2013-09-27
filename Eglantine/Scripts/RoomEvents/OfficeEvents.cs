@@ -103,7 +103,6 @@ namespace Eglantine.Engine
 
 
 			checkCabinetBlocker();
-			yield return null;
 		}
 
 		public static void setTopDrawerClosed()
@@ -135,7 +134,6 @@ namespace Eglantine.Engine
 				EventManager.Instance.EnableInteractable("Photograph");
 
 			checkCabinetBlocker();
-			yield return null;
 		}
 		
 		public static void setBottomDrawerClosed()
@@ -150,7 +148,6 @@ namespace Eglantine.Engine
 			EventManager.Instance.DisableInteractable("Journal");
 
 			checkCabinetBlocker();
-			yield return null;
 		}
 
 		public static void checkCabinetBlocker ()
@@ -162,8 +159,6 @@ namespace Eglantine.Engine
 				else
 					EventManager.Instance.DisableInteractable("CabinetMovementBlocker");
 			}
-
-			yield return null;
 		}
 
 

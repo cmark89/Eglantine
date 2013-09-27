@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Eglantine.Engine.Pathfinding;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -151,14 +152,14 @@ namespace Eglantine.Engine
 					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["Area.X"], (int)(double)currentTrigger["Area.Y"], (int)(double)currentTrigger["Area.Width"], (int)(double)currentTrigger["Area.Height"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (Script)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this, i+1));
 				}
 				else if(currentTrigger["Polygon"] != null)
 				{
 					Polygon poly = new Polygon((LuaTable)currentTrigger["Polygon"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (LuaFunction)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (Script)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this, i+1));
 				}				
 			}
 		}
@@ -211,7 +212,7 @@ namespace Eglantine.Engine
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement, mouseType));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (Script)currentInteractable["OnInteract"], (Script)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement, mouseType, i+1));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -220,7 +221,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (LuaFunction)currentInteractable["OnInteract"], (LuaFunction)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement, mouseType));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (Script)currentInteractable["OnInteract"], (Script)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement, mouseType, i+1));
 				}
 			}
 		}

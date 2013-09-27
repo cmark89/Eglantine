@@ -53,12 +53,6 @@ namespace Eglantine.Engine
 
 // --LOOK EVENTS-- //
 
-		public static IEnumerator<ScriptPauser> lookAtCrowbar()
-		{
-			EventManager.Instance.ShowMessage("That looks like it may be useful.");
-
-			yield return null;
-		}
 
 		public static IEnumerator<ScriptPauser> lookAtKitchenFlower()
 		{

@@ -7,8 +7,15 @@ namespace Eglantine.Engine
 	public static partial class GameEvents
 	{
 		static int menuPhase = 0;
+		public static Script[] menuEvents = new Script[4]
+		{
+			null,
+			showSplashScreen,
+			titleFadeIn,
+			mainMenu
+		};
 
-		public static IEnumerable<ScriptPauser> showSplashScreen()
+		public static IEnumerator<ScriptPauser> showSplashScreen()
 		{
 			EventManager.Instance.PlaySong("Toxic Night", .7f);
 			yield return waitSeconds(2);
@@ -19,7 +26,7 @@ namespace Eglantine.Engine
 			EventManager.Instance.NextMenuPhase();
 		}
 
-		public static IEnumerable<ScriptPauser> titleFadeIn()
+		public static IEnumerator<ScriptPauser> titleFadeIn()
 		{
 			EventManager.Instance.MainMenuHideElement("splash");
 			EventManager.Instance.MainMenuFadeIn("background", 5);
@@ -29,14 +36,16 @@ namespace Eglantine.Engine
 			EventManager.Instance.NextMenuPhase();
 		}
 
-		public static IEnumerable<ScriptPauser> mainMenu()
+		public static IEnumerator<ScriptPauser> mainMenu()
 		{
 			EventManager.Instance.MainMenuFadeIn("background", 0);
 			EventManager.Instance.MainMenuFadeIn("title", 0);
 			EventManager.Instance.ShowMainMenu();
+
+			yield return null;
 		}
 
-		public static IEnumerable<ScriptPauser> onStartNewGame()
+		public static IEnumerator<ScriptPauser> onStartNewGame()
 		{
 			EventManager.Instance.PlaySound("windowbreak");
 			EventManager.Instance.StopMusic();
@@ -49,13 +58,6 @@ namespace Eglantine.Engine
 
 			EventManager.Instance.PlayStorySequence("openingCutscene");
 		}
-
-		Script[] menuEvents = new Script[] {
-			null,
-			showSplashScreen,
-			titleFadeIn,
-			mainMenu
-		};
 	}
 }
 

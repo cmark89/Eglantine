@@ -47,7 +47,7 @@ namespace Eglantine.Engine
 			//Bring up the safe screen here
 			EventManager.Instance.OpenSafe ();
 			yield return waitUntil ("Safe closed");
-			if (EventManager.Instance.PlayerHasItem ("Key") && !GameState.KitchenWindowBroken)
+			if (EventManager.Instance.PlayerHasItem ("Key") && !GameState.Instance.KitchenWindowBroken)
 			{
 				GameState.Instance.KitchenWindowBroken = true;
 				EventManager.Instance.DisableSaving();

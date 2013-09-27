@@ -28,10 +28,10 @@ namespace Eglantine.Engine
 			EventManager.Instance.MovePlayerTo ("TrapdoorClosed");
 			yield return waitUntil ("Player stopped");
 					
-			if (!GameState.TrapdoorUnlocked)
+			if (!GameState.Instance.TrapdoorUnlocked)
 			{
 				EventManager.Instance.DestroyItem ("Key");
-				GameState.TrapdoorUnlocked = true;
+				GameState.Instance.TrapdoorUnlocked = true;
 			}
 							
 			EventManager.Instance.PlaySound("dooropen");

@@ -49,7 +49,7 @@ namespace Eglantine.Engine
 			else if(GameState.Instance.FlowersOnGrave == 3)
 			{
 				yield return waitSeconds(4);
-				Scheduler.ExecuteWithArgs<float, float>(fadeOutGrave, 6, 1);
+				fadeOutGrave(6, 1);
 				yield return waitSeconds(6);
 				EventManager.Instance.PlayStorySequence("goodEnding");
 			}
@@ -87,15 +87,15 @@ namespace Eglantine.Engine
 			EventManager.Instance.EnableInteractable("Flower" + GameState.Instance.FlowersOnGrave);
 		}
 
-		public static IEnumerator<ScriptPauser> fadeOutGrave (float time, float amount)
+		public static void fadeOutGrave (float time, float amount)
 		{
-			EventManager.Instance.FadeInteractable("Grave", time, 1.0 - amount);
-			EventManager.Instance.FadeInteractable("Flower1", time, 1.0 - amount);
-			EventManager.Instance.FadeInteractable("Flower2", time, 1.0 - amount);
-			EventManager.Instance.FadeInteractable("Flower3", time, 1.0 - amount);
+			EventManager.Instance.FadeInteractable("Grave", time, 1f - amount);
+			EventManager.Instance.FadeInteractable("Flower1", time, 1f - amount);
+			EventManager.Instance.FadeInteractable("Flower2", time, 1f - amount);
+			EventManager.Instance.FadeInteractable("Flower3", time, 1f - amount);
 		}
 
-		public static IEnumerator<ScriptPauser> fadeInGrave (float time)
+		public static void fadeInGrave (float time)
 		{
 			EventManager.Instance.FadeInInteractable("Grave", time);
 			EventManager.Instance.FadeInInteractable("Flower1", time);
