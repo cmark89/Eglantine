@@ -45,11 +45,11 @@ namespace Eglantine.Engine
 		public List<Entrance> Entrances;
 
 		[NonSerialized]
-		private LuaFunction enterEvent;
+		private Script enterEvent;
 		[NonSerialized]
-		private LuaFunction exitEvent;
+		private Script exitEvent;
 		[NonSerialized]
-		private LuaFunction loadEvent;
+		private Script loadEvent;
 
 		public Room (string roomname)
 		{
@@ -69,9 +69,9 @@ namespace Eglantine.Engine
 			ParseTriggerAreas(lua, roomname);
 			ParseEntrances(lua, roomname);
 
-			enterEvent = (LuaFunction)lua["rooms." + roomname + ".onEnter"];
-			exitEvent = (LuaFunction)lua["rooms." + roomname + ".onExit"];
-			loadEvent = (LuaFunction)lua["rooms." + roomname + ".onLoad"];
+			enterEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onEnter");
+			exitEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onExit");
+			loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onLoad");
 
 			// Finally, tell the gamestate that the room exists
 			GameState.Instance.RegisterRoom(this);
@@ -136,6 +136,8 @@ namespace Eglantine.Engine
 			TriggerAreas = new List<TriggerArea> ();
 
 			LuaTable triggers = lua.GetTable ("rooms." + roomname + ".Triggers");
+			string tablePath = "rooms." + roomname + ".Triggers";
+
 			if(triggers == null)
 				return;
 
@@ -145,6 +147,7 @@ namespace Eglantine.Engine
 			{
 				// Set the active trigger to the iterated trigger value
 				currentTrigger = (LuaTable)triggers[i + 1];
+				Script triggerEvent = (Script)lua.GetFunction(typeof(Script), tablePath + "[" + (i+1) + "].OnEnter");
 
 				// Build the triggering rectangle
 				if(currentTrigger["Area"] != null)
@@ -152,14 +155,14 @@ namespace Eglantine.Engine
 					Rectangle triggerRect = new Rectangle((int)(double)currentTrigger["Area.X"], (int)(double)currentTrigger["Area.Y"], (int)(double)currentTrigger["Area.Width"], (int)(double)currentTrigger["Area.Height"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, (Script)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this, i+1));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], triggerRect, triggerEvent, (bool)currentTrigger["Enabled"],this, i+1));
 				}
 				else if(currentTrigger["Polygon"] != null)
 				{
 					Polygon poly = new Polygon((LuaTable)currentTrigger["Polygon"]);
 
 					// Add the triggered event
-					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, (Script)currentTrigger["OnEnter"], (bool)currentTrigger["Enabled"],this, i+1));
+					TriggerAreas.Add(new TriggerArea((string)currentTrigger["Name"], poly, triggerEvent, (bool)currentTrigger["Enabled"],this, i+1));
 				}				
 			}
 		}
@@ -167,7 +170,7 @@ namespace Eglantine.Engine
 		public void ParseInteractables (Lua lua, string roomname)
 		{
 			Interactables = new List<Interactable> ();
-
+			string tablePath = "rooms." + roomname + ".Interactables";
 			LuaTable interactables = lua.GetTable ("rooms." + roomname + ".Interactables");
 			LuaTable currentInteractable;
 			LuaTable currentProperty;
@@ -207,12 +210,34 @@ namespace Eglantine.Engine
 				if(currentInteractable["Mouse"] != null)
 					mouseType = (string)currentInteractable["Mouse"];
 
+				Script onLook = null;
+				if(lua.GetFunction(tablePath + "." + (i + 1) + ".OnLook") != null)
+				{
+					onLook = (Script)lua.GetFunction(typeof(Script), tablePath + "." + (i + 1) + ".OnLook");
+				}
+				else
+				{
+					Console.WriteLine(tablePath + "[" + (i + 1) + "].OnLook is null!");
+				}
+
+				Script onInteract = null;
+				if(onInteract != null)
+				//if(lua.GetFunction(tablePath + "." + (i + 1) + ".OnInteract") != null)
+				{
+					onInteract = (Script)lua.DoString("return " + tablePath + "[" + (i + 1) + "].OnInteract")[0];
+					//onInteract = (Script)lua.GetFunction(typeof(Script), tablePath + "." + (i + 1) + ".OnInteract");
+				}
+				else
+				{
+					Console.WriteLine(tablePath + "[" + (i + 1) + "].OnInteract is null!");
+				}
+
 				// Build the clickable area
 				if((LuaTable)currentInteractable["Area"] != null)
 				{
 					currentProperty = (LuaTable)currentInteractable["Area"];
 					Rectangle rect = new Rectangle((int)(double)currentProperty["X"], (int)(double)currentProperty["Y"], (int)(double)currentProperty["Width"], (int)(double)currentProperty["Height"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, (Script)currentInteractable["OnInteract"], (Script)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement, mouseType, i+1));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], rect, point, onInteract, onLook, (bool)currentInteractable["Enabled"], this, draw, texture, yCutoff, blocksMovement, mouseType, i+1));
 				}
 				else if((LuaTable)currentInteractable["Polygon"] != null)
 				{
@@ -221,7 +246,7 @@ namespace Eglantine.Engine
 						drawPos = new Vector2((float)(double)currentInteractable["DrawAt.X"], (float)(double)currentInteractable["DrawAt.Y"]);
 
 					Polygon poly = new Polygon((LuaTable)currentInteractable["Polygon"]);
-					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, (Script)currentInteractable["OnInteract"], (Script)currentInteractable["OnLook"], (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement, mouseType, i+1));
+					Interactables.Add(new Interactable((string)currentInteractable["Name"], poly, point, onInteract, onLook, (bool)currentInteractable["Enabled"], this, draw, texture, drawPos, yCutoff, blocksMovement, mouseType, i+1));
 				}
 			}
 		}
@@ -289,20 +314,20 @@ namespace Eglantine.Engine
 		public void OnEnterRoom()
 		{
 			if(enterEvent != null)
-				enterEvent.Call ();
+				Scheduler.Execute(enterEvent);
 		}
 
 		public void OnExitRoom()
 		{
 			if(exitEvent != null)
-				exitEvent.Call ();
+				Scheduler.Execute(exitEvent);
 		}
 
 		// OnLoadRoom is called when the game is loaded into the room; this is used to resume certain coroutines.
 		public void OnLoadRoom ()
 		{
 			if(loadEvent != null)
-				loadEvent.Call ();
+				Scheduler.Execute(loadEvent);
 		}
 
 		public void PrepareForSerialization ()
@@ -334,9 +359,9 @@ namespace Eglantine.Engine
 				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
 
 			Lua lua = GameScene.Lua;
-			enterEvent = (LuaFunction)lua["rooms." + Name + ".onEnter"];
-			exitEvent = (LuaFunction)lua["rooms." + Name + ".onExit"];
-			loadEvent = (LuaFunction)lua["rooms." + Name + ".onLoad"];
+			enterEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onEnter");
+			exitEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onExit");
+			loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onLoad");
 
 			foreach (RoomLayer rl in Background)
 			{

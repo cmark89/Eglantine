@@ -25,7 +25,7 @@ items["Crowbar"] = {
 items["Eglantine"] = {
 	Name = "Eglantine",
 	Texture = "Graphics/Objects/eglantine",
-	Descriptin = "Even if it's pretty, there's something dark about this particular flower...",
+	Description = "Even if it's pretty, there's something dark about this particular flower...",
 	Type = "Unusable"
 }
 
@@ -91,8 +91,8 @@ items["Photograph"] = {
 	Description = "This photograph...",
 	Type = "Immediate",
 	
-	OnAcquire = ItemEvents.acquirePhotograph;
-	OnUse = ItemEvents.usePhotograph;
+	OnAcquire = ItemEvents.acquirePhotograph,
+	OnUse = ItemEvents.usePhotograph,
 }
 
 items["Folded Note"] = {

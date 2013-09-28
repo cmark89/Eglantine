@@ -7,6 +7,13 @@ namespace Eglantine.Engine
 	public static class ItemEvents
 	{
 
+		public static IEnumerator<ScriptPauser> acquirePhotograph ()
+		{
+			GameState.Instance.PhotoTaken = true;
+
+			yield return null;
+		}
+
 		public static IEnumerator<ScriptPauser> usePuzzlebox()
 		{
 			EventManager.Instance.OpenPuzzlebox();

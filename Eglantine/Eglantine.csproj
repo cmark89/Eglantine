@@ -124,7 +124,6 @@
   <ItemGroup>
     <None Include="Icon.png" />
     <None Include="Content\Audio\Music\Bloom, Discord.wav" />
-    <None Include="Data\storySceneScripts.lua" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -793,6 +792,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\BackyardFlower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\storySceneScripts.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

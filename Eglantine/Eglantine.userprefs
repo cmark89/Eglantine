@@ -1,26 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/CoreEvents.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scenes/StoryScene.cs">
     <Files>
-      <File FileName="Scripts/CoreEvents.cs" Line="17" Column="4" />
-      <File FileName="Scripts/MainMenuEvents.cs" Line="31" Column="42" />
+      <File FileName="Data/mainSetup.lua" Line="3" Column="33" />
+      <File FileName="Engine/EventManager.cs" Line="322" Column="55" />
+      <File FileName="Scenes/StoryScene.cs" Line="118" Column="58" />
+      <File FileName="Data/storySceneScripts.lua" Line="8" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Eglantine" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="Content" expanded="True" />
             <Node name="Data" expanded="True">
               <Node name="Rooms" expanded="True" />
             </Node>
-            <Node name="Engine" expanded="True">
-              <Node name="GameWorld" expanded="True" />
+            <Node name="Engine" expanded="True" />
+            <Node name="Scenes" expanded="True">
+              <Node name="StoryScene.cs" selected="True" />
             </Node>
-            <Node name="Scripts" expanded="True">
-              <Node name="RoomEvents" expanded="True" />
-              <Node name="CoreEvents.cs" selected="True" />
-            </Node>
+            <Node name="Scripts" expanded="True" />
           </Node>
         </State>
       </Pad>

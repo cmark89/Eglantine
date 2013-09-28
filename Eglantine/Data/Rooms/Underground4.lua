@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Underground4_events")
-
 print("Underground4 added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -177,7 +174,7 @@ rooms["Underground4"] = {
 			},
 
 			OnInteract = GameEvents.interactWithGrave,
-			OnLook = GaveEvents.readHeadstone,
+			OnLook = GameEvents.readHeadstone,
 			Mouse = "Hot"
 		},
 	},

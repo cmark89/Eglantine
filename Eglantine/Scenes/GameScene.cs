@@ -73,8 +73,6 @@ namespace Eglantine
 			Console.WriteLine ("GameScene : load gameSetup.lua...");
 			Lua.DoFile ("Data/gameSetup.lua");
 			Console.WriteLine ("gameSetup.lua should have loaded.");
-			GameScene.Lua.DoString ("loadGameState()");
-			GameScene.Lua.DoString ("loadEventManager()");
 
 			// Set up the Event Manager
 			EventManager.Initialize ();

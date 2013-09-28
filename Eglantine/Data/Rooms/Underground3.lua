@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Underground3_events")
-
 print("Underground3 added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -36,7 +33,7 @@ rooms["Underground3"] = {
 				Y = 479
 			},
 
-			OnInteract = GameEvens.useUnderground3Door_Up,
+			OnInteract = GameEvents.useUnderground3Door_Up,
 			Mouse = "Leave"
 		},
 		[2] = {

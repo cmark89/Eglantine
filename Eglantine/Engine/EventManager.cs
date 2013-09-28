@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -20,7 +21,10 @@ namespace Eglantine.Engine
 			get
 			{
 				if(_instance == null)
+				{
+					Console.WriteLine("EVENT MANAGER IS NULL!");
 					_instance = new EventManager();
+				}
 
 				return _instance;
 			}
@@ -29,7 +33,6 @@ namespace Eglantine.Engine
 		public static void Initialize ()
 		{
 			_instance = new EventManager();
-			GameScene.Lua.DoString("loadEventManager()");
 		}
 
 		// Queues a message into the message display manager
@@ -170,9 +173,7 @@ namespace Eglantine.Engine
 		public void SendSignal(string signal)
 		{
 			Console.WriteLine("Send signal: " + signal);
-
-			if(GameScene.Instance != null)
-				GameScene.Lua.DoString("sendSignal(\"" + signal + "\")");
+			Scheduler.SendSignal(signal);
 		}
 
 		// Play a sound effect

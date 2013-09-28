@@ -80,7 +80,8 @@ namespace Eglantine
 			MouseManager.Initialize ();
 			Scheduler.Initialize();
 
-			ChangeScene(new MainMenuScene());
+			//ChangeScene(new MainMenuScene());
+			ChangeScene(new GameScene());
 
 			base.Initialize ();
 				

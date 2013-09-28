@@ -48,6 +48,7 @@ namespace Eglantine.Engine
 			Name = (string)itemTable ["Name"];
 
 			Texture = ContentLoader.Instance.LoadTexture2D ((string)(itemTable ["Texture"]));
+			Description = GameScene.Lua.GetString(tablePath + ".Description");
 
 			string type = (string)itemTable ["Type"];
 			switch (type)
@@ -65,8 +66,11 @@ namespace Eglantine.Engine
 				break;
 			}
 
-			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
-			OnUse = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
+			if(GameScene.Lua.GetFunction(tablePath + ".OnAcquire") != null)
+				OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
+
+			if(GameScene.Lua.GetFunction(tablePath + ".OnUse") != null)
+				OnUse = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 
 		public void Inspect ()

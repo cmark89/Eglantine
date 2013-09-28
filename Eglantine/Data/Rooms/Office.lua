@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/Office_events")
-
 print("Office added to global table 'rooms'.")
 
 rooms["Office"] = {

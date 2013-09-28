@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Underground1_events")
-
 print("Underground1 added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table

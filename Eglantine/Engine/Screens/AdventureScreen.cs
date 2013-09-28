@@ -2,6 +2,7 @@ using System;
 using Eglantine.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -124,7 +125,7 @@ namespace Eglantine.Engine
 			{
 				Gui.Update (gameTime);
 
-				GameScene.Lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+				Scheduler.Update(gameTime.ElapsedGameTime.TotalSeconds);
 			}
 
 			if (!ReceivingInput && LoadedItem != null)

@@ -63,7 +63,7 @@ namespace Eglantine
 			_instance = this;
 
 			lua = new Lua();
-			lua.DoFile ("Data/Events/Story_events.lua");
+			lua.DoFile ("Data/storySceneScripts.lua");
 			sceneScript = (Script)lua.GetFunction(typeof(Script), "scripts." + sceneName);
 			messageQueue = new List<StoryMessage>();
 
@@ -84,7 +84,7 @@ namespace Eglantine
 			if (unloaded)
 				return;
 
-			lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			Scheduler.Update(gameTime.ElapsedGameTime.TotalSeconds);
 
 			// If a message is shown...
 			if (messageQueue.Count > 0)
@@ -144,7 +144,7 @@ namespace Eglantine
 
 		public void SendSignal(string signal)
 		{
-			lua.DoString("sendSignal(\"" + signal + "\")");
+			Scheduler.SendSignal(signal);
 		}
 
 		public void ShowMessage (string message, float textSpeed = .07f)

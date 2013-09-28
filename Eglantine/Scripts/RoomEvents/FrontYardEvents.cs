@@ -43,6 +43,7 @@ namespace Eglantine.Engine
 
 		public static IEnumerator<ScriptPauser> lookAtFrontDoor()
 		{
+			Console.WriteLine("LOOK AT FRONT YARD DOOR");
 			EventManager.Instance.ShowMessage("What a creepy looking place...");
 
 			yield return null;
@@ -60,6 +61,7 @@ namespace Eglantine.Engine
 // --DOORS-- //
 		public static IEnumerator<ScriptPauser> useFrontYardDoor()
 		{
+			Console.WriteLine("USE FRONT YARD DOOR");
 			door("Door", "Foyer", "FrontDoor");
 			yield return null;
 		}

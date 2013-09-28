@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/SecretRoom_events")
-
 print("SecretRoom added to global table 'rooms'.")
 
 rooms["SecretRoom"] = {
@@ -129,8 +126,7 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = GameEvents.useSecretRoomDoor_TrapDoor
-			
+			OnInteract = GameEvents.useSecretRoomDoor_TrapDoor,
 			OnLook = GameEvents.lookDownTrapdoor,
 			
 			BlocksMovement = true,

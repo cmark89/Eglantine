@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/LivingRoom_events")
-
 print("LivingRoom added to global table 'rooms'.")
 
 rooms["LivingRoom"] = {
@@ -240,7 +237,7 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			}
+			},
 			Mouse = "Leave"
 		}
 	},

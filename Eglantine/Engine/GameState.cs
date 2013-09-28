@@ -124,6 +124,7 @@ namespace Eglantine.Engine
 			EventManager.Instance.GainItem("Eglantine");
 			EventManager.Instance.GainItem("Eglantine");
 			EventManager.Instance.GainItem("Eglantine");
+			EventManager.Instance.GainItem("Puzzlebox");
 #endif
 		}
 
