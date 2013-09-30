@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Kitchen_events")
-
 print("Kitchen added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -18,7 +15,7 @@ rooms["Kitchen"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "WindowLayer",
 			Area = {
 				X = 0,
@@ -40,7 +37,7 @@ rooms["Kitchen"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[2] = {
+		["I2"] = {
 			Name = "BrokenWindowLayer",
 			Area = {
 				X = 0,
@@ -57,12 +54,9 @@ rooms["Kitchen"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[3] = {
+		["I3"] = {
 			Name = "BackYardDoor",
 			Polygon = {
 				[1] = { X = 450, Y = 112 },
@@ -82,13 +76,10 @@ rooms["Kitchen"] = {
 				Y = 457
 			},
 
-			OnInteract = function()
-				door("BackYardDoor", "BackYard", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useKitchenDoor_BackYard,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "FoyerDoor",
 			Polygon = {
 				[1] = { X = 68, Y = 134 },
@@ -106,13 +97,10 @@ rooms["Kitchen"] = {
 				Y = 550
 			},
 
-			OnInteract = function()
-				door("FoyerDoor", "Foyer", "KitchenDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useKitchenDoor_Foyer,
 			Mouse = "Leave"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 557,
@@ -131,10 +119,8 @@ rooms["Kitchen"] = {
 				Y = 505
 			},
 
-			OnInteract = pickKitchenEglantine,
-			OnLook = function()
-				Event:ShowMessage("Okay, this is getting pretty weird...")
-			end,
+			OnInteract = GameEvents.pickKitchenEglantine,
+			OnLook = GameEvents.lookAtKitchenFlower,
 			Mouse = "Hot"
 		}
 	},
@@ -191,6 +177,13 @@ rooms["Kitchen"] = {
 		}
 	},
 	
-	onEnter = checkWindow,
-	onExit = leaveKitchen
+	onEnter = GameEvents.checkWindow,
+	onExit = GameEvents.leaveKitchen,
+	onLoad = GameEvents.loadKitchen,
+	
+	MinYValue = 768,
+	MinYScale = .8,
+	
+	MaxYValue = 424,
+	MaxYScale = .6
 }

@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Bathroom_events")
-
 print("Bathroom added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -18,7 +15,7 @@ rooms["Bathroom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 955, Y = 71 },
@@ -36,13 +33,10 @@ rooms["Bathroom"] = {
 				Y = 648
 			},
 
-			OnInteract = function()
-				 door("Door", "Bedroom", "BathroomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBathroomDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "CabinetClosed",
 			Polygon = {
 				[1] = { X = 871, Y = 58 },
@@ -60,11 +54,10 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = openCabinet,
-			OnLook = nil,
+			OnInteract = GameEvents.openCabinet,
 			Mouse = "Hot"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "CabinetOpen",
 			Polygon = {
 				[1] = { X = 804, Y = 77 },
@@ -84,11 +77,11 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = closeCabinet,
+			OnInteract = GameEvents.closeCabinet,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "DollHead",
 			Area = {
 				X = 875,
@@ -106,10 +99,8 @@ rooms["Bathroom"] = {
 				Y = 559
 			},
 
-			OnInteract = interactWithDollHead,
-			OnLook = function()
-				Event:ShowMessage("What the hell is with this place...?")
-			end,
+			OnInteract = GameEvents.interactWithDollHead,
+			OnLook = GameEvents.lookAtDollHead,
 			Mouse = "Grab"
 		},
 	},
@@ -144,5 +135,13 @@ rooms["Bathroom"] = {
 			X = 958,
 			Y = 642
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.1,
+	
+	MaxYValue = 544,
+	MaxYScale = .95,
 }

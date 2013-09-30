@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Eglantine.Engine;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -22,7 +23,7 @@ namespace Eglantine
 		private const int TEXT_WIDTH = 976;
 		private const int TEXT_HEIGHT = 350;
 
-		LuaFunction sceneScript;
+		Script sceneScript;
 		string sceneName;
 
 		protected static SpriteFont storyFont;
@@ -62,9 +63,8 @@ namespace Eglantine
 			_instance = this;
 
 			lua = new Lua();
-			lua.DoFile ("Data/scheduler.lua");
-			lua.DoFile ("Data/Events/Story_events.lua");
-			sceneScript = lua.GetFunction(sceneName);
+			lua.DoFile ("Data/storySceneScripts.lua");
+			sceneScript = (Script)lua.GetFunction(typeof(Script), "scripts." + sceneName);
 			messageQueue = new List<StoryMessage>();
 
 			if (storyFont == null)
@@ -75,7 +75,7 @@ namespace Eglantine
 			}
 
 			
-			sceneScript.Call ();
+			Scheduler.Execute(sceneScript);
 		}
 
 		public override void Update (GameTime gameTime)
@@ -84,7 +84,7 @@ namespace Eglantine
 			if (unloaded)
 				return;
 
-			lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+			Scheduler.Update(gameTime.ElapsedGameTime.TotalSeconds);
 
 			// If a message is shown...
 			if (messageQueue.Count > 0)
@@ -144,7 +144,7 @@ namespace Eglantine
 
 		public void SendSignal(string signal)
 		{
-			lua.DoString("sendSignal(\"" + signal + "\")");
+			Scheduler.SendSignal(signal);
 		}
 
 		public void ShowMessage (string message, float textSpeed = .07f)

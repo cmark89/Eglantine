@@ -1,24 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/AudioManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/KitchenEvents.cs">
     <Files>
-      <File FileName="Data/Rooms/BackYard.lua" Line="8" Column="11" />
-      <File FileName="Engine/GameWorld/Room.cs" Line="6" Column="20" />
-      <File FileName="Engine/GameState.cs" Line="5" Column="20" />
-      <File FileName="Engine/AudioManager.cs" Line="8" Column="1" />
+      <File FileName="Engine/GameState.cs" Line="126" Column="50" />
+      <File FileName="Scripts/RoomEvents/KitchenEvents.cs" Line="67" Column="47" />
+      <File FileName="Data/Rooms/Kitchen.lua" Line="83" Column="21" />
+      <File FileName="Data/Rooms/Foyer.lua" Line="164" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Eglantine" expanded="True">
-            <Node name="Content" expanded="True">
-              <Node name="Graphics" expanded="True">
-                <Node name="Objects" expanded="True" />
-                <Node name="Rooms" expanded="True" />
-              </Node>
+            <Node name="References" expanded="True" />
+            <Node name="Data" expanded="True">
+              <Node name="Rooms" expanded="True" />
             </Node>
             <Node name="Engine" expanded="True">
-              <Node name="AudioManager.cs" selected="True" />
+              <Node name="GameWorld" expanded="True" />
+              <Node name="Screens" expanded="True" />
+            </Node>
+            <Node name="Scenes" expanded="True" />
+            <Node name="Scripts" expanded="True">
+              <Node name="RoomEvents" expanded="True">
+                <Node name="KitchenEvents.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -28,5 +33,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Engine/Screens/AdventureScreen.cs" line="128" offsetX="651" offsetY="1984" expression="gameTime.ElapsedGameTime" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

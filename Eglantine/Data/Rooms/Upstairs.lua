@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/Upstairs_events")
-
 print("Upstairs added to global table 'rooms'.")
 
 rooms["Upstairs"] = {
@@ -18,7 +15,7 @@ rooms["Upstairs"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Stairs",
 			Polygon = {
 				[1] = { X = 730, Y = 768 },
@@ -37,13 +34,11 @@ rooms["Upstairs"] = {
 				Y = 683
 			},
 
-			OnInteract = function()
-				door("Stairs", "Foyer", "Stairs")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Foyer,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "BedroomDoor",
 			Polygon = {
 				[1] = { X = 481, Y = 0 },
@@ -62,13 +57,11 @@ rooms["Upstairs"] = {
 				Y = 439
 			},
 
-			OnInteract = function()
-				door("BedroomDoor", "Bedroom", "HallDoor")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Bedroom,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "EmptyRoomDoor",
 			Area = {
 				X = 678,
@@ -87,14 +80,12 @@ rooms["Upstairs"] = {
 				Y = 368
 			},
 
-			OnInteract = function()
-				door("EmptyRoomDoor", "EmptyRoom", "Door")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_EmptyRoom,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
 		
-		[4] = {
+		["I4"] = {
 			Name = "Safe",
 			Polygon = {
 				[1] = { X = 306, Y = 92 },
@@ -114,13 +105,11 @@ rooms["Upstairs"] = {
 				Y = 546
 			},
 
-			OnInteract = interactWithSafe,
-			OnLook = function()
-				Event:ShowMessage("That safe looks pretty sturdy.")
-			end,
+			OnInteract = GameEvents.interactWithSafe,
+			OnLook = GameEvents.lookAtSafe,
 			Mouse = "Hot"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "OfficeDoor",
 			Polygon = {
 				[1] = { X = 0, Y = 0 },
@@ -140,9 +129,7 @@ rooms["Upstairs"] = {
 				Y = 733
 			},
 
-			OnInteract = function()
-				door("OfficeDoor", "Office", "Door")
-			end,
+			OnInteract = GameEvents.useUpstairsDoor_Office,
 			OnLook = nil,
 			Mouse = "Leave"
 		}
@@ -193,6 +180,14 @@ rooms["Upstairs"] = {
 			X = 169,
 			Y = 734
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.5,
+	
+	MaxYValue = 376,
+	MaxYScale = .8	
 }
 

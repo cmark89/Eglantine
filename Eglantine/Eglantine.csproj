@@ -48,6 +48,9 @@
       <HintPath>..\..\..\repos\MonoGame\MonoGame.Framework\bin\Linux\Debug\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4" />
+    <Reference Include="ORG.Scheduler">
+      <HintPath>..\..\ObjectivelyRadical\Scheduler\ORG.Scheduler\ORG.Scheduler\bin\Debug\ORG.Scheduler.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -98,15 +101,30 @@
     <Compile Include="Scenes\StoryScene.cs" />
     <Compile Include="Engine\Screens\MenuScreen.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Scripts\ItemEvents.cs" />
+    <Compile Include="Scripts\CoreEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BackYardEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BathroomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\BedroomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\EmptyRoomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\FoyerEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\FrontYardEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\KitchenEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\LivingRoomEvents.cs" />
+    <Compile Include="Scripts\MainMenuEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\OfficeEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\SecretRoomEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\Underground1Events.cs" />
+    <Compile Include="Scripts\RoomEvents\Underground2Events.cs" />
+    <Compile Include="Scripts\RoomEvents\Underground3Events.cs" />
+    <Compile Include="Scripts\StoryEvents.cs" />
+    <Compile Include="Scripts\RoomEvents\Underground4.cs" />
+    <Compile Include="Scripts\RoomEvents\UpstairsEvents.cs" />
+    <Compile Include="Engine\GameWorld\AnimatedSprite.cs" />
+    <Compile Include="Engine\Pathfinding\Facing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
-    <None Include="Data\scheduler.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\Reference\Signal reference.txt" />
-    <None Include="Data\Reference\Event Manager reference.txt" />
-    <None Include="Data\Rooms\_room_template.lua" />
     <None Include="Content\Audio\Music\Bloom, Discord.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -117,13 +135,11 @@
     <Folder Include="Data\" />
     <Folder Include="Engine\Screens\" />
     <Folder Include="Data\Rooms\" />
-    <Folder Include="Data\Reference\" />
     <Folder Include="Content\Audio\" />
     <Folder Include="Content\Audio\SoundEffects\" />
     <Folder Include="Content\Audio\Music\" />
     <Folder Include="Engine\GameWorld\" />
     <Folder Include="Content\Graphics\" />
-    <Folder Include="Data\Events\" />
     <Folder Include="Content\Graphics\Objects\" />
     <Folder Include="Content\Graphics\Rooms\" />
     <Folder Include="Content\Graphics\Docs\" />
@@ -133,25 +149,18 @@
     <Folder Include="Content\Fonts\" />
     <Folder Include="Content\Graphics\Cutscenes\" />
     <Folder Include="Content\Graphics\Client\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\RoomEvents\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Content Include="Data\rooms.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\itemeffects.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\items.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\MayStickfigure.xnb" />
-    <Content Include="Data\testevents.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\test.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\phGui.xnb" />
     <Content Include="Content\messagewindow.xnb" />
     <Content Include="Data\audio_assets.lua">
@@ -184,13 +193,7 @@
     <Content Include="Content\Graphics\Objects\scissors.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\core_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Rooms\SecretRoom.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\SecretRoom_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\EmptyRoom.png">
@@ -211,19 +214,10 @@
     <Content Include="Data\Rooms\EmptyRoom.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\EmptyRoom_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\LivingRoom_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Rooms\LivingRoom.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\FrontYard.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\FrontYard_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\FrontYard.png">
@@ -232,31 +226,16 @@
     <Content Include="Data\Rooms\Foyer.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\Foyer_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Upstairs_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Rooms\Upstairs.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\Bedroom_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Rooms\Bedroom.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\BackYard_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\BackYard.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Rooms\Office.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Office_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\book.png">
@@ -385,15 +364,6 @@
     <Content Include="Content\Graphics\Objects\grave.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\Underground1_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Underground2_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Underground3_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Rooms\Underground1.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -439,9 +409,6 @@
     <Content Include="Content\Graphics\Docs\journal11.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\Underground4_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Audio\SoundEffects\heartbeat.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -452,9 +419,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\KitchenWindowBroken.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Kitchen_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\KitchenFlower.png">
@@ -575,9 +539,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Rooms\Bathroom.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\Bathroom_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Audio\SoundEffects\cabinetclose.wav">
@@ -781,9 +742,6 @@
     <Content Include="Content\Graphics\Client\Upstairs_stamp.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\Events\Story_events.lua">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Graphics\Client\CloseButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -806,9 +764,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Client\TitleText.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Events\MainMenu_events.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Client\NewGameButton.png">
@@ -839,6 +794,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Objects\BackyardFlower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\storySceneScripts.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\SoundEffects\door.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\SoundEffects\stairs.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\SpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

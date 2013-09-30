@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/Foyer_events")
-
 print("Foyer added to global table 'rooms'.")
 
 rooms["Foyer"] = {
@@ -18,7 +15,7 @@ rooms["Foyer"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "FrontDoor",
 			Area = {
 				X = 0,
@@ -37,13 +34,10 @@ rooms["Foyer"] = {
 				Y = 700
 			},
 
-			OnInteract = function()
-				door("FrontDoor", "FrontYard", "FrontDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_FrontYard,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "KitchenDoor",
 			Area = {
 				X = 357,
@@ -62,13 +56,10 @@ rooms["Foyer"] = {
 				Y = 367
 			},
 
-			OnInteract = function()
-				door("KitchenDoor", "Kitchen", "FoyerDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_Kitchen,
 			Mouse = "Leave"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Stairs",
 			Polygon = {
 				[1] = { X = 635, Y = 595 },
@@ -87,13 +78,10 @@ rooms["Foyer"] = {
 				Y = 711
 			},
 
-			OnInteract = function()
-				door("Stairs", "Upstairs", "Stairs")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_Upstairs,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "LivingRoomDoor",
 			Polygon = {
 				[1] = { X = 220, Y = 46 },
@@ -112,10 +100,7 @@ rooms["Foyer"] = {
 				Y = 559
 			},
 
-			OnInteract = function()
-				door("LivingRoomDoor", "LivingRoom", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useFoyerDoor_LivingRoom,
 			Mouse = "Leave"
 		},
 	},
@@ -193,5 +178,13 @@ rooms["Foyer"] = {
 			X = 273,
 			Y = 549
 		}
-	}
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.10,
+	
+	MaxYValue = 367,
+	MaxYScale = .4,
 }

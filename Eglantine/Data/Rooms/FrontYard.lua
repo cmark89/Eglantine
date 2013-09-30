@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/FrontYard_events")
-
 print("FrontYard added to global table 'rooms'.")
 
 rooms["FrontYard"] = {
@@ -18,7 +15,7 @@ rooms["FrontYard"] = {
 
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 522, Y = 82 },
@@ -37,15 +34,11 @@ rooms["FrontYard"] = {
 				Y = 555
 			},
 
-			OnInteract = function()
-				door("Door", "Foyer", "FrontDoor")
-			end,
-			OnLook = function()
-				Event:ShowMessage("What a creepy looking place...")
-			end,
+			OnInteract = GameEvents.useFrontYardDoor,
+			OnLook = GameEvents.lookAtFrontDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 365,
@@ -65,10 +58,8 @@ rooms["FrontYard"] = {
 				Y = 682
 			},
 
-			OnInteract = pickFrontYardEglantine,
-			OnLook = function()
-				Event:ShowMessage("Was that flower there before...?")
-			end,
+			OnInteract = GameEvents.pickFrontYardEglantine,
+			OnLook = GameEvents.lookAtFrontYardFlower,
 			Mouse = "Hot"
 		}
 	},
@@ -104,6 +95,13 @@ rooms["FrontYard"] = {
 		}
 	},
 	
-	onEnter = enterFrontYard,
-	onExit = leaveFrontYard
+	onEnter = GameEvents.enterFrontYard,
+	onExit = GameEvents.leaveFrontYard,
+	onLoad = GameEvents.startOutdoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.00,
+	
+	MaxYValue = 543,
+	MaxYScale = .85,
 }

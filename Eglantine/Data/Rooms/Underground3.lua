@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Underground3_events")
-
 print("Underground3 added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -18,7 +15,7 @@ rooms["Underground3"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "RopeUp",
 			Polygon = {
 				[1] = { X = 45, Y = 0 },
@@ -36,15 +33,10 @@ rooms["Underground3"] = {
 				Y = 479
 			},
 
-			OnInteract = function()
-				door("RopeUp", "Underground2", "RopeDown")
-			end,
-			OnLook = function()
-				Event:ShowMessage("I don't even know if I could climb that...")
-			end,
+			OnInteract = GameEvents.useUnderground3Door_Up,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 751, Y = 77 },
@@ -62,12 +54,7 @@ rooms["Underground3"] = {
 				Y = 607
 			},
 
-			OnInteract = function()
-				door("Door", "Underground4", "Door")
-			end,
-			OnLook = function()
-				Event:ShowMessage("...")
-			end,
+			OnInteract = GameEvents.useUnderground3Door_Down,
 			Mouse = "Leave"
 		}
 	},
@@ -134,5 +121,11 @@ rooms["Underground3"] = {
 			X = 866,
 			Y = 614
 		}
-	}	
+	},
+	
+	MinYValue = 768,
+	MinYScale = 1,
+	
+	MaxYValue = 468,
+	MaxYScale = .8	
 }

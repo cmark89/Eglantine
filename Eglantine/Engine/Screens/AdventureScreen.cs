@@ -2,6 +2,7 @@ using System;
 using Eglantine.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -36,6 +37,7 @@ namespace Eglantine.Engine
 
 		Player Player;	
 		GUI Gui;
+		int clearLoadedItemIn = -1;
 		public Item LoadedItem { get; private set; }
 		public Trigger HighlightedTrigger { get; private set;}
 
@@ -46,8 +48,6 @@ namespace Eglantine.Engine
 			get { return Gui.MouseInGUI; } 
 		}
 
-		// Used to force vertices to draw
-		private bool drawingVertices = false;
 		private bool paused = false;
 
 
@@ -72,6 +72,17 @@ namespace Eglantine.Engine
 			{
 				loadingFinished = true;
 				return;
+			}
+
+			// Because of script delay, we need 2 frames to clear the item.
+			if (clearLoadedItemIn > 0)
+			{
+				clearLoadedItemIn--;
+				if(clearLoadedItemIn == 0)
+				{
+					LoadedItem = null;
+					clearLoadedItemIn = -1;
+				}
 			}
 
 			HighlightedTrigger = null;
@@ -124,7 +135,7 @@ namespace Eglantine.Engine
 			{
 				Gui.Update (gameTime);
 
-				GameScene.Lua.DoString ("updateCoroutines(" + gameTime.ElapsedGameTime.TotalSeconds + ")");
+				Scheduler.Update(gameTime.ElapsedGameTime.TotalSeconds);
 			}
 
 			if (!ReceivingInput && LoadedItem != null)
@@ -155,7 +166,7 @@ namespace Eglantine.Engine
 
 			// Finally, clear the current item if a left click was registered and the mouse is not in the GUI
 			if(MouseManager.LeftClickUp && !MouseInGui)
-				LoadedItem = null;
+				clearLoadedItemIn = 2;
 		}
 
 		public override void Draw (SpriteBatch spriteBatch)

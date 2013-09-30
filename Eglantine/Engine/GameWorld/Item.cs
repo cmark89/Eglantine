@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -28,16 +29,17 @@ namespace Eglantine.Engine
 
 		public ItemType Type { get; private set; }
 
+		private readonly string tablePath;
+
 		[NonSerialized]
-		private LuaFunction OnAcquire;
+		private Script OnAcquire;
 		[NonSerialized]
-		private LuaFunction OnInspect;
-		[NonSerialized]
-		private LuaFunction OnUse;
+		private Script OnUse;
 
 		public Item (string name)
 		{
-			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+name];
+			tablePath = "items." + name;
+			LuaTable itemTable = (LuaTable)GameScene.Lua[tablePath];
 			ParseItem(itemTable);
 		}
 
@@ -45,33 +47,38 @@ namespace Eglantine.Engine
 		{
 			Name = (string)itemTable ["Name"];
 
-			Texture = ContentLoader.Instance.LoadTexture2D((string)(itemTable["Texture"]));
+			Texture = ContentLoader.Instance.LoadTexture2D ((string)(itemTable ["Texture"]));
+			Description = GameScene.Lua.GetString(tablePath + ".Description");
 
 			string type = (string)itemTable ["Type"];
 			switch (type)
 			{
-				case("Immediate"):
-					Type = ItemType.Immediate;
-					break;
-				case("Active"):
-					Type = ItemType.Active;
-					break;
-				case("Unusable"):
-					Type = ItemType.Unusable;
-					break;
-				default:
-					break;
+			case("Immediate"):
+				Type = ItemType.Immediate;
+				break;
+			case("Active"):
+				Type = ItemType.Active;
+				break;
+			case("Unusable"):
+				Type = ItemType.Unusable;
+				break;
+			default:
+				break;
 			}
 
-			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
-			OnInspect = (LuaFunction)itemTable["OnInspect"];
-			OnUse = (LuaFunction)itemTable["OnUse"];
+			if(GameScene.Lua.GetFunction(tablePath + ".OnAcquire") != null)
+				OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
+
+			if(GameScene.Lua.GetFunction(tablePath + ".OnUse") != null)
+				OnUse = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 
 		public void Inspect ()
 		{
-			if(OnInspect != null)
-				OnInspect.Call();
+			//if(OnInspect != null)
+				//OnInspect.Call();
+
+			Scheduler.ExecuteDelegate(delegate() { EventManager.Instance.ShowMessage(Description); });
 		}
 
 		public void OnAquire ()
@@ -88,7 +95,7 @@ namespace Eglantine.Engine
 			}
 
 			if(OnAcquire != null)
-				OnAcquire.Call();
+				Scheduler.Execute(OnAcquire);
 		}
 
 		public void Use ()
@@ -97,11 +104,11 @@ namespace Eglantine.Engine
 			{
 				case ItemType.Immediate:
 					Console.WriteLine("Use this immediate item!");
-					OnUse.Call();
+					Scheduler.Execute(OnUse);
 					break;
 				case ItemType.Active:
-					AdventureScreen.Instance.SetActiveItem(this);
 					// Set the game scene's loaded item to this item.
+					AdventureScreen.Instance.SetActiveItem(this);
 					break;
 				default:
 					break;
@@ -123,10 +130,8 @@ namespace Eglantine.Engine
 			if(_TextureName != null)
 				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
 
-			LuaTable itemTable = (LuaTable)GameScene.Lua["items."+Name];
-			OnAcquire = (LuaFunction)itemTable["OnAcquire"];
-			OnInspect = (LuaFunction)itemTable["OnInspect"];
-			OnUse = (LuaFunction)itemTable["OnUse"];
+			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
+			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 	}
 

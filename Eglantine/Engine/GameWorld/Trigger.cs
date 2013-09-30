@@ -1,6 +1,7 @@
 using System;
 using Eglantine.Engine.Pathfinding;
 using Microsoft.Xna.Framework;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -19,8 +20,8 @@ namespace Eglantine.Engine
 		public Polygon PolygonArea { get; protected set; }
 		public TriggerShape Shape { get; protected set; }
 		[NonSerialized]
-		private LuaFunction _event;
-		public LuaFunction Event { 
+		private Script _event;
+		public Script Event { 
 			get { return _event; }
 			protected set { _event = value; }
 		}

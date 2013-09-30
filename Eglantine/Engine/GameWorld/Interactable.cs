@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using ObjectivelyRadical.Scheduler;
 
 #if __WINDOWS__
 using NLua;
@@ -39,6 +40,8 @@ namespace Eglantine.Engine
 
 		MouseInteractMode mouseMode;
 
+		private string tablePath;
+
 		// The YCutoff is the Y value beyond which the player will be drawn on top of the object; a YCutoff of 0 means that 
 		// the player will always be drawn on top.  Remember to accomodate for the player origin.
 		public float YCutoff { get; private set; }
@@ -46,15 +49,15 @@ namespace Eglantine.Engine
 
 		// Handles events for looking at objects
 		[NonSerialized]
-		private LuaFunction _lookEvent;
-		public LuaFunction LookEvent 
+		private Script _lookEvent;
+		public Script LookEvent 
 		{ 
 			get { return _lookEvent; }
 			private set { _lookEvent = value; }  
 		}
 
 
-		public Interactable(string name, Rectangle area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal")
+		public Interactable(string name, Rectangle area, Vector2 interactPoint, Script gameEvent, Script lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal", int index = 0)
 		{
 			Name = name;
 			Area = area;
@@ -73,9 +76,11 @@ namespace Eglantine.Engine
 
 			if(IsDrawn)
 				Texture = texture;
+
+			SetTablePath(index);
 		}
 
-		public Interactable(string name, Polygon area, Vector2 interactPoint, LuaFunction gameEvent, LuaFunction lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal")
+		public Interactable(string name, Polygon area, Vector2 interactPoint, Script gameEvent, Script lookEvent, bool enabled, Room parentRoom, bool drawn = false, Texture2D texture = null, Vector2? drawPos = null, float yCutoff = 0, bool blockMovement = false, string mouse = "Normal", int index = 0)
 		{
 			Name = name;
 			PolygonArea = area;
@@ -94,6 +99,13 @@ namespace Eglantine.Engine
 
 			if(IsDrawn)
 				Texture = texture;
+
+			SetTablePath(index);
+		}
+
+		private void SetTablePath(int index)
+		{
+			tablePath = "rooms." + thisRoom.Name + ".Interactables.I" + index;
 		}
 
 		public void SetMouseMode (string mouseType)
@@ -159,13 +171,13 @@ namespace Eglantine.Engine
 		public void OnInteract()
 		{
 			if(Event != null)
-				Event.Call();
+				Scheduler.Execute(Event);
 		}
 
 		public void OnLook ()
 		{
 			if (LookEvent != null)
-				LookEvent.Call ();
+				Scheduler.Execute(LookEvent);
 		}
 
 		public void SetColor(Color color)
@@ -196,26 +208,15 @@ namespace Eglantine.Engine
 		{
 			if (_TextureName != null)
 				Texture = ContentLoader.Instance.LoadTexture2D (_TextureName);
-			LuaTable thisRoomTable = (LuaTable)GameScene.Lua.GetTable ("rooms." + thisRoom.Name + ".Interactables");
-
-			int thisIndex = 1;
-			LuaTable tempTable;
-			while(thisIndex < thisRoomTable.Keys.Count)
-			{
-				tempTable = (LuaTable)thisRoomTable[thisIndex];
-				if((string)tempTable["Name"] == Name)
-					break;
-
-				thisIndex++;
-			}
-
-			LuaTable thisInteractable = (LuaTable)thisRoomTable[thisIndex];
 
 			/// We now have the table of interactables.  
 			/// Now we have to loop over each and check if its name == Name
 			/// When we find that interactable, we hook up the events from it.
-			Event = (LuaFunction)thisInteractable["OnInteract"];
-			LookEvent = (LuaFunction)thisInteractable["OnLook"];
+			if(GameScene.Lua.GetFunction(tablePath + ".OnInteract") != null)
+				Event = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnInteract");
+
+			if(GameScene.Lua.GetFunction(tablePath + ".OnLook") != null)
+				LookEvent = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnLook");
 		}
 	}
 }

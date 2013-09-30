@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/SecretRoom_events")
-
 print("SecretRoom added to global table 'rooms'.")
 
 rooms["SecretRoom"] = {
@@ -18,7 +15,7 @@ rooms["SecretRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Puzzlebox",
 			Area = {
 				X = 433,
@@ -37,14 +34,12 @@ rooms["SecretRoom"] = {
 				Y = 407
 			},
 
-			OnInteract = function()
-				 pickup("Puzzlebox")
-			end,
-			OnLook = lookAtPuzzlebox,
+			OnInteract = GameEvents.pickUpPuzzlebox,
+			OnLook = GameEvents.lookAtPuzzlebox,
 			Mouse = "Grab"
 		},
 		
-		[2] = {
+		["I2"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 650, Y = 82 },
@@ -63,16 +58,12 @@ rooms["SecretRoom"] = {
 				Y = 437
 			},
 
-			OnInteract = function ()
-				door("Door", "LivingRoom", "Painting")
-			end,
-			OnLook = function()
-				Event:ShowMessage("Waste of a good painting...")
-			end,
+			OnInteract = GameEvents.useSecretRoomDoor_Painting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Leave"
 		},
 		
-		[3] = {
+		["I3"] = {
 			Name = "TrapdoorClosed",
 			Polygon = {
 				[1] = { X = 44, Y = 568 },
@@ -90,13 +81,11 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = interactWithTrapdoor,
-			OnLook = function()
-				Event:ShowMessage("Wonder what's down there...")
-			end,
+			OnInteract = GameEvents.interactWithTrapdoor,
+			OnLook = GameEvents.lookAtTrapdoor,
 			Mouse = "Hot"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "TrapdoorOpenGraphic",
 			Area = {
 				X = 0,
@@ -119,7 +108,7 @@ rooms["SecretRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[5] = {
+		["I5"] = {
 			Name = "TrapdoorOpen",
 			Polygon = {
 				[1] = { X = 44, Y = 568 },
@@ -137,18 +126,13 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = function()
-				door("TrapdoorOpen", "Underground1", "UpRope")
-			end,
-			
-			OnLook = function()
-				Event:ShowMessage("Looks pretty dark down there...")
-			end,
+			OnInteract = GameEvents.useSecretRoomDoor_TrapDoor,
+			OnLook = GameEvents.lookDownTrapdoor,
 			
 			BlocksMovement = true,
 			Mouse = "Leave"
 		},
-		[6] = {
+		["I6"] = {
 			Name = "TrapdoorHatch_Open",
 			Polygon = {
 				[1] = { X = 0, Y = 348 },
@@ -167,7 +151,7 @@ rooms["SecretRoom"] = {
 				Y = 645
 			},
 
-			OnInteract = closeTrapdoor,
+			OnInteract = GameEvents.closeTrapdoor,
 			OnLook = nil,
 			
 			BlocksMovement = true,
@@ -296,6 +280,13 @@ rooms["SecretRoom"] = {
 		}
 	},
 	
-	onEnter = checkTVStatic,
-	onExit = leaveSecretRoom
+	onEnter = GameEvents.checkTVStatic,
+	onExit = GameEvents.leaveSecretRoom,
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = .8,
+	
+	MaxYValue = 385,
+	MaxYScale = .6
 }

@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/BackYard_events")
-
 print("BackYard added to global table 'rooms'.")
 
 rooms["BackYard"] = {
@@ -18,7 +15,7 @@ rooms["BackYard"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 27, Y = 159},
@@ -37,15 +34,11 @@ rooms["BackYard"] = {
 				Y = 652
 			},
 
-			OnInteract = function()
-				--Real temporary
-				door("Door", "Kitchen", "BackYardDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBackYardDoor,
 			
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Crowbar",
 			Area = {
 				X = 872,
@@ -65,16 +58,12 @@ rooms["BackYard"] = {
 				Y = 500
 			},
 
-			OnInteract = function()
-				pickup("Crowbar")
-			end,
-			OnLook = function()
-				Event:ShowMessage("That looks like it may be useful.")	
-			end,
+			OnInteract = GameEvents.pickUpCrowbar,
+			OnLook = GameEvents.lookAtCrowbar,
 			
 			Mouse = "Grab"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 726,
@@ -94,12 +83,8 @@ rooms["BackYard"] = {
 				Y = 476
 			},
 
-			OnInteract = function()
-				pickBackYardEglantine()
-			end,
-			OnLook = function()
-				Event:ShowMessage("Sweet briar...never really cared for it.")	
-			end,
+			OnInteract = GameEvents.pickBackYardEglantine,
+			OnLook = GameEvents.lookAtBackYardFlower,
 			
 			Mouse = "Hot"
 		}
@@ -118,7 +103,7 @@ rooms["BackYard"] = {
 				[3] = { X = 805, Y = 483 },
 				[4] = { X = 1024, Y = 534 },
 				[5] = { X = 1024, Y = 768 },
-				[5] = { X = 0, Y = 768 },
+				[6] = { X = 0, Y = 768 },
 			}
 		},
 		
@@ -136,6 +121,13 @@ rooms["BackYard"] = {
 		}
 	},
 	
-	onEnter = enterBackYard,
-	onExit = leaveBackYard
+	onEnter = GameEvents.enterBackYard,
+	onExit = GameEvents.leaveBackYard,
+	onLoad = GameEvents.startOutdoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = .8,
+	
+	MaxYValue = 444,
+	MaxYScale = .7,
 }

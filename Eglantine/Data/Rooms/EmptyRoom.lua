@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/EmptyRoom_events")
-
 print("EmptyRoom added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -18,7 +15,7 @@ rooms["EmptyRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			
 			Polygon = {
@@ -36,14 +33,10 @@ rooms["EmptyRoom"] = {
 				Y = 588
 			},
 			
-			OnInteract = function()
-				 door("Door", "Upstairs", "EmptyRoomDoor")
-			end,
-			
-			OnLook = nil,
+			OnInteract = GameEvents.useEmptyRoomDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Puzzle Key",
 			
 			Area = {
@@ -62,13 +55,8 @@ rooms["EmptyRoom"] = {
 				Y = 445
 			},
 			
-			OnInteract = function()
-				 pickup("Puzzle Key")
-			end,
-			
-			OnLook = function()
-				Event:ShowMessage("Hey, what's that thing?")
-			end,
+			OnInteract = GameEvents.pickUpPuzzleKey,
+			OnLook = GameEvents.lookAtPuzzleKey,
 			Mouse = "Grab"
 		}
 	},
@@ -102,5 +90,13 @@ rooms["EmptyRoom"] = {
 			X = 81,
 			Y = 543
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = .85,
+	
+	MaxYValue = 405,
+	MaxYScale = .75,	
 }

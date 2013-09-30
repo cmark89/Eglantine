@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/Bedroom_events")
-
 print("Bedroom added to global table 'rooms'.")
 
 rooms["Bedroom"] = {
@@ -18,7 +15,7 @@ rooms["Bedroom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "HallDoor",
 			Polygon = {
 				[1] = { X = 834, Y = 0},
@@ -38,13 +35,10 @@ rooms["Bedroom"] = {
 				Y = 376
 			},
 
-			OnInteract = function()
-				door("HallDoor", "Upstairs", "BedroomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBedroomDoor_HallDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "BathroomDoor",
 			Area = {
 				X = 556,
@@ -63,13 +57,10 @@ rooms["Bedroom"] = {
 				Y = 321
 			},
 
-			OnInteract = function()
-				door("BathroomDoor", "Bathroom", "Door")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useBedroomDoor_BathroomDoor,
 			Mouse = "Leave"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Scissors",
 			Area = {
 				X = 406,
@@ -89,15 +80,11 @@ rooms["Bedroom"] = {
 				Y = 665
 			},
 
-			OnInteract = function()
-				pickup("Scissors")
-			end,
-			OnLook = function()
-				Event:ShowMessage("Good God, what the hell is that...?")
-			end,
+			OnInteract = GameEvents.pickUpScissors,
+			OnLook = GameEvents.lookAtScissors,
 			Mouse = "Grab"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "Trashcan",
 			Area = {
 				X = 114,
@@ -114,14 +101,11 @@ rooms["Bedroom"] = {
 				Y = 603
 			},
 
-			OnInteract = nil,
-			OnLook = function()
-				Event:ShowMessage("What a mess...")
-			end,
+			OnLook = GameEvents.lookAtTrashcan,
 			Mouse = "Hot"
 		},
 		
-		[5] = {
+		["I5"] = {
 			Name = "Letter",
 			Area = {
 				X = 200,
@@ -139,15 +123,13 @@ rooms["Bedroom"] = {
 				Y = 511
 			},
 
-			OnInteract = function()
-				pickup("Letter")
-			end,
+			OnInteract = GameEvents.pickUpLetter,
 			
 			OnLook = nil,
 			Mouse = "Grab"
 		},
 		
-		[6] = {
+		["I6"] = {
 			Name = "Bed",
 			Area = {
 				X = 608,
@@ -242,6 +224,14 @@ rooms["Bedroom"] = {
 			X = 641,
 			Y = 322
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.1,
+	
+	MaxYValue = 307,
+	MaxYScale = .7,
 }
 

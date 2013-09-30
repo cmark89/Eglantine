@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/LivingRoom_events")
-
 print("LivingRoom added to global table 'rooms'.")
 
 rooms["LivingRoom"] = {
@@ -18,7 +15,7 @@ rooms["LivingRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Painting",
 			Polygon = {
 				[1] = { X = 230, Y = 99 },
@@ -37,11 +34,11 @@ rooms["LivingRoom"] = {
 				Y = 424
 			},
 
-			OnInteract = interactWithPainting,
-			OnLook = lookAtPainting,
+			OnInteract = GameEvents.interactWithPainting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Hot"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "PaintingDoor",
 			Polygon = {
 				[1] = { X = 230, Y = 99 },
@@ -60,14 +57,12 @@ rooms["LivingRoom"] = {
 				Y = 424
 			},
 
-			OnInteract = function()
-				door("PaintingDoor", "SecretRoom", "Door")
-			end,
-			OnLook = lookAtPainting,
+			OnInteract = GameEvents.useLivingRoomDoor_Painting,
+			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Leave"
 		},
 		
-		[3] = {
+		["I3"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 825, Y = 69 },
@@ -85,13 +80,10 @@ rooms["LivingRoom"] = {
 				Y = 408
 			},
 
-			OnInteract = function ()
-				door("Door", "Foyer", "LivingRoomDoor")
-			end,
-			OnLook = nil,
+			OnInteract = GameEvents.useLivingRoomDoor_Foyer,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "TV",
 			Polygon = {
 				[1] = { X = 600, Y = 226 },
@@ -110,11 +102,11 @@ rooms["LivingRoom"] = {
 				Y = 414
 			},
 
-			OnInteract = interactWithTV,
-			OnLook = lookAtTV,
+			OnInteract = GameEvents.interactWithTV,
+			OnLook = GameEvents.lookAtTV,
 			Mouse = "Hot"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Static1",
 			Area = {
 					X = 604,
@@ -131,12 +123,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[6] = {
+		["I6"] = {
 			Name = "Static2",
 			Area = {
 					X = 604,
@@ -153,12 +142,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[7] = {
+		["I7"] = {
 			Name = "Static3",
 			Area = {
 					X = 604,
@@ -175,12 +161,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[8] = {
+		["I8"] = {
 			Name = "Static4",
 			Area = {
 					X = 604,
@@ -197,12 +180,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[9] = {
+		["I9"] = {
 			Name = "Static5",
 			Area = {
 					X = 604,
@@ -219,12 +199,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[10] = {
+		["I10"] = {
 			Name = "Static6",
 			Area = {
 					X = 604,
@@ -241,12 +218,9 @@ rooms["LivingRoom"] = {
 			InteractPoint = {
 				X = 0,
 				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
+			}
 		},
-		[11] = {
+		["I11"] = {
 			Name = "Tear",
 			Area = {
 					X = 248,
@@ -264,15 +238,12 @@ rooms["LivingRoom"] = {
 				X = 0,
 				Y = 0
 			},
-
-			OnInteract = nil,
-			OnLook = nil,
 			Mouse = "Leave"
 		}
 	},
 	
 	Triggers = {
-		[1] = {
+		["I1"] = {
 			Name = "TVActivate",
 			Area = {
 				X = 452,
@@ -282,7 +253,7 @@ rooms["LivingRoom"] = {
 			},
 			Enabled = true,
 		
-			OnEnter = turnOnTV
+			OnEnter = GameEvents.turnOnTV
 		}
 	},
 	
@@ -320,7 +291,13 @@ rooms["LivingRoom"] = {
 		}
 	},
 	
-	onEnter = checkTV,
-	onExit = leaveLivingRoom,
-	onLoad = checkTV
+	onEnter = GameEvents.enterLivingRoom,
+	onExit = GameEvents.leaveLivingRoom,
+	onLoad = GameEvents.loadLivingRoom,
+	
+	MinYValue = 768,
+	MinYScale = .75,
+	
+	MaxYValue = 364,
+	MaxYScale = .6
 }

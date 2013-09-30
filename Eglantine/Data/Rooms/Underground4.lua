@@ -1,6 +1,3 @@
--- Load the room's events if need be
-require("Data/Events/Underground4_events")
-
 print("Underground4 added to global table 'rooms'.")
 
 --Add an entry to the global "rooms" table
@@ -18,7 +15,7 @@ rooms["Underground4"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 0, Y = 223 },
@@ -39,14 +36,12 @@ rooms["Underground4"] = {
 				Y = 518
 			},
 
-			OnInteract = function()
-				Event:ShowMessage("...")
-			end,
+			OnInteract = GameEvents.useUnderground4Door,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
 		
-		[2] = {
+		["I2"] = {
 			Name = "Artifact",
 			Area = {
 				X = 411,
@@ -55,7 +50,7 @@ rooms["Underground4"] = {
 				Height = 500
 			},
 				
-			Enabled = true,
+			Enabled = false,
 			Drawn = true,
 			Texture = "Graphics/Objects/artifact",
 			YCutoff = 593,
@@ -69,7 +64,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Flower1",
 			Area = {
 				X = 459,
@@ -92,7 +87,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[4] = {
+		["I4"] = {
 			Name = "Flower2",
 			Area = {
 				X = 432,
@@ -115,7 +110,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Flower3",
 			Area = {
 				X = 475,
@@ -138,7 +133,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[6] = {
+		["I6"] = {
 			Name = "GraveMovementBlocker",
 			Polygon = {
 				[1] = { X = 426, Y = 629 },
@@ -158,7 +153,7 @@ rooms["Underground4"] = {
 			OnLook = nil,
 			BlocksMovement = true
 		},
-		[7] = {
+		["I7"] = {
 			Name = "Grave",
 			Area = {
 				X = 398,
@@ -178,8 +173,8 @@ rooms["Underground4"] = {
 				Y = 692
 			},
 
-			OnInteract = interactWithGrave,
-			OnLook = readHeadstone,
+			OnInteract = GameEvents.interactWithGrave,
+			OnLook = GameEvents.readHeadstone,
 			Mouse = "Hot"
 		},
 	},
@@ -237,6 +232,12 @@ rooms["Underground4"] = {
 		}
 	},
 	
-	onEnter = beginEnding
+	onEnter = GameEvents.beginEnding,
+	
+	MinYValue = 768,
+	MinYScale = .7,
+	
+	MaxYValue = 424,
+	MaxYScale = .55	
 }
 

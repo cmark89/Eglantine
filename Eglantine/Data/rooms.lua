@@ -2,8 +2,6 @@
 --items.lua
 ------------
 
-require("Data/Events/core_events")
-
 -- Create the global rooms table
 rooms = {}
 

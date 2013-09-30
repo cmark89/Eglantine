@@ -1,9 +1,3 @@
------------------------
---documents.lua
------------------------
---This script file contains the information for all the documents shown from "DocumentView"
---mode.
-
 documents = {}
 
 documents["Strange Notes"] = {

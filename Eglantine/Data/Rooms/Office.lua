@@ -1,6 +1,3 @@
--- Load the room's events.
-require("Data/Events/Office_events")
-
 print("Office added to global table 'rooms'.")
 
 rooms["Office"] = {
@@ -18,7 +15,7 @@ rooms["Office"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = {X=0, Y=24},
@@ -35,13 +32,11 @@ rooms["Office"] = {
 				Y = 557
 			},
 			
-			OnInteract = function()
-				door("Door", "Upstairs", "OfficeDoor")
-			end,
+			OnInteract = GameEvents.useOfficeDoor,
 			OnLook = nil,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "CabinetMovementBlocker",
 			Polygon = {
 				[1] = { X = 266, Y = 493},
@@ -59,7 +54,7 @@ rooms["Office"] = {
 			OnLook=nil,
 			BlocksMovement = true
 		},
-		[3] = {
+		["I3"] = {
 			Name = "BottomDrawer_Open",
 			Polygon = {
 				[1] = {X=335, Y=368},
@@ -78,11 +73,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = closeBottomDrawer,
+			OnInteract = GameEvents.closeBottomDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "TopDrawer_Open",
 			Polygon = {
 				[1] = {X=316, Y=246},
@@ -101,11 +96,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = closeTopDrawer,
+			OnInteract = GameEvents.closeTopDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "TopDrawer_Closed",
 			Polygon = {
 				[1] = { X = 270, Y = 246 },
@@ -122,11 +117,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = openTopDrawer,
+			OnInteract = GameEvents.openTopDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
-		[6] = {
+		["I6"] = {
 			Name = "BottomDrawer_Closed",
 			Polygon = {
 				[1] = { X = 270, Y = 366},
@@ -143,11 +138,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = openBottomDrawer,
+			OnInteract = GameEvents.openBottomDrawer,
 			OnLook = nil,
 			Mouse = "Hot"
 		},
-		[7] = {
+		["I7"] = {
 			Name = "Blueprints",
 			Polygon = {
 				[1] = { X = 282, Y = 252},
@@ -168,13 +163,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Blueprints")
-			end,
+			OnInteract = GameEvents.pickUpBlueprints,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
-		[8] = {
+		["I8"] = {
 			Name = "Strange Notes",
 			Polygon = {
 				[1] = { X = 291, Y = 256},
@@ -193,13 +186,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Strange Notes")
-			end,
+			OnInteract = GameEvents.pickUpStrangeNotes,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
-		[9] = {
+		["I9"] = {
 			Name = "Photograph",
 			Polygon = {
 				[1] = { X = 281, Y = 382},
@@ -219,13 +210,11 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Photograph")
-			end,
+			OnInteract = GameEvents.pickUpPhotograph,
 			OnLook = nil,
 			Mouse = "Grab"
 		},
-		[10] = {
+		["I10"] = {
 			Name = "Journal",
 			Polygon = {
 				[1] = { X = 300, Y = 376 },
@@ -245,9 +234,7 @@ rooms["Office"] = {
 				Y = 496
 			},
 			
-			OnInteract = function()
-				pickup("Journal")
-			end,
+			OnInteract = GameEvents.pickUpJournal,
 			OnLook = nil,
 			Mouse = "Grab"
 		}
@@ -314,5 +301,13 @@ rooms["Office"] = {
 			X = 105,
 			Y = 556
 		}
-	}
+	},
+	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1,
+	
+	MaxYValue = 405,
+	MaxYScale = .7
 }
