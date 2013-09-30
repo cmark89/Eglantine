@@ -22,7 +22,7 @@ namespace Eglantine.Engine
 
 		public static IEnumerator<ScriptPauser> useStrangeNotes()
 		{
-			EventManager.Instance.ViewDocument("StrangeNotes");
+			EventManager.Instance.ViewDocument("Strange Notes");
 			yield return null;
 		}
 
@@ -52,7 +52,7 @@ namespace Eglantine.Engine
 
 		public static IEnumerator<ScriptPauser> useFoldedNote()
 		{
-			EventManager.Instance.ViewDocument("FoldedNote");
+			EventManager.Instance.ViewDocument("Folded Note");
 			yield return null;
 		}
 

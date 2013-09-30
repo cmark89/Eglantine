@@ -15,7 +15,7 @@ rooms["Underground3"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "RopeUp",
 			Polygon = {
 				[1] = { X = 45, Y = 0 },
@@ -36,7 +36,7 @@ rooms["Underground3"] = {
 			OnInteract = GameEvents.useUnderground3Door_Up,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 751, Y = 77 },

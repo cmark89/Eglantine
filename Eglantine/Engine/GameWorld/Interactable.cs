@@ -105,7 +105,7 @@ namespace Eglantine.Engine
 
 		private void SetTablePath(int index)
 		{
-			tablePath = "rooms." + thisRoom.Name + ".Interactables[" + index +"]";
+			tablePath = "rooms." + thisRoom.Name + ".Interactables.I" + index;
 		}
 
 		public void SetMouseMode (string mouseType)
@@ -212,8 +212,11 @@ namespace Eglantine.Engine
 			/// We now have the table of interactables.  
 			/// Now we have to loop over each and check if its name == Name
 			/// When we find that interactable, we hook up the events from it.
-			Event = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnInteract");
-			LookEvent = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnLook");
+			if(GameScene.Lua.GetFunction(tablePath + ".OnInteract") != null)
+				Event = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnInteract");
+
+			if(GameScene.Lua.GetFunction(tablePath + ".OnLook") != null)
+				LookEvent = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnLook");
 		}
 	}
 }

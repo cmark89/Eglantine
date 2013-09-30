@@ -15,7 +15,7 @@ rooms["Bedroom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "HallDoor",
 			Polygon = {
 				[1] = { X = 834, Y = 0},
@@ -38,7 +38,7 @@ rooms["Bedroom"] = {
 			OnInteract = GameEvents.useBedroomDoor_HallDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "BathroomDoor",
 			Area = {
 				X = 556,
@@ -60,7 +60,7 @@ rooms["Bedroom"] = {
 			OnInteract = GameEvents.useBedroomDoor_BathroomDoor,
 			Mouse = "Leave"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Scissors",
 			Area = {
 				X = 406,
@@ -84,7 +84,7 @@ rooms["Bedroom"] = {
 			OnLook = GameEvents.lookAtScissors,
 			Mouse = "Grab"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "Trashcan",
 			Area = {
 				X = 114,
@@ -105,7 +105,7 @@ rooms["Bedroom"] = {
 			Mouse = "Hot"
 		},
 		
-		[5] = {
+		["I5"] = {
 			Name = "Letter",
 			Area = {
 				X = 200,
@@ -129,7 +129,7 @@ rooms["Bedroom"] = {
 			Mouse = "Grab"
 		},
 		
-		[6] = {
+		["I6"] = {
 			Name = "Bed",
 			Area = {
 				X = 608,
@@ -224,6 +224,8 @@ rooms["Bedroom"] = {
 			X = 641,
 			Y = 322
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds	
 }
 

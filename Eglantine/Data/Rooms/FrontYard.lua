@@ -15,7 +15,7 @@ rooms["FrontYard"] = {
 
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 522, Y = 82 },
@@ -38,7 +38,7 @@ rooms["FrontYard"] = {
 			OnLook = GameEvents.lookAtFrontDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 365,
@@ -96,5 +96,6 @@ rooms["FrontYard"] = {
 	},
 	
 	onEnter = GameEvents.enterFrontYard,
-	onExit = GameEvents.leaveFrontYard
+	onExit = GameEvents.leaveFrontYard,
+	onLoad = GameEvents.startOutdoorSounds	
 }

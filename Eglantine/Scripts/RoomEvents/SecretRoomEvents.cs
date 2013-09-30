@@ -34,7 +34,7 @@ namespace Eglantine.Engine
 				GameState.Instance.TrapdoorUnlocked = true;
 			}
 							
-			EventManager.Instance.PlaySound("dooropen");
+			EventManager.Instance.PlaySound("dooropen", 1.5f, 0f, 0f);
 			EventManager.Instance.DisableInteractable("TrapdoorClosed");
 			EventManager.Instance.EnableInteractable("TrapdoorOpen");
 			EventManager.Instance.EnableInteractable("TrapdoorOpenGraphic");
@@ -77,14 +77,21 @@ namespace Eglantine.Engine
 
 		public static IEnumerator<ScriptPauser> lookAtPuzzlebox()
 		{
-			EventManager.Instance.ShowMessage("Looks pretty dark down there...");
+			EventManager.Instance.ShowMessage("A puzzlebox sits on the table.");
+
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> lookAtTrapdoor ()
+		{
+			EventManager.Instance.ShowMessage("I wonder where that goes...");
 
 			yield return null;
 		}
 
 		public static IEnumerator<ScriptPauser> lookDownTrapdoor()
 		{
-			EventManager.Instance.ShowMessage("A puzzlebox sits on the table.");
+			EventManager.Instance.ShowMessage("Looks pretty dark down there...");
 			
 			yield return null;
 		}

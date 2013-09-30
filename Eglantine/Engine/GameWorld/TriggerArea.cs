@@ -43,7 +43,7 @@ namespace Eglantine.Engine
 
 		private void SetTablePath(int index)
 		{
-			tablePath = "rooms." + thisRoom.Name + ".Triggers[" + index + "]";
+			tablePath = "rooms." + thisRoom.Name + ".Triggers.I" + index;
 		}
 
 		public override void Update(GameTime gameTime)
@@ -55,7 +55,8 @@ namespace Eglantine.Engine
 
 		public void LoadFromSerialization()
 		{
-			Event = (Script)GameScene.Lua.GetFunction(typeof(Script), "rooms." + thisRoom.Name + ".Triggers." + Name + ".OnEnter");
+			if(GameScene.Lua.GetFunction(tablePath + ".OnEnter") != null)
+				Event = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnEnter");
 		}
 
 	}

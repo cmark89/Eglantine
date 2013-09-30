@@ -15,7 +15,7 @@ rooms["SecretRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Puzzlebox",
 			Area = {
 				X = 433,
@@ -39,7 +39,7 @@ rooms["SecretRoom"] = {
 			Mouse = "Grab"
 		},
 		
-		[2] = {
+		["I2"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 650, Y = 82 },
@@ -63,7 +63,7 @@ rooms["SecretRoom"] = {
 			Mouse = "Leave"
 		},
 		
-		[3] = {
+		["I3"] = {
 			Name = "TrapdoorClosed",
 			Polygon = {
 				[1] = { X = 44, Y = 568 },
@@ -82,10 +82,10 @@ rooms["SecretRoom"] = {
 			},
 
 			OnInteract = GameEvents.interactWithTrapdoor,
-			OnLook = GameEvents.useSecretRoomDoor_TrapDoor,
+			OnLook = GameEvents.lookAtTrapdoor,
 			Mouse = "Hot"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "TrapdoorOpenGraphic",
 			Area = {
 				X = 0,
@@ -108,7 +108,7 @@ rooms["SecretRoom"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[5] = {
+		["I5"] = {
 			Name = "TrapdoorOpen",
 			Polygon = {
 				[1] = { X = 44, Y = 568 },
@@ -132,7 +132,7 @@ rooms["SecretRoom"] = {
 			BlocksMovement = true,
 			Mouse = "Leave"
 		},
-		[6] = {
+		["I6"] = {
 			Name = "TrapdoorHatch_Open",
 			Polygon = {
 				[1] = { X = 0, Y = 348 },
@@ -281,5 +281,6 @@ rooms["SecretRoom"] = {
 	},
 	
 	onEnter = GameEvents.checkTVStatic,
-	onExit = GameEvents.leaveSecretRoom
+	onExit = GameEvents.leaveSecretRoom,
+	onLoad = GameEvents.startIndoorSounds
 }

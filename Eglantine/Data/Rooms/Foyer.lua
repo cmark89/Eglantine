@@ -15,7 +15,7 @@ rooms["Foyer"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "FrontDoor",
 			Area = {
 				X = 0,
@@ -37,7 +37,7 @@ rooms["Foyer"] = {
 			OnInteract = GameEvents.useFoyerDoor_FrontYard,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "KitchenDoor",
 			Area = {
 				X = 357,
@@ -59,7 +59,7 @@ rooms["Foyer"] = {
 			OnInteract = GameEvents.useFoyerDoor_Kitchen,
 			Mouse = "Leave"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Stairs",
 			Polygon = {
 				[1] = { X = 635, Y = 595 },
@@ -81,7 +81,7 @@ rooms["Foyer"] = {
 			OnInteract = GameEvents.useFoyerDoor_Upstairs,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "LivingRoomDoor",
 			Polygon = {
 				[1] = { X = 220, Y = 46 },
@@ -178,5 +178,7 @@ rooms["Foyer"] = {
 			X = 273,
 			Y = 549
 		}
-	}
+	},
+	
+	onLoad = GameEvents.startIndoorSounds
 }

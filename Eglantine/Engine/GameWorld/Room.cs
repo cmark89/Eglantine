@@ -69,9 +69,7 @@ namespace Eglantine.Engine
 			ParseTriggerAreas(lua, roomname);
 			ParseEntrances(lua, roomname);
 
-			enterEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onEnter");
-			exitEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onExit");
-			loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + roomname + ".onLoad");
+			SetRoomScripts();
 
 			// Finally, tell the gamestate that the room exists
 			GameState.Instance.RegisterRoom(this);
@@ -146,8 +144,11 @@ namespace Eglantine.Engine
 			for (int i = 0; i < triggers.Keys.Count; i++)
 			{
 				// Set the active trigger to the iterated trigger value
-				currentTrigger = (LuaTable)triggers[i + 1];
-				Script triggerEvent = (Script)lua.GetFunction(typeof(Script), tablePath + "[" + (i+1) + "].OnEnter");
+				currentTrigger = (LuaTable)triggers["I" + (i + 1)];
+
+				Script triggerEvent = null;
+				if(lua.GetFunction(tablePath + ".I" + (i+1) + ".OnEnter") != null)
+					triggerEvent = (Script)lua.GetFunction(typeof(Script), tablePath + ".I" + (i+1) + ".OnEnter");
 
 				// Build the triggering rectangle
 				if(currentTrigger["Area"] != null)
@@ -178,7 +179,10 @@ namespace Eglantine.Engine
 			for (int i = 0; i < interactables.Keys.Count; i++)
 			{
 				// Set the active object to the iterated interactable value
-				currentInteractable = (LuaTable)interactables[i + 1];
+				currentInteractable = (LuaTable)interactables["I" + (i + 1)];
+
+				if(currentInteractable == null)
+					currentInteractable = (LuaTable)interactables[(i + 1)];
 
 				// Build the interactable point
 				currentProperty = (LuaTable)currentInteractable["InteractPoint"];
@@ -211,25 +215,15 @@ namespace Eglantine.Engine
 					mouseType = (string)currentInteractable["Mouse"];
 
 				Script onLook = null;
-				if(lua.GetFunction(tablePath + "." + (i + 1) + ".OnLook") != null)
+				if(lua.GetFunction(tablePath + ".I" + (i + 1) + ".OnLook") != null)
 				{
-					onLook = (Script)lua.GetFunction(typeof(Script), tablePath + "." + (i + 1) + ".OnLook");
-				}
-				else
-				{
-					Console.WriteLine(tablePath + "[" + (i + 1) + "].OnLook is null!");
+					onLook = (Script)lua.GetFunction(typeof(Script), tablePath + ".I" + (i + 1) + ".OnLook");
 				}
 
 				Script onInteract = null;
-				if(onInteract != null)
-				//if(lua.GetFunction(tablePath + "." + (i + 1) + ".OnInteract") != null)
+				if(lua.GetFunction(tablePath + ".I" + (i + 1) + ".OnInteract") != null)
 				{
-					onInteract = (Script)lua.DoString("return " + tablePath + "[" + (i + 1) + "].OnInteract")[0];
-					//onInteract = (Script)lua.GetFunction(typeof(Script), tablePath + "." + (i + 1) + ".OnInteract");
-				}
-				else
-				{
-					Console.WriteLine(tablePath + "[" + (i + 1) + "].OnInteract is null!");
+					onInteract = (Script)lua.GetFunction(typeof(Script), tablePath + ".I" + (i + 1) + ".OnInteract");
 				}
 
 				// Build the clickable area
@@ -353,15 +347,14 @@ namespace Eglantine.Engine
 			}
 		}
 
-		public void LoadFromSerialization()
+		public void LoadFromSerialization ()
 		{
-			if(_TextureName != null)
-				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
+			if (_TextureName != null)
+				Texture = ContentLoader.Instance.LoadTexture2D (_TextureName);
 
 			Lua lua = GameScene.Lua;
-			enterEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onEnter");
-			exitEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onExit");
-			loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onLoad");
+
+			SetRoomScripts();
 
 			foreach (RoomLayer rl in Background)
 			{
@@ -379,6 +372,26 @@ namespace Eglantine.Engine
 			{
 				i.LoadFromSerialization();
 			}
+		}
+
+		public void SetRoomScripts()
+		{
+			Lua lua = GameScene.Lua;
+
+			if (lua.GetFunction ("rooms." + Name + ".onEnter") != null)
+			{
+				enterEvent = (Script)lua.GetFunction (typeof(Script), "rooms." + Name + ".onEnter");
+			}
+			else
+			{
+				Console.WriteLine("No enter event!");
+			}
+			
+			if(lua.GetFunction("rooms." + Name + ".onExit") != null)
+				exitEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onExit");
+			
+			if(lua.GetFunction("rooms." + Name + ".onLoad") != null)
+				loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onLoad");
 		}
 	}
 }

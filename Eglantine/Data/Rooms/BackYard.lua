@@ -15,7 +15,7 @@ rooms["BackYard"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 27, Y = 159},
@@ -38,7 +38,7 @@ rooms["BackYard"] = {
 			
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Crowbar",
 			Area = {
 				X = 872,
@@ -63,7 +63,7 @@ rooms["BackYard"] = {
 			
 			Mouse = "Grab"
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 726,
@@ -122,5 +122,6 @@ rooms["BackYard"] = {
 	},
 	
 	onEnter = GameEvents.enterBackYard,
-	onExit = GameEvents.leaveBackYard
+	onExit = GameEvents.leaveBackYard,
+	onLoad = GameEvents.startOutdoorSounds
 }

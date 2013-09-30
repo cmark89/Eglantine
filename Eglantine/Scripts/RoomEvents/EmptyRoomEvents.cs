@@ -21,14 +21,16 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> pickUpPuzzleKey()
 		{
 			pickup("Puzzle Key");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 // --DOORS-- //
 		public static IEnumerator<ScriptPauser> useEmptyRoomDoor()
 		{
 			door("Door", "Upstairs", "EmptyRoomDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

@@ -15,7 +15,7 @@ rooms["Underground4"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 0, Y = 223 },
@@ -41,7 +41,7 @@ rooms["Underground4"] = {
 			Mouse = "Hot"
 		},
 		
-		[2] = {
+		["I2"] = {
 			Name = "Artifact",
 			Area = {
 				X = 411,
@@ -50,7 +50,7 @@ rooms["Underground4"] = {
 				Height = 500
 			},
 				
-			Enabled = true,
+			Enabled = false,
 			Drawn = true,
 			Texture = "Graphics/Objects/artifact",
 			YCutoff = 593,
@@ -64,7 +64,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[3] = {
+		["I3"] = {
 			Name = "Flower1",
 			Area = {
 				X = 459,
@@ -87,7 +87,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[4] = {
+		["I4"] = {
 			Name = "Flower2",
 			Area = {
 				X = 432,
@@ -110,7 +110,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Flower3",
 			Area = {
 				X = 475,
@@ -133,7 +133,7 @@ rooms["Underground4"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[6] = {
+		["I6"] = {
 			Name = "GraveMovementBlocker",
 			Polygon = {
 				[1] = { X = 426, Y = 629 },
@@ -153,7 +153,7 @@ rooms["Underground4"] = {
 			OnLook = nil,
 			BlocksMovement = true
 		},
-		[7] = {
+		["I7"] = {
 			Name = "Grave",
 			Area = {
 				X = 398,

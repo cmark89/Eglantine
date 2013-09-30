@@ -11,25 +11,29 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_Bedroom()
 		{
 			door("BedroomDoor", "Bedroom", "HallDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_Office()
 		{
 			door("OfficeDoor", "Office", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_EmptyRoom()
 		{
 			door("EmptyRoomDoor", "EmptyRoom", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_Foyer()
 		{
 			door("Stairs", "Foyer", "Stairs");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("stairs", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> lookAtSafe ()

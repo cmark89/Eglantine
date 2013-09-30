@@ -15,7 +15,7 @@ rooms["EmptyRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Door",
 			
 			Polygon = {
@@ -36,7 +36,7 @@ rooms["EmptyRoom"] = {
 			OnInteract = GameEvents.useEmptyRoomDoor,
 			Mouse = "Leave"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "Puzzle Key",
 			
 			Area = {
@@ -90,5 +90,7 @@ rooms["EmptyRoom"] = {
 			X = 81,
 			Y = 543
 		}
-	}	
+	},
+	
+	onLoad = GameEvents.startIndoorSounds		
 }

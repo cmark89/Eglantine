@@ -42,6 +42,22 @@ namespace Eglantine.Engine
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.ChangeRoom(targetRoom, targetEntrance);
 		}
+
+		public static IEnumerator<ScriptPauser> startOutdoorSounds()
+		{
+			EventManager.Instance.StopLoopingSoundEffects();
+			EventManager.Instance.PlaySoundLooping("naturalwind", .3f, 0f, 0f);
+			
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> startIndoorSounds()
+		{
+			EventManager.Instance.StopLoopingSoundEffects();
+			EventManager.Instance.PlaySoundLooping("lowwind", .25f, 0, 0);
+			
+			yield return null;
+		}
 	}
 }
 

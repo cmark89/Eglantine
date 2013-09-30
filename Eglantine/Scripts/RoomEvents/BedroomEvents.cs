@@ -41,13 +41,15 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useBedroomDoor_HallDoor()
 		{
 			door("HallDoor", "Upstairs", "BedroomDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useBedroomDoor_BathroomDoor()
 		{
 			door("BathroomDoor", "Bathroom", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

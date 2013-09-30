@@ -15,7 +15,7 @@ rooms["LivingRoom"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "Painting",
 			Polygon = {
 				[1] = { X = 230, Y = 99 },
@@ -38,7 +38,7 @@ rooms["LivingRoom"] = {
 			OnLook = GameEvents.lookAtPainting,
 			Mouse = "Hot"
 		},
-		[2] = {
+		["I2"] = {
 			Name = "PaintingDoor",
 			Polygon = {
 				[1] = { X = 230, Y = 99 },
@@ -62,7 +62,7 @@ rooms["LivingRoom"] = {
 			Mouse = "Leave"
 		},
 		
-		[3] = {
+		["I3"] = {
 			Name = "Door",
 			Polygon = {
 				[1] = { X = 825, Y = 69 },
@@ -83,7 +83,7 @@ rooms["LivingRoom"] = {
 			OnInteract = GameEvents.useLivingRoomDoor_Foyer,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "TV",
 			Polygon = {
 				[1] = { X = 600, Y = 226 },
@@ -106,7 +106,7 @@ rooms["LivingRoom"] = {
 			OnLook = GameEvents.lookAtTV,
 			Mouse = "Hot"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Static1",
 			Area = {
 					X = 604,
@@ -125,7 +125,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[6] = {
+		["I6"] = {
 			Name = "Static2",
 			Area = {
 					X = 604,
@@ -144,7 +144,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[7] = {
+		["I7"] = {
 			Name = "Static3",
 			Area = {
 					X = 604,
@@ -163,7 +163,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[8] = {
+		["I8"] = {
 			Name = "Static4",
 			Area = {
 					X = 604,
@@ -182,7 +182,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[9] = {
+		["I9"] = {
 			Name = "Static5",
 			Area = {
 					X = 604,
@@ -201,7 +201,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[10] = {
+		["I10"] = {
 			Name = "Static6",
 			Area = {
 					X = 604,
@@ -220,7 +220,7 @@ rooms["LivingRoom"] = {
 				Y = 0
 			}
 		},
-		[11] = {
+		["I11"] = {
 			Name = "Tear",
 			Area = {
 					X = 248,
@@ -243,7 +243,7 @@ rooms["LivingRoom"] = {
 	},
 	
 	Triggers = {
-		[1] = {
+		["I1"] = {
 			Name = "TVActivate",
 			Area = {
 				X = 452,
@@ -291,7 +291,7 @@ rooms["LivingRoom"] = {
 		}
 	},
 	
-	onEnter = GameEvents.checkTV,
+	onEnter = GameEvents.enterLivingRoom,
 	onExit = GameEvents.leaveLivingRoom,
-	onLoad = GameEvents.checkTV
+	onLoad = GameEvents.loadLivingRoom,
 }

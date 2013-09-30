@@ -11,7 +11,8 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useFoyerDoor_FrontYard()
 		{
 			door("FrontDoor", "FrontYard", "FrontDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useFoyerDoor_Kitchen()
@@ -23,13 +24,15 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useFoyerDoor_Upstairs()
 		{
 			door("Stairs", "Upstairs", "Stairs");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("stairs", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useFoyerDoor_LivingRoom()
 		{
 			door("LivingRoomDoor", "LivingRoom", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

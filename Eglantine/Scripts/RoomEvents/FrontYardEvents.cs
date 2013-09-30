@@ -61,9 +61,9 @@ namespace Eglantine.Engine
 // --DOORS-- //
 		public static IEnumerator<ScriptPauser> useFrontYardDoor()
 		{
-			Console.WriteLine("USE FRONT YARD DOOR");
 			door("Door", "Foyer", "FrontDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

@@ -15,7 +15,7 @@ rooms["Kitchen"] = {
 		
 ------OBJECTS AND EVENTS------
 	Interactables = {
-		[1] = {
+		["I1"] = {
 			Name = "WindowLayer",
 			Area = {
 				X = 0,
@@ -37,7 +37,7 @@ rooms["Kitchen"] = {
 			OnInteract = nil,
 			OnLook = nil
 		},
-		[2] = {
+		["I2"] = {
 			Name = "BrokenWindowLayer",
 			Area = {
 				X = 0,
@@ -56,7 +56,7 @@ rooms["Kitchen"] = {
 				Y = 0
 			}
 		},
-		[3] = {
+		["I3"] = {
 			Name = "BackYardDoor",
 			Polygon = {
 				[1] = { X = 450, Y = 112 },
@@ -79,7 +79,7 @@ rooms["Kitchen"] = {
 			OnInteract = GameEvents.useKitchenDoor_BackYard,
 			Mouse = "Leave"
 		},
-		[4] = {
+		["I4"] = {
 			Name = "FoyerDoor",
 			Polygon = {
 				[1] = { X = 68, Y = 134 },
@@ -100,7 +100,7 @@ rooms["Kitchen"] = {
 			OnInteract = GameEvents.useKitchenDoor_Foyer,
 			Mouse = "Leave"
 		},
-		[5] = {
+		["I5"] = {
 			Name = "Eglantine",
 			Area = {
 				X = 557,
@@ -178,5 +178,6 @@ rooms["Kitchen"] = {
 	},
 	
 	onEnter = GameEvents.checkWindow,
-	onExit = GameEvents.leaveKitchen
+	onExit = GameEvents.leaveKitchen,
+	onLoad = GameEvents.loadKitchen
 }

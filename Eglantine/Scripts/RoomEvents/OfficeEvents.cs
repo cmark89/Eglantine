@@ -193,7 +193,8 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useOfficeDoor()
 		{
 			door("Door", "Upstairs", "OfficeDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

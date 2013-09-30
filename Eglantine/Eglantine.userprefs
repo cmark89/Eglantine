@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scenes/StoryScene.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/KitchenEvents.cs">
     <Files>
-      <File FileName="Data/mainSetup.lua" Line="3" Column="33" />
-      <File FileName="Engine/EventManager.cs" Line="322" Column="55" />
-      <File FileName="Scenes/StoryScene.cs" Line="118" Column="58" />
-      <File FileName="Data/storySceneScripts.lua" Line="8" Column="41" />
+      <File FileName="Engine/GameState.cs" Line="126" Column="50" />
+      <File FileName="Scripts/RoomEvents/KitchenEvents.cs" Line="67" Column="47" />
+      <File FileName="Data/Rooms/Kitchen.lua" Line="83" Column="21" />
+      <File FileName="Data/Rooms/Foyer.lua" Line="164" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,11 +15,16 @@
             <Node name="Data" expanded="True">
               <Node name="Rooms" expanded="True" />
             </Node>
-            <Node name="Engine" expanded="True" />
-            <Node name="Scenes" expanded="True">
-              <Node name="StoryScene.cs" selected="True" />
+            <Node name="Engine" expanded="True">
+              <Node name="GameWorld" expanded="True" />
+              <Node name="Screens" expanded="True" />
             </Node>
-            <Node name="Scripts" expanded="True" />
+            <Node name="Scenes" expanded="True" />
+            <Node name="Scripts" expanded="True">
+              <Node name="RoomEvents" expanded="True">
+                <Node name="KitchenEvents.cs" selected="True" />
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -28,5 +33,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Engine/Screens/AdventureScreen.cs" line="128" offsetX="651" offsetY="1984" expression="gameTime.ElapsedGameTime" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

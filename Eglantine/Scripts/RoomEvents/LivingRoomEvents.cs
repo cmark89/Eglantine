@@ -23,16 +23,21 @@ namespace Eglantine.Engine
 
 		public static IEnumerator<ScriptPauser> interactWithPainting ()
 		{
+			Console.WriteLine ("Painting time");
 			if (EventManager.Instance.UsingItem ("Scissors"))
 			{
-				EventManager.Instance.MovePlayerTo("Painting");
-				yield return waitUntil("Player stopped");
+				EventManager.Instance.MovePlayerTo ("Painting");
+				yield return waitUntil ("Player stopped");
 					             
-				EventManager.Instance.PlaySound("Extend");
+				EventManager.Instance.PlaySound ("Extend");
 				GameState.Instance.PaintingOpened = true;
-				EventManager.Instance.EnableInteractable("Tear");
-				EventManager.Instance.EnableInteractable("PaintingDoor");
-				EventManager.Instance.DisableInteractable("Painting");
+				EventManager.Instance.EnableInteractable ("Tear");
+				EventManager.Instance.EnableInteractable ("PaintingDoor");
+				EventManager.Instance.DisableInteractable ("Painting");
+			}
+			else
+			{
+				Console.WriteLine("no hasami");
 			}
 
 			yield return null;
@@ -84,6 +89,21 @@ namespace Eglantine.Engine
 				EventManager.Instance.DisableTrigger("TVActivate");
 			}
 
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> enterLivingRoom()
+		{
+			checkTV();
+
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> loadLivingRoom()
+		{
+			Scheduler.Execute(GameEvents.startIndoorSounds);
+			checkTV();
+			
 			yield return null;
 		}
 
@@ -151,7 +171,8 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useLivingRoomDoor_Foyer()
 		{
 			door("Door", "Foyer", "LivingRoomDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 	}

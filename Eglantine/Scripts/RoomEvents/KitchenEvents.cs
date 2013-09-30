@@ -50,6 +50,14 @@ namespace Eglantine.Engine
 			yield return null;
 		}
 
+		public static IEnumerator<ScriptPauser> loadKitchen()
+		{
+			EventManager.Instance.PlaySoundLooping ("naturalwind", .2f, 0, 0);
+			Scheduler.Execute(GameEvents.startIndoorSounds);
+			
+			yield return null;
+		}
+
 
 // --LOOK EVENTS-- //
 
@@ -65,12 +73,13 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useKitchenDoor_BackYard()
 		{
 			door("BackYardDoor", "BackYard", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}
 
 		public static IEnumerator<ScriptPauser> useKitchenDoor_Foyer()
 		{
-			door("BackYardDoor", "BackYard", "Door");
+			door("FoyerDoor", "Foyer", "KitchenDoor");
 			yield return null;
 		}
 
