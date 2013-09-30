@@ -97,5 +97,11 @@ rooms["FrontYard"] = {
 	
 	onEnter = GameEvents.enterFrontYard,
 	onExit = GameEvents.leaveFrontYard,
-	onLoad = GameEvents.startOutdoorSounds	
+	onLoad = GameEvents.startOutdoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.00,
+	
+	MaxYValue = 543,
+	MaxYScale = .85,
 }

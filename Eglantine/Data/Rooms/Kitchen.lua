@@ -179,5 +179,11 @@ rooms["Kitchen"] = {
 	
 	onEnter = GameEvents.checkWindow,
 	onExit = GameEvents.leaveKitchen,
-	onLoad = GameEvents.loadKitchen
+	onLoad = GameEvents.loadKitchen,
+	
+	MinYValue = 768,
+	MinYScale = .8,
+	
+	MaxYValue = 424,
+	MaxYScale = .6
 }

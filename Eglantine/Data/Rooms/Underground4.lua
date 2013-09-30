@@ -232,6 +232,12 @@ rooms["Underground4"] = {
 		}
 	},
 	
-	onEnter = GameEvents.beginEnding
+	onEnter = GameEvents.beginEnding,
+	
+	MinYValue = 768,
+	MinYScale = .7,
+	
+	MaxYValue = 424,
+	MaxYScale = .55	
 }
 

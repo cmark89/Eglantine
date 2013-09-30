@@ -303,5 +303,11 @@ rooms["Office"] = {
 		}
 	},
 	
-	onLoad = GameEvents.startIndoorSounds
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1,
+	
+	MaxYValue = 405,
+	MaxYScale = .7
 }

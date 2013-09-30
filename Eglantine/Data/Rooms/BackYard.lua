@@ -103,7 +103,7 @@ rooms["BackYard"] = {
 				[3] = { X = 805, Y = 483 },
 				[4] = { X = 1024, Y = 534 },
 				[5] = { X = 1024, Y = 768 },
-				[5] = { X = 0, Y = 768 },
+				[6] = { X = 0, Y = 768 },
 			}
 		},
 		
@@ -123,5 +123,11 @@ rooms["BackYard"] = {
 	
 	onEnter = GameEvents.enterBackYard,
 	onExit = GameEvents.leaveBackYard,
-	onLoad = GameEvents.startOutdoorSounds
+	onLoad = GameEvents.startOutdoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = .8,
+	
+	MaxYValue = 444,
+	MaxYScale = .7,
 }

@@ -226,6 +226,12 @@ rooms["Bedroom"] = {
 		}
 	},
 	
-	onLoad = GameEvents.startIndoorSounds	
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.1,
+	
+	MaxYValue = 307,
+	MaxYScale = .7,
 }
 

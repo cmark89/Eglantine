@@ -115,5 +115,11 @@ rooms["Underground2"] = {
 			X = 510,
 			Y = 602
 		}
-	}	
+	},
+	
+	MinYValue = 768,
+	MinYScale = .9,
+	
+	MaxYValue = 408,
+	MaxYScale = .7	
 }

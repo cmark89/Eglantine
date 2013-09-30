@@ -294,4 +294,10 @@ rooms["LivingRoom"] = {
 	onEnter = GameEvents.enterLivingRoom,
 	onExit = GameEvents.leaveLivingRoom,
 	onLoad = GameEvents.loadLivingRoom,
+	
+	MinYValue = 768,
+	MinYScale = .75,
+	
+	MaxYValue = 364,
+	MaxYScale = .6
 }

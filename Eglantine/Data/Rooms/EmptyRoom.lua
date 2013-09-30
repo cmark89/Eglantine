@@ -92,5 +92,11 @@ rooms["EmptyRoom"] = {
 		}
 	},
 	
-	onLoad = GameEvents.startIndoorSounds		
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = .85,
+	
+	MaxYValue = 405,
+	MaxYScale = .75,	
 }

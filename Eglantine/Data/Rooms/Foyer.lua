@@ -180,5 +180,11 @@ rooms["Foyer"] = {
 		}
 	},
 	
-	onLoad = GameEvents.startIndoorSounds
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.10,
+	
+	MaxYValue = 367,
+	MaxYScale = .4,
 }

@@ -182,6 +182,12 @@ rooms["Upstairs"] = {
 		}
 	},
 	
-	onLoad = GameEvents.startIndoorSounds
+	onLoad = GameEvents.startIndoorSounds,
+	
+	MinYValue = 768,
+	MinYScale = 1.5,
+	
+	MaxYValue = 376,
+	MaxYScale = .8	
 }
 

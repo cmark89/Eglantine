@@ -44,6 +44,11 @@ namespace Eglantine.Engine
 		public List<TriggerArea> TriggerAreas;
 		public List<Entrance> Entrances;
 
+		public float MaxYValue;
+		public float MaxYScale;
+		public float MinYValue;
+		public float MinYScale;
+
 		[NonSerialized]
 		private Script enterEvent;
 		[NonSerialized]
@@ -63,6 +68,8 @@ namespace Eglantine.Engine
 
 			// Build the room's navmesh
 			ParseNavmesh(lua, roomname);
+
+			ParseScalar(lua, roomname);
 
 			// Set up all the objects and interactable objects 
 			ParseInteractables(lua, roomname);
@@ -392,6 +399,15 @@ namespace Eglantine.Engine
 			
 			if(lua.GetFunction("rooms." + Name + ".onLoad") != null)
 				loadEvent = (Script)lua.GetFunction(typeof(Script), "rooms." + Name + ".onLoad");
+		}
+
+		public void ParseScalar (Lua lua, string roomname)
+		{
+			LuaTable roomTable = lua.GetTable("rooms." + Name);
+			MaxYValue = (float)((double)roomTable["MaxYValue"]);
+			MaxYScale = (float)((double)roomTable["MaxYScale"]);
+			MinYValue = (float)((double)roomTable["MinYValue"]);
+			MinYScale = (float)((double)roomTable["MinYScale"]);
 		}
 	}
 }

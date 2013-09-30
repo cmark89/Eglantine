@@ -120,6 +120,8 @@
     <Compile Include="Scripts\StoryEvents.cs" />
     <Compile Include="Scripts\RoomEvents\Underground4.cs" />
     <Compile Include="Scripts\RoomEvents\UpstairsEvents.cs" />
+    <Compile Include="Engine\GameWorld\AnimatedSprite.cs" />
+    <Compile Include="Engine\Pathfinding\Facing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -801,6 +803,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Audio\SoundEffects\stairs.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\SpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

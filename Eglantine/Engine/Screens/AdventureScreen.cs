@@ -48,8 +48,6 @@ namespace Eglantine.Engine
 			get { return Gui.MouseInGUI; } 
 		}
 
-		// Used to force vertices to draw
-		private bool drawingVertices = false;
 		private bool paused = false;
 
 
