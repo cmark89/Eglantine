@@ -233,5 +233,7 @@ rooms["Bedroom"] = {
 	
 	MaxYValue = 307,
 	MaxYScale = .7,
+	
+	defaultFootprintSound = "footstepWood"
 }
 

@@ -367,6 +367,11 @@ namespace Eglantine.Engine
 			// Roll the credits here
 		}
 
+		public void PlayFootprintSound()
+		{
+			AudioManager.Instance.PlaySoundEffect(GameState.Instance.CurrentRoom.GetFootprintSound(GameState.Instance.PlayerPosition), .35f, 0f, 0f);
+		}
+
 		#endregion
 	}
 }

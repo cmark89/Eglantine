@@ -101,7 +101,7 @@ rooms["Bathroom"] = {
 
 			OnInteract = GameEvents.interactWithDollHead,
 			OnLook = GameEvents.lookAtDollHead,
-			Mouse = "Grab"
+			Mouse = "Grab",
 		},
 	},
 	
@@ -144,4 +144,6 @@ rooms["Bathroom"] = {
 	
 	MaxYValue = 544,
 	MaxYScale = .95,
+	
+	defaultFootprintSound = "footstepWood"
 }

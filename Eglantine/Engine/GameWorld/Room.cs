@@ -56,6 +56,8 @@ namespace Eglantine.Engine
 		[NonSerialized]
 		private Script loadEvent;
 
+		private string defaultFootprintSound;
+
 		public Room (string roomname)
 		{
 			// Load the rooms datafile
@@ -77,6 +79,8 @@ namespace Eglantine.Engine
 			ParseEntrances(lua, roomname);
 
 			SetRoomScripts();
+
+			defaultFootprintSound = lua.GetString("rooms." + roomname + ".defaultFootprintSound");
 
 			// Finally, tell the gamestate that the room exists
 			GameState.Instance.RegisterRoom(this);
@@ -408,6 +412,13 @@ namespace Eglantine.Engine
 			MaxYScale = (float)((double)roomTable["MaxYScale"]);
 			MinYValue = (float)((double)roomTable["MinYValue"]);
 			MinYScale = (float)((double)roomTable["MinYScale"]);
+		}
+
+		public string GetFootprintSound(Vector2 pos)
+		{
+			// Check if another sound should play...
+
+			return defaultFootprintSound;
 		}
 	}
 }

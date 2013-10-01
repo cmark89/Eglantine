@@ -56,7 +56,7 @@ namespace Eglantine.Engine
 
 		private void SetupAnimatedSprite()
 		{
-			Sprite = new AnimatedSprite(Texture, 15);
+			Sprite = new AnimatedSprite(Texture, 12);
 
 			Sprite.AddAnimation("IdleDown", 400, 200, new int[] { 60 }, true);
 			Sprite.AddAnimation("IdleLeft", 400, 200, new int[] { 61 }, true);
@@ -240,16 +240,13 @@ namespace Eglantine.Engine
 
 			// Get the percent toward the bottom of the screen the player is
 			float percent = (Position.Y - maxY) / (minY - maxY);
-			Console.WriteLine("Min: " + minY + " -- Player: " + Position.Y + " -- Max: " + maxY);
 
 			float minYScale = GameState.Instance.CurrentRoom.MinYScale;
 			float maxYScale = GameState.Instance.CurrentRoom.MaxYScale;
 
 			// Now lerp toward the minimum scale
-			Console.WriteLine("Lerp between: " + maxYScale + " and " + minYScale + " with magnitude " + percent);
 			scale = MathHelper.Lerp(maxYScale, minYScale, percent);
 
-			Console.WriteLine("Scale: " + scale);
 			Sprite.Scale = new Vector2(scale, scale);
 
 			MovementSpeed = scale * MOVEMENT_SPEED;

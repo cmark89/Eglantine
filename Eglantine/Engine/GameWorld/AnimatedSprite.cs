@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Eglantine.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -37,6 +38,14 @@ namespace Eglantine
 		public void PlayAnimation(string name)
 		{
 			Console.WriteLine("Play animation " + name);
+			Console.WriteLine(CurrentAnimationName + " --> " + name);
+			if(currentAnimation != null && CurrentAnimationName.Contains("Walk") && name.Contains("Idle"))
+			{
+				Console.WriteLine("STOP SOUND");
+				// We are going from walking animation to an idle animation, so play the footstep sound
+				EventManager.Instance.PlayFootprintSound();
+			}
+
 			currentAnimation = animations[name];
 			CurrentAnimationName = name;
 
@@ -47,7 +56,14 @@ namespace Eglantine
 
 		public void ChangeAnimation (string name)
 		{
-			Console.WriteLine("Change animation to " + name);
+
+
+			if(CurrentAnimationName.Contains("Walk") && name.Contains("Idle"))
+			{
+				// We are going from walking animation to an idle animation, so play the footstep sound
+				EventManager.Instance.PlayFootprintSound();
+			}
+
 			CurrentAnimationName = name;
 			int currentIndex = currentAnimation.Index;
 			currentAnimation = animations[name];
@@ -59,12 +75,19 @@ namespace Eglantine
 			if (currentAnimation != null)
 			{
 				nextFrameChangeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+				// Change the frame!
 				if(nextFrameChangeTime <= 0f)
 				{
 					nextFrameChangeTime += frameRate;
 					if(!currentAnimation.NextFrame())
 					{
 						// Set the default animation playing
+
+					}
+
+					if(CurrentAnimationName.Contains("Walk") && (currentAnimation.Index % 10 == 2 || currentAnimation.Index % 10 == 7))
+					{
+						EventManager.Instance.PlayFootprintSound();
 					}
 				}
 			}

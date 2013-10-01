@@ -104,4 +104,6 @@ rooms["FrontYard"] = {
 	
 	MaxYValue = 543,
 	MaxYScale = .85,
+	
+	defaultFootprintSound = "footstepGrass"
 }

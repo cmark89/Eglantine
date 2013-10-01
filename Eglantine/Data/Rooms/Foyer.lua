@@ -183,8 +183,10 @@ rooms["Foyer"] = {
 	onLoad = GameEvents.startIndoorSounds,
 	
 	MinYValue = 768,
-	MinYScale = 1.10,
+	MinYScale = 1.30,
 	
 	MaxYValue = 367,
 	MaxYScale = .4,
+	
+	defaultFootprintSound = "footstepWood"
 }

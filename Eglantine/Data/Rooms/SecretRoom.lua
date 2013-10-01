@@ -288,5 +288,7 @@ rooms["SecretRoom"] = {
 	MinYScale = .8,
 	
 	MaxYValue = 385,
-	MaxYScale = .6
+	MaxYScale = .6,
+	
+	defaultFootprintSound = "footstepStone"
 }

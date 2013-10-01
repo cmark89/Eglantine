@@ -131,5 +131,7 @@ rooms["Underground1"] = {
 	MinYScale = .8,
 	
 	MaxYValue = 360,
-	MaxYScale = .7
+	MaxYScale = .7,
+	
+	defaultFootprintSound = "footstepStone"
 }

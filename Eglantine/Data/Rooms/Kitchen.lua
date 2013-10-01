@@ -185,5 +185,7 @@ rooms["Kitchen"] = {
 	MinYScale = .8,
 	
 	MaxYValue = 424,
-	MaxYScale = .6
+	MaxYScale = .6,
+	
+	defaultFootprintSound = "footstepWood"
 }

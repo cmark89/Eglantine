@@ -98,5 +98,7 @@ rooms["EmptyRoom"] = {
 	MinYScale = .85,
 	
 	MaxYValue = 405,
-	MaxYScale = .75,	
+	MaxYScale = .75,
+	
+	defaultFootprintSound = "footstepWood"
 }

@@ -309,5 +309,7 @@ rooms["Office"] = {
 	MinYScale = 1,
 	
 	MaxYValue = 405,
-	MaxYScale = .7
+	MaxYScale = .7,
+	
+	defaultFootprintSound = "footstepWood"
 }
