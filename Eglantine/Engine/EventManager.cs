@@ -372,6 +372,11 @@ namespace Eglantine.Engine
 			AudioManager.Instance.PlaySoundEffect(GameState.Instance.CurrentRoom.GetFootprintSound(GameState.Instance.PlayerPosition), .35f, 0f, 0f);
 		}
 
+		public void SetFacing(Facing dir)
+		{
+			Player.Instance.SetFacing(dir);
+		}
+
 		#endregion
 	}
 }

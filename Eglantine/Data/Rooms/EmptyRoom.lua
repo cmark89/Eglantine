@@ -37,7 +37,7 @@ rooms["EmptyRoom"] = {
 			Mouse = "Leave"
 		},
 		["I2"] = {
-			Name = "Puzzle Key",
+			Name = "PuzzleKey",
 			
 			Area = {
 				X = 144,

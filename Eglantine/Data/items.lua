@@ -73,6 +73,16 @@ items["Blueprints"] = {
 	OnUse = ItemEvents.useBlueprints;
 }
 
+items["PuzzleKey"] = {
+
+	Name = "PuzzleKey",
+	Texture = "Graphics/Objects/puzzlekey",
+	Description = "There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.",
+	Type = "Immediate",
+	
+	OnUse = ItemEvents.usePuzzleKey;
+}
+
 items["Letter"] = {
 	
 	Name = "Letter",
@@ -120,15 +130,4 @@ items["Key"] = {
 	Texture = "Graphics/Objects/key",
 	Description = "This key has a weird shape to it.  There's something wholly unsavory about it.",
 	Type = "Active",
-}
-
-
-items["Puzzle Key"] = {
-
-	Name = "Puzzle Key",
-	Texture = "Graphics/Objects/puzzlekey",
-	Description = "There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.",
-	Type = "Immediate",
-	
-	OnUse = ItemEvents.usePuzzleKey;	
 }

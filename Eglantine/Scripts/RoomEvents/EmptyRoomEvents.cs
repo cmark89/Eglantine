@@ -20,7 +20,7 @@ namespace Eglantine.Engine
 // --PICK UP EVENTS-- //
 		public static IEnumerator<ScriptPauser> pickUpPuzzleKey()
 		{
-			pickup("Puzzle Key");
+			pickup("PuzzleKey");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
 		}

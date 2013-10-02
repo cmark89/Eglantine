@@ -56,8 +56,9 @@ namespace Eglantine.Engine
 			yield return null;
 		}
 
-		public static IEnumerable<ScriptPauser> usePuzzleKey ()
+		public static IEnumerator<ScriptPauser> usePuzzleKey ()
 		{
+			Console.WriteLine("Using the puzzle key");
 			EventManager.Instance.ShowMessage ("There's a notch cut out on the head of this thing.  It looks like it's supposed to screw into a hole somewhere.");
 			yield return ScriptPauser.WaitForSignal ("Message closed");
 
@@ -66,7 +67,7 @@ namespace Eglantine.Engine
 				EventManager.Instance.ShowMessage("Hey, it looks like this could fit into the center of the puzzlebox...");
 				yield return ScriptPauser.WaitForSignal("Message closed");
 				EventManager.Instance.InsertPuzzleboxKey();
-				EventManager.Instance.DestroyItem("Puzzle Key");
+				EventManager.Instance.DestroyItem("PuzzleKey");
 			}
 		}
 

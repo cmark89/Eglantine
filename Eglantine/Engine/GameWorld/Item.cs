@@ -131,7 +131,7 @@ namespace Eglantine.Engine
 				Texture = ContentLoader.Instance.LoadTexture2D(_TextureName);
 
 			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnAcquire");
-			OnAcquire = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
+			OnUse = (Script)GameScene.Lua.GetFunction(typeof(Script), tablePath + ".OnUse");
 		}
 	}
 

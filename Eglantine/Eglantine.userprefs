@@ -1,14 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Engine/GameWorld/AnimatedSprite.cs">
     <Files>
-      <File FileName="Engine/GameWorld/Player.cs" Line="182" Column="39" />
-      <File FileName="Engine/GameWorld/Room.cs" Line="408" Column="50" />
-      <File FileName="Data/Rooms/Foyer.lua" Line="180" Column="4" />
+      <File FileName="Engine/GameWorld/AnimatedSprite.cs" Line="151" Column="5" />
+      <File FileName="Engine/EventManager.cs" Line="363" Column="4" />
+      <File FileName="Engine/AudioManager.cs" Line="129" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State />
+        <State expanded="True">
+          <Node name="Eglantine" expanded="True">
+            <Node name="Content" expanded="True">
+              <Node name="Audio" expanded="True">
+                <Node name="SoundEffects" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Data" expanded="True">
+              <Node name="Rooms" expanded="True" />
+            </Node>
+            <Node name="Engine" expanded="True">
+              <Node name="GameWorld" expanded="True">
+                <Node name="AnimatedSprite.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Scripts" expanded="True" />
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

@@ -81,13 +81,21 @@ namespace Eglantine
 					nextFrameChangeTime += frameRate;
 					if(!currentAnimation.NextFrame())
 					{
-						// Set the default animation playing
+						Console.WriteLine(CurrentAnimationName + " finished");
+						EventManager.Instance.SendSignal(CurrentAnimationName + " finished");
 
+						if(CurrentAnimationName.Contains("Interact"))
+						   PlayAnimation("Idle" + Player.Instance.CurrentFacing.ToString());
 					}
 
 					if(CurrentAnimationName.Contains("Walk") && (currentAnimation.Index % 10 == 2 || currentAnimation.Index % 10 == 7))
 					{
 						EventManager.Instance.PlayFootprintSound();
+					}
+
+					if(CurrentAnimationName.Contains("Interact"))
+					{
+						EventManager.Instance.SendSignal("Interact frame " + currentAnimation.Index);
 					}
 				}
 			}
@@ -143,16 +151,26 @@ namespace Eglantine
 		public bool NextFrame ()
 		{
 			index++;
-			if (index >= frameIndexes.Length && looping)
+
+			// If the animation is over...
+			if (index >= frameIndexes.Length)
 			{
-				// Loop the animation.
-				index = 0;
-				return true;
+				if(looping)
+				{
+					// Loop the animation.
+					index = 0;
+					return true;
+				}
+				else
+				{
+					// The animation has finished and it should not be looped.
+					return false;
+				}
 			}
 			else
 			{
-				// The animation has finished and it should not be looped.
-				return false;
+				// Nothing to report
+				return true;
 			}
 		}
 

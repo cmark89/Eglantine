@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using ObjectivelyRadical.Scheduler;
 
@@ -26,6 +27,8 @@ namespace Eglantine.Engine
 			EventManager.Instance.MovePlayerTo(itemName);
 			yield return waitUntil("Player stopped");
 
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, GetBestFacing());
+			yield return waitUntil("Interact frame 4");
 			EventManager.Instance.GainItem(itemName);
 			EventManager.Instance.DisableInteractable(itemName);
 			EventManager.Instance.PlaySound("Extend");
@@ -57,6 +60,38 @@ namespace Eglantine.Engine
 			EventManager.Instance.PlaySoundLooping("lowwind", .25f, 0, 0);
 			
 			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> PlayInteractAnimation()
+		{
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, GetBestFacing());
+			yield return null;
+		}
+		
+		public static IEnumerator<ScriptPauser> PlayInteractAnimation(Facing dir)
+		{
+			Facing oldFacing = Player.Instance.CurrentFacing;
+			Player.Instance.PlayInteractAnimation(dir);
+			yield return waitUntil("Interact" + dir.ToString() + " finished");
+
+			Player.Instance.Sprite.PlayAnimation("Idle" + oldFacing.ToString());
+		}
+
+		public static Facing GetBestFacing ()
+		{
+			double rad = MathHelper.WrapAngle (Player.Instance.FacingDirection);
+
+			if (rad < 0)
+				rad += 2 * (float)Math.PI;
+
+			if (rad >= Math.PI / 2 && rad < (Math.PI / 2) * 3)
+			{
+				return Facing.Left;
+			}
+			else
+			{
+				return Facing.Right;
+			}
 		}
 	}
 }

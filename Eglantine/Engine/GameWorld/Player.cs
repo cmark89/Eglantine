@@ -226,9 +226,9 @@ namespace Eglantine.Engine
 				FacingDirection = ((float)Math.PI / 2f) * 3;
 		}
 
-		public void PlayInteractAnimation()
+		public void PlayInteractAnimation(Facing direction)
 		{
-
+			Sprite.PlayAnimation("Interact" + direction.ToString());
 		}
 
 		public void UpdateScale ()
