@@ -43,6 +43,7 @@ namespace Eglantine.Engine
 			door("HallDoor", "Upstairs", "BedroomDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Right);
 		}
 
 		public static IEnumerator<ScriptPauser> useBedroomDoor_BathroomDoor()
@@ -50,6 +51,7 @@ namespace Eglantine.Engine
 			door("BathroomDoor", "Bathroom", "Door");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Left);
 		}
 
 	}

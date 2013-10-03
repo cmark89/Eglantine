@@ -31,6 +31,7 @@ namespace Eglantine.Engine
 			door("Door", "Upstairs", "EmptyRoomDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 	}

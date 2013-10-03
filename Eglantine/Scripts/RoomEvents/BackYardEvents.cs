@@ -6,6 +6,9 @@ namespace Eglantine.Engine
 {
 	public static partial class GameEvents
 	{
+		// TODO: Use interact animation in interact events.
+		// playInteractAnimation...
+		// yield return waitUntil ("Interact frame N")...
 
 		public static IEnumerator<ScriptPauser> enterBackYard()
 		{
@@ -61,6 +64,7 @@ namespace Eglantine.Engine
 			door("Door", "Kitchen", "BackYardDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 	}

@@ -65,75 +65,6 @@ rooms["Underground4"] = {
 			OnLook = nil
 		},
 		["I3"] = {
-			Name = "Flower1",
-			Area = {
-				X = 459,
-				Y = 660,
-				Width = 48,
-				Height = 48
-			},
-				
-			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/KitchenFlower",
-			YCutoff = 611,
-			
-			-- This is where the player will path to in order to interact with the object
-			InteractPoint = {
-				X = 0,
-				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
-		},
-		["I4"] = {
-			Name = "Flower2",
-			Area = {
-				X = 432,
-				Y = 666,
-				Width = 48,
-				Height = 48
-			},
-				
-			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/KitchenFlower",
-			YCutoff = 611,
-			
-			-- This is where the player will path to in order to interact with the object
-			InteractPoint = {
-				X = 0,
-				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
-		},
-		["I5"] = {
-			Name = "Flower3",
-			Area = {
-				X = 475,
-				Y = 681,
-				Width = 48,
-				Height = 48
-			},
-				
-			Enabled = false,
-			Drawn = true,
-			Texture = "Graphics/Objects/KitchenFlower",
-			YCutoff = 611,
-			
-			-- This is where the player will path to in order to interact with the object
-			InteractPoint = {
-				X = 0,
-				Y = 0
-			},
-
-			OnInteract = nil,
-			OnLook = nil
-		},
-		["I6"] = {
 			Name = "GraveMovementBlocker",
 			Polygon = {
 				[1] = { X = 426, Y = 629 },
@@ -153,7 +84,7 @@ rooms["Underground4"] = {
 			OnLook = nil,
 			BlocksMovement = true
 		},
-		["I7"] = {
+		["I4"] = {
 			Name = "Grave",
 			Area = {
 				X = 398,
@@ -176,6 +107,76 @@ rooms["Underground4"] = {
 			OnInteract = GameEvents.interactWithGrave,
 			OnLook = GameEvents.readHeadstone,
 			Mouse = "Hot"
+		},
+		,
+		["I5"] = {
+			Name = "Flower1",
+			Area = {
+				X = 459,
+				Y = 660,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		["I6"] = {
+			Name = "Flower2",
+			Area = {
+				X = 432,
+				Y = 666,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
+		},
+		["I7"] = {
+			Name = "Flower3",
+			Area = {
+				X = 475,
+				Y = 681,
+				Width = 48,
+				Height = 48
+			},
+				
+			Enabled = false,
+			Drawn = true,
+			Texture = "Graphics/Objects/KitchenFlower",
+			YCutoff = 611,
+			
+			-- This is where the player will path to in order to interact with the object
+			InteractPoint = {
+				X = 0,
+				Y = 0
+			},
+
+			OnInteract = nil,
+			OnLook = nil
 		},
 	},
 	

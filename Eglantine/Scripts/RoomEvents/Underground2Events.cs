@@ -12,12 +12,15 @@ namespace Eglantine.Engine
 		{
 			door("RopeUp", "Underground1", "DownRope");
 			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.SetFacing(Facing.Up);
 		}
 
 		public static IEnumerator<ScriptPauser> useUnderground2Door_Down()
 		{
 			door("RopeDown", "Underground3", "RopeUp");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 	}

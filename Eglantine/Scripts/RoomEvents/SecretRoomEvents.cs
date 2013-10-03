@@ -107,13 +107,15 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useSecretRoomDoor_Painting()
 		{
 			door("Door", "LivingRoom", "Painting");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 		public static IEnumerator<ScriptPauser> useSecretRoomDoor_TrapDoor()
 		{
 			door("TrapdoorOpen", "Underground1", "UpRope");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 	}

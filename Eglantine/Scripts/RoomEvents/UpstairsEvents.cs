@@ -13,6 +13,7 @@ namespace Eglantine.Engine
 			door("BedroomDoor", "Bedroom", "HallDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Left);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_Office()
@@ -20,6 +21,7 @@ namespace Eglantine.Engine
 			door("OfficeDoor", "Office", "Door");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Right);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_EmptyRoom()
@@ -27,6 +29,7 @@ namespace Eglantine.Engine
 			door("EmptyRoomDoor", "EmptyRoom", "Door");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Right);
 		}
 
 		public static IEnumerator<ScriptPauser> useUpstairsDoor_Foyer()
@@ -34,6 +37,7 @@ namespace Eglantine.Engine
 			door("Stairs", "Foyer", "Stairs");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("stairs", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Left);
 		}
 
 		public static IEnumerator<ScriptPauser> lookAtSafe ()

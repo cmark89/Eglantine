@@ -365,6 +365,7 @@ namespace Eglantine.Engine
 		public void RollCredits ()
 		{
 			// Roll the credits here
+			// TODO: Roll credits.
 		}
 
 		public void PlayFootprintSound()

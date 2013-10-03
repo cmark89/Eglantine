@@ -165,7 +165,8 @@ namespace Eglantine.Engine
 		public static IEnumerator<ScriptPauser> useLivingRoomDoor_Painting()
 		{
 			door("PaintingDoor", "SecretRoom", "Door");
-			yield return null;
+			yield return waitUntil("Player stopped");
+			EventManager.Instance.SetFacing(Facing.Down);
 		}
 
 		public static IEnumerator<ScriptPauser> useLivingRoomDoor_Foyer()
@@ -173,6 +174,7 @@ namespace Eglantine.Engine
 			door("Door", "Foyer", "LivingRoomDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+			EventManager.Instance.SetFacing(Facing.Right);
 		}
 
 	}
