@@ -141,7 +141,7 @@ rooms["Bedroom"] = {
 			Enabled = true,
 			Drawn = true,
 			Texture = "Graphics/Objects/bed",
-			YCutoff = 430,
+			YCutoff = 400,
 			
 			InteractPoint = {
 				X = 0,

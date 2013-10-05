@@ -177,25 +177,57 @@ namespace Eglantine.Engine
 // //PICK UP EVENTS// //
 		public static IEnumerator<ScriptPauser> pickUpBlueprints()
 		{
-			pickup("Blueprints");
+			EventManager.Instance.MovePlayerTo("Blueprints");
+			yield return waitUntil("Player stopped");
+			
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
+			EventManager.Instance.GainItem("Blueprints");
+			EventManager.Instance.DisableInteractable("Blueprints");
+			EventManager.Instance.PlaySound("Extend");
+
 			yield return null;
 		}
 
 		public static IEnumerator<ScriptPauser> pickUpStrangeNotes()
 		{
-			pickup("Strange Notes");
+			EventManager.Instance.MovePlayerTo("Strange Notes");
+			yield return waitUntil("Player stopped");
+			
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
+			EventManager.Instance.GainItem("Strange Notes");
+			EventManager.Instance.DisableInteractable("Strange Notes");
+			EventManager.Instance.PlaySound("Extend");
+			
 			yield return null;
 		}
 
 		public static IEnumerator<ScriptPauser> pickUpPhotograph()
 		{
-			pickup("Photograph");
+			EventManager.Instance.MovePlayerTo("Photograph");
+			yield return waitUntil("Player stopped");
+			
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
+			EventManager.Instance.GainItem("Photograph");
+			EventManager.Instance.DisableInteractable("Photograph");
+			EventManager.Instance.PlaySound("Extend");
+			
 			yield return null;
 		}
 
 		public static IEnumerator<ScriptPauser> pickUpJournal()
 		{
-			pickup("Journal");
+			EventManager.Instance.MovePlayerTo("Journal");
+			yield return waitUntil("Player stopped");
+			
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
+			EventManager.Instance.GainItem("Journal");
+			EventManager.Instance.DisableInteractable("Journal");
+			EventManager.Instance.PlaySound("Extend");
+			
 			yield return null;
 		}
 

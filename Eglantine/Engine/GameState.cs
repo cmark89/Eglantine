@@ -42,6 +42,7 @@ namespace Eglantine.Engine
 
 		// This is stored here only during serialization to load the player position.
 		public Vector2 PlayerPosition;
+		public Facing PlayerFacing = Facing.Right;
 		#endregion
 
 
@@ -114,8 +115,10 @@ namespace Eglantine.Engine
 			SetRoom (START_ROOM);
 			//CurrentRoom = Rooms.Find (x => x.Name == START_ROOM);
 
-			// Set the player's position to the first entrance in the first room.
-			Player.Instance.SetPosition(CurrentRoom.Entrances[0].Point);
+			// Set the player's position to the second entrance in the first room.
+			Player.Instance.SetPosition(CurrentRoom.Entrances[1].Point);
+			Player.Instance.SetFacing(PlayerFacing);
+			Player.Instance.Sprite.PlayAnimation("Idle"+PlayerFacing.ToString());
 
 			// Generate a (hopefully) unique game ID for save journaling
 			gameID = new Random().Next (int.MaxValue);
@@ -136,6 +139,7 @@ namespace Eglantine.Engine
 
 				// Load player's position from file
 				Player.Instance.SetPosition(loadedState.PlayerPosition);
+				Player.Instance.SetFacing(loadedState.PlayerFacing);
 				Player.Instance.StopMoving ();
 			}
 
@@ -170,6 +174,7 @@ namespace Eglantine.Engine
 		{
 			// Prepare to save player position to file
 			Instance.PlayerPosition = Player.Instance.Position;
+			Instance.PlayerFacing = Player.Instance.CurrentFacing;	
 			Instance.TVImageName = Instance.TVImage.Name;
 	
 			// Let each game component prepare to be serialized

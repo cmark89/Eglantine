@@ -92,6 +92,12 @@ rooms["FrontYard"] = {
 			
 			X = 646,
 			Y = 562
+		},
+		
+		[2] = {
+			Name = "GameStart",
+			X = 193,
+			Y = 676
 		}
 	},
 	

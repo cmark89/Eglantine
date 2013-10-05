@@ -52,7 +52,7 @@ namespace Eglantine.Engine
 			yield return waitUntil("Messages read");
 					
 			EventManager.Instance.LerpStoryColor(0,0,0,0,3);
-			EventManager.Instance.FadeMusic(0, 3);
+			EventManager.Instance.FadeMusic(0f, 3f);
 			yield return waitSeconds(3.5f);
 					
 			EventManager.Instance.ShowStoryMessage("Whatever it was that I was expecting, I didn't find it.");
@@ -165,10 +165,11 @@ namespace Eglantine.Engine
 			EventManager.Instance.ShowStoryMessage("Now I have kids of my own.");
 			EventManager.Instance.ShowStoryMessage("When my first daughter was born, I made sure that the girl's name would live on.");
 			yield return waitUntil("Messages read");
-					
-			EventManager.Instance.LerpStoryColor(0,0,0,0,4);
-			EventManager.Instance.FadeMusic(0, 5);
-			yield return waitSeconds(5);
+
+			EventManager.Instance.FadeMusic(0f, 5f);		
+			EventManager.Instance.LerpStoryColor(0,0,0,0,4f);
+			yield return waitSeconds(5f);
+
 			EventManager.Instance.ShowStoryMessage("I never have -- and never will -- forget the name Eglantine.");
 			yield return waitUntil("Messages read");
 

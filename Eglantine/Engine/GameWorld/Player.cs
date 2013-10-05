@@ -43,7 +43,7 @@ namespace Eglantine.Engine
 			get
 			{
 				if(_instance == null)
-				_instance = new Player();
+					_instance = new Player();
 
 				return _instance;
 			}
@@ -78,6 +78,7 @@ namespace Eglantine.Engine
 
 			// Start it off
 			Sprite.PlayAnimation("IdleDown");
+			CurrentFacing = Facing.Right;
 		}
 
 		public void Update (GameTime gameTime)
