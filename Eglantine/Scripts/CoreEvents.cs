@@ -62,6 +62,59 @@ namespace Eglantine.Engine
 			yield return null;
 		}
 
+		public static IEnumerator<ScriptPauser> startUndergroundSounds ()
+		{
+			//EventManager.Instance.StopLoopingSoundEffects();
+			if (!GameState.Instance.DrumsPlaying)
+			{
+				EventManager.Instance.PlaySoundLooping ("UndergroundDrums1", .0f, 0, 0);
+				EventManager.Instance.PlaySoundLooping ("UndergroundDrums2", .0f, 0, 0);
+				EventManager.Instance.PlaySoundLooping ("UndergroundDrums3", .0f, 0, 0);
+
+				GameState.Instance.DrumsPlaying = true;
+			}
+
+			yield return null;
+			Scheduler.Execute(undergroundSoundUpdate);
+		}
+
+		public static IEnumerator<ScriptPauser> undergroundSoundUpdate ()
+		{
+			AudioManager.Instance.SetLoopingSoundEffectVolume ("UndergroundDrums1", 0f);
+			AudioManager.Instance.SetLoopingSoundEffectVolume ("UndergroundDrums2", 0f);
+			AudioManager.Instance.SetLoopingSoundEffectVolume ("UndergroundDrums3", 0f);
+
+			if (GameState.Instance.CurrentRoom.Name == "SecretRoom" && GameState.Instance.TrapdoorOpen)
+			{
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums1", .2f);
+			}
+			if (GameState.Instance.CurrentRoom.Name == "Underground1")
+			{
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums1", .4f);
+			} 
+			else if (GameState.Instance.CurrentRoom.Name == "Underground2")
+			{
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums2", .4f);
+			} 
+			else if (GameState.Instance.CurrentRoom.Name == "Underground3")
+			{
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums3", .4f);
+			}
+
+			yield return null;
+		}
+
+		public static IEnumerator<ScriptPauser> killUndergroundSounds()
+		{
+			AudioManager.Instance.StopSoundEffect("UndergroundDrums1");
+			AudioManager.Instance.StopSoundEffect("UndergroundDrums2");
+			AudioManager.Instance.StopSoundEffect("UndergroundDrums3");
+
+			GameState.Instance.DrumsPlaying = false;
+
+			yield return null;
+		}
+
 		public static IEnumerator<ScriptPauser> PlayInteractAnimation()
 		{
 			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, GetBestFacing());

@@ -170,7 +170,7 @@ namespace Eglantine.Engine
 
 		public void OnInteract()
 		{
-			if(Event != null)
+			if(Event != null && !Player.Instance.Sprite.CurrentAnimationName.Contains("Interact"))
 				Scheduler.Execute(Event);
 		}
 

@@ -92,12 +92,14 @@ namespace Eglantine.Engine
 			EventManager.Instance.ShowStoryMessage("Now that I have kids of my own, I know first hand how out of control their imaginations can be.");
 			EventManager.Instance.ShowStoryMessage("Even if it was all a dream, even now I find myself shivering when I think about the thing I saw beneath the house.");
 			yield return waitUntil("Messages read");
+			EventManager.Instance.FadeMusic(0f, 5f);
 			EventManager.Instance.LerpStoryColor(0,0,0,0,4);
 			yield return waitSeconds(5);
 			EventManager.Instance.ShowStoryMessage("And the cycle continues.");
 			yield return waitUntil("Messages read");
 
-			// Roll credits
+			yield return waitSeconds(2);
+			EventManager.Instance.RollCredits();
 		}
 
 		public static IEnumerator<ScriptPauser> goodEnding()
@@ -170,7 +172,8 @@ namespace Eglantine.Engine
 			EventManager.Instance.ShowStoryMessage("I never have -- and never will -- forget the name Eglantine.");
 			yield return waitUntil("Messages read");
 
-			// Roll credits
+			yield return waitSeconds(2);
+			EventManager.Instance.RollCredits();
 		}
 	}
 }

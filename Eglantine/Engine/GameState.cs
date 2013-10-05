@@ -59,6 +59,9 @@ namespace Eglantine.Engine
 		public bool TopDrawerFixed = false;
 		public bool BottomDrawerFixed = false;
 		public bool TrapdoorUnlocked = false;
+		[NonSerialized]
+		public bool DrumsPlaying = false;
+		public bool TrapdoorOpen = false;
 		public int FlowersOnGrave = 0;
 		public string Ending = "";
 

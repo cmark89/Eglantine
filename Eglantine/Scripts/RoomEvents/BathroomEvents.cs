@@ -12,6 +12,9 @@ namespace Eglantine.Engine
 			EventManager.Instance.MovePlayerTo("CabinetClosed");
 			yield return waitUntil("Player stopped");
 
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Right);
+			yield return waitUntil("Interact frame 4");
+
 			//Open the cabinet now
 			EventManager.Instance.PlaySound("cabinetopen");
 			EventManager.Instance.EnableInteractable("CabinetOpen");
@@ -25,6 +28,9 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.MovePlayerTo("CabinetOpen");
 			yield return waitUntil("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Right);
+			yield return waitUntil("Interact frame 4");
 			
 			//Close the cabinet now
 			EventManager.Instance.PlaySound("cabinetclose");
@@ -61,7 +67,9 @@ namespace Eglantine.Engine
 			door("Door", "Bedroom", "BathroomDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+
 			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
 		}
 
 	}

@@ -1,22 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/BackYardEvents.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Scripts/RoomEvents/Underground3Events.cs">
     <Files>
-      <File FileName="Engine/EventManager.cs" Line="381" Column="13" />
-      <File FileName="Scripts/RoomEvents/BackYardEvents.cs" Line="7" Column="36" />
-      <File FileName="Scripts/RoomEvents/BathroomEvents.cs" Line="64" Column="49" />
-      <File FileName="Scripts/RoomEvents/BedroomEvents.cs" Line="46" Column="50" />
-      <File FileName="Scripts/RoomEvents/EmptyRoomEvents.cs" Line="34" Column="48" />
-      <File FileName="Scripts/RoomEvents/FoyerEvents.cs" Line="29" Column="33" />
-      <File FileName="Scripts/RoomEvents/FrontYardEvents.cs" Line="64" Column="39" />
-      <File FileName="Scripts/RoomEvents/KitchenEvents.cs" Line="77" Column="57" />
-      <File FileName="Scripts/RoomEvents/LivingRoomEvents.cs" Line="177" Column="4" />
-      <File FileName="Scripts/RoomEvents/OfficeEvents.cs" Line="194" Column="4" />
-      <File FileName="Scripts/RoomEvents/SecretRoomEvents.cs" Line="118" Column="49" />
-      <File FileName="Scripts/RoomEvents/Underground1Events.cs" Line="12" Column="4" />
-      <File FileName="Scripts/RoomEvents/Underground2Events.cs" Line="23" Column="49" />
-      <File FileName="Scripts/RoomEvents/Underground3Events.cs" Line="20" Column="41" />
-      <File FileName="Scripts/RoomEvents/UpstairsEvents.cs" Line="40" Column="49" />
+      <File FileName="Scripts/RoomEvents/Underground1Events.cs" Line="20" Column="46" />
+      <File FileName="Scripts/RoomEvents/Underground2Events.cs" Line="32" Column="4" />
+      <File FileName="Scripts/RoomEvents/Underground3Events.cs" Line="24" Column="47" />
+      <File FileName="Data/Rooms/Underground1.lua" Line="138" Column="2" />
+      <File FileName="Scripts/CoreEvents.cs" Line="31" Column="4" />
+      <File FileName="Data/Rooms/SecretRoom.lua" Line="285" Column="2" />
+      <File FileName="Data/Rooms/Underground2.lua" Line="128" Column="44" />
+      <File FileName="Data/Rooms/Underground3.lua" Line="124" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,6 +17,7 @@
           <Node name="Eglantine" expanded="True">
             <Node name="Content" expanded="True">
               <Node name="Audio" expanded="True">
+                <Node name="Music" expanded="True" />
                 <Node name="SoundEffects" expanded="True" />
               </Node>
             </Node>
@@ -33,9 +27,10 @@
             <Node name="Engine" expanded="True">
               <Node name="GameWorld" expanded="True" />
             </Node>
+            <Node name="Scenes" expanded="True" />
             <Node name="Scripts" expanded="True">
               <Node name="RoomEvents" expanded="True">
-                <Node name="BackYardEvents.cs" selected="True" />
+                <Node name="Underground3Events.cs" selected="True" />
               </Node>
             </Node>
           </Node>

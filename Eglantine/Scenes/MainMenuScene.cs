@@ -16,7 +16,7 @@ namespace Eglantine
 		}
 
 		Dictionary<string, TitleElement> graphics;
-		MainMenuPhase phase;
+		MainMenuPhase phase = MainMenuPhase.Intro;
 		bool menuShown = false;
 		int buttonWidth;
 		int buttonHeight;
@@ -53,7 +53,7 @@ namespace Eglantine
 			newGameRect = new Rectangle((int)(origin.X - (buttonWidth / 2)), (int)origin.Y, buttonWidth, buttonHeight);
 			loadRect = new Rectangle((int)(int)(origin.X - (buttonWidth / 2)), (int)(origin.Y + buttonHeight + 10), buttonWidth, buttonHeight);
 			exitRect = new Rectangle((int)(origin.X - (buttonWidth / 2)), (int)(origin.Y + (buttonHeight + 10) * 2), buttonWidth, buttonHeight);
-
+			GameEvents.menuPhase = 0;
 			NextPhase ();
 		}
 

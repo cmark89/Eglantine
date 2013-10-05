@@ -126,6 +126,7 @@ namespace Eglantine.Engine
 		{
 			GameState.Instance.ChangeRoom(roomName, entranceName);
 			Player.Instance.StopMoving();
+			Scheduler.SendSignal("Changed rooms");
 		}
 
 		public void StopPlayer()
@@ -364,8 +365,8 @@ namespace Eglantine.Engine
 
 		public void RollCredits ()
 		{
-			// Roll the credits here
-			// TODO: Roll credits.
+			AudioManager.Instance.StopMusic();
+			Eglantine.ChangeScene(new CreditScene());
 		}
 
 		public void PlayFootprintSound()
@@ -376,6 +377,11 @@ namespace Eglantine.Engine
 		public void SetFacing(Facing dir)
 		{
 			Player.Instance.SetFacing(dir);
+		}
+
+		public void IdleAnimation()
+		{
+			Player.Instance.Sprite.PlayAnimation("Idle" + Player.Instance.CurrentFacing.ToString());
 		}
 
 		#endregion

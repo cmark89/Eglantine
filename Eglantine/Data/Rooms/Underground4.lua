@@ -108,7 +108,6 @@ rooms["Underground4"] = {
 			OnLook = GameEvents.readHeadstone,
 			Mouse = "Hot"
 		},
-		,
 		["I5"] = {
 			Name = "Flower1",
 			Area = {
@@ -159,7 +158,7 @@ rooms["Underground4"] = {
 			Name = "Flower3",
 			Area = {
 				X = 475,
-				Y = 681,
+				Y = 670,
 				Width = 48,
 				Height = 48
 			},

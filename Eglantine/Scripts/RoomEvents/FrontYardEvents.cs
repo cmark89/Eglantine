@@ -64,7 +64,9 @@ namespace Eglantine.Engine
 			door("Door", "Foyer", "FrontDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+
 			EventManager.Instance.SetFacing(Facing.Right);
+			EventManager.Instance.IdleAnimation();
 		}
 
 	}

@@ -38,10 +38,8 @@ namespace Eglantine
 		public void PlayAnimation(string name)
 		{
 			Console.WriteLine("Play animation " + name);
-			Console.WriteLine(CurrentAnimationName + " --> " + name);
 			if(currentAnimation != null && CurrentAnimationName.Contains("Walk") && name.Contains("Idle"))
 			{
-				Console.WriteLine("STOP SOUND");
 				// We are going from walking animation to an idle animation, so play the footstep sound
 				EventManager.Instance.PlayFootprintSound();
 			}

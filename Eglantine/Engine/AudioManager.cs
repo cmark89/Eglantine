@@ -170,6 +170,15 @@ namespace Eglantine
 			LoopingSoundEffects.Clear ();
 		}
 
+		public void SetLoopingSoundEffectVolume (string name, float volume)
+		{
+			foreach (SoundEffectWrapper sfx in LoopingSoundEffects)
+			{
+				if(sfx.Name == name)
+					sfx.Sound.Volume = volume;
+			}
+		}
+
 		public void PlaySong (string songName, float volume, bool looping = true, float pitch = 0f, float pan = 0f)
 		{
 			if (Songs.ContainsKey (songName))
@@ -178,7 +187,9 @@ namespace Eglantine
 				song.Volume = volume;
 				song.Pitch = pitch;
 				song.Pan = pan;
-				song.IsLooped = true;
+
+				if(looping)
+					song.IsLooped = true;
 				
 				// Add it to the list so it can be aborted later.
 				PlayingSongs.Add(song);

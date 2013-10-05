@@ -383,6 +383,10 @@ namespace Eglantine.Engine
 			{
 				i.LoadFromSerialization();
 			}
+			foreach (TriggerArea i in TriggerAreas)
+			{
+				i.LoadFromSerialization();
+			}
 		}
 
 		public void SetRoomScripts()

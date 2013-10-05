@@ -129,5 +129,7 @@ rooms["Underground3"] = {
 	MaxYValue = 468,
 	MaxYScale = .8,
 	
-	defaultFootprintSound = "footstepStone"
+	defaultFootprintSound = "footstepStone",
+	
+	onLoad = GameEvents.startUndergroundSounds
 }

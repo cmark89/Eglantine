@@ -37,11 +37,11 @@ namespace Eglantine.Engine
 			//If the player failed to complete the puzzle
 			if(GameState.Instance.FlowersOnGrave < 3)
 			{
-				yield return waitSeconds(1);
-				EventManager.Instance.FadeOutInteractable("Grave", 3);
+				yield return waitSeconds(2f);
+				EventManager.Instance.FadeOutInteractable("Grave", 3f);
 				EventManager.Instance.EnableInteractable("Artifact");
-				EventManager.Instance.FadeInInteractable("Artifact", 3);
-				yield return waitSeconds(3);
+				EventManager.Instance.FadeInInteractable("Artifact", 3f);
+				yield return waitSeconds(3f);
 				EventManager.Instance.DisableInteractable("Grave");
 				yield return waitSeconds(4);
 				EventManager.Instance.PlayStorySequence("badEnding");
@@ -76,6 +76,10 @@ namespace Eglantine.Engine
 			{
 				EventManager.Instance.MovePlayerTo("Grave");
 				yield return waitUntil("Player stopped");
+
+				Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Right);
+				yield return waitUntil("Interact frame 4");
+
 				placeFlowerOnGrave();
 			}
 		}

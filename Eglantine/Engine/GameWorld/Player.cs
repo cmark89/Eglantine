@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Eglantine.Engine.Pathfinding;
+using ObjectivelyRadical.Scheduler;
 
 namespace Eglantine.Engine
 {
@@ -224,11 +225,21 @@ namespace Eglantine.Engine
 				FacingDirection = (float)Math.PI;
 			else if(facing == Facing.Up)
 				FacingDirection = ((float)Math.PI / 2f) * 3;
+
+			CurrentFacing = facing;
 		}
 
 		public void PlayInteractAnimation(Facing direction)
 		{
 			Sprite.PlayAnimation("Interact" + direction.ToString());
+			EventManager.Instance.DisableInput();
+			Scheduler.ExecuteWithArgs<string>(ReenableInputFromInteractAnimation, "Interact"+direction.ToString());
+		}
+
+		public IEnumerator<ScriptPauser> ReenableInputFromInteractAnimation(string animName)
+		{
+			yield return ScriptPauser.WaitForSignal(animName + " finished");
+			EventManager.Instance.EnableInput();
 		}
 
 		public void UpdateScale ()

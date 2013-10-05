@@ -57,7 +57,7 @@ rooms["Underground2"] = {
 				Y = 453
 			},
 
-			OnInteract = GameEvents.useUnderground2Door_Down,
+			OnInteract = GameEvents.useUnderground2Door_Up,
 			Mouse = "Leave"
 		}
 	},
@@ -123,5 +123,7 @@ rooms["Underground2"] = {
 	MaxYValue = 408,
 	MaxYScale = .7,
 	
-	defaultFootprintSound = "footstepStone"
+	defaultFootprintSound = "footstepStone",
+	
+	onLoad = GameEvents.startUndergroundSounds
 }

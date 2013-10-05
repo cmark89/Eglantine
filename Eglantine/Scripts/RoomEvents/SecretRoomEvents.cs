@@ -16,6 +16,9 @@ namespace Eglantine.Engine
 			{
 				EventManager.Instance.MovePlayerTo("TrapdoorClosed");
 				yield return waitUntil("Player stopped");
+
+				Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+				yield return waitUntil("Interact frame 4");
 							
 				EventManager.Instance.ShowMessage("It's locked up nice and tight.");
 			}
@@ -27,6 +30,9 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.MovePlayerTo ("TrapdoorClosed");
 			yield return waitUntil ("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
 					
 			if (!GameState.Instance.TrapdoorUnlocked)
 			{
@@ -40,6 +46,9 @@ namespace Eglantine.Engine
 			EventManager.Instance.EnableInteractable("TrapdoorOpenGraphic");
 			EventManager.Instance.EnableInteractable("TrapdoorHatch_Open");
 
+			GameState.Instance.TrapdoorOpen = true;
+			Scheduler.Execute(undergroundSoundUpdate);
+
 			yield return null;
 		}
 
@@ -47,6 +56,9 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.MovePlayerTo("TrapdoorClosed");
 			yield return waitUntil("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
 						
 			EventManager.Instance.PlaySound("safeclose");
 			EventManager.Instance.EnableInteractable("TrapdoorClosed");
@@ -54,13 +66,19 @@ namespace Eglantine.Engine
 			EventManager.Instance.DisableInteractable("TrapdoorOpenGraphic");
 			EventManager.Instance.DisableInteractable("TrapdoorHatch_Open");
 
+			GameState.Instance.TrapdoorOpen = false;
+			Scheduler.Execute(undergroundSoundUpdate);
+
 			yield return null;
 		}
 
 		public static IEnumerator<ScriptPauser> checkTVStatic ()
 		{
-			if(GameState.Instance.TVOn)
-				EventManager.Instance.PlaySoundLooping("static", .15f, 0, 0);
+			Scheduler.Execute(startUndergroundSounds);
+			if (GameState.Instance.TVOn)
+			{
+				EventManager.Instance.PlaySoundLooping ("static", .15f, 0, 0);
+			}
 
 			yield return null;
 		}
@@ -96,6 +114,16 @@ namespace Eglantine.Engine
 			yield return null;
 		}
 
+		public static IEnumerator<ScriptPauser> loadSecretRoom ()
+		{
+			GameState.Instance.DrumsPlaying = false;
+			Console.WriteLine("SECRET ROOM LOADED!");
+			Scheduler.Execute(startIndoorSounds);
+			Scheduler.Execute(checkTVStatic);
+
+			yield return null;
+		}
+
 // --PICK UP EVENTS-- //
 		public static IEnumerator<ScriptPauser> pickUpPuzzlebox()
 		{
@@ -108,16 +136,23 @@ namespace Eglantine.Engine
 		{
 			door("Door", "LivingRoom", "Painting");
 			yield return waitUntil("Player stopped");
+		
 			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
+
+			Scheduler.Execute(killUndergroundSounds);
 		}
 
 		public static IEnumerator<ScriptPauser> useSecretRoomDoor_TrapDoor()
 		{
 			door("TrapdoorOpen", "Underground1", "UpRope");
 			yield return waitUntil("Player stopped");
-			EventManager.Instance.SetFacing(Facing.Down);
-		}
 
+			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
+			AudioManager.Instance.StopSoundEffect("lowwind");
+			Scheduler.Execute (undergroundSoundUpdate);
+		}
 	}
 }
 

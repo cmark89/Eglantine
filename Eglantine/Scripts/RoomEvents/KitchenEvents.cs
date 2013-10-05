@@ -75,14 +75,18 @@ namespace Eglantine.Engine
 			door("BackYardDoor", "BackYard", "Door");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+
 			EventManager.Instance.SetFacing(Facing.Right);
+			EventManager.Instance.IdleAnimation();
 		}
 
 		public static IEnumerator<ScriptPauser> useKitchenDoor_Foyer()
 		{
 			door("FoyerDoor", "Foyer", "KitchenDoor");
-			yield return null;
+			yield return waitUntil("Player stopped");
+
 			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
 		}
 
 	}

@@ -282,7 +282,7 @@ rooms["SecretRoom"] = {
 	
 	onEnter = GameEvents.checkTVStatic,
 	onExit = GameEvents.leaveSecretRoom,
-	onLoad = GameEvents.startIndoorSounds,
+	onLoad = GameEvents.loadSecretRoom,
 	
 	MinYValue = 768,
 	MinYScale = .8,

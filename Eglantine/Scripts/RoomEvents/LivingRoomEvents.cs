@@ -28,6 +28,9 @@ namespace Eglantine.Engine
 			{
 				EventManager.Instance.MovePlayerTo ("Painting");
 				yield return waitUntil ("Player stopped");
+
+				Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+				yield return waitUntil("Interact frame 4");
 					             
 				EventManager.Instance.PlaySound ("Extend");
 				GameState.Instance.PaintingOpened = true;
@@ -49,8 +52,15 @@ namespace Eglantine.Engine
 			{
 				EventManager.Instance.MovePlayerTo("TV");
 				yield return waitUntil("Player stopped");
-				
-				yield return waitSeconds(1);
+
+				Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Right);
+				yield return waitUntil("Interact frame 4");
+
+				EventManager.Instance.PlaySound("switch", 1f, 0f, 0f);
+				yield return waitSeconds(.5f);
+				EventManager.Instance.PlaySound("switch", 1f, 0f, 0f);
+				yield return waitSeconds(.5f);
+
 				EventManager.Instance.ShowMessage("No good.  It won't turn on.");
 			}
 			else
@@ -58,7 +68,14 @@ namespace Eglantine.Engine
 				EventManager.Instance.MovePlayerTo("TV");
 				yield return waitUntil("Player stopped");
 
-				yield return waitSeconds(1);
+				Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Right);
+				yield return waitUntil("Interact frame 4");
+				
+				EventManager.Instance.PlaySound("switch", 1f, 0f, 0f);
+				yield return waitSeconds(.5f);
+				EventManager.Instance.PlaySound("switch", 1f, 0f, 0f);
+				yield return waitSeconds(.5f);
+
 				EventManager.Instance.ShowMessage("It won't turn off.  The dials don't do anything.");
 			}
 
@@ -166,7 +183,9 @@ namespace Eglantine.Engine
 		{
 			door("PaintingDoor", "SecretRoom", "Door");
 			yield return waitUntil("Player stopped");
+
 			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
 		}
 
 		public static IEnumerator<ScriptPauser> useLivingRoomDoor_Foyer()
@@ -174,7 +193,9 @@ namespace Eglantine.Engine
 			door("Door", "Foyer", "LivingRoomDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+
 			EventManager.Instance.SetFacing(Facing.Right);
+			EventManager.Instance.IdleAnimation();
 		}
 
 	}

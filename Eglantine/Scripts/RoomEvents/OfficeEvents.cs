@@ -17,6 +17,9 @@ namespace Eglantine.Engine
 
 			EventManager.Instance.MovePlayerTo ("TopDrawer_Closed");
 			yield return waitUntil ("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
 						
 			if (usingCrowbar && !GameState.Instance.TopDrawerFixed)
 			{
@@ -49,6 +52,9 @@ namespace Eglantine.Engine
 			//Move the player to the filing cabinet
 			EventManager.Instance.MovePlayerTo ("BottomDrawer_Closed");
 			yield return waitUntil ("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
 							
 			//Now, check to see what must happen.
 			if (usingCrowbar && !GameState.Instance.BottomDrawerFixed)
@@ -74,6 +80,9 @@ namespace Eglantine.Engine
 			EventManager.Instance.MovePlayerTo("TopDrawer_Open");
 			yield return waitUntil("Player stopped");
 
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
+
 			setTopDrawerClosed();
 			yield return null;
 		}
@@ -82,6 +91,9 @@ namespace Eglantine.Engine
 		{
 			EventManager.Instance.MovePlayerTo("BottomDrawer_Open");
 			yield return waitUntil("Player stopped");
+
+			Scheduler.ExecuteWithArgs<Facing>(PlayInteractAnimation, Facing.Left);
+			yield return waitUntil("Interact frame 4");
 
 			setBottomDrawerClosed();
 			yield return null;
@@ -195,7 +207,9 @@ namespace Eglantine.Engine
 			door("Door", "Upstairs", "OfficeDoor");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("door", .9f, 0f, 0f);
+
 			EventManager.Instance.SetFacing(Facing.Down);
+			EventManager.Instance.IdleAnimation();
 		}
 
 	}

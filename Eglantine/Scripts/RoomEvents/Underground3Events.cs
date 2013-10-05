@@ -12,15 +12,27 @@ namespace Eglantine.Engine
 		{
 			door("RopeUp", "Underground2", "RopeDown");
 			yield return waitUntil("Player stopped");
+
 			EventManager.Instance.SetFacing(Facing.Up);
+			EventManager.Instance.IdleAnimation();
+
+			Scheduler.Execute (undergroundSoundUpdate);
 		}
-		
+
 		public static IEnumerator<ScriptPauser> useUnderground3Door_Down()
 		{
-			door("Door", "Underground4", "Door");
+			EventManager.Instance.MovePlayerTo("Door");
 			yield return waitUntil("Player stopped");
 			EventManager.Instance.PlaySound("dooropen", .9f, 0f, 0f);
+
+			Player.Instance.PlayInteractAnimation(Facing.Right);
+			yield return waitUntil("Interact frame 4");
+			Scheduler.Execute (killUndergroundSounds);
+
+			EventManager.Instance.ChangeRoom("Underground4", "Door");
+
 			EventManager.Instance.SetFacing(Facing.Right);
+			EventManager.Instance.IdleAnimation();
 		}
 		
 	}
