@@ -175,6 +175,11 @@ namespace Eglantine
 		{
 			SavingAllowed = false;
 		}
+
+		public static void Clear()
+		{
+			_instance = null;
+		}
 	}
 }
 

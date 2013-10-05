@@ -145,7 +145,8 @@ namespace Eglantine.Engine
 			}
 
 			// Update the current room
-			CurrentRoom.Update (gameTime);
+			if(CurrentRoom != null)
+				CurrentRoom.Update (gameTime);
 
 			// If nothing is being hovered over, set the mouse to its normal graphic
 			if (HighlightedTrigger == null && !MouseInGui)
@@ -156,7 +157,8 @@ namespace Eglantine.Engine
 			if (ReceivingInput)
 			{
 				// Update the player.
-				Player.Update (gameTime);
+				if(Player != null)
+					Player.Update (gameTime);
 
 				// Update the play time.
 				GameState.Instance.AddGameTime (gameTime.ElapsedGameTime.TotalSeconds);
@@ -239,6 +241,11 @@ namespace Eglantine.Engine
 		public void OneFrameInputDisable()
 		{
 			loadingFinished = false;
+		}
+
+		public static void Clear()
+		{
+			_instance = null;
 		}
 	}
 }

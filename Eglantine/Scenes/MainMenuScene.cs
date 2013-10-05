@@ -42,6 +42,8 @@ namespace Eglantine
 		// Whether just loading the game or returning to it...
 		public override void Initialize()
 		{
+			Eglantine.UnloadAllGameData();
+
 			phase = MainMenuPhase.Loading;
 			_instance = this;
 

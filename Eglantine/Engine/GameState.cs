@@ -311,6 +311,12 @@ namespace Eglantine.Engine
 		{
 			PlayTime += deltaTime;
 		}
+
+		// Clears the game state so the memory can be freed
+		public static void Clear()
+		{
+			_instance = null;
+		}
 	}
 }
 

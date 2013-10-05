@@ -263,6 +263,11 @@ namespace Eglantine.Engine
 
 			MovementSpeed = scale * MOVEMENT_SPEED;
 		}
+
+		public static void Clear()
+		{
+			_instance = null;
+		}
 	}
 }
 

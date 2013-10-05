@@ -155,15 +155,24 @@ namespace Eglantine
 
 		public static void ChangeScene(Scene newScene)
 		{
-			if(currentScene != null)
-				currentScene.Unload();
-
+			Scene previousScene = currentScene;
 			currentScene = newScene;
+
+			if(previousScene != null)
+				previousScene.Unload();
 		}
 
 		public static void ExitGame()
 		{
 			_thisGame.Exit ();
+		}
+
+		public static void UnloadAllGameData()
+		{
+			GameState.Clear();
+			Player.Clear();
+			GameScene.Clear();
+			AdventureScreen.Clear();
 		}
 	}
 }
