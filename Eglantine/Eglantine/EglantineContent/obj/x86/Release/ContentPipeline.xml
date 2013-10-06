@@ -1,0 +1,1873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Audio\Music\Bloom, Discord - Sweet Briar Version.wav</Source>
+      <Name>Audio\Music\Bloom, Discord - Sweet Briar Version</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\Music\Bloom, Discord - Sweet Briar Version.xnb</Output>
+      <Time>2013-10-06T18:05:16.7695435+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\Music\Bloom, Discord.wav</Source>
+      <Name>Audio\Music\Bloom, Discord</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\Music\Bloom, Discord.xnb</Output>
+      <Time>2013-10-06T18:05:16.8319436+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\Music\Toxic Night - Party All Night Mix.wav</Source>
+      <Name>Audio\Music\Toxic Night - Party All Night Mix</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\Music\Toxic Night - Party All Night Mix.xnb</Output>
+      <Time>2013-10-06T18:05:16.8631437+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\Music\Toxic Night.wav</Source>
+      <Name>Audio\Music\Toxic Night</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\Music\Toxic Night.xnb</Output>
+      <Time>2013-10-06T18:05:16.8943437+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\boxclose.wav</Source>
+      <Name>Audio\SoundEffects\boxclose</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\boxclose.xnb</Output>
+      <Time>2013-10-06T18:05:16.9411438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\boxopen.wav</Source>
+      <Name>Audio\SoundEffects\boxopen</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\boxopen.xnb</Output>
+      <Time>2013-10-06T18:05:16.9411438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\boxring.wav</Source>
+      <Name>Audio\SoundEffects\boxring</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\boxring.xnb</Output>
+      <Time>2013-10-06T18:05:16.9411438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\cabinetclose.wav</Source>
+      <Name>Audio\SoundEffects\cabinetclose</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\cabinetclose.xnb</Output>
+      <Time>2013-10-06T18:05:16.9411438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\cabinetopen.wav</Source>
+      <Name>Audio\SoundEffects\cabinetopen</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\cabinetopen.xnb</Output>
+      <Time>2013-10-06T18:05:16.9411438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\door.wav</Source>
+      <Name>Audio\SoundEffects\door</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\door.xnb</Output>
+      <Time>2013-10-06T18:22:05.3359568+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\dooropen.wav</Source>
+      <Name>Audio\SoundEffects\dooropen</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\dooropen.xnb</Output>
+      <Time>2013-10-06T18:05:16.9567438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\errorbeep.wav</Source>
+      <Name>Audio\SoundEffects\errorbeep</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\errorbeep.xnb</Output>
+      <Time>2013-10-06T18:05:16.9567438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\filingcabinetclose.wav</Source>
+      <Name>Audio\SoundEffects\filingcabinetclose</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\filingcabinetclose.xnb</Output>
+      <Time>2013-10-06T18:05:16.9567438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\filingcabinetopen.wav</Source>
+      <Name>Audio\SoundEffects\filingcabinetopen</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\filingcabinetopen.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\footstepCarpet.wav</Source>
+      <Name>Audio\SoundEffects\footstepCarpet</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\footstepCarpet.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\footstepGrass.wav</Source>
+      <Name>Audio\SoundEffects\footstepGrass</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\footstepGrass.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\footstepStone.wav</Source>
+      <Name>Audio\SoundEffects\footstepStone</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\footstepStone.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\footstepWood.wav</Source>
+      <Name>Audio\SoundEffects\footstepWood</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\footstepWood.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\heartbeat.wav</Source>
+      <Name>Audio\SoundEffects\heartbeat</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\heartbeat.xnb</Output>
+      <Time>2013-10-06T18:05:16.9723438+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\lowwind.wav</Source>
+      <Name>Audio\SoundEffects\lowwind</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\lowwind.xnb</Output>
+      <Time>2013-10-06T18:05:17.0035439+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\naturalwind.wav</Source>
+      <Name>Audio\SoundEffects\naturalwind</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\naturalwind.xnb</Output>
+      <Time>2013-10-06T18:05:17.034744+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\pageturn.wav</Source>
+      <Name>Audio\SoundEffects\pageturn</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\pageturn.xnb</Output>
+      <Time>2013-10-06T18:05:17.050344+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\safeclose.wav</Source>
+      <Name>Audio\SoundEffects\safeclose</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\safeclose.xnb</Output>
+      <Time>2013-10-06T18:05:17.050344+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\safekeypad.wav</Source>
+      <Name>Audio\SoundEffects\safekeypad</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\safekeypad.xnb</Output>
+      <Time>2013-10-06T18:05:17.050344+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\safeopen.wav</Source>
+      <Name>Audio\SoundEffects\safeopen</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\safeopen.xnb</Output>
+      <Time>2013-10-06T18:05:17.050344+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\safeunlock.wav</Source>
+      <Name>Audio\SoundEffects\safeunlock</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\safeunlock.xnb</Output>
+      <Time>2013-10-06T18:05:17.050344+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\stairs.wav</Source>
+      <Name>Audio\SoundEffects\stairs</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\stairs.xnb</Output>
+      <Time>2013-10-06T18:05:17.065944+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\static.wav</Source>
+      <Name>Audio\SoundEffects\static</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\static.xnb</Output>
+      <Time>2013-10-06T18:05:17.065944+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\switch.wav</Source>
+      <Name>Audio\SoundEffects\switch</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\switch.xnb</Output>
+      <Time>2013-10-06T18:05:17.065944+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\UndergroundDrums1.wav</Source>
+      <Name>Audio\SoundEffects\UndergroundDrums1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\UndergroundDrums1.xnb</Output>
+      <Time>2013-10-06T18:25:25.7308948+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\UndergroundDrums2.wav</Source>
+      <Name>Audio\SoundEffects\UndergroundDrums2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\UndergroundDrums2.xnb</Output>
+      <Time>2013-10-06T18:25:26.0740954+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\UndergroundDrums3.wav</Source>
+      <Name>Audio\SoundEffects\UndergroundDrums3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\UndergroundDrums3.xnb</Output>
+      <Time>2013-10-06T18:25:24.7948931+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\UndergroundDrums4.wav</Source>
+      <Name>Audio\SoundEffects\UndergroundDrums4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\UndergroundDrums4.xnb</Output>
+      <Time>2013-10-06T18:25:25.3720941+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SoundEffects\windowbreak.wav</Source>
+      <Name>Audio\SoundEffects\windowbreak</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Audio\SoundEffects\windowbreak.xnb</Output>
+      <Time>2013-10-06T18:05:17.1595442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>eglantinesmall.png</Source>
+      <Name>eglantinesmall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\eglantinesmall.xnb</Output>
+      <Time>2013-10-06T18:05:18.0799458+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Backyard_stamp.png</Source>
+      <Name>Graphics\Client\Backyard_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Backyard_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.1751442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Bathroom_stamp.png</Source>
+      <Name>Graphics\Client\Bathroom_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Bathroom_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.1751442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Bedroom_stamp.png</Source>
+      <Name>Graphics\Client\Bedroom_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Bedroom_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.1751442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Blank_icon.png</Source>
+      <Name>Graphics\Client\Blank_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Blank_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Blueprints_icon.png</Source>
+      <Name>Graphics\Client\Blueprints_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Blueprints_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\CloseButton.png</Source>
+      <Name>Graphics\Client\CloseButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\CloseButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Coin_icon.png</Source>
+      <Name>Graphics\Client\Coin_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Coin_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Credits.png</Source>
+      <Name>Graphics\Client\Credits</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Credits.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Crowbar_icon.png</Source>
+      <Name>Graphics\Client\Crowbar_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Crowbar_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Eglantine_icon.png</Source>
+      <Name>Graphics\Client\Eglantine_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Eglantine_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\EmptyRoom_stamp.png</Source>
+      <Name>Graphics\Client\EmptyRoom_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\EmptyRoom_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\ExitButton.png</Source>
+      <Name>Graphics\Client\ExitButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\ExitButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\FoldedNote_icon.png</Source>
+      <Name>Graphics\Client\FoldedNote_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\FoldedNote_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Foyer_stamp.png</Source>
+      <Name>Graphics\Client\Foyer_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Foyer_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.1907442+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\FrontYard_stamp.png</Source>
+      <Name>Graphics\Client\FrontYard_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\FrontYard_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Journal_icon.png</Source>
+      <Name>Graphics\Client\Journal_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Journal_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Key_icon.png</Source>
+      <Name>Graphics\Client\Key_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Key_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Kitchen_stamp.png</Source>
+      <Name>Graphics\Client\Kitchen_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Kitchen_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Letter_icon.png</Source>
+      <Name>Graphics\Client\Letter_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Letter_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\LivingRoom_stamp.png</Source>
+      <Name>Graphics\Client\LivingRoom_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\LivingRoom_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\LoadButton.png</Source>
+      <Name>Graphics\Client\LoadButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\LoadButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\LoadingScreen.png</Source>
+      <Name>Graphics\Client\LoadingScreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\LoadingScreen.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\NewGameButton.png</Source>
+      <Name>Graphics\Client\NewGameButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\NewGameButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Notes_icon.png</Source>
+      <Name>Graphics\Client\Notes_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Notes_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2063443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\ObjectivelyRadicalSplash.png</Source>
+      <Name>Graphics\Client\ObjectivelyRadicalSplash</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\ObjectivelyRadicalSplash.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Office_stamp.png</Source>
+      <Name>Graphics\Client\Office_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Office_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Photograph_icon.png</Source>
+      <Name>Graphics\Client\Photograph_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Photograph_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Puzzlebox_icon.png</Source>
+      <Name>Graphics\Client\Puzzlebox_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Puzzlebox_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Puzzlekey_icon.png</Source>
+      <Name>Graphics\Client\Puzzlekey_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Puzzlekey_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\ResumeButton.png</Source>
+      <Name>Graphics\Client\ResumeButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\ResumeButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\SaveButton.png</Source>
+      <Name>Graphics\Client\SaveButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\SaveButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.2219443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Save_slot.png</Source>
+      <Name>Graphics\Client\Save_slot</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Save_slot.xnb</Output>
+      <Time>2013-10-06T18:05:17.2375443+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Scissors_icon.png</Source>
+      <Name>Graphics\Client\Scissors_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Scissors_icon.xnb</Output>
+      <Time>2013-10-06T18:05:17.2687444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\SecretRoom_stamp.png</Source>
+      <Name>Graphics\Client\SecretRoom_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\SecretRoom_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2687444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\TitleBackground.png</Source>
+      <Name>Graphics\Client\TitleBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\TitleBackground.xnb</Output>
+      <Time>2013-10-06T18:05:17.2687444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\TitleText.png</Source>
+      <Name>Graphics\Client\TitleText</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\TitleText.xnb</Output>
+      <Time>2013-10-06T18:05:17.2687444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Underground1_stamp.png</Source>
+      <Name>Graphics\Client\Underground1_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Underground1_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2843444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Underground2_stamp.png</Source>
+      <Name>Graphics\Client\Underground2_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Underground2_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2843444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Underground3_stamp.png</Source>
+      <Name>Graphics\Client\Underground3_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Underground3_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2843444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Underground4_stamp.png</Source>
+      <Name>Graphics\Client\Underground4_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Underground4_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2843444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Client\Upstairs_stamp.png</Source>
+      <Name>Graphics\Client\Upstairs_stamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Client\Upstairs_stamp.xnb</Output>
+      <Time>2013-10-06T18:05:17.2843444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\coininbox.png</Source>
+      <Name>Graphics\coininbox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\coininbox.xnb</Output>
+      <Time>2013-10-06T18:05:17.2999444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\badending1.png</Source>
+      <Name>Graphics\Cutscenes\badending1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\badending1.xnb</Output>
+      <Time>2013-10-06T18:05:17.2999444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\badending2.png</Source>
+      <Name>Graphics\Cutscenes\badending2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\badending2.xnb</Output>
+      <Time>2013-10-06T18:05:17.2999444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\goodending1.png</Source>
+      <Name>Graphics\Cutscenes\goodending1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\goodending1.xnb</Output>
+      <Time>2013-10-06T18:05:17.2999444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\goodending2.png</Source>
+      <Name>Graphics\Cutscenes\goodending2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\goodending2.xnb</Output>
+      <Time>2013-10-06T18:05:17.2999444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\goodending3.png</Source>
+      <Name>Graphics\Cutscenes\goodending3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\goodending3.xnb</Output>
+      <Time>2013-10-06T18:05:17.3155444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\goodending4.png</Source>
+      <Name>Graphics\Cutscenes\goodending4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\goodending4.xnb</Output>
+      <Time>2013-10-06T18:05:17.3155444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\goodending5.png</Source>
+      <Name>Graphics\Cutscenes\goodending5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\goodending5.xnb</Output>
+      <Time>2013-10-06T18:05:17.3155444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\opening1.png</Source>
+      <Name>Graphics\Cutscenes\opening1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\opening1.xnb</Output>
+      <Time>2013-10-06T18:05:17.3155444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\opening2.png</Source>
+      <Name>Graphics\Cutscenes\opening2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\opening2.xnb</Output>
+      <Time>2013-10-06T18:05:17.3155444+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\opening3.png</Source>
+      <Name>Graphics\Cutscenes\opening3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\opening3.xnb</Output>
+      <Time>2013-10-06T18:05:17.3311445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Cutscenes\opening4.png</Source>
+      <Name>Graphics\Cutscenes\opening4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Cutscenes\opening4.xnb</Output>
+      <Time>2013-10-06T18:05:17.3311445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\blueprints1.png</Source>
+      <Name>Graphics\Docs\blueprints1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\blueprints1.xnb</Output>
+      <Time>2013-10-06T18:05:17.3311445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\book1.png</Source>
+      <Name>Graphics\Docs\book1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\book1.xnb</Output>
+      <Time>2013-10-06T18:05:17.3311445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\book2.png</Source>
+      <Name>Graphics\Docs\book2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\book2.xnb</Output>
+      <Time>2013-10-06T18:05:17.3467445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\book3.png</Source>
+      <Name>Graphics\Docs\book3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\book3.xnb</Output>
+      <Time>2013-10-06T18:05:17.3467445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\book4.png</Source>
+      <Name>Graphics\Docs\book4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\book4.xnb</Output>
+      <Time>2013-10-06T18:05:17.3467445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\book5.png</Source>
+      <Name>Graphics\Docs\book5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\book5.xnb</Output>
+      <Time>2013-10-06T18:05:17.3467445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\foldednote.png</Source>
+      <Name>Graphics\Docs\foldednote</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\foldednote.xnb</Output>
+      <Time>2013-10-06T18:05:17.3623445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal-1.png</Source>
+      <Name>Graphics\Docs\journal-1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal-1.xnb</Output>
+      <Time>2013-10-06T18:05:17.3623445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal0.png</Source>
+      <Name>Graphics\Docs\journal0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal0.xnb</Output>
+      <Time>2013-10-06T18:05:17.3623445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal1.png</Source>
+      <Name>Graphics\Docs\journal1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal1.xnb</Output>
+      <Time>2013-10-06T18:05:17.3623445+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal10.png</Source>
+      <Name>Graphics\Docs\journal10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal10.xnb</Output>
+      <Time>2013-10-06T18:05:17.3779446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal11.png</Source>
+      <Name>Graphics\Docs\journal11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal11.xnb</Output>
+      <Time>2013-10-06T18:05:17.3779446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal2.png</Source>
+      <Name>Graphics\Docs\journal2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal2.xnb</Output>
+      <Time>2013-10-06T18:05:17.3779446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal3.png</Source>
+      <Name>Graphics\Docs\journal3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal3.xnb</Output>
+      <Time>2013-10-06T18:05:17.3779446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal4.png</Source>
+      <Name>Graphics\Docs\journal4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal4.xnb</Output>
+      <Time>2013-10-06T18:05:17.3779446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal5.png</Source>
+      <Name>Graphics\Docs\journal5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal5.xnb</Output>
+      <Time>2013-10-06T18:05:17.3935446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal6.png</Source>
+      <Name>Graphics\Docs\journal6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal6.xnb</Output>
+      <Time>2013-10-06T18:05:17.3935446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal7.png</Source>
+      <Name>Graphics\Docs\journal7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal7.xnb</Output>
+      <Time>2013-10-06T18:05:17.3935446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal8.png</Source>
+      <Name>Graphics\Docs\journal8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal8.xnb</Output>
+      <Time>2013-10-06T18:05:17.3935446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\journal9.png</Source>
+      <Name>Graphics\Docs\journal9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\journal9.xnb</Output>
+      <Time>2013-10-06T18:05:17.4091446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\letter.png</Source>
+      <Name>Graphics\Docs\letter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\letter.xnb</Output>
+      <Time>2013-10-06T18:05:17.4091446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\notes1.png</Source>
+      <Name>Graphics\Docs\notes1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\notes1.xnb</Output>
+      <Time>2013-10-06T18:05:17.4091446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\notes2.png</Source>
+      <Name>Graphics\Docs\notes2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\notes2.xnb</Output>
+      <Time>2013-10-06T18:05:17.4091446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\notes3.png</Source>
+      <Name>Graphics\Docs\notes3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\notes3.xnb</Output>
+      <Time>2013-10-06T18:05:17.4091446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Docs\photograph1.png</Source>
+      <Name>Graphics\Docs\photograph1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Docs\photograph1.xnb</Output>
+      <Time>2013-10-06T18:05:17.4247446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\DocumentFrame.png</Source>
+      <Name>Graphics\DocumentFrame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\DocumentFrame.xnb</Output>
+      <Time>2013-10-06T18:05:17.4247446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\insidesafe.png</Source>
+      <Name>Graphics\insidesafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\insidesafe.xnb</Output>
+      <Time>2013-10-06T18:05:17.4247446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\keyinsafe.png</Source>
+      <Name>Graphics\keyinsafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\keyinsafe.xnb</Output>
+      <Time>2013-10-06T18:05:17.4247446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\KeypadButtons.png</Source>
+      <Name>Graphics\KeypadButtons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\KeypadButtons.xnb</Output>
+      <Time>2013-10-06T18:05:17.4247446+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\LCDFont.png</Source>
+      <Name>Graphics\LCDFont</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\LCDFont.xnb</Output>
+      <Time>2013-10-06T18:05:17.4403447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Mouse\GrabPointer.png</Source>
+      <Name>Graphics\Mouse\GrabPointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Mouse\GrabPointer.xnb</Output>
+      <Time>2013-10-06T18:05:17.4403447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Mouse\HotPointer.png</Source>
+      <Name>Graphics\Mouse\HotPointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Mouse\HotPointer.xnb</Output>
+      <Time>2013-10-06T18:05:17.4403447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Mouse\LeavePointer.png</Source>
+      <Name>Graphics\Mouse\LeavePointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Mouse\LeavePointer.xnb</Output>
+      <Time>2013-10-06T18:05:17.4403447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Mouse\PlainPointer.png</Source>
+      <Name>Graphics\Mouse\PlainPointer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Mouse\PlainPointer.xnb</Output>
+      <Time>2013-10-06T18:05:17.4559447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\noteinbox.png</Source>
+      <Name>Graphics\noteinbox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\noteinbox.xnb</Output>
+      <Time>2013-10-06T18:05:17.4559447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\artifact.png</Source>
+      <Name>Graphics\Objects\artifact</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\artifact.xnb</Output>
+      <Time>2013-10-06T18:05:17.4559447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\BackyardFlower.png</Source>
+      <Name>Graphics\Objects\BackyardFlower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\BackyardFlower.xnb</Output>
+      <Time>2013-10-06T18:05:17.4559447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\BathroomCabinet.png</Source>
+      <Name>Graphics\Objects\BathroomCabinet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\BathroomCabinet.xnb</Output>
+      <Time>2013-10-06T18:05:17.4715447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\bed.png</Source>
+      <Name>Graphics\Objects\bed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\bed.xnb</Output>
+      <Time>2013-10-06T18:05:17.4715447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\blueprints.png</Source>
+      <Name>Graphics\Objects\blueprints</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\blueprints.xnb</Output>
+      <Time>2013-10-06T18:05:17.4715447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\book.png</Source>
+      <Name>Graphics\Objects\book</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\book.xnb</Output>
+      <Time>2013-10-06T18:05:17.4715447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\coin.png</Source>
+      <Name>Graphics\Objects\coin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\coin.xnb</Output>
+      <Time>2013-10-06T18:05:17.4715447+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\crowbar.png</Source>
+      <Name>Graphics\Objects\crowbar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\crowbar.xnb</Output>
+      <Time>2013-10-06T18:05:17.4871448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\document1.png</Source>
+      <Name>Graphics\Objects\document1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\document1.xnb</Output>
+      <Time>2013-10-06T18:05:17.4871448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\document2.png</Source>
+      <Name>Graphics\Objects\document2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\document2.xnb</Output>
+      <Time>2013-10-06T18:05:17.4871448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\DrawerBlueprints.png</Source>
+      <Name>Graphics\Objects\DrawerBlueprints</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\DrawerBlueprints.xnb</Output>
+      <Time>2013-10-06T18:05:17.4871448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\DrawerJournal.png</Source>
+      <Name>Graphics\Objects\DrawerJournal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\DrawerJournal.xnb</Output>
+      <Time>2013-10-06T18:05:17.4871448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\DrawerNotes.png</Source>
+      <Name>Graphics\Objects\DrawerNotes</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\DrawerNotes.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\DrawerPicture.png</Source>
+      <Name>Graphics\Objects\DrawerPicture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\DrawerPicture.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\eglantine.png</Source>
+      <Name>Graphics\Objects\eglantine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\eglantine.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\foldednote.png</Source>
+      <Name>Graphics\Objects\foldednote</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\foldednote.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\FrontYardFlower.png</Source>
+      <Name>Graphics\Objects\FrontYardFlower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\FrontYardFlower.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\grave.png</Source>
+      <Name>Graphics\Objects\grave</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\grave.xnb</Output>
+      <Time>2013-10-06T18:05:17.5027448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\key.png</Source>
+      <Name>Graphics\Objects\key</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\key.xnb</Output>
+      <Time>2013-10-06T18:05:17.5183448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\keyinsafe.png</Source>
+      <Name>Graphics\Objects\keyinsafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\keyinsafe.xnb</Output>
+      <Time>2013-10-06T18:05:17.5183448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\KitchenFlower.png</Source>
+      <Name>Graphics\Objects\KitchenFlower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\KitchenFlower.xnb</Output>
+      <Time>2013-10-06T18:05:17.5183448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\LivingRoomTear.png</Source>
+      <Name>Graphics\Objects\LivingRoomTear</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\LivingRoomTear.xnb</Output>
+      <Time>2013-10-06T18:05:17.5183448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\OfficeBottomDrawer.png</Source>
+      <Name>Graphics\Objects\OfficeBottomDrawer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\OfficeBottomDrawer.xnb</Output>
+      <Time>2013-10-06T18:05:17.5183448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\OfficeDrawerGuide.png</Source>
+      <Name>Graphics\Objects\OfficeDrawerGuide</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\OfficeDrawerGuide.xnb</Output>
+      <Time>2013-10-06T18:05:17.5339448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\OfficeTopDrawer.png</Source>
+      <Name>Graphics\Objects\OfficeTopDrawer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\OfficeTopDrawer.xnb</Output>
+      <Time>2013-10-06T18:05:17.5339448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\photo.png</Source>
+      <Name>Graphics\Objects\photo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\photo.xnb</Output>
+      <Time>2013-10-06T18:05:17.5339448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\puzzlebox.png</Source>
+      <Name>Graphics\Objects\puzzlebox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\puzzlebox.xnb</Output>
+      <Time>2013-10-06T18:05:17.5339448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\puzzlekey.png</Source>
+      <Name>Graphics\Objects\puzzlekey</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\puzzlekey.xnb</Output>
+      <Time>2013-10-06T18:05:17.5339448+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\scissors.png</Source>
+      <Name>Graphics\Objects\scissors</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\scissors.xnb</Output>
+      <Time>2013-10-06T18:05:17.5495449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static1.png</Source>
+      <Name>Graphics\Objects\static1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static1.xnb</Output>
+      <Time>2013-10-06T18:05:17.5495449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static2.png</Source>
+      <Name>Graphics\Objects\static2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static2.xnb</Output>
+      <Time>2013-10-06T18:05:17.5495449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static3.png</Source>
+      <Name>Graphics\Objects\static3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static3.xnb</Output>
+      <Time>2013-10-06T18:05:17.5495449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static4.png</Source>
+      <Name>Graphics\Objects\static4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static4.xnb</Output>
+      <Time>2013-10-06T18:05:17.5651449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static5.png</Source>
+      <Name>Graphics\Objects\static5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static5.xnb</Output>
+      <Time>2013-10-06T18:05:17.5963449+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\static6.png</Source>
+      <Name>Graphics\Objects\static6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\static6.xnb</Output>
+      <Time>2013-10-06T18:05:17.6587451+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Objects\trapdooropen.png</Source>
+      <Name>Graphics\Objects\trapdooropen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Objects\trapdooropen.xnb</Output>
+      <Time>2013-10-06T18:05:17.6899451+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxBG.png</Source>
+      <Name>Graphics\PuzzleBoxBG</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxBG.xnb</Output>
+      <Time>2013-10-06T18:05:17.7055451+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxCloseButton.png</Source>
+      <Name>Graphics\PuzzleBoxCloseButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxCloseButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.8771454+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxCloseButtonDark.png</Source>
+      <Name>Graphics\PuzzleBoxCloseButtonDark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxCloseButtonDark.xnb</Output>
+      <Time>2013-10-06T18:05:17.8771454+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxInside.png</Source>
+      <Name>Graphics\PuzzleBoxInside</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxInside.xnb</Output>
+      <Time>2013-10-06T18:05:17.8771454+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxOpenButton.png</Source>
+      <Name>Graphics\PuzzleBoxOpenButton</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxOpenButton.xnb</Output>
+      <Time>2013-10-06T18:05:17.8771454+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleBoxOpenButtonDark.png</Source>
+      <Name>Graphics\PuzzleBoxOpenButtonDark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleBoxOpenButtonDark.xnb</Output>
+      <Time>2013-10-06T18:05:17.8771454+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleKey.png</Source>
+      <Name>Graphics\PuzzleKey</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleKey.xnb</Output>
+      <Time>2013-10-06T18:05:17.8927455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing1.png</Source>
+      <Name>Graphics\PuzzleRing1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing1.xnb</Output>
+      <Time>2013-10-06T18:05:17.8927455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing2.png</Source>
+      <Name>Graphics\PuzzleRing2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing2.xnb</Output>
+      <Time>2013-10-06T18:05:17.8927455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing3.png</Source>
+      <Name>Graphics\PuzzleRing3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing3.xnb</Output>
+      <Time>2013-10-06T18:05:17.8927455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing4.png</Source>
+      <Name>Graphics\PuzzleRing4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing4.xnb</Output>
+      <Time>2013-10-06T18:05:17.8927455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing5.png</Source>
+      <Name>Graphics\PuzzleRing5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing5.xnb</Output>
+      <Time>2013-10-06T18:05:17.9083455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing6.png</Source>
+      <Name>Graphics\PuzzleRing6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing6.xnb</Output>
+      <Time>2013-10-06T18:05:17.9083455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\PuzzleRing7.png</Source>
+      <Name>Graphics\PuzzleRing7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\PuzzleRing7.xnb</Output>
+      <Time>2013-10-06T18:05:17.9083455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\BackYard.png</Source>
+      <Name>Graphics\Rooms\BackYard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\BackYard.xnb</Output>
+      <Time>2013-10-06T18:05:17.9239455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Bathroom.png</Source>
+      <Name>Graphics\Rooms\Bathroom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Bathroom.xnb</Output>
+      <Time>2013-10-06T18:05:17.9239455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Bedroom.png</Source>
+      <Name>Graphics\Rooms\Bedroom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Bedroom.xnb</Output>
+      <Time>2013-10-06T18:05:17.9239455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\EmptyRoom.png</Source>
+      <Name>Graphics\Rooms\EmptyRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\EmptyRoom.xnb</Output>
+      <Time>2013-10-06T18:05:17.9395455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Foyer.png</Source>
+      <Name>Graphics\Rooms\Foyer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Foyer.xnb</Output>
+      <Time>2013-10-06T18:05:17.9395455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\FrontYard.png</Source>
+      <Name>Graphics\Rooms\FrontYard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\FrontYard.xnb</Output>
+      <Time>2013-10-06T18:05:17.9395455+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Kitchen.png</Source>
+      <Name>Graphics\Rooms\Kitchen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Kitchen.xnb</Output>
+      <Time>2013-10-06T18:05:17.9551456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\KitchenBase.png</Source>
+      <Name>Graphics\Rooms\KitchenBase</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\KitchenBase.xnb</Output>
+      <Time>2013-10-06T18:05:17.9551456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\KitchenWindow.png</Source>
+      <Name>Graphics\Rooms\KitchenWindow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\KitchenWindow.xnb</Output>
+      <Time>2013-10-06T18:05:17.9707456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\KitchenWindowBroken.png</Source>
+      <Name>Graphics\Rooms\KitchenWindowBroken</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\KitchenWindowBroken.xnb</Output>
+      <Time>2013-10-06T18:05:17.9707456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\LivingRoom.png</Source>
+      <Name>Graphics\Rooms\LivingRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\LivingRoom.xnb</Output>
+      <Time>2013-10-06T18:05:17.9707456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Office.png</Source>
+      <Name>Graphics\Rooms\Office</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Office.xnb</Output>
+      <Time>2013-10-06T18:05:17.9863456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\SecretRoom.png</Source>
+      <Name>Graphics\Rooms\SecretRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\SecretRoom.xnb</Output>
+      <Time>2013-10-06T18:05:17.9863456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Underground1.png</Source>
+      <Name>Graphics\Rooms\Underground1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Underground1.xnb</Output>
+      <Time>2013-10-06T18:05:17.9863456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Underground2.png</Source>
+      <Name>Graphics\Rooms\Underground2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Underground2.xnb</Output>
+      <Time>2013-10-06T18:05:17.9863456+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Underground3.png</Source>
+      <Name>Graphics\Rooms\Underground3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Underground3.xnb</Output>
+      <Time>2013-10-06T18:05:18.0019457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\Underground4.png</Source>
+      <Name>Graphics\Rooms\Underground4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\Underground4.xnb</Output>
+      <Time>2013-10-06T18:05:18.0019457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\Rooms\UpstairsHall.png</Source>
+      <Name>Graphics\Rooms\UpstairsHall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\Rooms\UpstairsHall.xnb</Output>
+      <Time>2013-10-06T18:05:18.0019457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\safe.png</Source>
+      <Name>Graphics\safe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\safe.xnb</Output>
+      <Time>2013-10-06T18:05:18.0019457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\SpriteSheet.png</Source>
+      <Name>Graphics\SpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet.xnb</Output>
+      <Time>2013-10-06T18:05:18.0175457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\Background.png</Source>
+      <Name>Graphics\TV\Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\Background.xnb</Output>
+      <Time>2013-10-06T18:05:18.0175457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static1.png</Source>
+      <Name>Graphics\TV\static1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static1.xnb</Output>
+      <Time>2013-10-06T18:05:18.0331457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static2.png</Source>
+      <Name>Graphics\TV\static2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static2.xnb</Output>
+      <Time>2013-10-06T18:05:18.0331457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static3.png</Source>
+      <Name>Graphics\TV\static3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static3.xnb</Output>
+      <Time>2013-10-06T18:05:18.0331457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static4.png</Source>
+      <Name>Graphics\TV\static4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static4.xnb</Output>
+      <Time>2013-10-06T18:05:18.0487457+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static5.png</Source>
+      <Name>Graphics\TV\static5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static5.xnb</Output>
+      <Time>2013-10-06T18:05:18.0643458+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\static6.png</Source>
+      <Name>Graphics\TV\static6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\static6.xnb</Output>
+      <Time>2013-10-06T18:05:18.0643458+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\tv_eglantine.png</Source>
+      <Name>Graphics\TV\tv_eglantine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\tv_eglantine.xnb</Output>
+      <Time>2013-10-06T18:05:18.0799458+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\TV\tv_kitchen.png</Source>
+      <Name>Graphics\TV\tv_kitchen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\TV\tv_kitchen.xnb</Output>
+      <Time>2013-10-06T18:05:18.0799458+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\ZodiacButtons.png</Source>
+      <Name>Graphics\ZodiacButtons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\ZodiacButtons.xnb</Output>
+      <Time>2013-10-06T18:05:18.0799458+09:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Release</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\EglantineContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\EglantineContent\obj\x86\Release\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+09:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-04-02T16:40:48.2456027+09:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eglantine", "Eglantine.csproj", "{EE365475-071D-4671-8785-197C1DF58F7D}"
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eglantine", "Eglantine\Eglantine\Eglantine.csproj", "{6680D5FF-2EEE-4EE2-9640-C6823037D3BA}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "EglantineContent", "Eglantine\EglantineContent\EglantineContent.contentproj", "{28FA9633-5EBC-4BD5-B67E-AE905CD530A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EE365475-071D-4671-8785-197C1DF58F7D}.Debug|x86.ActiveCfg = Debug|x86
-		{EE365475-071D-4671-8785-197C1DF58F7D}.Debug|x86.Build.0 = Debug|x86
-		{EE365475-071D-4671-8785-197C1DF58F7D}.Release|x86.ActiveCfg = Release|x86
-		{EE365475-071D-4671-8785-197C1DF58F7D}.Release|x86.Build.0 = Release|x86
+		{6680D5FF-2EEE-4EE2-9640-C6823037D3BA}.Debug|x86.ActiveCfg = Debug|x86
+		{6680D5FF-2EEE-4EE2-9640-C6823037D3BA}.Debug|x86.Build.0 = Debug|x86
+		{6680D5FF-2EEE-4EE2-9640-C6823037D3BA}.Release|x86.ActiveCfg = Release|x86
+		{6680D5FF-2EEE-4EE2-9640-C6823037D3BA}.Release|x86.Build.0 = Release|x86
+		{28FA9633-5EBC-4BD5-B67E-AE905CD530A7}.Debug|x86.ActiveCfg = Debug|x86
+		{28FA9633-5EBC-4BD5-B67E-AE905CD530A7}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Eglantine.csproj
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
