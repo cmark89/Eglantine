@@ -1,11 +1,141 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
-namespace Eglantine
+namespace Eglantine.Engine.Pathfinding
 {
-	public class Astar
+	[Serializable]
+	public class AStar
 	{
-		public Astar ()
+		private Navmesh Navmesh;
+		private List<NavNode> OpenList = new List<NavNode>();
+		private List<NavNode> ClosedList = new List<NavNode>();
+
+		private NavNode EndPoint;
+
+		public AStar (Navmesh mesh)
 		{
+			Navmesh = mesh;
+		}
+
+		public List<NavNode> GetPath (NavNode startNode, NavNode endNode)
+		{
+			// First, make sure the OpenList and ClosedList are empty
+			OpenList.Clear ();
+			ClosedList.Clear ();
+
+			// Since the path is starting now, dump all previously calculated 
+			// pathfinding values from the nodes
+			Navmesh.ResetPathfindingData ();
+
+			// Save the given endNode for the heuristic
+			EndPoint = endNode;
+
+			NavNode currentNode = startNode;
+
+			// Now add the startNode to the open list.
+			OpenList.Add (currentNode);
+			currentNode.InOpenList = true;
+			CalculateValue (currentNode);
+
+			// Iterate over nodes until the path has been found
+			while (OpenList.Count > 0)
+			{
+				// Pick the node in the OpenList with the lowest F Score
+				currentNode = FindBestNode ();
+
+				// Now add all of its links to the OpenList
+				foreach (NavNode link in currentNode.Links)
+				{
+					// First, check if the node is the target node.  If so, break immediately.
+					if (link == EndPoint)
+					{
+						EndPoint.ParentNode = currentNode;
+						OpenList.Clear ();
+
+						// Trace the path.
+						List<NavNode> path = new List<NavNode> ();
+						currentNode = endNode;
+						path.Add (endNode);
+						while (currentNode.ParentNode != startNode)
+						{
+							path.Add (currentNode.ParentNode);
+							currentNode = currentNode.ParentNode;
+						}
+
+						return path;
+					}
+
+					if (link.InClosedList)
+					{
+						continue;
+					}
+
+					if (!link.InOpenList)
+					{
+						OpenList.Add (link);
+						link.InOpenList = true;
+						link.ParentNode = currentNode;
+						CalculateValue (link);
+					} else
+					{
+						// Check if the new G value is less than the node's current F value
+						if (link.GScore > link.ParentNode.GScore + link.MovementCostFrom (link.ParentNode.Position))
+						{
+							link.ParentNode = currentNode;
+							CalculateValue (link);
+						}
+					}
+				}
+				// Now that we're done with this node, move it to the closed list
+				OpenList.Remove (currentNode);
+				ClosedList.Add (currentNode);
+				currentNode.InOpenList = false;
+				currentNode.InClosedList = true;
+			}
+
+			// Return null, for no path could be found
+			Console.WriteLine ("No path found.");
+			if (endNode == null)
+			{
+				Console.WriteLine("WARNING! END POINT IS NULL!");
+			}
+			else
+				Console.WriteLine("End point exists but was never found.");
+
+			return null;
+		}
+
+		public void CalculateValue (NavNode node)
+		{
+			// Set the G value to the G of the parent plus the distance between parent and child node
+			float tempG = 0;
+			if (node.ParentNode != null)
+			{
+				tempG += node.ParentNode.GScore;
+				tempG += node.MovementCostFrom(node.ParentNode.Position);
+			}
+			node.GScore = tempG;
+
+			node.HScore = Heuristic(node.Position, EndPoint.Position);
+		}
+
+
+		public float Heuristic(Vector2 start, Vector2 end)
+		{
+			return (float)Math.Pow(Math.Abs(end.X - start.X) + Math.Abs(end.Y - start.Y), 2D);
+		}
+
+		public NavNode FindBestNode ()
+		{
+			NavNode currentNode = null;
+			foreach (NavNode n in OpenList)
+			{
+				if(currentNode == null || n.FScore < currentNode.FScore)
+					currentNode = n;
+			}
+
+			return currentNode;
 		}
 	}
 }
