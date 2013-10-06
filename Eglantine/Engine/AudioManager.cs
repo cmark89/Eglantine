@@ -44,6 +44,13 @@ namespace Eglantine
 		float startVolume;
 		float endVolume;
 
+		// For lerping soundeffects
+		bool lerpingSfx;
+		float sfxLerpTime;
+		float sfxLerpDuration;
+		float sfxstartVolume;
+		float sfxendVolume;
+
 		public AudioManager ()
 		{
 		}
@@ -69,6 +76,26 @@ namespace Eglantine
 				if(musicLerpTime >= musicLerpDuration)
 				{
 					lerpingMusic = false;
+					if(endVolume < 0.1f)
+						PlayingSongs.Clear();
+					//MediaPlayer.Volume = endVolume;
+				}
+			}
+
+			if (lerpingSfx)
+			{
+				sfxLerpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+				foreach(SoundEffectWrapper w in LoopingSoundEffects)
+				{
+					SoundEffectInstance s = w.Sound;
+					s.Volume = startVolume - (sfxstartVolume - sfxendVolume) * sfxLerpTime / sfxLerpDuration;
+				}
+				
+				if(sfxLerpTime >= sfxLerpDuration)
+				{
+					lerpingSfx = false;
+					if(sfxendVolume < 0.1f)
+						LoopingSoundEffects.Clear();
 					//MediaPlayer.Volume = endVolume;
 				}
 			}
@@ -223,6 +250,19 @@ namespace Eglantine
 				musicLerpTime = 0f;
 				
 				lerpingMusic = true;
+			}
+		}
+
+		public void FadeSfx (float targetVolume, float duration)
+		{
+			if (LoopingSoundEffects.Count > 0)
+			{
+				sfxstartVolume = LoopingSoundEffects[0].Sound.Volume;
+				sfxendVolume = targetVolume;
+				sfxLerpDuration = duration;
+				sfxLerpTime = 0f;
+				
+				lerpingSfx = true;
 			}
 		}
 

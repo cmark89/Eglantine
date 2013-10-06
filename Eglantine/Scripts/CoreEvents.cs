@@ -94,11 +94,11 @@ namespace Eglantine.Engine
 			} 
 			else if (GameState.Instance.CurrentRoom.Name == "Underground2")
 			{
-				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums2", .4f);
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums2", .6f);
 			} 
 			else if (GameState.Instance.CurrentRoom.Name == "Underground3")
 			{
-				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums3", .4f);
+				AudioManager.Instance.SetLoopingSoundEffectVolume("UndergroundDrums3", .6f);
 			}
 
 			yield return null;

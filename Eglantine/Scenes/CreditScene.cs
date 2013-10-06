@@ -23,7 +23,7 @@ namespace Eglantine.Engine
 
 			pos = new Vector2((Eglantine.GAME_WIDTH / 2f) - (credits.Width / 2), Eglantine.GAME_HEIGHT);
 			scrollspeed = (credits.Height + Eglantine.GAME_HEIGHT) / creditsTime;
-			EventManager.Instance.PlaySong("Toxic Night - Party All Night Mix", .6f, false, 0f, 0f);
+			EventManager.Instance.PlaySong("Toxic Night - Party All Night Mix", .5f, false, 0f, 0f);
 		}
 
 		public override void Update (GameTime gameTime)

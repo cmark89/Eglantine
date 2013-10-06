@@ -169,7 +169,9 @@ namespace Eglantine.Engine
 
 		public void StopMoving ()
 		{
-			Path.Clear();
+			if(Path != null)
+				Path.Clear();
+
 			nextWaypoint = null;
 			Sprite.PlayAnimation("Idle" + GetFacing().ToString());
 			if(forcedMovement)
