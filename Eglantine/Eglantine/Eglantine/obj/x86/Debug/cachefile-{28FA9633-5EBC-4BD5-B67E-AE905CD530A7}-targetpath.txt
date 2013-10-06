@@ -190,7 +190,6 @@ Content\Graphics\Rooms\Underground3.xnb
 Content\Graphics\Rooms\Underground4.xnb
 Content\Graphics\Rooms\UpstairsHall.xnb
 Content\Graphics\safe.xnb
-Content\Graphics\SpriteSheet.xnb
 Content\Graphics\TV\Background.xnb
 Content\Graphics\TV\static1.xnb
 Content\Graphics\TV\static2.xnb
@@ -201,13 +200,14 @@ Content\Graphics\TV\static6.xnb
 Content\Graphics\TV\tv_eglantine.xnb
 Content\Graphics\TV\tv_kitchen.xnb
 Content\Graphics\ZodiacButtons.xnb
-Content\Audio\SoundEffects\Extend.xnb
+Content\Graphics\SpriteSheet1.xnb
+Content\Graphics\SpriteSheet2.xnb
 Content\Fonts\Dustismo14.xnb
 Content\Fonts\Dustismo16.xnb
 Content\Fonts\Dustismo18.xnb
 Content\Fonts\Dustismo20.xnb
 Content\Fonts\Dustismo24B.xnb
-Content\Fonts\MessageFont.xnb
+Content\Audio\SoundEffects\Extend.xnb
 Content\lua52.dll
 Content\messagewindow.xnb
 Content\phGui.xnb

@@ -11,6 +11,7 @@ namespace Eglantine.Engine
 	{
 		// The world's most temporary thing:
 		public Texture2D Texture { get; private set; }
+        public Texture2D SecondTexture { get; private set; }
 
 		public AnimatedSprite Sprite { get; private set; }
 
@@ -51,13 +52,14 @@ namespace Eglantine.Engine
 
 		public Player ()
 		{
-			Texture = ContentLoader.Instance.Load<Texture2D>("Graphics/SpriteSheet");
+			Texture = ContentLoader.Instance.Load<Texture2D>("Graphics/SpriteSheet1");
+            SecondTexture = ContentLoader.Instance.Load<Texture2D>("Graphics/SpriteSheet2");
 			SetupAnimatedSprite();
 		}
 
 		private void SetupAnimatedSprite()
 		{
-			Sprite = new AnimatedSprite(Texture, 12);
+			Sprite = new AnimatedSprite(Texture, 12, SecondTexture);
 
 			Sprite.AddAnimation("IdleDown", 400, 200, new int[] { 60 }, true);
 			Sprite.AddAnimation("IdleLeft", 400, 200, new int[] { 61 }, true);

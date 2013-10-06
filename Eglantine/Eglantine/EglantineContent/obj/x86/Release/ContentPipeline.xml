@@ -1730,15 +1730,6 @@
       <Time>2013-10-06T18:05:18.0019457+09:00</Time>
     </Item>
     <Item>
-      <Source>Graphics\SpriteSheet.png</Source>
-      <Name>Graphics\SpriteSheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet.xnb</Output>
-      <Time>2013-10-06T18:05:18.0175457+09:00</Time>
-    </Item>
-    <Item>
       <Source>Graphics\TV\Background.png</Source>
       <Name>Graphics\TV\Background</Name>
       <Importer>TextureImporter</Importer>
@@ -1828,10 +1819,73 @@
       <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\ZodiacButtons.xnb</Output>
       <Time>2013-10-06T18:05:18.0799458+09:00</Time>
     </Item>
+    <Item>
+      <Source>Graphics\SpriteSheet1.png</Source>
+      <Name>Graphics\SpriteSheet1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet1.xnb</Output>
+      <Time>2013-10-06T22:20:19.0414043+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Graphics\SpriteSheet2.png</Source>
+      <Name>Graphics\SpriteSheet2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet2.xnb</Output>
+      <Time>2013-10-06T22:20:19.0484047+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Dustismo14.spritefont</Source>
+      <Name>Fonts\Dustismo14</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo14.xnb</Output>
+      <Time>2013-10-06T22:27:42.9287932+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Dustismo16.spritefont</Source>
+      <Name>Fonts\Dustismo16</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo16.xnb</Output>
+      <Time>2013-10-06T22:28:08.6482643+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Dustismo18.spritefont</Source>
+      <Name>Fonts\Dustismo18</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo18.xnb</Output>
+      <Time>2013-10-06T22:28:20.6999536+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Dustismo20.spritefont</Source>
+      <Name>Fonts\Dustismo20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo20.xnb</Output>
+      <Time>2013-10-06T22:28:45.7883886+09:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Dustismo24B.spritefont</Source>
+      <Name>Fonts\Dustismo24B</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo24B.xnb</Output>
+      <Time>2013-10-06T22:29:03.9314263+09:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>HiDef</TargetProfile>
+      <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Release</BuildConfiguration>
       <CompressContent>true</CompressContent>
       <RootDirectory>C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\EglantineContent\</RootDirectory>

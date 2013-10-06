@@ -9,6 +9,9 @@ namespace Eglantine
 	public class AnimatedSprite
 	{
 		public readonly Texture2D Texture;
+        // This is a stupid workaround for the Reach profile...
+        public readonly Texture2D SecondTexture;
+
 		public Vector2 Position;
 		public Vector2 Origin;
 		public Vector2 Scale;
@@ -22,12 +25,15 @@ namespace Eglantine
 
 		public string CurrentAnimationName { get; private set;}
 
-		public AnimatedSprite (Texture2D tex, int fps)
+		public AnimatedSprite (Texture2D tex, int fps, Texture2D secondTexture = null)
 		{
 			animations = new Dictionary<string, Animation>();
 			framesPerSecond = fps;
 			frameRate = 1f / fps;
 			Texture = tex;
+
+            if (secondTexture != null)
+                SecondTexture = secondTexture;
 		}
 
 		public void AddAnimation (string name, int h, int w, int[] frames, bool loop)
@@ -101,8 +107,14 @@ namespace Eglantine
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
-			if(currentAnimation != null)
-				spriteBatch.Draw(currentAnimation.Texture, position: Position, sourceRectangle: currentAnimation.CurrentFrameRect(), origin: Origin, color: Color, scale: Scale);
+            if (currentAnimation != null)
+            {
+                spriteBatch.Draw(currentAnimation.Texture, position: Position, sourceRectangle: currentAnimation.CurrentFrameRect(), origin: Origin, color: Color, scale: Scale);
+                if (currentAnimation.CurrentFrame > 39)
+                {
+                    spriteBatch.Draw(SecondTexture, position: Position, sourceRectangle: currentAnimation.CurrentFrameRect(-40), origin: Origin, color: Color, scale: Scale);
+                }
+            }
 		}
 	}
 
@@ -178,6 +190,14 @@ namespace Eglantine
 			int row = CurrentFrame / columns;
 			return new Rectangle(column * frameWidth, row * frameHeight, frameWidth, frameHeight);
 		}
+
+        public Rectangle CurrentFrameRect(int mod)
+        {
+            int newFrame = CurrentFrame + mod;
+            int column = newFrame % columns;
+            int row = newFrame / columns;
+            return new Rectangle(column * frameWidth, row * frameHeight, frameWidth, frameHeight);
+        }
 	}
 }
 
