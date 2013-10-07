@@ -233,7 +233,6 @@ C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglanti
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo18.xnb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo20.xnb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Fonts\Dustismo24B.xnb
-C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\lua52.dll
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\messagewindow.xnb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\phGui.xnb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Eglantine.exe
@@ -247,3 +246,4 @@ C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglanti
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\obj\x86\Release\Eglantine.pdb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet1.xnb
 C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\Content\Graphics\SpriteSheet2.xnb
+C:\Users\Corey\Documents\Visual Studio 2010\Projects\Eglantine\Eglantine\Eglantine\Eglantine\bin\x86\Release\msvcr110.dll

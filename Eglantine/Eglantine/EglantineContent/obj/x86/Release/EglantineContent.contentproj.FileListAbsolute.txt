@@ -1,1 +1,1 @@
-C:\Users\Corey\documents\visual studio 2010\Projects\Eglantine\Eglantine\Eglantine\EglantineContent\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Corey\Documents\Visual Studio 2010\Projects\Eglantine\Eglantine\Eglantine\EglantineContent\obj\x86\Release\ResolveAssemblyReference.cache

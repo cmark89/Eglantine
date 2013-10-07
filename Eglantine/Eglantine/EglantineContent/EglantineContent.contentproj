@@ -1068,10 +1068,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Content Include="lua52.dll">
-      <Name>lua52</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="messagewindow.xnb">
       <Name>messagewindow</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

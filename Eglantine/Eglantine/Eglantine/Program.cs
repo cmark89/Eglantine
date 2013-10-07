@@ -17,8 +17,15 @@ namespace Eglantine
 		[STAThread]
 		static void Main ()
 		{
-			game = new Eglantine ();
-			game.Run ();
+            try
+            {
+                game = new Eglantine();
+                game.Run();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
 		}
 	}
 }

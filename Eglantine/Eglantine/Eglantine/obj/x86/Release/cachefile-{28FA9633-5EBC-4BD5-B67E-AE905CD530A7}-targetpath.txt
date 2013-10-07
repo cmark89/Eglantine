@@ -208,6 +208,5 @@ Content\Fonts\Dustismo18.xnb
 Content\Fonts\Dustismo20.xnb
 Content\Fonts\Dustismo24B.xnb
 Content\Audio\SoundEffects\Extend.xnb
-Content\lua52.dll
 Content\messagewindow.xnb
 Content\phGui.xnb
